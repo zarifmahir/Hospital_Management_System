@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.PatientHistoryController">
+    <Text layoutX="418.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PATIENT HISTORY PAGE" wrappingWidth="154.13671875" />
+</AnchorPane>
