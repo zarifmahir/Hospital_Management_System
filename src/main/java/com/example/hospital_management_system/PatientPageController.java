@@ -14,10 +14,16 @@ import java.util.Objects;
 
 public class PatientPageController {
 
-    public BorderPane bp;
-    public Button dashboardButton;
-    public Button appointmentsButton;
-    public Button historyButton;
+    @FXML
+    private BorderPane bp;
+    @FXML
+    private Button dashboardButton;
+    @FXML
+    private Button appointmentsButton;
+    @FXML
+    private Button historyButton;
+    @FXML
+    private Main main;
 
     private void loadPage(String page) throws IOException {
         Parent root = null;
@@ -53,5 +59,9 @@ public class PatientPageController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 }

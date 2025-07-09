@@ -53,6 +53,9 @@ public class LoginController {
                 if(personType.equals("Doctor")) {
                     main.showHomePage();
                 }
+                else if (personType.equals("Patient")) {
+                    main.showPatientPage();
+                }
             }
             catch (Exception e){
                 e.printStackTrace();

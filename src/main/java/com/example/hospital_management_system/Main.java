@@ -31,12 +31,25 @@ public class Main extends Application {
         stage.show();
     }
 
+
+
     public void showHomePage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("hello-view.fxml"));
         Parent root = loader.load();
 
         HelloController controller = loader.getController();
+        controller.setMain(this);
+
+        stage.getScene().setRoot(root);
+    }
+
+    public void showPatientPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("patient_page.fxml"));
+        Parent root = loader.load();
+
+        PatientPageController controller = loader.getController();
         controller.setMain(this);
 
         stage.getScene().setRoot(root);
