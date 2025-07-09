@@ -61,12 +61,10 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("register_page.fxml"));
         Parent root = loader.load();
 
-        Registration controller = loader.getController();
+        RegistrationController controller = loader.getController();
         controller.setMain(this);
 
-        stage.setTitle("Hospital Management System");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        stage.getScene().setRoot(root);
     }
 
     public static void main(String[] args) { launch(args); }

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -12,6 +13,7 @@ public class LoginController {
 
     @FXML
     public ChoiceBox<String> dropdown;
+    public Button signUpButton;
 
     @FXML
     private TextField username;
@@ -70,5 +72,14 @@ public class LoginController {
     public void setMain(Main main) {
         initialize();
         this.main = main;
+    }
+
+    public void signUp(ActionEvent actionEvent) {
+        try {
+            main.showRegisterPage();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
