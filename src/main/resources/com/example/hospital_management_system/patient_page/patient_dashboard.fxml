@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.hospital_management_system.PatientDashboardController">
+            fx:controller="com.example.hospital_management_system.patient_page.PatientDashboardController">
 
    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
               AnchorPane.topAnchor="10.0" AnchorPane.rightAnchor="10.0">
-      <Image url="@../../../images/tonmoy_face.jpg"/>
+      <Image url="@../../../../images/tonmoy_face.jpg"/>
    </ImageView>
 
 </AnchorPane>

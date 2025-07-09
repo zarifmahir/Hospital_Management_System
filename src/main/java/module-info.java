@@ -6,4 +6,6 @@ module com.example.hospital_management_system {
 
     opens com.example.hospital_management_system to javafx.fxml;
     exports com.example.hospital_management_system;
+    exports com.example.hospital_management_system.patient_page;
+    opens com.example.hospital_management_system.patient_page to javafx.fxml;
 }
