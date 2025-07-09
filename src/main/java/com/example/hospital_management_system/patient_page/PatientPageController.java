@@ -1,18 +1,21 @@
 package com.example.hospital_management_system.patient_page;
 
 import com.example.hospital_management_system.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class PatientPageController {
 
+    public VBox slider;
     @FXML
     private BorderPane bp;
     @FXML
@@ -66,5 +69,14 @@ public class PatientPageController {
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    public void logOut(ActionEvent actionEvent) {
+        try {
+            main.showLoginPage();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
