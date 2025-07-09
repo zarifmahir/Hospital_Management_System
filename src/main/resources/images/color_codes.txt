@@ -1,0 +1,7 @@
+pastel green: #EAF9DA
+normal green: #CCF6C8
+sea green: #C0ECD7
+basic blue: #CDE5F9
+light blue: #CCE2E9
+lavender: #E8F0FB
+baby pink: #F9DEE1
