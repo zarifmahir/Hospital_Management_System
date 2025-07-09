@@ -34,7 +34,6 @@ public class LoginController {
     private void initialize() {
         ObservableList<String> list = FXCollections.observableArrayList("Doctor", "Patient", "Admin");
         dropdown.setItems(list);
-
     }
 
     public void userLogIn(ActionEvent actionEvent) throws IOException {
