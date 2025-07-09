@@ -14,6 +14,7 @@ public class LoginPage extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("Hospital Management System!");
         stage.setScene(scene);
+        System.out.println("Check github");
         stage.show();
     }
 
