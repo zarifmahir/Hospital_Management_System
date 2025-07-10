@@ -13,115 +13,139 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="705.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.register_page.PatientRegister">
-   <children>
-      <Label layoutX="61.0" layoutY="75.0" text="Name:">
-         <font>
-            <Font name="Times New Roman" size="21.0" />
-         </font>
-      </Label>
-      <TextField fx:id="patientName" layoutX="240.0" layoutY="69.0" prefHeight="31.0" prefWidth="273.0" />
-      <Label layoutX="61.0" layoutY="127.0" text="Date of Birth:">
-         <font>
-            <Font name="Times New Roman" size="21.0" />
-         </font>
-      </Label>
-      <DatePicker fx:id="dateOfBirth" layoutX="240.0" layoutY="122.0" prefHeight="31.0" prefWidth="275.0" />
-      <Text layoutX="61.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information" underline="true">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Text>
-      <Label layoutX="61.0" layoutY="179.0" text="Gender:">
-         <font>
-            <Font name="Times New Roman" size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="61.0" layoutY="231.0" text="Blood Group: ">
-         <font>
-            <Font name="Times New Roman" size="21.0" />
-         </font>
-      </Label>
-      <TextField fx:id="bloodGroup" layoutX="240.0" layoutY="226.0" prefHeight="31.0" prefWidth="273.0" />
-      <Text layoutX="61.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Information" underline="true">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Text>
-      <Label layoutX="61.0" layoutY="322.0" text="Email: ">
-         <font>
-            <Font name="Times New Roman" size="21.0" />
-         </font>
-      </Label>
-      <TextField fx:id="email" layoutX="240.0" layoutY="317.0" prefHeight="31.0" prefWidth="273.0" />
-      <Label layoutX="61.0" layoutY="374.0" text="Mobile: ">
-         <font>
-            <Font name="Times New Roman" size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="61.0" layoutY="426.0" text="Emergency contact:">
-         <font>
-            <Font name="Times New Roman" size="21.0" />
-         </font>
-      </Label>
-      <TextField fx:id="mobile" layoutX="240.0" layoutY="368.0" prefHeight="31.0" prefWidth="273.0" />
-      <TextField fx:id="emergencyContact" layoutX="240.0" layoutY="420.0" prefHeight="31.0" prefWidth="273.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="632.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
-      <Text layoutX="550.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medical Information" underline="true">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Text>
-      <CheckBox fx:id="diabetes" layoutX="556.0" layoutY="311.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Diabetes" />
-      <CheckBox fx:id="asthma" layoutX="556.0" layoutY="340.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Asthma" />
-      <CheckBox fx:id="highBP" layoutX="556.0" layoutY="369.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="223.0" text="Hypertension(High Blood Pressure)" />
-      <CheckBox fx:id="cancer" layoutX="556.0" layoutY="398.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Cancer" />
-      <CheckBox fx:id="stroke" layoutX="556.0" layoutY="427.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Stroke" />
-      <CheckBox fx:id="kidneyDisease" layoutX="556.0" layoutY="456.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Kidney disease" />
-      <CheckBox fx:id="liverDisease" layoutX="556.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Liver disease" />
-      <CheckBox fx:id="epilepsy" layoutX="556.0" layoutY="514.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Epilepsy" />
-      <CheckBox fx:id="allergies" layoutX="556.0" layoutY="543.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="Allegies (Specify if any):" />
-      <TextField fx:id="nameOfAllergies" layoutX="755.0" layoutY="537.0" prefHeight="28.0" prefWidth="181.0" />
-      <CheckBox fx:id="surgeries" layoutX="556.0" layoutY="577.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" text="Surgeries (Specify if any):" />
-      <CheckBox fx:id="familyHistory" layoutX="556.0" layoutY="617.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Family history (Specify if any):" />
-      <TextField fx:id="nameOfSurgeries" layoutX="755.0" layoutY="577.0" prefHeight="28.0" prefWidth="181.0" />
-      <TextField fx:id="nameOfFamilyHistory" layoutX="755.0" layoutY="617.0" prefHeight="28.0" prefWidth="181.0" />
-      <CheckBox fx:id="medications" layoutX="556.0" layoutY="657.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Medications (Specify if any):" />
-      <TextField fx:id="nameOfMedications" layoutX="755.0" layoutY="657.0" prefHeight="28.0" prefWidth="181.0" />
-      <Button layoutX="62.0" layoutY="583.0" mnemonicParsing="false" onAction="#signUp" prefHeight="41.0" prefWidth="123.0" text="SignUp" underline="true">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Button>
-      <ImageView fx:id="photo" fitHeight="169.0" fitWidth="171.0" layoutX="663.0" layoutY="26.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../images/blank-profile-picture.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="699.0" layoutY="211.0" mnemonicParsing="false" onAction="#uploadPhoto" text="Upload Photo" />
-      <Text layoutX="556.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Check all that apply)" />
-      <RadioButton fx:id="male" layoutX="242.0" layoutY="182.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="75.0" text="Male">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="gender" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="female" layoutX="318.0" layoutY="181.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="92.0" text="Female" toggleGroup="$gender">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="others" layoutX="408.0" layoutY="181.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="75.0" text="Others" toggleGroup="$gender">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </RadioButton>
-      <Label fx:id="errorMessage" layoutX="367.0" layoutY="22.0" textFill="#ee0909">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane prefHeight="705.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.hospital_management_system.register_page.PatientRegister">
+   <Label layoutX="61.0" layoutY="75.0" text="Name:">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="patientName" layoutX="240.0" layoutY="69.0" prefHeight="31.0" prefWidth="273.0"/>
+   <Label layoutX="61.0" layoutY="127.0" text="Date of Birth:">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <DatePicker fx:id="dateOfBirth" layoutX="240.0" layoutY="122.0" prefHeight="31.0" prefWidth="275.0"/>
+   <Text layoutX="61.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information"
+         underline="true">
+      <font>
+         <Font name="System Bold" size="25.0"/>
+      </font>
+   </Text>
+   <Label layoutX="61.0" layoutY="179.0" text="Gender:">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <Label layoutX="61.0" layoutY="231.0" text="Blood Group: ">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="bloodGroup" layoutX="240.0" layoutY="226.0" prefHeight="31.0" prefWidth="273.0"/>
+   <Text layoutX="61.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Information"
+         underline="true">
+      <font>
+         <Font name="System Bold" size="25.0"/>
+      </font>
+   </Text>
+   <Label layoutX="61.0" layoutY="472.0" text="Email: ">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="email" layoutX="240.0" layoutY="467.0" prefHeight="31.0" prefWidth="273.0"/>
+   <Label layoutX="61.0" layoutY="524.0" text="Mobile: ">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <Label layoutX="61.0" layoutY="576.0" text="Emergency contact:">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="mobile" layoutX="240.0" layoutY="518.0" prefHeight="31.0" prefWidth="273.0"/>
+   <TextField fx:id="emergencyContact" layoutX="240.0" layoutY="570.0" prefHeight="31.0" prefWidth="273.0"/>
+   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="632.0" layoutY="52.0" pickOnBounds="true"
+              preserveRatio="true"/>
+   <Text layoutX="550.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medical Information"
+         underline="true">
+      <font>
+         <Font name="System Bold" size="25.0"/>
+      </font>
+   </Text>
+   <CheckBox fx:id="diabetes" layoutX="556.0" layoutY="311.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="115.0" text="Diabetes"/>
+   <CheckBox fx:id="asthma" layoutX="556.0" layoutY="340.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0"
+             text="Asthma"/>
+   <CheckBox fx:id="highBP" layoutX="556.0" layoutY="369.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="223.0"
+             text="Hypertension(High Blood Pressure)"/>
+   <CheckBox fx:id="cancer" layoutX="556.0" layoutY="398.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0"
+             text="Cancer"/>
+   <CheckBox fx:id="stroke" layoutX="556.0" layoutY="427.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0"
+             text="Stroke"/>
+   <CheckBox fx:id="kidneyDisease" layoutX="556.0" layoutY="456.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="115.0" text="Kidney disease"/>
+   <CheckBox fx:id="liverDisease" layoutX="556.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="115.0" text="Liver disease"/>
+   <CheckBox fx:id="epilepsy" layoutX="556.0" layoutY="514.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="115.0" text="Epilepsy"/>
+   <CheckBox fx:id="allergies" layoutX="556.0" layoutY="543.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="160.0" text="Allegies (Specify if any):"/>
+   <TextField fx:id="nameOfAllergies" layoutX="755.0" layoutY="537.0" prefHeight="28.0" prefWidth="181.0"/>
+   <CheckBox fx:id="surgeries" layoutX="556.0" layoutY="577.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="171.0" text="Surgeries (Specify if any):"/>
+   <CheckBox fx:id="familyHistory" layoutX="556.0" layoutY="617.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="189.0" text="Family history (Specify if any):"/>
+   <TextField fx:id="nameOfSurgeries" layoutX="755.0" layoutY="577.0" prefHeight="28.0" prefWidth="181.0"/>
+   <TextField fx:id="nameOfFamilyHistory" layoutX="755.0" layoutY="617.0" prefHeight="28.0" prefWidth="181.0"/>
+   <CheckBox fx:id="medications" layoutX="556.0" layoutY="657.0" mnemonicParsing="false" prefHeight="26.0"
+             prefWidth="189.0" text="Medications (Specify if any):"/>
+   <TextField fx:id="nameOfMedications" layoutX="755.0" layoutY="657.0" prefHeight="28.0" prefWidth="181.0"/>
+   <ImageView fx:id="photo" fitHeight="169.0" fitWidth="171.0" layoutX="663.0" layoutY="26.0" pickOnBounds="true">
+      <Image url="@../../../../images/blank-profile-picture.png"/>
+   </ImageView>
+   <Button layoutX="699.0" layoutY="211.0" mnemonicParsing="false" onAction="#uploadPhoto" text="Upload Photo"/>
+   <Text layoutX="556.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Check all that apply)"/>
+   <RadioButton fx:id="male" layoutX="242.0" layoutY="182.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="75.0"
+                text="Male">
+      <font>
+         <Font size="16.0"/>
+      </font>
+      <toggleGroup>
+         <ToggleGroup fx:id="gender"/>
+      </toggleGroup>
+   </RadioButton>
+   <RadioButton fx:id="female" layoutX="318.0" layoutY="181.0" mnemonicParsing="false" prefHeight="20.0"
+                prefWidth="92.0" text="Female" toggleGroup="$gender">
+      <font>
+         <Font size="16.0"/>
+      </font>
+   </RadioButton>
+   <RadioButton fx:id="others" layoutX="408.0" layoutY="181.0" mnemonicParsing="false" prefHeight="22.0"
+                prefWidth="75.0" text="Others" toggleGroup="$gender">
+      <font>
+         <Font size="16.0"/>
+      </font>
+   </RadioButton>
+   <Label fx:id="errorMessage" layoutX="367.0" layoutY="22.0" textFill="#ee0909">
+      <font>
+         <Font name="System Bold" size="25.0"/>
+      </font>
+   </Label>
+   <Label layoutX="61.0" layoutY="282.0" text="Weight:">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="weight" layoutX="240.0" layoutY="277.0" prefHeight="31.0" prefWidth="273.0"/>
+   <Label layoutX="61.0" layoutY="332.0" text="Height">
+      <font>
+         <Font name="Times New Roman" size="21.0"/>
+      </font>
+   </Label>
+   <TextField fx:id="height" layoutX="240.0" layoutY="327.0" prefHeight="31.0" prefWidth="273.0"/>
 </AnchorPane>

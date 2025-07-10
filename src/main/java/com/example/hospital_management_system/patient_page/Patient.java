@@ -1,6 +1,8 @@
 package com.example.hospital_management_system.patient_page;
 
-import javafx.scene.shape.PathElement;
+import javafx.scene.control.CheckBox;
+
+import java.awt.*;
 
 public class Patient {
     private String name;
@@ -8,82 +10,59 @@ public class Patient {
     private String gender;
     private float weight;
     private float height;
+    private String bloodType;
 
-    private int id;
+    private int mobile;
+    private int emergencyContact;
+    private String email;
+
+
+    private CheckBox diabetes;
+    private CheckBox asthma;
+    private CheckBox highBp;
+    private CheckBox epilepsy;
+    private CheckBox cancer;
+    private CheckBox stroke;
+    private CheckBox kidney;
+    private CheckBox liver;
+    private CheckBox allergies;
+    private CheckBox surgeries;
+    private CheckBox familyHistory;
+    private CheckBox medications;
+
+    private String id;
     private String pass;
 
-    Patient(String name, int age, String gender, float weight, float height) {
+    public Patient(String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, CheckBox medications, CheckBox familyHistory, CheckBox surgeries, CheckBox allergies, CheckBox liver, CheckBox kidney, CheckBox stroke, CheckBox cancer, CheckBox epilepsy, CheckBox highBp, CheckBox asthma, CheckBox diabetes) {
         this.name = name;
         this.age = age;
         this.gender = gender;
+        this.diabetes = diabetes;
         this.weight = weight;
         this.height = height;
+        this.bloodType = bloodType;
+        this.mobile = mobile;
+        this.emergencyContact = emergencyContact;
+        this.email = email;
+        this.medications = medications;
+        this.familyHistory = familyHistory;
+        this.surgeries = surgeries;
+        this.allergies = allergies;
+        this.liver = liver;
+        this.kidney = kidney;
+        this.stroke = stroke;
+        this.cancer = cancer;
+        this.epilepsy = epilepsy;
+        this.highBp = highBp;
+        this.asthma = asthma;
     }
 
-    public Patient(String name, int age, String gender, float weight, float height, int id, String pass) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.weight = weight;
-        this.height = height;
-        this.id = id;
+    
+
+    public void setPassAndId(String pass, String id){
         this.pass = pass;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
         this.id = id;
     }
+
 
 }
