@@ -1,14 +1,26 @@
 package com.example.hospital_management_system.register_page;
 
 import com.example.hospital_management_system.Main;
+import com.example.hospital_management_system.patient_page.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+
+import java.io.File;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class PatientRegister {
     @FXML
     public Label errorMessage;
+    @FXML
+    public TextField weight;
+
+    @FXML
+    public TextField height;
 
     @FXML
     private CheckBox allergies;
@@ -93,6 +105,11 @@ public class PatientRegister {
 
     private Main main;
 
+    private RadioButton selected;
+
+
+
+
     public void setMain(Main main) {
         initialize();
         this.main = main;
@@ -102,44 +119,67 @@ public class PatientRegister {
     @FXML
     private void initialize() { //to select only one gender
         // Optionally listen to selection changes
+            dateOfBirth.getEditor().setDisable(true);
+            dateOfBirth.getEditor().setOpacity(1);
         gender.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
             if (newToggle != null) {
-                RadioButton selected = (RadioButton) newToggle;
+                selected = (RadioButton) newToggle;
             }
 
         });
     }
 
 
-        boolean checkEmpty(){
+    public boolean checkEmpty(){
             if(patientName.getText().isEmpty() || email.getText().isEmpty() || bloodGroup.getText().isEmpty() || mobile.getText().isEmpty() || dateOfBirth.getValue()==null || emergencyContact.getText().isEmpty() || gender.getSelectedToggle() == null){
                 return true;
             }
             return false;
         }
 
+    
+
+
     @FXML
-    void signUp(ActionEvent event) {
-        if(checkEmpty()){
-            errorMessage.setText("Please fill all the fields");
-        }
-        else{
+    private void uploadPhoto(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+
+        // Set extension filter (optional)
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image files (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        // Show open file dialog
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
             try {
+                // Load the image
+                Image image = new Image(file.toURI().toString());
 
-                main.showSuccessPage();
+                // Set it to the ImageView
+                photo.setImage(image);
+            } catch (Exception e) {
+                showAlert("Error", "Could not load image: " + e.getMessage());
             }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-
         }
-
-
     }
 
-    @FXML
-    void uploadPhoto(ActionEvent event) {
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
+    Patient buildPatient(){
+        LocalDate birthDate = dateOfBirth.getValue();
+        LocalDate today = LocalDate.now();
+        Period age = Period.between(birthDate, today);
+
+        Patient p = new Patient(patientName.getText(), age.getYears(),  selected.getText(), Float.parseFloat(weight.getText()), Float.parseFloat(height.getText()), bloodGroup.getText(),
+                Integer.parseInt(mobile.getText()), Integer.parseInt(emergencyContact.getText()), email.getText(), medications, familyHistory, surgeries, allergies, liverDisease, kidneyDisease, stroke, cancer, epilepsy, highBP, asthma, diabetes);
+        return p;
     }
 
 }

@@ -2,7 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -16,11 +21,46 @@
                </font>
             </Text>
             <ChoiceBox fx:id="dropdownR" layoutX="14.0" layoutY="112.0" prefHeight="32.0" prefWidth="251.0" />
-            <Button fx:id="backToLogin" layoutX="22.0" layoutY="564.0" mnemonicParsing="false" onAction="#backToLoginPage" prefHeight="32.0" prefWidth="237.0" style="-fx-background-color: none;" text="Back to LogIn" textFill="#1210ab" underline="true">
+            <Button layoutX="22.0" layoutY="564.0" mnemonicParsing="false" onAction="#backToLoginPage" prefHeight="32.0" prefWidth="237.0" style="-fx-background-color: none;" text="Back to LogIn" textFill="#1210ab" underline="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
+            <Button layoutX="72.0" layoutY="497.0" mnemonicParsing="false" onAction="#signUp" prefHeight="41.0" prefWidth="123.0" text="SignUp" underline="true">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="label2" layoutX="7.0" layoutY="273.0" text="Username:">
+               <font>
+                  <Font name="Times New Roman Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="label3" layoutX="7.0" layoutY="323.0" text="Password:">
+               <font>
+                  <Font name="Times New Roman Bold" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="label4" layoutX="7.0" layoutY="354.0" prefHeight="85.0" prefWidth="94.0" text="Confirm Password:" wrapText="true">
+               <font>
+                  <Font name="Times New Roman Bold" size="21.0" />
+               </font>
+            </Label>
+            <TextField fx:id="username" layoutX="113.0" layoutY="270.0" prefHeight="32.0" prefWidth="161.0" />
+            <Text fx:id="label1" fill="#1b1ecd" layoutX="15.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First, fill out the following information:" wrappingWidth="251.0">
+               <font>
+                  <Font name="Times New Roman Bold" size="22.0" />
+               </font>
+            </Text>
+            <Line fx:id="line1" endX="-25.0" layoutX="244.0" layoutY="212.0" startX="-100.0" strokeWidth="5.0" />
+            <Polyline fx:id="line2" fill="#1a1b1a" layoutX="209.0" layoutY="225.0" points="0.0, -24.0, 43.0, -14.0, 0.0, -2.943359375, 0.0, -24.0" strokeType="INSIDE" />
+            <PasswordField fx:id="password" layoutX="113.0" layoutY="319.0" prefHeight="32.0" prefWidth="161.0" />
+            <PasswordField fx:id="confirmPassword" layoutX="112.0" layoutY="390.0" prefHeight="32.0" prefWidth="161.0" />
+            <Label fx:id="errorMessage2" layoutX="60.0" layoutY="236.0" prefWidth="189.0" textFill="#fc0e0e">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="centerRegister" layoutX="320.0" layoutY="9.0" prefHeight="705.0" prefWidth="950.0" />
