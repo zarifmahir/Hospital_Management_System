@@ -40,6 +40,17 @@ public class Main extends Application {
 
     public void showHomePage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("hello-view.fxml"));
+        Parent root = loader.load();
+
+        HelloController controller = loader.getController();
+        controller.setMain(this);
+
+        stage.getScene().setRoot(root);
+    }
+
+    public void showSuccessPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("register_page/success_Page.fxml"));
         Parent root = loader.load();
 
@@ -56,7 +67,6 @@ public class Main extends Application {
 
         PatientPageController controller = loader.getController();
         controller.setMain(this);
-
         stage.getScene().setRoot(root);
     }
 
@@ -78,7 +88,6 @@ public class Main extends Application {
 
         RegistrationController controller = loader.getController();
         controller.setMain(this);
-
 
         stage.getScene().setRoot(root);
     }

@@ -126,7 +126,7 @@ public class PatientRegister {
         else{
             try {
 
-                main.showHomePage();
+                main.showSuccessPage();
             }
             catch (Exception e) {
                 e.printStackTrace();
