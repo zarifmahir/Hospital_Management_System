@@ -45,6 +45,7 @@ public class LoginController {
         String validUsername = "zarif";
         String validPassword = "123";
         String personType = dropdown.getValue();
+
         if(dropdown.getValue()== null || username.getText().isEmpty() || password.getText().isEmpty()){
             errorMessage.setVisible(true);
             errorMessage.setText("Please fill all the fields");
@@ -52,7 +53,7 @@ public class LoginController {
         else if(username.getText().equals(validUsername) && password.getText().equals(validPassword)){
             try{
                 if(personType.equals("Doctor")) {
-                    main.showHomePage();
+                    main.showDoctorPage();
                 }
                 else if (personType.equals("Patient")) {
                     main.showPatientPage();

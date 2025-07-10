@@ -1,5 +1,6 @@
 package com.example.hospital_management_system;
 
+import com.example.hospital_management_system.doctor_page.DoctorPageController;
 import com.example.hospital_management_system.patient_page.PatientPageController;
 import com.example.hospital_management_system.register_page.RegistrationController;
 import javafx.application.Application;
@@ -35,16 +36,16 @@ public class Main extends Application {
 
 
 
-    public void showHomePage() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("hello-view.fxml"));
-        Parent root = loader.load();
-
-        HelloController controller = loader.getController();
-        controller.setMain(this);
-
-        stage.getScene().setRoot(root);
-    }
+//    public void showHomePage() throws IOException {
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("hello-view.fxml"));
+//        Parent root = loader.load();
+//
+//        HelloController controller = loader.getController();
+//        controller.setMain(this);
+//
+//        stage.getScene().setRoot(root);
+//    }
 
     public void showPatientPage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -55,6 +56,17 @@ public class Main extends Application {
         controller.setMain(this);
 
         stage.getScene().setRoot(root);
+    }
+
+    public void showDoctorPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("doctor_page/doctor_page.fxml"));
+        Parent root = loader.load();
+
+        DoctorPageController controller = loader.getController();
+        controller.setMain(this);
+
+        stage.setScene(new Scene(root, 1280, 720));
     }
 
     public void showRegisterPage() throws IOException {
