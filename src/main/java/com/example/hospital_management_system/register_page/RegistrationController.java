@@ -21,16 +21,23 @@ public class RegistrationController {
     private Main main;
 
     private void loadPage(String page) throws IOException {
-        Parent root = null;
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(page+"Register.fxml"));
+        Parent root = loader.load();
 
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + "Register.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+        if(page.equals("Patient")){
+            PatientRegister controller = loader.getController();
+            controller.setMain(main);
         }
-        centerRegister.getChildren().clear();
+//        try {
+//            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + "Register.fxml")));
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            throw new RuntimeException(e);
+//        }
 
+        centerRegister.getChildren().clear();
         centerRegister.getChildren().add(root);
     }
 

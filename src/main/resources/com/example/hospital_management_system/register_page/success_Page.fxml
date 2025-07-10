@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.register_page.SuccessPage">
+   <children>
+      <ImageView fitHeight="216.0" fitWidth="275.0" layoutX="488.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/doctor-visit.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="275.0" layoutY="389.0" text="SUCCESSFULLY REGISTERED!!!!" textFill="#099e38">
+         <font>
+            <Font name="System Bold" size="46.0" />
+         </font>
+      </Label>
+      <Button layoutX="488.0" layoutY="505.0" mnemonicParsing="false" onAction="#backToLogIn" style="-fx-background-color: none;" text="Back to LogIn" textFill="#161dee" underline="true">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
