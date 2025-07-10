@@ -1,7 +1,9 @@
 package com.example.hospital_management_system;
 
 import com.example.hospital_management_system.patient_page.PatientPageController;
+import com.example.hospital_management_system.register_page.PatientRegister;
 import com.example.hospital_management_system.register_page.RegistrationController;
+import com.example.hospital_management_system.register_page.SuccessPage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,10 +39,10 @@ public class Main extends Application {
 
     public void showHomePage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("hello-view.fxml"));
+        loader.setLocation(getClass().getResource("register_page/success_Page.fxml"));
         Parent root = loader.load();
 
-        HelloController controller = loader.getController();
+        SuccessPage controller = loader.getController();
         controller.setMain(this);
 
         stage.getScene().setRoot(root);
@@ -64,6 +66,7 @@ public class Main extends Application {
 
         RegistrationController controller = loader.getController();
         controller.setMain(this);
+
 
         stage.getScene().setRoot(root);
     }
