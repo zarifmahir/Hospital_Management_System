@@ -11,21 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class Main extends Application {
     Stage stage;
-
-//    BufferedReader br = new BufferedReader(new FileReader(INPUT_FILE_NAME));
-//        while (true) {
-//        String line = br.readLine();
-//        if (line == null) break;
-//        String [] values = line.split(",");
-//        Movie m = new Movie(values[0], Integer.parseInt(values[1]), values[2], values[3], values[4], Integer.parseInt(values[5]), values[6], Integer.parseInt(values[7]), Integer.parseInt(values[8]));
-//        movieList.add(m);
-//        // System.out.println();
-//    }
-//    br.close();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -103,6 +94,18 @@ public class Main extends Application {
         stage.getScene().setRoot(root);
     }
 
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) throws IOException{
+//        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/PatientsList.txt"));
+//        while (true) {
+//        String line = br.readLine();
+//        if (line == null) break;
+//        String [] values = line.split(",");
+////        Movie m = new Movie(values[0], Integer.parseInt(values[1]), values[2], values[3], values[4], Integer.parseInt(values[5]), values[6], Integer.parseInt(values[7]), Integer.parseInt(values[8]));
+////        movieList.add(m)
+//        // System.out.println();
+//    }
+   // br.close();
+        launch(args);
+    }
 
 }

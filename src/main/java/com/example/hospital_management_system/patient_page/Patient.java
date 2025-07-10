@@ -64,5 +64,95 @@ public class Patient {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public int getMobile() {
+        return mobile;
+    }
+
+    public int getEmergencyContact() {
+        return emergencyContact;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public CheckBox getDiabetes() {
+        return diabetes;
+    }
+
+    public CheckBox getAsthma() {
+        return asthma;
+    }
+
+    public CheckBox getHighBp() {
+        return highBp;
+    }
+
+    public CheckBox getEpilepsy() {
+        return epilepsy;
+    }
+
+    public CheckBox getCancer() {
+        return cancer;
+    }
+
+    public CheckBox getStroke() {
+        return stroke;
+    }
+
+    public CheckBox getKidney() {
+        return kidney;
+    }
+
+    public CheckBox getLiver() {
+        return liver;
+    }
+
+    public CheckBox getAllergies() {
+        return allergies;
+    }
+
+    public CheckBox getSurgeries() {
+        return surgeries;
+    }
+
+    public CheckBox getFamilyHistory() {
+        return familyHistory;
+    }
+
+    public CheckBox getMedications() {
+        return medications;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getPass() {
+        return pass;
+    }
 }

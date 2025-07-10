@@ -14,6 +14,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
 import javafx.scene.text.Text;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -126,8 +128,10 @@ public class RegistrationController {
                 errorMessage2.setText("Passwords do not match");
             }
             else{
+
                 Patient p = patientRegister.buildPatient();
-                p.setPassAndId(username.getText(), password.getText());
+                p.setPassAndId(password.getText(), username.getText());
+                writePatient(p);
                 try{
                     main.showSuccessPage();
                 }
@@ -135,6 +139,23 @@ public class RegistrationController {
                     e.printStackTrace();
                 }
             }
+        }
+
+    }
+
+    void writePatient(Patient p){
+        try {
+            String content = p.getName() + "," + p.getAge() +"," +p.getGender() +","+ p.getWeight() +"," +p.getHeight() +"," +p.getBloodType() +"," +
+                    p.getMobile()+"," +p.getEmergencyContact()+","+p.getDiabetes().isSelected()+","+p.getAsthma().isSelected()+","+p.getHighBp().isSelected()+","+
+                    p.getEpilepsy().isSelected()+","+p.getCancer().isSelected()+","+p.getStroke().isSelected()+","+p.getKidney().isSelected()+","+p.getLiver().isSelected()+","+
+                    p.getAllergies().isSelected()+","+p.getSurgeries().isSelected()+","+p.getFamilyHistory().isSelected()+","+p.getMedications().isSelected()+","+p.getId()+","+p.getPass();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt", true));
+            writer.write(content);
+            writer.newLine(); // adds a newline at the end
+            writer.close(); // always close the writer!
+            System.out.println("File written successfully.");
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
         }
 
     }
