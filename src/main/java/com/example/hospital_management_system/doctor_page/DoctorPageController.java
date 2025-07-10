@@ -1,6 +1,7 @@
 package com.example.hospital_management_system.doctor_page;
 
 import com.example.hospital_management_system.Main;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -84,6 +86,7 @@ public class DoctorPageController {
         }
     }
 
+
     @FXML
     void logOut(ActionEvent event) throws Exception {
         main.showLoginPage();
@@ -94,4 +97,59 @@ public class DoctorPageController {
         this.main = main;
     }
 
+    public void setOnMousePressed(MouseEvent mouseEvent) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), dashboardButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    public void setOnMouseReleased(MouseEvent mouseEvent) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), dashboardButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    public void setOnMousePressed1(MouseEvent mouseEvent) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), scheduleButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    public void setOnMouseReleased1(MouseEvent mouseEvent) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), scheduleButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    public void setOnMousePressed2(MouseEvent mouseEvent) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), patientsButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    public void setOnMouseReleased2(MouseEvent mouseEvent) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), patientsButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    public void setOnMousePressed3(MouseEvent mouseEvent) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), menuButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    public void setOnMouseReleased3(MouseEvent mouseEvent) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), menuButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
 }
