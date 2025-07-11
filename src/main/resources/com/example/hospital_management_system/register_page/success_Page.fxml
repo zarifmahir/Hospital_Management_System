@@ -14,7 +14,7 @@
             <Image url="@../../../../images/doctor-visit.png" />
          </image>
       </ImageView>
-      <Label layoutX="275.0" layoutY="389.0" text="SUCCESSFULLY REGISTERED!!!!" textFill="#099e38">
+      <Label fx:id="successMessage" layoutX="275.0" layoutY="389.0" text="SUCCESSFULLY REGISTERED!!!!" textFill="#099e38">
          <font>
             <Font name="System Bold" size="46.0" />
          </font>

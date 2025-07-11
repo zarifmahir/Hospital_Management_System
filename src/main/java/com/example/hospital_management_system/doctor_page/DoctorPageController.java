@@ -1,6 +1,7 @@
 package com.example.hospital_management_system.doctor_page;
 
 import com.example.hospital_management_system.Main;
+import com.example.hospital_management_system.patient_page.PatientDashboardController;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,17 +42,20 @@ public class DoctorPageController {
 
     @FXML
     private Main main;
+    private Doctor doctor;
 
     @FXML
     private void loadPage(String page) throws IOException {
-        Parent root = null;
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(page + ".fxml"));
+        Parent root = loader.load();
 
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + ".fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+        if(page.equals("doctor_dashboard")) {
+            DoctorDashboardController controller = loader.getController();
+            controller.setDoctor(doctor);
         }
+
+
 
         doctorBorderPane.setCenter(root);
     }
@@ -151,5 +155,9 @@ public class DoctorPageController {
         scaleUp.setToX(1);
         scaleUp.setToY(1);
         scaleUp.play();
+    }
+
+    public void setDoctor(Doctor d) {
+        this.doctor = d;
     }
 }

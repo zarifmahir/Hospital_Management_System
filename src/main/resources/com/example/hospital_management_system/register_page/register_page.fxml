@@ -26,7 +26,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="72.0" layoutY="497.0" mnemonicParsing="false" onAction="#signUp" prefHeight="41.0" prefWidth="123.0" text="SignUp" underline="true">
+            <Button fx:id="buttonForSignUp" layoutX="72.0" layoutY="497.0" mnemonicParsing="false" onAction="#signUp" prefHeight="41.0" prefWidth="123.0" text="SignUp" underline="true">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

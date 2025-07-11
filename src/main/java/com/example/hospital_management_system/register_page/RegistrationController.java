@@ -1,6 +1,7 @@
 package com.example.hospital_management_system.register_page;
 
 import com.example.hospital_management_system.Main;
+import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.patient_page.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,11 +34,13 @@ public class RegistrationController {
     public Text label1;
     public Line line1;
     public Polyline line2;
+    public Button buttonForSignUp;
 
     private Main main;
 
     private String type;
     private PatientRegister patientRegister;
+    private DoctorRegister doctorRegister;
 
 
 
@@ -50,6 +53,12 @@ public class RegistrationController {
             type = "Patient";
             patientRegister = loader.getController();
             patientRegister.setMain(main);
+        }
+        else if(page.equals("Doctor")){
+            type = "Doctor";
+            doctorRegister = loader.getController();
+            doctorRegister.setMain(main);
+            buttonForSignUp.setText("Apply");
         }
 //        try {
 //            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + "Register.fxml")));
@@ -133,7 +142,27 @@ public class RegistrationController {
                 p.setPassAndId(password.getText(), username.getText());
                 writePatient(p);
                 try{
-                    main.showSuccessPage();
+                    main.showSuccessPage("Successfully registered!!!");
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        else if(type.equals("Doctor")){
+            if(doctorRegister.checkEmpty() || username.getText().isEmpty()|| password.getText().isEmpty() || confirmPassword.getText().isEmpty()){
+                errorMessage2.setText("Please fill all the fields");
+            }
+            else if(!password.getText().equals(confirmPassword.getText())){
+                errorMessage2.setText("Passwords do not match");
+            }
+            else{
+                Doctor doctor = doctorRegister.buildDoctor();
+                doctor.setIdAndPass(username.getText(), password.getText());
+                writeDoctor(doctor);
+                try{
+
+                    main.showSuccessPage("Applied Successfully!!!!");
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -159,5 +188,22 @@ public class RegistrationController {
             System.out.println("An error occurred: " + e.getMessage());
         }
 
+    }
+
+    void writeDoctor(Doctor doctor){
+        try{
+            String content = doctor.getName() + "<" + doctor.getAge() + "<" + doctor.getGender() + "<" + doctor.getBloodGroup() + "<" + doctor.getEmail() + "<"
+                    + doctor.getMobile() + "<" + doctor.getEmergencyContact() + "<" + doctor.getMedicalDegree() + "<" + doctor.getInstitution() + "<" + doctor.getPgQualification()
+                    + "<" + doctor.getMedicalLicense() + "<" + doctor.getSpecialization() + "<" + doctor.getYearsExperience() + "<" + doctor.getMedicalCouncil()+"<"+doctor.getImage()
+                    +"<"+doctor.getId()+"<"+doctor.getPass();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt", true));
+            writer.write(content);
+            writer.newLine();
+            writer.close();
+            System.out.println("File written successfully.");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
