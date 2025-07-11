@@ -1,6 +1,8 @@
 package com.example.hospital_management_system;
 
+import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorPageController;
+import com.example.hospital_management_system.doctor_page.DoctorsMap;
 import com.example.hospital_management_system.patient_page.Patient;
 import com.example.hospital_management_system.patient_page.PatientPageController;
 import com.example.hospital_management_system.patient_page.PatientsMap;
@@ -25,6 +27,7 @@ import java.util.Map;
 public class Main extends Application {
     Stage stage;
     public static PatientsMap patientsMap;
+    public static DoctorsMap doctorsMap;
 
 
     @Override
@@ -41,6 +44,7 @@ public class Main extends Application {
         LoginController controller = loader.getController();
         controller.setMain(this);
         loadPatients();
+        loadDoctors();
 
         stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root, 1280, 720));
@@ -60,13 +64,14 @@ public class Main extends Application {
         stage.getScene().setRoot(root);
     }
 
-    public void showSuccessPage() throws IOException {
+    public void showSuccessPage(String msg) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("register_page/success_Page.fxml"));
         Parent root = loader.load();
 
         SuccessPage controller = loader.getController();
         controller.setMain(this);
+        controller.setSuccessMessage(msg);
 
         stage.getScene().setRoot(root);
     }
@@ -83,13 +88,14 @@ public class Main extends Application {
         stage.getScene().setRoot(root);
     }
 
-    public void showDoctorPage() throws IOException {
+    public void showDoctorPage(Doctor d) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("doctor_page/doctor_page.fxml"));
         Parent root = loader.load();
 
         DoctorPageController controller = loader.getController();
         controller.setMain(this);
+        controller.setDoctor(d);
 
         stage.getScene().setRoot(root);
     }
@@ -120,6 +126,24 @@ public class Main extends Application {
             p.setPassAndId(values[23], values[22]);
             String userAndPass = values[22] + "@" + values[23];
             patientsMap.addPatient(p);
+            System.out.println();
+        }
+        br.close();
+    }
+
+    public void loadDoctors() throws IOException {
+        doctorsMap = new DoctorsMap();
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/DoctorsList.txt"));
+        while (true) {
+            String line = br.readLine();
+            if (line == null) break;
+            String [] values = line.split("<");
+            System.out.println("Values: "+values.length);
+            Doctor d = new Doctor(values[0], Integer.parseInt(values[1]), values[2], values[3], values[4], values[5], values[6], values[7],values[8], values[9],Integer.parseInt(values[10]), values[11], Integer.parseInt(values[12]),
+                    values[13],values[14]);
+            d.setIdAndPass(values[15], values[16]);
+            String userAndPass = values[15] + "@" + values[16];
+            doctorsMap.addDoctor(d);
             System.out.println();
         }
         br.close();
