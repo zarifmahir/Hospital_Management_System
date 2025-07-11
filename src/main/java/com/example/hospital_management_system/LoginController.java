@@ -50,7 +50,7 @@ public class LoginController {
             errorMessage.setVisible(true);
             errorMessage.setText("Please fill all the fields");
         }
-        else if(true){
+        else {
             try{
                 if(personType.equals("Doctor")) {
                     main.showDoctorPage();
@@ -69,10 +69,6 @@ public class LoginController {
             catch (Exception e){
                 e.printStackTrace();
             }
-        }
-        else{
-            //errorMessage.setVisible(true);
-            errorMessage.setText("Username or password is incorrect");
         }
     }
 

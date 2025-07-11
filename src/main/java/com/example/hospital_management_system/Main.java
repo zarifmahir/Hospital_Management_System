@@ -42,7 +42,6 @@ public class Main extends Application {
         controller.setMain(this);
         loadPatients();
 
-
         stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();
@@ -112,7 +111,7 @@ public class Main extends Application {
         while (true) {
             String line = br.readLine();
             if (line == null) break;
-            String [] values = line.split(",");
+            String [] values = line.split("<");
             System.out.println("Values:"+values.length);
             Patient p = new Patient(values[0], Integer.parseInt(values[1]), values[2], Float.parseFloat(values[3]), Float.parseFloat(values[4]), values[5],
                     Integer.parseInt(values[6]), Integer.parseInt(values[7]), values[8], Boolean.parseBoolean(values[9]), Boolean.parseBoolean(values[10]), Boolean.parseBoolean(values[11]),
@@ -127,7 +126,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException{
-
         launch(args);
     }
 

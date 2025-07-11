@@ -39,7 +39,7 @@ public class PatientPageController {
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();
 
-        if(page == "patient_dashboard") {
+        if(page.equals("patient_dashboard")) {
             PatientDashboardController controller = loader.getController();
             controller.setPatient(patient);
         }

@@ -1,7 +1,5 @@
 package com.example.hospital_management_system.patient_page;
 
-
-
 import java.awt.*;
 
 public class Patient {

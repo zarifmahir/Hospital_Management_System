@@ -145,11 +145,11 @@ public class RegistrationController {
 
     void writePatient(Patient p){
         try {
-            String content = p.getName() + "," + p.getAge() +"," +p.getGender() +","+ p.getWeight() +"," +p.getHeight() +"," +p.getBloodType() +"," +
-                    p.getMobile()+"," +p.getEmergencyContact()+","+p.getEmail()+","+p.getDiabetes() +","+p.getAsthma() +","+p.getHighBp() +","+
-                    p.getEpilepsy() +","+p.getCancer() +","+p.getStroke() +","+p.getKidney() +","+p.getLiver() +","+
-                    p.getAllergies() +","+p.getSurgeries() +","+p.getFamilyHistory() +","+p.getMedications() +","+p.getImage()+","+
-                    p.getId()+","+p.getPass();
+            String content = p.getName() + "<" + p.getAge() +"<" +p.getGender() +"<"+ p.getWeight() +"<" +p.getHeight() +"<" +p.getBloodType() +"<" +
+                    p.getMobile()+"<" +p.getEmergencyContact()+"<"+p.getEmail()+"<"+p.getDiabetes() +"<"+p.getAsthma() +"<"+p.getHighBp() +"<"+
+                    p.getEpilepsy() +"<"+p.getCancer() +"<"+p.getStroke() +"<"+p.getKidney() +"<"+p.getLiver() +"<"+
+                    p.getAllergies() +"<"+p.getSurgeries() +"<"+p.getFamilyHistory() +"<"+p.getMedications() +"<"+p.getImage()+"<"+
+                    p.getId()+"<"+p.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt", true));
             writer.write(content);
             writer.newLine();

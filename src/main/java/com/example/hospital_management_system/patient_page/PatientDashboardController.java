@@ -15,5 +15,6 @@ public class PatientDashboardController {
         if(!patient.getImage().equals("null")){ img = patient.getImage();}
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(img)));
         patientPhoto.setImage(image);
+
     }
 }
