@@ -146,13 +146,14 @@ public class RegistrationController {
     void writePatient(Patient p){
         try {
             String content = p.getName() + "," + p.getAge() +"," +p.getGender() +","+ p.getWeight() +"," +p.getHeight() +"," +p.getBloodType() +"," +
-                    p.getMobile()+"," +p.getEmergencyContact()+","+p.getDiabetes().isSelected()+","+p.getAsthma().isSelected()+","+p.getHighBp().isSelected()+","+
-                    p.getEpilepsy().isSelected()+","+p.getCancer().isSelected()+","+p.getStroke().isSelected()+","+p.getKidney().isSelected()+","+p.getLiver().isSelected()+","+
-                    p.getAllergies().isSelected()+","+p.getSurgeries().isSelected()+","+p.getFamilyHistory().isSelected()+","+p.getMedications().isSelected()+","+p.getId()+","+p.getPass();
+                    p.getMobile()+"," +p.getEmergencyContact()+","+p.getEmail()+","+p.getDiabetes() +","+p.getAsthma() +","+p.getHighBp() +","+
+                    p.getEpilepsy() +","+p.getCancer() +","+p.getStroke() +","+p.getKidney() +","+p.getLiver() +","+
+                    p.getAllergies() +","+p.getSurgeries() +","+p.getFamilyHistory() +","+p.getMedications() +","+p.getImage()+","+
+                    p.getId()+","+p.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt", true));
             writer.write(content);
-            writer.newLine(); // adds a newline at the end
-            writer.close(); // always close the writer!
+            writer.newLine();
+            writer.close();
             System.out.println("File written successfully.");
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());

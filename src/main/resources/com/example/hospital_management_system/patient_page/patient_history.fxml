@@ -3,6 +3,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.PatientHistoryController">
+<AnchorPane prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.PatientHistoryController">
     <Text layoutX="418.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PATIENT HISTORY PAGE" wrappingWidth="154.13671875" />
 </AnchorPane>

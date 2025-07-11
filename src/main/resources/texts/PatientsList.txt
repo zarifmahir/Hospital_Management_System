@@ -1,1 +1,4 @@
-
+zarif,0,Male,12.0,334.0,ad,123,233,ada,false,true,false,false,true,false,true,true,false,false,false,false,/images/nafis_face.jpg,zarif,111
+ishmam,0,Male,12.0,23.0,ad,123,333,adfa,true,false,true,false,false,false,true,true,false,false,false,false,/images/user.png,ishmam,222
+samin,0,Male,12.0,22.0,fad,12,22,aad,false,false,false,false,false,false,false,false,false,false,false,false,null,samin,333
+nafis,0,Male,122.0,22.0,ad,12,23,adfa,true,false,true,false,false,true,false,false,false,false,false,false,/images/nafis_face.jpg,nafis,555

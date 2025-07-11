@@ -10,8 +10,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Base64;
 
 public class PatientRegister {
     @FXML
@@ -107,6 +109,8 @@ public class PatientRegister {
 
     private RadioButton selected;
 
+    private String img;
+
 
 
 
@@ -153,8 +157,14 @@ public class PatientRegister {
 
         if (file != null) {
             try {
+                //convert to string
+
+
+
                 // Load the image
                 Image image = new Image(file.toURI().toString());
+                //System.out.println(file.toURI().toString());
+                img = "/images/"+file.getName();
 
                 // Set it to the ImageView
                 photo.setImage(image);
@@ -178,7 +188,9 @@ public class PatientRegister {
         Period age = Period.between(birthDate, today);
 
         Patient p = new Patient(patientName.getText(), age.getYears(),  selected.getText(), Float.parseFloat(weight.getText()), Float.parseFloat(height.getText()), bloodGroup.getText(),
-                Integer.parseInt(mobile.getText()), Integer.parseInt(emergencyContact.getText()), email.getText(), medications, familyHistory, surgeries, allergies, liverDisease, kidneyDisease, stroke, cancer, epilepsy, highBP, asthma, diabetes);
+                Integer.parseInt(mobile.getText()), Integer.parseInt(emergencyContact.getText()), email.getText(), diabetes.isSelected(), asthma.isSelected(), highBP.isSelected(), epilepsy.isSelected(),
+                cancer.isSelected(), stroke.isSelected(), kidneyDisease.isSelected(), liverDisease.isSelected(), allergies.isSelected(), surgeries.isSelected(), familyHistory.isSelected(),
+                medications.isSelected(), img);
         return p;
     }
 

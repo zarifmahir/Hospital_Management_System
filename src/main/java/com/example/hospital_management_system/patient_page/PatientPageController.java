@@ -27,14 +27,21 @@ public class PatientPageController {
     @FXML
     private Main main;
 
-    private void loadPage(String page) throws IOException {
-        Parent root = null;
+    private Patient patient;
 
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + ".fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+
+    private void loadPage(String page) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(page + ".fxml"));
+        Parent root = loader.load();
+
+        if(page == "patient_dashboard") {
+            PatientDashboardController controller = loader.getController();
+            controller.setPatient(patient);
         }
 
         bp.setCenter(root);

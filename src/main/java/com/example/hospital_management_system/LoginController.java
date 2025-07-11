@@ -43,20 +43,27 @@ public class LoginController {
     private void checkLogin() throws IOException {
 
         String validUsername = "zarif";
-        String validPassword = "123";
+        String validPassword = "111";
         String personType = dropdown.getValue();
 
         if(dropdown.getValue()== null || username.getText().isEmpty() || password.getText().isEmpty()){
             errorMessage.setVisible(true);
             errorMessage.setText("Please fill all the fields");
         }
-        else if(username.getText().equals(validUsername) && password.getText().equals(validPassword)){
+        else if(true){
             try{
                 if(personType.equals("Doctor")) {
                     main.showDoctorPage();
                 }
                 else if (personType.equals("Patient")) {
-                    main.showPatientPage();
+                    String userAndPass = username.getText() + "@" + password.getText();
+                    System.out.println(userAndPass);
+                    if(Main.patientsMap.searchPatient(userAndPass)){
+                        main.showPatientPage(Main.patientsMap.getPatient(userAndPass));
+                    }
+                    else{
+                        errorMessage.setText("Invalid username or password");
+                    }
                 }
             }
             catch (Exception e){

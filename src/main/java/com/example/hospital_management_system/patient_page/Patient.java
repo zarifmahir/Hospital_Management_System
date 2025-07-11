@@ -1,6 +1,6 @@
 package com.example.hospital_management_system.patient_page;
 
-import javafx.scene.control.CheckBox;
+
 
 import java.awt.*;
 
@@ -17,23 +17,24 @@ public class Patient {
     private String email;
 
 
-    private CheckBox diabetes;
-    private CheckBox asthma;
-    private CheckBox highBp;
-    private CheckBox epilepsy;
-    private CheckBox cancer;
-    private CheckBox stroke;
-    private CheckBox kidney;
-    private CheckBox liver;
-    private CheckBox allergies;
-    private CheckBox surgeries;
-    private CheckBox familyHistory;
-    private CheckBox medications;
+    private boolean diabetes;
+    private boolean asthma;
+    private boolean highBp;
+    private boolean epilepsy;
+    private boolean cancer;
+    private boolean stroke;
+    private boolean kidney;
+    private boolean liver;
+    private boolean allergies;
+    private boolean surgeries;
+    private boolean familyHistory;
+    private boolean medications;
 
     private String id;
     private String pass;
+    private String image;
 
-    public Patient(String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, CheckBox medications, CheckBox familyHistory, CheckBox surgeries, CheckBox allergies, CheckBox liver, CheckBox kidney, CheckBox stroke, CheckBox cancer, CheckBox epilepsy, CheckBox highBp, CheckBox asthma, CheckBox diabetes) {
+    public Patient(String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, boolean diabetes, boolean asthma, boolean highBp, boolean epilepsy, boolean cancer, boolean stroke, boolean kidney, boolean liver, boolean allergies, boolean surgeries, boolean familyHistory, boolean medications, String image) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -55,9 +56,12 @@ public class Patient {
         this.epilepsy = epilepsy;
         this.highBp = highBp;
         this.asthma = asthma;
+        this.image = image;
     }
 
-    
+    public String getImage() {
+        return image;
+    }
 
     public void setPassAndId(String pass, String id){
         this.pass = pass;
@@ -100,51 +104,51 @@ public class Patient {
         return email;
     }
 
-    public CheckBox getDiabetes() {
+    public boolean getDiabetes() {
         return diabetes;
     }
 
-    public CheckBox getAsthma() {
+    public boolean getAsthma() {
         return asthma;
     }
 
-    public CheckBox getHighBp() {
+    public boolean getHighBp() {
         return highBp;
     }
 
-    public CheckBox getEpilepsy() {
+    public boolean getEpilepsy() {
         return epilepsy;
     }
 
-    public CheckBox getCancer() {
+    public boolean getCancer() {
         return cancer;
     }
 
-    public CheckBox getStroke() {
+    public boolean getStroke() {
         return stroke;
     }
 
-    public CheckBox getKidney() {
+    public boolean getKidney() {
         return kidney;
     }
 
-    public CheckBox getLiver() {
+    public boolean getLiver() {
         return liver;
     }
 
-    public CheckBox getAllergies() {
+    public boolean getAllergies() {
         return allergies;
     }
 
-    public CheckBox getSurgeries() {
+    public boolean getSurgeries() {
         return surgeries;
     }
 
-    public CheckBox getFamilyHistory() {
+    public boolean getFamilyHistory() {
         return familyHistory;
     }
 
-    public CheckBox getMedications() {
+    public boolean getMedications() {
         return medications;
     }
 
