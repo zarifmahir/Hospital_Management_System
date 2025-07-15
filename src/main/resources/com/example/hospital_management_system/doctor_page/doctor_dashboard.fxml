@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="ap" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.doctor_page.DoctorDashboardController">
    <children>
-      <ImageView fx:id="doctorPhoto" fitHeight="232.0" fitWidth="253.0" layoutX="409.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane layoutX="217.0" layoutY="33.0" prefHeight="392.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

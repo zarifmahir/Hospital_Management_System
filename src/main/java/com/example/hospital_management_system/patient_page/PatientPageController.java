@@ -165,4 +165,36 @@ public class PatientPageController {
         scaleUp.setToY(1);
         scaleUp.play();
     }
+
+    public void appointmentHover(MouseEvent mouseEvent) {
+        appointmentsButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void dashboardHover(MouseEvent mouseEvent) {
+        dashboardButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void historyHover(MouseEvent mouseEvent) {
+        historyButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void dashboardHoverExited(MouseEvent mouseEvent) {
+        dashboardButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void appointmentHoverExited(MouseEvent mouseEvent) {
+        appointmentsButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void historyHoverExited(MouseEvent mouseEvent) {
+        historyButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void logoutHover(MouseEvent mouseEvent) {
+        logoutButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void logoutHoverExited(MouseEvent mouseEvent) {
+        logoutButton.setStyle("-fx-background-color: transparent;");
+    }
 }

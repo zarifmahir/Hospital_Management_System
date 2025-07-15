@@ -6,13 +6,13 @@
 }
 
 
-/* Squishy hover effect */
 .animated-button:hover {
     -fx-translate-y: 2px;
     -fx-effect: dropshadow(gaussian, #cecece, 6, 0.2, 0, 1);
+    -fx-background-color: lightgrey;
 }
 
-/* Pressed state animation */
+
 .animated-button:pressed {
     -fx-background-color: #8b9090;
     -fx-translate-y: 2px;

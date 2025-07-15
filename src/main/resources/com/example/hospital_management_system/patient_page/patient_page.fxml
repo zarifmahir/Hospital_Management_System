@@ -27,7 +27,7 @@
                     </color>
                 </DropShadow>
             </effect>
-            <Button fx:id="dashboardButton" mnemonicParsing="false" onMouseClicked="#patient_dashboard" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Dashboard">
+            <Button fx:id="dashboardButton" mnemonicParsing="false" onMouseClicked="#patient_dashboard" onMouseEntered="#dashboardHover" onMouseExited="#dashboardHoverExited" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Dashboard">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -40,7 +40,7 @@
                 </ImageView>
             </graphic>
             </Button>
-            <Button fx:id="appointmentsButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Appointments">
+            <Button fx:id="appointmentsButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Appointments">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -53,7 +53,7 @@
                 </ImageView>
             </graphic>
             </Button>
-            <Button fx:id="historyButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="History">
+            <Button fx:id="historyButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#patient_history" onMouseEntered="#historyHover" onMouseExited="#historyHoverExited" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="History">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -100,7 +100,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Button fx:id="logoutButton" layoutX="1150.0" layoutY="4.0" mnemonicParsing="false" onAction="#logOut" onMousePressed="#setOnMousePressed4" onMouseReleased="#setOnMouseReleased4" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" />
+                <Button fx:id="logoutButton" layoutX="1150.0" layoutY="4.0" mnemonicParsing="false" onAction="#logOut" onMouseEntered="#logoutHover" onMouseExited="#logoutHoverExited" onMousePressed="#setOnMousePressed4" onMouseReleased="#setOnMouseReleased4" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" />
             </AnchorPane>
         </HBox>
     </top>
