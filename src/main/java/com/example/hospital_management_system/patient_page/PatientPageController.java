@@ -140,14 +140,14 @@ public class PatientPageController {
     }
 
     public void setOnMousePressed3(MouseEvent mouseEvent) {
-        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), menuButton2);
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), menuButton);
         scaleDown.setToX(0.95);
         scaleDown.setToY(0.95);
         scaleDown.play();
     }
 
     public void setOnMouseReleased3(MouseEvent mouseEvent) {
-        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), menuButton2);
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), menuButton);
         scaleUp.setToX(1);
         scaleUp.setToY(1);
         scaleUp.play();
@@ -191,10 +191,18 @@ public class PatientPageController {
     }
 
     public void logoutHover(MouseEvent mouseEvent) {
-        logoutButton.setStyle("-fx-background-color: transparent;");
+        logoutButton.setStyle("-fx-background-color: lightgray;");
     }
 
     public void logoutHoverExited(MouseEvent mouseEvent) {
         logoutButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void menuHover(MouseEvent mouseEvent) {
+        menuButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void menuHoverExited(MouseEvent mouseEvent) {
+        menuButton.setStyle("-fx-background-color: transparent;");
     }
 }
