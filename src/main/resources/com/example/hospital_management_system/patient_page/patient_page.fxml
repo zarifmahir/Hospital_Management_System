@@ -22,7 +22,7 @@
             <effect>
                 <DropShadow blurType="TWO_PASS_BOX">
                     <color>
-                        <Color red="0.7764706015586853" green="0.7411764860153198" blue="0.7411764860153198" />
+                        <Color red="0.5" green="0.39120370149612427" blue="0.39120370149612427" />
                     </color>
                 </DropShadow>
             </effect>
@@ -72,7 +72,7 @@
             <effect>
                 <DropShadow blurType="TWO_PASS_BOX">
                     <color>
-                        <Color red="0.7764706015586853" green="0.7411764860153198" blue="0.7411764860153198" />
+                        <Color red="0.6447368264198303" green="0.5313109159469604" blue="0.5313109159469604" />
                     </color>
                 </DropShadow>
             </effect>
@@ -90,7 +90,7 @@
                      <Font name="Arial Bold" size="15.0" />
                   </font>
                </Button>
-               <Button layoutX="1157.0" layoutY="8.0" mnemonicParsing="false" onKeyPressed="#logOut" onMouseEntered="#logoutHover" onMouseExited="#logoutHoverExited" onMousePressed="#setOnMousePressed4" onMouseReleased="#setOnMouseReleased4" styleClass="animated-button" stylesheets="@style.css" text="LOGOUT">
+               <Button fx:id="logoutButton" layoutX="1157.0" layoutY="8.0" mnemonicParsing="false" onAction="#logOut" onMouseEntered="#logoutHover" onMouseExited="#logoutHoverExited" onMousePressed="#setOnMousePressed4" onMouseReleased="#setOnMouseReleased4" styleClass="animated-button" stylesheets="@style.css" text="LOGOUT">
                   <graphic>
                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                         <image>

@@ -16,9 +16,6 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class PatientPageController {
-
-    public VBox slider;
-    public Label menuButton2;
     @FXML
     private BorderPane bp;
     @FXML

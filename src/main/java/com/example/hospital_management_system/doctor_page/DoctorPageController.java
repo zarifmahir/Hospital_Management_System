@@ -19,17 +19,14 @@ import java.util.Objects;
 
 public class DoctorPageController {
 
+    public Button menuButton;
+    public Button logoutButton;
+
     @FXML
     private BorderPane doctorBorderPane;
 
     @FXML
     private Button dashboardButton;
-
-    @FXML
-    private Label logoutButton;
-
-    @FXML
-    private Label menuButton;
 
     @FXML
     private Button patientsButton;
@@ -157,7 +154,61 @@ public class DoctorPageController {
         scaleUp.play();
     }
 
+    public void setOnMousePressed4(MouseEvent mouseEvent) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), logoutButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    public void setOnMouseReleased4(MouseEvent mouseEvent) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), logoutButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
     public void setDoctor(Doctor d) {
         this.doctor = d;
+    }
+
+    public void dashboardHover(MouseEvent mouseEvent) {
+        dashboardButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void dashboardHoverExited(MouseEvent mouseEvent) {
+        dashboardButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void scheduleHover(MouseEvent mouseEvent) {
+        scheduleButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void scheduleHoverExited(MouseEvent mouseEvent) {
+        scheduleButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void patientsHover(MouseEvent mouseEvent) {
+        patientsButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void patientsHoverExited(MouseEvent mouseEvent) {
+        patientsButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void logoutHover(MouseEvent mouseEvent) {
+        logoutButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void logoutHoverExited(MouseEvent mouseEvent) {
+        logoutButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    public void menuHover(MouseEvent mouseEvent) {
+        menuButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void menuHoverExited(MouseEvent mouseEvent) {
+        menuButton.setStyle("-fx-background-color: transparent;");
     }
 }
