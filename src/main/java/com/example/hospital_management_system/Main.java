@@ -1,28 +1,23 @@
 package com.example.hospital_management_system;
 
+import com.example.hospital_management_system.admin_page.AdminPageController;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorPageController;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
 import com.example.hospital_management_system.patient_page.Patient;
 import com.example.hospital_management_system.patient_page.PatientPageController;
 import com.example.hospital_management_system.patient_page.PatientsMap;
-import com.example.hospital_management_system.register_page.PatientRegister;
 import com.example.hospital_management_system.register_page.RegistrationController;
 import com.example.hospital_management_system.register_page.SuccessPage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 
-import javax.print.attribute.HashAttributeSet;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main extends Application {
     Stage stage;
@@ -110,6 +105,16 @@ public class Main extends Application {
 
         stage.getScene().setRoot(root);
     }
+    public void showAdminPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("admin_page/admin_page.fxml"));
+        Parent root = loader.load();
+
+        AdminPageController controller = loader.getController();
+        controller.setMain(this);
+
+        stage.getScene().setRoot(root);
+    }
 
     public void loadPatients() throws IOException {
         patientsMap = new PatientsMap();
@@ -141,7 +146,7 @@ public class Main extends Application {
             System.out.println("Values: "+values.length);
             Doctor d = new Doctor(values[0], Integer.parseInt(values[1]), values[2], values[3], values[4], values[5], values[6], values[7],values[8], values[9],Integer.parseInt(values[10]), values[11], Integer.parseInt(values[12]),
                     values[13],values[14]);
-            d.setIdAndPass(values[15], values[16]);
+            d.setUserNameAndPass(values[15], values[16]);
             String userAndPass = values[15] + "@" + values[16];
             doctorsMap.addDoctor(d);
             System.out.println();
