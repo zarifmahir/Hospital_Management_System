@@ -1,13 +1,15 @@
 package com.example.hospital_management_system.patient_page;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PatientsMap {
      Map<String, Patient> PatientMap = new HashMap<>();
 
      public void addPatient(Patient p) {
-         PatientMap.put(p.getId()+"@"+p.getPass(), p);
+         PatientMap.put(p.getUsername()+"@"+p.getPass(), p);
      }
 
      public boolean searchPatient(String userAndPass) {
@@ -17,6 +19,16 @@ public class PatientsMap {
      public Patient getPatient(String userAndPass) {
         return PatientMap.get(userAndPass);
      }
+
+     public List<Patient> getPatientList() {
+         List<Patient> patientList = new ArrayList<>();
+         for(Map.Entry<String, Patient> entry : PatientMap.entrySet()){
+             patientList.add(entry.getValue());
+         }
+         return patientList;
+     }
+
+
 
 
 }

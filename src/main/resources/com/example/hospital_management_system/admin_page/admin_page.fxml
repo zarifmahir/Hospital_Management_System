@@ -40,7 +40,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="doctorsPanelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doctorsPanel" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Doctor Panel">
+            <Button fx:id="doctorsPanelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doctorsPanelPressed" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Doctor Panel">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -53,7 +53,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="userManagementButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#userManagement" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="User Management">
+            <Button fx:id="patientPanelButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#patientPanel" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Patients">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -92,6 +92,21 @@
                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../../../../images/hospital (2).png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="userManagementButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#userManagement" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="User Management">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <effect>
+               <Bloom />
+            </effect>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../images/medical-report_small.png" />
                   </image>
                </ImageView>
             </graphic>
