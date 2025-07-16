@@ -15,7 +15,7 @@
 
 <BorderPane fx:id="bp" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.PatientPageController">
     <left>
-        <VBox fx:id="slider" prefHeight="675.0" prefWidth="290.0" style="-fx-background-color: #F9DEE1;" BorderPane.alignment="CENTER">
+        <VBox fx:id="leftPane" prefHeight="675.0" prefWidth="290.0" style="-fx-background-color: #F9DEE1;" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets />
             </BorderPane.margin>
@@ -39,7 +39,7 @@
                 </ImageView>
             </graphic>
             </Button>
-            <Button fx:id="appointmentsButton" layoutX = "10.0" layoutY = "10.0" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Appointments">
+            <Button fx:id="appointmentsButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Appointments">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -78,7 +78,7 @@
             </effect>
             <AnchorPane prefHeight="45.0" prefWidth="1282.0">
             <children>
-               <Button fx:id="menuButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseEntered="#menuHover" onMouseExited="#menuHoverExited" onMousePressed="#setOnMousePressed3" onMouseReleased="#setOnMouseReleased3" styleClass="animated-button" stylesheets="@style.css" text="MENU">
+               <Button fx:id="menuButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#toggleMenu" onMouseEntered="#menuHover" onMouseExited="#menuHoverExited" onMousePressed="#setOnMousePressed3" onMouseReleased="#setOnMouseReleased3" styleClass="animated-button" stylesheets="@style.css" text="MENU">
                   <graphic>
                      <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -106,7 +106,4 @@
             </AnchorPane>
         </HBox>
     </top>
-   <center>
-      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>

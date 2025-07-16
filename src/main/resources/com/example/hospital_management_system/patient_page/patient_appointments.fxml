@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
 
-
-<AnchorPane fx:id="ap" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.PatientAppointmentsController">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.PatientAppointmentsController">
+   <children>
+      <AnchorPane layoutX="15.0" layoutY="14.0" prefHeight="50.0" prefWidth="960.0" style="-fx-border-radius: 25 25 25 25; -fx-background-radius: 25 25 25 25;">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX">
+               <color>
+                  <Color red="0.7631579041481018" green="0.7631579041481018" blue="0.7631579041481018" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Button layoutX="128.0" layoutY="10.0" mnemonicParsing="false" onAction="#showAppointmentPage" text="Show My Appointments" />
+            <Button layoutX="418.0" layoutY="10.0" mnemonicParsing="false" onAction="#showBookAppointmentPage" text="Book Appointment" />
+            <Button layoutX="713.0" layoutY="10.0" mnemonicParsing="false" onAction="#showDoctorPanelPage" text="Show Doctor Panel" />
+         </children>
+      </AnchorPane>
+      <BorderPane fx:id="bp" layoutX="19.0" layoutY="78.0" prefHeight="580.0" prefWidth="950.0" />
+   </children>
 </AnchorPane>

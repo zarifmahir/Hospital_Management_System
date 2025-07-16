@@ -5,11 +5,13 @@ import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -30,6 +32,8 @@ public class PatientPageController {
     private Button logoutButton;
     @FXML
     private Main main;
+
+    public VBox leftPane;
 
     private Patient patient;
 
@@ -203,5 +207,18 @@ public class PatientPageController {
 
     public void menuHoverExited(MouseEvent mouseEvent) {
         menuButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    private boolean isLeftVisible = true;
+
+    @FXML
+    void toggleMenu(ActionEvent event) {
+        if (isLeftVisible) {
+            bp.setLeft(null);
+            bp.setRight(null);
+        } else {
+            bp.setLeft(leftPane);
+        }
+        isLeftVisible = !isLeftVisible;
     }
 }
