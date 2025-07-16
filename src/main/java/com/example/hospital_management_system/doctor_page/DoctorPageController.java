@@ -207,4 +207,17 @@ public class DoctorPageController {
     public void menuHoverExited(MouseEvent mouseEvent) {
         menuButton.setStyle("-fx-background-color: transparent;");
     }
+
+    @FXML
+    private VBox leftPane;
+
+    @FXML
+    void toggleMenu(ActionEvent event) {
+        if (doctorBorderPane.getLeft() != null) {
+            doctorBorderPane.setLeft(null);
+            doctorBorderPane.setRight(null);
+        } else {
+            doctorBorderPane.setLeft(leftPane);
+        }
+    }
 }
