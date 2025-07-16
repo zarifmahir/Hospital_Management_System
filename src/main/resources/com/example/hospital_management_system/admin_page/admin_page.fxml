@@ -27,7 +27,7 @@
                     </color>
                 </DropShadow>
             </effect>
-            <Button fx:id="adminDashboardButton" mnemonicParsing="false" onAction="#adminDashboard" onMouseClicked="#patient_dashboard" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Admin Dashboard">
+            <Button fx:id="adminDashboardButton" mnemonicParsing="false" onAction="#adminDashboard" onMouseClicked="#patient_dashboard" onMouseEntered="#dashboardHover" onMouseExited="#dashboardHoverExited" onMousePressed="#dashboardPressed" onMouseReleased="#dashboardReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Admin Dashboard">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -40,7 +40,20 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="doctorsPanelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doctorsPanelPressed" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Doctor Panel">
+            <Button fx:id="doctorsPanelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doctorsPanelPressed" onMouseClicked="#patient_appointments" onMouseEntered="#doctorPanelHover" onMouseExited="#doctorPanelHoverExited" onMousePressed="#doctorPanelPressed" onMouseReleased="#doctorPanelReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Doctor Panel">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <effect>
+                    <Bloom />
+                </effect>
+                <graphic>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../../../images/doctor.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="patientPanelButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#patientPanel" onMouseClicked="#patient_history" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMousePressed="#patientPressed" onMouseReleased="#patientReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Patients">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -49,54 +62,11 @@
                 </effect>
                 <graphic>
                     <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../../../images/hospital (2).png" />
+                        <Image url="@../../../../images/medical-heart.png" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="patientPanelButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#patientPanel" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Patients">
-                <font>
-                    <Font size="14.0" />
-                </font>
-                <effect>
-                    <Bloom />
-                </effect>
-                <graphic>
-                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../../../images/medical-report_small.png" />
-                    </ImageView>
-                </graphic>
-            </Button>
-         <Button fx:id="systemSettingsButton" mnemonicParsing="false" onAction="#systemSettings" onMouseClicked="#patient_dashboard" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="System Settings">
-            <font>
-               <Font size="14.0" />
-            </font>
-            <effect>
-               <Bloom />
-            </effect>
-            <graphic>
-               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../../../images/user_small.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </Button>
-         <Button fx:id="reportsButton" mnemonicParsing="false" onAction="#reports" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Reports &amp; Analytics">
-            <font>
-               <Font size="14.0" />
-            </font>
-            <effect>
-               <Bloom />
-            </effect>
-            <graphic>
-               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../../../images/hospital (2).png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </Button>
-         <Button fx:id="userManagementButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#userManagement" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="User Management">
+         <Button fx:id="reportsButton" mnemonicParsing="false" onAction="#reports" onMouseClicked="#patient_appointments" onMouseEntered="#reportsHover" onMouseExited="#reportsHoverExited" onMousePressed="#reportsPressed" onMouseReleased="#reportsReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Reports &amp; Analytics">
             <font>
                <Font size="14.0" />
             </font>
@@ -107,6 +77,21 @@
                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../../../../images/medical-report_small.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="userManagementButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#userManagement" onMouseClicked="#patient_history" onMouseEntered="#userHover" onMouseExited="#userHoverExited" onMousePressed="#userPressed" onMouseReleased="#userReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="User Management">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <effect>
+               <Bloom />
+            </effect>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../images/hospital%20(2).png" />
                   </image>
                </ImageView>
             </graphic>
@@ -133,7 +118,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Label fx:id="menuButton2" layoutX="14.0" layoutY="15.0" onMousePressed="#setOnMousePressed3" onMouseReleased="#setOnMousePressed4" prefHeight="17.0" prefWidth="76.0" styleClass="animated-button" stylesheets="@style.css" text=" MENU">
+                <Label fx:id="menuButton2" layoutX="14.0" layoutY="15.0" onMouseEntered="#menuHover" onMouseExited="#menuHoverExited" onMousePressed="#menuPressed" onMouseReleased="#menuReleased" prefHeight="17.0" prefWidth="76.0" styleClass="animated-button" stylesheets="@style.css" text=" MENU">
                     <font>
                         <Font name="Arial Bold" size="15.0" />
                     </font>
@@ -145,7 +130,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <Button fx:id="logoutButton" layoutX="1150.0" layoutY="4.0" mnemonicParsing="false" onAction="#logOut" onMousePressed="#setOnMousePressed4" onMouseReleased="#setOnMouseReleased4" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" />
+                <Button fx:id="logoutButton" layoutX="1150.0" layoutY="4.0" mnemonicParsing="false" onAction="#logOut" onMouseEntered="#logoutHover" onMouseExited="#logoutHoverExited" onMousePressed="#logoutPressed" onMouseReleased="#logoutReleased" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" />
             </AnchorPane>
         </HBox>
     </top>

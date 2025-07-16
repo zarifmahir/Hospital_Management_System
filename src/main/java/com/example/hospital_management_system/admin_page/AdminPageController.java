@@ -1,6 +1,7 @@
 package com.example.hospital_management_system.admin_page;
 
 import com.example.hospital_management_system.Main;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -119,56 +121,6 @@ public class AdminPageController {
     }
 
     @FXML
-    void setOnMousePressed(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMousePressed1(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMousePressed2(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMousePressed3(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMousePressed4(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMouseReleased(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMouseReleased1(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMouseReleased2(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setOnMouseReleased4(MouseEvent event) {
-
-    }
-
-    @FXML
-    void systemSettings(ActionEvent event) {
-
-    }
-
-    @FXML
     void userManagement(ActionEvent event) {
 
     }
@@ -180,6 +132,188 @@ public class AdminPageController {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
 
+    @FXML
+    void dashboardHover(MouseEvent event) {
+        adminDashboardButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void dashboardHoverExited(MouseEvent event) {
+        adminDashboardButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void dashboardPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), adminDashboardButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void dashboardReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), adminDashboardButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    @FXML
+    void doctorPanelHover(MouseEvent event) {
+        doctorsPanelButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void doctorPanelHoverExited(MouseEvent event) {
+        doctorsPanelButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void doctorPanelPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), doctorsPanelButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void doctorPanelReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), doctorsPanelButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    @FXML
+    void logoutHover(MouseEvent event) {
+        logoutButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void logoutHoverExited(MouseEvent event) {
+        logoutButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void logoutPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), logoutButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void logoutReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), logoutButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    @FXML
+    void menuHover(MouseEvent event) {
+        menuButton2.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void menuHoverExited(MouseEvent event) {
+        menuButton2.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void menuPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), menuButton2);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void menuReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), menuButton2);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    @FXML
+    void patientHover(MouseEvent event) {
+        patientPanelButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void patientHoverExited(MouseEvent event) {
+        patientPanelButton.setStyle("-fx-background-color: transparent;");
+    }
+
+
+    @FXML
+    void patientPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), patientPanelButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void patientReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), patientPanelButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    @FXML
+    void reportsHover(MouseEvent event) {
+        reportsButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void reportsHoverExited(MouseEvent event) {
+        reportsButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void reportsPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), reportsButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void reportsReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), reportsButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+    @FXML
+    void userHover(MouseEvent event) {
+        userManagementButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void userHoverExited(MouseEvent event) {
+        userManagementButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void userPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), userManagementButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void userReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), userManagementButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
     }
 }
