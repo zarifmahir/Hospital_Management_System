@@ -6,7 +6,6 @@ import com.example.hospital_management_system.patient_page.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -18,7 +17,6 @@ import javafx.scene.text.Text;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Objects;
 
 public class RegistrationController {
     public AnchorPane centerRegister;
@@ -158,7 +156,7 @@ public class RegistrationController {
             }
             else{
                 Doctor doctor = doctorRegister.buildDoctor();
-                doctor.setIdAndPass(username.getText(), password.getText());
+                doctor.setUserNameAndPass(username.getText(), password.getText());
                 writeDoctor(doctor);
                 try{
 
@@ -195,7 +193,7 @@ public class RegistrationController {
             String content = doctor.getName() + "<" + doctor.getAge() + "<" + doctor.getGender() + "<" + doctor.getBloodGroup() + "<" + doctor.getEmail() + "<"
                     + doctor.getMobile() + "<" + doctor.getEmergencyContact() + "<" + doctor.getMedicalDegree() + "<" + doctor.getInstitution() + "<" + doctor.getPgQualification()
                     + "<" + doctor.getMedicalLicense() + "<" + doctor.getSpecialization() + "<" + doctor.getYearsExperience() + "<" + doctor.getMedicalCouncil()+"<"+doctor.getImage()
-                    +"<"+doctor.getId()+"<"+doctor.getPass();
+                    +"<"+doctor.getUserName()+"<"+doctor.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt", true));
             writer.write(content);
             writer.newLine();

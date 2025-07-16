@@ -18,8 +18,16 @@ public class Doctor {
     private String medicalCouncil;
     private String image;
 
-    private String id;
+    private String userName;
     private String pass;
+
+    private String id;
+    private String shift;
+    private String room;
+    private String status;
+    private String department;
+
+
 
     public Doctor(String name, int age, String gender, String bloodGroup, String email, String mobile, String emergencyContact, String medicalDegree, String institution, String pgQualification, int medicalLicense, String specialization, int yearsExperience, String medicalCouncil, String image) {
 
@@ -38,11 +46,36 @@ public class Doctor {
         this.yearsExperience = yearsExperience;
         this.medicalCouncil = medicalCouncil;
         this.image = image;
+        this.id = "";
+        this.shift = "";
+        this.room = "";
+        this.status = "";
+        this.department = "";
     }
 
-    public void setIdAndPass(String id, String pass) {
-        this.id = id;
+    public void setUserNameAndPass(String userName, String pass) {
+        this.userName = userName;
         this.pass = pass;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getShift() {
+        return shift;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDepartment() {
+        return department;
     }
 
     public String getName() {
@@ -105,11 +138,28 @@ public class Doctor {
         return image;
     }
 
-    public String getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
     public String getPass() {
         return pass;
+    }
+
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setShift(String shift) {
+        this.shift = shift;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

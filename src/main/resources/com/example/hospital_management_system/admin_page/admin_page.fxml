@@ -27,7 +27,7 @@
                     </color>
                 </DropShadow>
             </effect>
-            <Button fx:id="adminDashboardButton" mnemonicParsing="false" onMouseClicked="#patient_dashboard" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Admin Dashboard">
+            <Button fx:id="adminDashboardButton" mnemonicParsing="false" onAction="#adminDashboard" onMouseClicked="#patient_dashboard" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Admin Dashboard">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -40,7 +40,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="doctorPanel" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Doctor Panel">
+            <Button fx:id="doctorsPanelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doctorsPanel" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Doctor Panel">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -53,7 +53,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="userManagement" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="User Management">
+            <Button fx:id="userManagementButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#userManagement" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="User Management">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -66,7 +66,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-         <Button fx:id="patientHistoryButton" mnemonicParsing="false" onMouseClicked="#patient_dashboard" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="System Settings">
+         <Button fx:id="systemSettingsButton" mnemonicParsing="false" onAction="#systemSettings" onMouseClicked="#patient_dashboard" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="System Settings">
             <font>
                <Font size="14.0" />
             </font>
@@ -81,7 +81,7 @@
                </ImageView>
             </graphic>
          </Button>
-         <Button fx:id="appointmentsButton" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Reports &amp; Analytics">
+         <Button fx:id="reportsButton" mnemonicParsing="false" onAction="#reports" onMouseClicked="#patient_appointments" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Reports &amp; Analytics">
             <font>
                <Font size="14.0" />
             </font>
@@ -137,21 +137,4 @@
     <center>
         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
     </center>
-   <bottom>
-      <Button fx:id="pendingRequests" mnemonicParsing="false" onMouseClicked="#patient_history" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="291.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Pending requests" BorderPane.alignment="BOTTOM_LEFT">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <effect>
-            <Bloom />
-         </effect>
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../images/medical-report_small.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-   </bottom>
 </BorderPane>
