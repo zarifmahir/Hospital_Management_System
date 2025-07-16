@@ -22,6 +22,6 @@
             <Button layoutX="713.0" layoutY="10.0" mnemonicParsing="false" onAction="#showDoctorPanelPage" text="Show Doctor Panel" />
          </children>
       </AnchorPane>
-      <BorderPane fx:id="bp" layoutX="19.0" layoutY="78.0" prefHeight="580.0" prefWidth="950.0" />
+      <BorderPane fx:id="bp" layoutX="19.0" layoutY="78.0" prefHeight="580.0" prefWidth="950.0" style="-fx-border-color: black; -fx-border-radius: 20 20 20 20;" />
    </children>
 </AnchorPane>
