@@ -34,8 +34,6 @@ public class DoctorPageController {
     @FXML
     private Button scheduleButton;
 
-    @FXML
-    private VBox slider;
 
     @FXML
     private Main main;
@@ -51,8 +49,6 @@ public class DoctorPageController {
             DoctorDashboardController controller = loader.getController();
             controller.setDoctor(doctor);
         }
-
-
 
         doctorBorderPane.setCenter(root);
     }

@@ -39,6 +39,8 @@ public class PatientPageController {
 
 
     private void loadPage(String page) throws IOException {
+        bp.setCenter(null);
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();

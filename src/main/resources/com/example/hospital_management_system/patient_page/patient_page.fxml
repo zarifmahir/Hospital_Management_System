@@ -39,7 +39,7 @@
                 </ImageView>
             </graphic>
             </Button>
-            <Button fx:id="appointmentsButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Appointments">
+            <Button fx:id="appointmentsButton" layoutX = "10.0" layoutY = "10.0" mnemonicParsing="false" onMouseClicked="#patient_appointments" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#setOnMousePressed1" onMouseReleased="#setOnMouseReleased1" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Appointments">
                 <font>
                     <Font size="14.0" />
                 </font>

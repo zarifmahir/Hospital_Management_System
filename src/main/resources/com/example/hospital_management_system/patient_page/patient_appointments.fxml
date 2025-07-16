@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
-<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.PatientAppointmentsController">
-   <children>
-      <AnchorPane layoutX="22.0" layoutY="14.0" prefHeight="55.0" prefWidth="946.0" style="-fx-background-radius: 25 25 25 25; -fx-background-color: lightblue; -fx-border-radius: 25 25 25 25;">
-         <children>
-                <Icon content="FORMAT_ALIGN_LEFT" layoutX="426.0" layoutY="24.0" />
-                <Icon content="FORMAT_ALIGN_CENTER" layoutX="464.0" layoutY="38.0" />
-              <ToggleButton layoutX="505.0" layoutY="17.0" />
-                <Icon content="FORMAT_ALIGN_RIGHT" layoutX="503.0" layoutY="24.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="22.0" layoutY="84.0" prefHeight="554.0" prefWidth="946.0">
-         <children>
-            <ToggleButtonGroup layoutX="279.0" layoutY="224.0" selectionType="SINGLE">
-                <toggles>
-                    <ToggleButton />
-                    <ToggleButton selected="true" />
-                </toggles>
-            </ToggleButtonGroup>
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane fx:id="ap" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.PatientAppointmentsController">
+
 </AnchorPane>
