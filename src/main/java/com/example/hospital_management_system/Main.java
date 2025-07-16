@@ -13,6 +13,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -121,7 +123,7 @@ public class Main extends Application {
         BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/PatientsList.txt"));
         while (true) {
             String line = br.readLine();
-            if (line == null) break;
+            if (line == null || line.length()<24) break;
             String [] values = line.split("<");
             System.out.println("Values:"+values.length);
             Patient p = new Patient(values[0], Integer.parseInt(values[1]), values[2], Float.parseFloat(values[3]), Float.parseFloat(values[4]), values[5],
@@ -152,6 +154,20 @@ public class Main extends Application {
             System.out.println();
         }
         br.close();
+    }
+
+    public static boolean showLogOutAlert() throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout Confirmation");
+        alert.setHeaderText("Are you sure you want to logout?");
+        ButtonType buttonType = new ButtonType("Yes");
+        ButtonType buttonType2 = new ButtonType("No");
+        alert.getButtonTypes().setAll(buttonType, buttonType2);
+        alert.showAndWait();
+        if(alert.getResult() == buttonType2){
+            return false;
+        }
+        return true;
     }
 
     public static void main(String[] args) throws IOException{

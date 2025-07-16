@@ -40,7 +40,7 @@ public class PatientDashboardController {
     @FXML
     private Label weightField;
 
-    void setPatient(Patient patient) {
+    public void setPatient(Patient patient) {
         this.patient = patient;
         String img = "/images/user.png";
         if(!patient.getImage().equals("null")){ img = patient.getImage();}

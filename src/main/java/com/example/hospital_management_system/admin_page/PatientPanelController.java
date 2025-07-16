@@ -2,10 +2,13 @@ package com.example.hospital_management_system.admin_page;
 
 import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.doctor_page.Doctor;
-import com.example.hospital_management_system.doctor_page.DoctorsMap;
+import com.example.hospital_management_system.patient_page.Patient;
+import com.example.hospital_management_system.patient_page.PatientDashboardController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -14,38 +17,39 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DoctorPanelController implements Initializable {
+public class PatientPanelController implements Initializable {
 
-    public Button editButton;
     public Label selectionLabel;
-    public Button deleteButton;
+    public Button editButton;
     public Button viewButton;
+    public Button deleteButton;
     @FXML
-    private TableView<Doctor> doctorsPanel;
-    @FXML
-    private TableColumn<Doctor, String> ID;
+    private TableColumn<Patient, String> action;
 
     @FXML
-    private TableColumn<Doctor, String> department;
+    private TableColumn<Patient, String> dateOfDiagnosis;
 
     @FXML
-    private TableColumn<Doctor, String> name;
+    private TableColumn<Patient, String> gender;
 
     @FXML
-    private TableColumn<Doctor, Integer> phone;
+    private TableColumn<Patient, String> id;
 
     @FXML
-    private TableColumn<Doctor, String> room;
+    private TableColumn<Patient, Integer> mobile;
 
     @FXML
-    private TableColumn<Doctor, String> shift;
+    private TableColumn<Patient, String> name;
 
     @FXML
-    private TableColumn<Doctor, String> specialization;
+    private TableView<Patient> patientsTable;
 
     private boolean selectedStatus;
 
@@ -55,44 +59,21 @@ public class DoctorPanelController implements Initializable {
         this.main = main;
     }
 
-    @FXML
-    private TableColumn<Doctor, String> status;
-
-    @FXML
-    void deleteButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void viewButton(ActionEvent event) {
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ID.setCellValueFactory(new PropertyValueFactory<Doctor, String>("id"));
-        name.setCellValueFactory(new PropertyValueFactory<Doctor, String>("name"));
-        department.setCellValueFactory(new PropertyValueFactory<Doctor, String>("department"));
-        phone.setCellValueFactory(new PropertyValueFactory<Doctor, Integer>("mobile"));
-        room.setCellValueFactory(new PropertyValueFactory<Doctor, String>("room"));
-        shift.setCellValueFactory(new PropertyValueFactory<Doctor, String>("shift"));
-        specialization.setCellValueFactory(new PropertyValueFactory<Doctor, String>("specialization"));
-        status.setCellValueFactory(new PropertyValueFactory<Doctor, String>("status"));
+        id.setCellValueFactory(new PropertyValueFactory<Patient, String>("id"));
+        name.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
+        gender.setCellValueFactory(new PropertyValueFactory<Patient, String >("gender"));
+        mobile.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("mobile"));
 
-        List<Doctor> doctorList = Main.doctorsMap.getDoctorList();
-        for(Doctor doctor:doctorList){
-            doctorsPanel.getItems().add(doctor);
+        List<Patient> patientList = Main.patientsMap.getPatientList();
+        for(Patient p: patientList){
+            patientsTable.getItems().add(p);
         }
-
-        doctorsPanel.setEditable(false);
+        patientsTable.setEditable(false);
 
         disableButtons();
-        doctorsPanel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        patientsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){
                 enableButtons();
                 System.out.println("Hi");
@@ -106,7 +87,7 @@ public class DoctorPanelController implements Initializable {
     }
 
     private void disableButtons(){
-         selectedStatus = false;
+        selectedStatus = false;
         selectionLabel.setVisible(true);
         editButton.setDisable(true);
         viewButton.setDisable(true);
@@ -120,7 +101,7 @@ public class DoctorPanelController implements Initializable {
     }
 
     private void enableButtons(){
-        doctorsPanel.setEditable(true);
+        patientsTable.setEditable(true);
         selectedStatus = true;
         selectionLabel.setVisible(false);
         editButton.setDisable(false);
@@ -131,22 +112,30 @@ public class DoctorPanelController implements Initializable {
         viewButton.setStyle("-fx-background-color: #2196F3;" + "-fx-text-fill: white;" + "-fx-opacity: 1.5;");
     }
 
+
+
     public void edit(ActionEvent actionEvent) {
+
     }
 
-    public void view(ActionEvent actionEvent) {
+    public void view(ActionEvent actionEvent) throws IOException {
+        if(selectedStatus){
+
+
+        }
     }
+
+
 
     public void delete(ActionEvent actionEvent) throws IOException {
         if(selectedStatus) {
             System.out.println("Hello");
             int serial = 0, i=0;
-            String deleteName = doctorsPanel.getSelectionModel().getSelectedItem().getName();
+            String deleteName = patientsTable.getSelectionModel().getSelectedItem().getName();
             List<String> lines = new ArrayList<>();
-            try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/DoctorsList.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/PatientsList.txt"))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
                     lines.add(line);
                     String[] s =  line.split("<");
                     if(s[0].equals(deleteName)){serial=i;}
@@ -156,21 +145,20 @@ public class DoctorPanelController implements Initializable {
                 e.printStackTrace();
                 throw new RuntimeException(e);
             }
-            System.out.println(lines.size());
-            System.out.println(serial);
 
+            System.out.println(serial);
             lines.remove(serial);
 
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt"))) {
                 for (String line : lines) {
                     writer.write(line);
                     writer.newLine();
                 }
             }
-            doctorsPanel.getItems().remove(doctorsPanel.getSelectionModel().getSelectedItem());
-            doctorsPanel.getSelectionModel().clearSelection();
-            main.loadDoctors();
+            patientsTable.getItems().remove(patientsTable.getSelectionModel().getSelectedItem());
+            patientsTable.getSelectionModel().clearSelection();
+            main.loadPatients();
 
 
         }

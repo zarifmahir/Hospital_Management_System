@@ -1,7 +1,5 @@
 package com.example.hospital_management_system.patient_page;
 
-import java.awt.*;
-
 public class Patient {
     private String name;
     private int age;
@@ -28,9 +26,12 @@ public class Patient {
     private boolean familyHistory;
     private boolean medications;
 
-    private String id;
+    private String username;
     private String pass;
     private String image;
+
+    private String id;
+
 
     public Patient(String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, boolean diabetes, boolean asthma, boolean highBp, boolean epilepsy, boolean cancer, boolean stroke, boolean kidney, boolean liver, boolean allergies, boolean surgeries, boolean familyHistory, boolean medications, String image) {
         this.name = name;
@@ -61,9 +62,9 @@ public class Patient {
         return image;
     }
 
-    public void setPassAndId(String pass, String id){
+    public void setPassAndId(String pass, String username){
         this.pass = pass;
-        this.id = id;
+        this.username = username;
     }
 
     public String getName() {
@@ -72,6 +73,10 @@ public class Patient {
 
     public int getAge() {
         return age;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getGender() {
@@ -150,8 +155,8 @@ public class Patient {
         return medications;
     }
 
-    public String getId() {
-        return id;
+    public String getUsername() {
+        return username;
     }
 
     public String getPass() {

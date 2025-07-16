@@ -1,7 +1,6 @@
 package com.example.hospital_management_system.admin_page;
 
 import com.example.hospital_management_system.Main;
-import com.example.hospital_management_system.doctor_page.DoctorDashboardController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +15,7 @@ import java.io.IOException;
 
 public class AdminPageController {
 
+    public Button patientPanelButton;
     @FXML
     private Button adminDashboardButton;
 
@@ -53,6 +53,15 @@ public class AdminPageController {
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();
 
+        if(page.equals("patients_panel")){
+            PatientPanelController controller = loader.getController();
+            controller.setMain(main);
+        }
+        else if(page.equals("doctors_panel")){
+            DoctorPanelController controller = loader.getController();
+            controller.setMain(main);
+        }
+
         bp.setCenter(root);
     }
 
@@ -62,7 +71,7 @@ public class AdminPageController {
     }
 
     @FXML
-    void doctorsPanel(ActionEvent event) {
+    void doctorsPanelPressed(ActionEvent event) {
         try {
             loadPage("doctors_panel");
         } catch (IOException e) {
@@ -75,7 +84,8 @@ public class AdminPageController {
     @FXML
     void logOut(ActionEvent event) {
         try {
-            main.showLoginPage();
+            boolean status = Main.showLogOutAlert();
+            if (status) {main.showLoginPage();}
         }
         catch (Exception e){
             e.printStackTrace();
@@ -99,6 +109,12 @@ public class AdminPageController {
 
     @FXML
     void reports(ActionEvent event) {
+        try {
+            loadPage("reports");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -157,4 +173,13 @@ public class AdminPageController {
 
     }
 
+    public void patientPanel(ActionEvent actionEvent) {
+        try {
+            loadPage("patients_panel");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+    }
 }

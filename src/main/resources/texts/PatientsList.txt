@@ -1,2 +1,1 @@
-Zarif Mahir<20<Male<72.0<5.6<AB+ve<17<919<zarifmahir@<true<true<true<true<false<false<true<false<false<false<false<false</images/pretty_doctor_pointing_left.png<zarif<111
-ishmam<0<Male<12.0<23.0<ad<12<122<asdfa<false<false<true<false<false<false<true<false<false<false<false<false</images/2_doctors_talking.jpg<ishmam<222
+zarif<0<Male<11.0<113.0<afd<22<222<222<false<false<false<false<false<false<false<false<false<false<false<false<null<zarif<111
