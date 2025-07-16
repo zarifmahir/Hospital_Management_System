@@ -9,11 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
@@ -119,9 +121,18 @@ public class PatientPanelController implements Initializable {
     }
 
     public void view(ActionEvent actionEvent) throws IOException {
-        if(selectedStatus){
+        if (selectedStatus) {
+            Patient patient = patientsTable.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("patient_popup.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
 
+            PatientPopupController controller = fxmlLoader.getController();
+            controller.setPatient(patient);
 
+            Stage stage = new Stage();
+            stage.setTitle("Patient Information");
+            stage.setScene(new Scene(root));
+            stage.show();
         }
     }
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.PatientPopupController">
+   <children>
+      <AnchorPane layoutX="2.0" layoutY="4.0" prefHeight="642.0" prefWidth="359.0" style="-fx-border-radius: 50 50 50 50; -fx-background-radius: 50 50 50 50;">
+         <children>
+            <ImageView fx:id="patientPhoto" fitHeight="113.0" fitWidth="154.0" layoutX="123.0" layoutY="26.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/tonmoy_face.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="nameField" alignment="CENTER" layoutX="22.0" layoutY="150.0" prefHeight="18.0" prefWidth="316.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Text layoutX="14.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group:">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height (in cm): ">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight (in kg):">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Label layoutX="13.0" layoutY="371.0" text="Contact Info">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/call.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Text layoutX="14.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile No.:">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emergency Contact: ">
+               <font>
+                  <Font name="Times New Roman" size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="emailField" alignment="CENTER_RIGHT" layoutX="123.0" layoutY="414.0" prefHeight="18.0" prefWidth="220.0" textAlignment="RIGHT" />
+            <Label fx:id="mobileField" alignment="CENTER_RIGHT" layoutX="123.0" layoutY="451.0" prefHeight="18.0" prefWidth="220.0" textAlignment="RIGHT" />
+            <Label fx:id="emergencyContactField" alignment="CENTER_RIGHT" layoutX="232.0" layoutY="485.0" prefHeight="18.0" prefWidth="112.0" textAlignment="RIGHT" />
+            <Label fx:id="ageField" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="187.0" prefHeight="18.0" prefWidth="192.0" textAlignment="RIGHT" />
+            <Label fx:id="genderField" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="220.0" prefHeight="18.0" prefWidth="106.0" textAlignment="RIGHT" />
+            <Label fx:id="bloodGroupField" alignment="CENTER_RIGHT" layoutX="247.0" layoutY="255.0" prefHeight="18.0" prefWidth="96.0" textAlignment="RIGHT" />
+            <Label fx:id="heightField" alignment="CENTER_RIGHT" layoutX="252.0" layoutY="288.0" prefHeight="18.0" prefWidth="92.0" textAlignment="RIGHT" />
+            <Label fx:id="weightField" alignment="CENTER_RIGHT" layoutX="247.0" layoutY="323.0" prefHeight="18.0" prefWidth="96.0" textAlignment="RIGHT" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -5,12 +5,16 @@ import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
@@ -134,7 +138,20 @@ public class DoctorPanelController implements Initializable {
     public void edit(ActionEvent actionEvent) {
     }
 
-    public void view(ActionEvent actionEvent) {
+    public void view(ActionEvent actionEvent) throws IOException {
+        if (selectedStatus) {
+            Doctor doctor = doctorsPanel.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("doctor_popup.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+
+            DoctorPopupController controller = fxmlLoader.getController();
+            controller.setDoctor(doctor);
+
+            Stage stage = new Stage();
+            stage.setTitle("Doctor Information");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
     }
 
     public void delete(ActionEvent actionEvent) throws IOException {

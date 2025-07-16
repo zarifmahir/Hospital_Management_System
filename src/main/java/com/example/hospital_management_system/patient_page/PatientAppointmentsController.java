@@ -20,7 +20,6 @@ public class PatientAppointmentsController {
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();
 
-
         bp.setCenter(root);
     }
     @FXML
