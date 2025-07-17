@@ -164,7 +164,7 @@ public class Main extends Application {
         ButtonType buttonType2 = new ButtonType("No");
         alert.getButtonTypes().setAll(buttonType, buttonType2);
         alert.showAndWait();
-        if(alert.getResult() == buttonType2){
+        if (alert.getResult() == buttonType2){
             return false;
         }
         return true;

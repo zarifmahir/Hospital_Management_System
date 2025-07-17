@@ -13,7 +13,7 @@ public class Doctor {
     private String pgQualification;
 
     private int medicalLicense;
-    private String specialization;
+    private String department;
     private int yearsExperience;
     private String medicalCouncil;
     private String image;
@@ -25,11 +25,10 @@ public class Doctor {
     private String shift;
     private String room;
     private String status;
-    private String department;
 
 
 
-    public Doctor(String name, int age, String gender, String bloodGroup, String email, String mobile, String emergencyContact, String medicalDegree, String institution, String pgQualification, int medicalLicense, String specialization, int yearsExperience, String medicalCouncil, String image) {
+    public Doctor(String name, int age, String gender, String bloodGroup, String email, String mobile, String emergencyContact, String medicalDegree, String institution, String pgQualification, int medicalLicense, String department, int yearsExperience, String medicalCouncil, String image) {
 
         this.name = name;
         this.age = age;
@@ -42,7 +41,7 @@ public class Doctor {
         this.institution = institution;
         this.pgQualification = pgQualification;
         this.medicalLicense = medicalLicense;
-        this.specialization = specialization;
+        this.department = department;
         this.yearsExperience = yearsExperience;
         this.medicalCouncil = medicalCouncil;
         this.image = image;
@@ -50,7 +49,6 @@ public class Doctor {
         this.shift = "";
         this.room = "";
         this.status = "";
-        this.department = "";
     }
 
     public void setUserNameAndPass(String userName, String pass) {
@@ -120,10 +118,6 @@ public class Doctor {
 
     public int getMedicalLicense() {
         return medicalLicense;
-    }
-
-    public String getSpecialization() {
-        return specialization;
     }
 
     public int getYearsExperience() {

@@ -77,7 +77,7 @@ public class DoctorPopupController {
         medicalDegreeField.setText(doctor.getMedicalDegree());
         medicalLicenseField.setText(String.valueOf(doctor.getMedicalLicense()));
         mobileField.setText(String.valueOf(doctor.getMobile()));
-        specializationField.setText(doctor.getSpecialization());
+        specializationField.setText(doctor.getDepartment());
         yearsActiveField.setText(String.valueOf(doctor.getYearsExperience()));
     }
 

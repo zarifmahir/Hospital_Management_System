@@ -69,7 +69,12 @@ public class AdminPageController {
 
     @FXML
     void adminDashboard(ActionEvent event) {
-
+        try {
+            loadPage("admin_dashboard");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

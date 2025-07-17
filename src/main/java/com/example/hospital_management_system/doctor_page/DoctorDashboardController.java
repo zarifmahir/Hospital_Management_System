@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Objects;
 
 public class DoctorDashboardController {
+    public Label departmentField;
     @FXML
     private AnchorPane ap;
 
@@ -46,8 +47,7 @@ public class DoctorDashboardController {
     @FXML
     private ImageView doctorPhoto;
 
-    @FXML
-    private Label specializationField;
+
 
     @FXML
     private Label yearsActiveField;
@@ -68,7 +68,7 @@ public class DoctorDashboardController {
         medicalDegreeField.setText(doctor.getMedicalDegree());
         medicalLicenseField.setText(String.valueOf(doctor.getMedicalLicense()));
         mobileField.setText(String.valueOf(doctor.getMobile()));
-        specializationField.setText(doctor.getSpecialization());
+        departmentField.setText(doctor.getDepartment());
         yearsActiveField.setText(String.valueOf(doctor.getYearsExperience()));
     }
 }

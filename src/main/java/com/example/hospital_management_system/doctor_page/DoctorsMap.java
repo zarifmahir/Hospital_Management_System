@@ -31,4 +31,14 @@ public class DoctorsMap {
         return doctorList;
     }
 
+    public List<Doctor> getDepartmentWiseDoctors(String department) {
+        List<Doctor> doctorList = new ArrayList<>();
+        for (Map.Entry<String, Doctor> entry : DoctorMap.entrySet()) {
+            if (entry.getValue().getDepartment().equals(department)) {
+                doctorList.add(entry.getValue());
+            }
+        }
+        return doctorList;
+    }
+
 }
