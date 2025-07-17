@@ -1,6 +1,8 @@
 package com.example.hospital_management_system;
 
 import com.example.hospital_management_system.admin_page.AdminPageController;
+import com.example.hospital_management_system.appointment_system.Appointment;
+import com.example.hospital_management_system.appointment_system.AppointmentMap;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorPageController;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
@@ -25,6 +27,7 @@ public class Main extends Application {
     Stage stage;
     public static PatientsMap patientsMap;
     public static DoctorsMap doctorsMap;
+    public static AppointmentMap appointmentMap;
 
 
     @Override
@@ -151,6 +154,21 @@ public class Main extends Application {
             d.setUserNameAndPass(values[15], values[16]);
             String userAndPass = values[15] + "@" + values[16];
             doctorsMap.addDoctor(d);
+            System.out.println();
+        }
+        br.close();
+    }
+
+    public void loadAppointments() throws IOException {
+        appointmentMap = new AppointmentMap();
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/AppointmentsList.txt"));
+        while (true) {
+            String line = br.readLine();
+            if (line == null) break;
+            String [] values = line.split("<");
+            System.out.println("Values: "+values.length);
+//            Appointment a = new Appointment();  FINISH THIS LATER
+//            appointmentMap.add(a);
             System.out.println();
         }
         br.close();

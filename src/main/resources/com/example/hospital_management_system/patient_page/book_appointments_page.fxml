@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.BookAppointmentsPage">
+<AnchorPane fx:id="timeSlotLabel" prefHeight="580.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.BookAppointmentsPage">
    <children>
       <DatePicker fx:id="datePicker" layoutX="187.0" layoutY="129.0" prefHeight="26.0" prefWidth="196.0" />
       <Label layoutX="22.0" layoutY="24.0" text="Select Department: ">
@@ -50,7 +50,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <Button fx:id="showTimeSlotsButton" layoutX="93.0" layoutY="219.0" mnemonicParsing="false" onAction="#timeSlotButtonAction" style="-fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" styleClass="animated-button" stylesheets="@style.css" text="Show Available Time Slots" />
+      <Button fx:id="showTimeSlotsButton" layoutX="93.0" layoutY="230.0" mnemonicParsing="false" onAction="#timeSlotButtonAction" style="-fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" styleClass="animated-button" stylesheets="@style.css" text="Load Available Time Slots" />
       <Label layoutX="14.0" layoutY="301.0" text="Select Time: ">
          <font>
             <Font name="ArtifaktElement-Black" size="14.0" />
@@ -83,12 +83,13 @@
             <Font name="ArtifaktElement-Regular" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="unfilledLabel" layoutX="34.0" layoutY="190.0" prefHeight="18.0" prefWidth="307.0" textFill="#ff1b1b" />
+      <Label fx:id="unfilledLabel" alignment="CENTER" layoutX="34.0" layoutY="190.0" prefHeight="18.0" prefWidth="307.0" textFill="#ff1b1b" />
       <ChoiceBox fx:id="timeDropdown" layoutX="187.0" layoutY="298.0" prefHeight="26.0" prefWidth="196.0" />
       <Button fx:id="confirmButton" layoutX="764.0" layoutY="491.0" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="53.0" prefWidth="120.0" style="-fx-background-radius: 12 12 12 12; -fx-border-radius: 12 12 12 12; -fx-background-color: lightgreen;" styleClass="animated-button" stylesheets="@style.css" text="Confirm" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
+      <Label fx:id="timeSlotsLabel" alignment="CENTER" layoutX="34.0" layoutY="190.0" prefHeight="18.0" prefWidth="307.0" textFill="#13bf30" />
    </children>
 </AnchorPane>
