@@ -18,8 +18,8 @@ public class Client {
 //            scanner = new Scanner(System.in);
             //String clientName = scanner.nextLine();
             socketWrapper = new SocketWrapper(serverAddress, serverPort);
-            //socketWrapper.write(clientName);
-            socketWrapper.setName(clientName);
+            socketWrapper.write(clientName);
+
            RTC = new ReadThreadClient(socketWrapper);
            WTC = new WriteThreadClient(socketWrapper, clientName);
         } catch (Exception e) {

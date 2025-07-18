@@ -25,8 +25,8 @@ public class Server {
 
     public void serve(Socket clientSocket) throws IOException, ClassNotFoundException {
         SocketWrapper socketWrapper = new SocketWrapper(clientSocket);
-        String clientName = socketWrapper.getName();
-        //String clientName = (String) socketWrapper.read();
+       // String clientName = socketWrapper.getName();
+        String clientName = (String) socketWrapper.read();
         clientMap.put(clientName, socketWrapper);
         System.out.println("Connection established with: "+clientName);
         new ReadThreadServer(clientMap, socketWrapper);
