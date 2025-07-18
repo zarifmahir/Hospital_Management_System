@@ -1,5 +1,7 @@
 package com.example.hospital_management_system.doctor_page;
 
+import com.example.hospital_management_system.LoginController;
+import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.Networking.Client;
 import com.example.hospital_management_system.patient_page.Patient;
 import javafx.application.Application;
@@ -107,14 +109,13 @@ public class ChatOfDoctorController extends Application implements Initializable
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource( "chat_of_doctor.fxml"));
-        Parent root = loader.load();
-
-        stage.setTitle("Hospital Management System");
-        stage.setScene(new Scene(root, 990, 675));
-        stage.show();
+    public void start(Stage stage) {
+     try{
+        Main main = new Main();
+        main.start(stage);
+     }
+     catch(Exception e){
+         e.printStackTrace();
+     }
     }
 }
