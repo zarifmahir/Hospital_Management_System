@@ -53,6 +53,11 @@ public class PatientPageController {
             PatientDashboardController controller = loader.getController();
             controller.setPatient(patient);
         }
+        else if(page.equals("chat_of_patient")) {
+            System.out.println("chat_of_patient");
+            ChatOfPatientController controller = loader.getController();
+            controller.setPatient(patient);
+        }
 
         bp.setCenter(root);
     }
@@ -80,6 +85,15 @@ public class PatientPageController {
     public void patient_history(MouseEvent mouseEvent) {
         try {
             loadPage("patient_history");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void chat(ActionEvent actionEvent) {
+        try {
+            loadPage("chat_of_patient");
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -221,4 +235,6 @@ public class PatientPageController {
         }
         isLeftVisible = !isLeftVisible;
     }
+
+
 }

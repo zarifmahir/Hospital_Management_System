@@ -1,6 +1,7 @@
 package com.example.hospital_management_system.doctor_page;
 
 import com.example.hospital_management_system.Main;
+import com.example.hospital_management_system.patient_page.ChatOfPatientController;
 import com.example.hospital_management_system.patient_page.PatientDashboardController;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
@@ -47,6 +48,10 @@ public class DoctorPageController {
 
         if(page.equals("doctor_dashboard")) {
             DoctorDashboardController controller = loader.getController();
+            controller.setDoctor(doctor);
+        }
+        else if(page.equals("chat_of_doctor")) {
+            ChatOfDoctorController controller = loader.getController();
             controller.setDoctor(doctor);
         }
 
@@ -218,6 +223,15 @@ public class DoctorPageController {
             doctorBorderPane.setRight(null);
         } else {
             doctorBorderPane.setLeft(leftPane);
+        }
+    }
+
+    public void chat(ActionEvent actionEvent) {
+        try {
+            loadPage("chat_of_doctor");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

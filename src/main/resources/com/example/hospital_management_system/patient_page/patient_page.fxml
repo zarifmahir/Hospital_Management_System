@@ -65,6 +65,21 @@
                 </ImageView>
             </graphic>
             </Button>
+         <Button fx:id="chatButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#chat" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Chat">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <effect>
+               <Bloom />
+            </effect>
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../images/medical-report_small.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
         </VBox>
     </left>
     <top>
