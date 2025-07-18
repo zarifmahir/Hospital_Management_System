@@ -192,7 +192,7 @@ public class RegistrationController {
         try{
             String content = doctor.getName() + "<" + doctor.getAge() + "<" + doctor.getGender() + "<" + doctor.getBloodGroup() + "<" + doctor.getEmail() + "<"
                     + doctor.getMobile() + "<" + doctor.getEmergencyContact() + "<" + doctor.getMedicalDegree() + "<" + doctor.getInstitution() + "<" + doctor.getPgQualification()
-                    + "<" + doctor.getMedicalLicense() + "<" + doctor.getSpecialization() + "<" + doctor.getYearsExperience() + "<" + doctor.getMedicalCouncil()+"<"+doctor.getImage()
+                    + "<" + doctor.getMedicalLicense() + "<" + doctor.getDepartment() + "<" + doctor.getYearsExperience() + "<" + doctor.getMedicalCouncil()+"<"+doctor.getImage()
                     +"<"+doctor.getUserName()+"<"+doctor.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt", true));
             writer.write(content);

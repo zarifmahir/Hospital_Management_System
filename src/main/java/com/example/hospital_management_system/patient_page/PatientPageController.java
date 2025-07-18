@@ -58,6 +58,10 @@ public class PatientPageController {
             ChatOfPatientController controller = loader.getController();
             controller.setPatient(patient);
         }
+        if(page.equals("patient_appointments")) {
+            PatientAppointmentsController controller = loader.getController();
+            controller.setPatient(patient);
+        }
 
         bp.setCenter(root);
     }

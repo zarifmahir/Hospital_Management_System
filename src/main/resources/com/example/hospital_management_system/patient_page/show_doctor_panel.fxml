@@ -29,6 +29,6 @@
             <Font name="ArtifaktElement-Regular" size="12.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="770.0" layoutY="17.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="departmentDropdown" layoutX="770.0" layoutY="17.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

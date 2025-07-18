@@ -2,6 +2,8 @@ package com.example.hospital_management_system.register_page;
 
 import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.doctor_page.Doctor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -73,7 +75,7 @@ public class DoctorRegister {
     private TextField pgQualification;
 
     @FXML
-    private TextField speciality;
+    private ChoiceBox<String> departmentDropdown;
 
     private Main main;
 
@@ -89,10 +91,25 @@ public class DoctorRegister {
         this.main = main;
     }
 
+    private String department;
+
 
     @FXML
-    private void initialize() { //to select only one gender
+    private void initialize() {
+        //to select only one gender
         // Optionally listen to selection changes
+
+        ObservableList<String> list = FXCollections.observableArrayList("Medicine", "Surgery", "Pediatrics", "Obstetrics", "Gynecology",
+                "Orthopedics", "Cardiology", "Neurology", "Pathology", "Psychiatry", "Dermatology");
+        departmentDropdown.setItems(list);
+
+//        departmentDropdown.valueProperty().addListener((obs, oldVal, newVal) -> {
+//            if (newVal != null) {
+//                department = newVal;
+//                System.out.println("Department selected: " + department);
+//            }
+//        });
+
         dateOfBirth.getEditor().setDisable(true);
         dateOfBirth.getEditor().setOpacity(1);
         doctorGender.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
@@ -105,7 +122,7 @@ public class DoctorRegister {
 
 
     public boolean checkEmpty(){
-        if(doctorName.getText().isEmpty() || email.getText().isEmpty() || bloodGroup.getText().isEmpty() || mobile.getText().isEmpty() || dateOfBirth.getValue()==null || emergencyContact.getText().isEmpty() || doctorGender.getSelectedToggle() == null || licenseNumber.getText().isEmpty() || speciality.getText().isEmpty()
+        if(doctorName.getText().isEmpty() || email.getText().isEmpty() || bloodGroup.getText().isEmpty() || mobile.getText().isEmpty() || dateOfBirth.getValue()==null || emergencyContact.getText().isEmpty() || doctorGender.getSelectedToggle() == null || licenseNumber.getText().isEmpty() || (departmentDropdown.getValue() == null)
         || experience.getText().isEmpty()|| degrees.getText().isEmpty() ||  medicalCouncil.getText().isEmpty()){
             return true;
         }
@@ -188,8 +205,9 @@ public class DoctorRegister {
         LocalDate today = LocalDate.now();
         Period age = Period.between(birthDate, today);
 
-        Doctor doctor = new Doctor(doctorName.getText(), age.getYears(), selected.getText(), bloodGroup.getText(), email.getText(), mobile.getText(), emergencyContact.getText(), degrees.getText(), institution.getText(), pgQualification.getText(),
-                Integer.parseInt(licenseNumber.getText()), speciality.getText(), Integer.parseInt(experience.getText()), medicalCouncil.getText(), img);
+        Doctor doctor = new Doctor(doctorName.getText(), age.getYears(), selected.getText(), bloodGroup.getText(), email.getText(), mobile.getText(),
+                emergencyContact.getText(), degrees.getText(), institution.getText(), pgQualification.getText(), Integer.parseInt(licenseNumber.getText()),
+                departmentDropdown.getValue(), Integer.parseInt(experience.getText()), medicalCouncil.getText(), img);
         return doctor;
     }
 
