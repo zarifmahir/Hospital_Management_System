@@ -54,7 +54,7 @@
             </Label>
             <ImageView fitHeight="101.0" fitWidth="157.0" layoutX="164.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/tonmoy_face.jpg" />
+                  <Image url="@../../../images/doctor-visit.png" />
                </image>
             </ImageView>
             <Text layoutX="30.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not registered yet?">
@@ -74,14 +74,14 @@
       </AnchorPane>
       <AnchorPane layoutX="136.0" layoutY="46.0" prefHeight="638.0" prefWidth="415.0" style="-fx-background-color: #eadbf6; -fx-background-radius: 0 0 60 60; -fx-border-radius: 0 0 60 60;" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#c947da" layoutX="86.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME" wrappingWidth="264.5051253562965">
+            <Text fill="#c947da" layoutX="86.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAKAT HOSPITAL" wrappingWidth="264.5051253562965">
                <font>
                   <Font name="Comic Sans MS Bold" size="47.0" />
                </font>
             </Text>
             <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="68.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/nafis_face.jpg" />
+                  <Image url="@../../../images/hospital%20(1).png" />
                </image>
             </ImageView>
          </children>

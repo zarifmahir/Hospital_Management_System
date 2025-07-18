@@ -9,12 +9,6 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 
 public class PatientAppointmentsController {
-    public Patient patient;
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     @FXML
     private BorderPane bp;
 
@@ -25,11 +19,6 @@ public class PatientAppointmentsController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();
-
-        if (page.equals("patient_appointments")) {
-            PatientAppointmentsController controller = loader.getController();
-            controller.setPatient(patient);
-        }
 
         bp.setCenter(root);
     }
@@ -63,6 +52,8 @@ public class PatientAppointmentsController {
         }
     }
 
+    public void setPatient(Patient patient) {
+    }
 }
 
 
