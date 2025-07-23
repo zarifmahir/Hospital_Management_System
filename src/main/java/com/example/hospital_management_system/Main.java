@@ -144,7 +144,7 @@ public class Main extends Application {
             String line = br.readLine();
             if (line == null || line.length()<24) break;
             String [] values = line.split("<");
-            System.out.println("Values:"+values.length);
+            //System.out.println("Values:"+values.length);
             Patient p = new Patient(values[0], Integer.parseInt(values[1]), values[2], Float.parseFloat(values[3]), Float.parseFloat(values[4]), values[5],
                     Integer.parseInt(values[6]), Integer.parseInt(values[7]), values[8], Boolean.parseBoolean(values[9]), Boolean.parseBoolean(values[10]), Boolean.parseBoolean(values[11]),
                     Boolean.parseBoolean(values[12]), Boolean.parseBoolean(values[13]), Boolean.parseBoolean(values[14]), Boolean.parseBoolean(values[15]), Boolean.parseBoolean(values[16]),
@@ -164,7 +164,7 @@ public class Main extends Application {
             String line = br.readLine();
             if (line == null) break;
             String [] values = line.split("<");
-            System.out.println("Values: "+values.length);
+            //System.out.println("Values: "+values.length);
             Doctor d = new Doctor(values[0], Integer.parseInt(values[1]), values[2], values[3], values[4], values[5], values[6], values[7],values[8], values[9],Integer.parseInt(values[10]), values[11], Integer.parseInt(values[12]),
                     values[13],values[14]);
             d.setUserNameAndPass(values[15], values[16]);
@@ -198,7 +198,7 @@ public class Main extends Application {
             if (line == null || line.length()<5) break;
             String [] values = line.split("\\|");
             if(values.length<2){break;}
-            System.out.println("Values: "+values.length);
+            //System.out.println("Values: "+values.length);
             Patient p = patientsMap.getPatient(values[0]);
             patientChatMap.addChat(p, values[1]);
         }
