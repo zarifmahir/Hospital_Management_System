@@ -35,7 +35,6 @@ Samira Noor<39<Female<B+<samira.noor@email.com<0171096232<0181176224<MBBS<BSMMU<
 Jahid Rahman<31<Male<B-<jahid.rahman@email.com<0171231631<0181310642<MBBS<DU<FCPS<1124<Pediatrics<4<BMC<null<jahid.rahman<jahid#ped4
 Nusrat Uddin<45<Female<O+<nusrat.uddin@email.com<0171279821<0181936011<MBBS<RU<FCPS<1125<Obstetrics<17<DMC<null<nusrat.uddin<nusrat#obs17
 Kazi Hossain<42<Male<O+<kazi.hossain@email.com<0171326590<0181369261<MBBS<DU<MD<1126<Gynecology<15<MMC<null<kazi.hossain<kazi#gyn15
-Mahira Ahmed<28<Female<O+<mahira.ahmed@email.com<0171496615<0181223711<MBBS<CU<MD<1127<Orthopedics<3<BMC<null<mahira.ahmed<mahira#ort3
 Anika Chowdhury<33<Female<B+<anika.chowdhury@email.com<0171122542<0181814556<MBBS<DU<MS<1128<Cardiology<8<DMC<null<anika.chowdhury<anika#car8
 Kazi Uddin<58<Male<AB+<kazi.uddin@email.com<0171830035<0181405186<MBBS<BUET<MD<1129<Neurology<28<MMC<null<kazi.uddin<kazi#neu28
 Tania Kabir<37<Female<B+<tania.kabir@email.com<0171238786<0181622695<MBBS<DU<FCPS<1130<Pathology<12<DMC<null<tania.kabir<tania#pat12
