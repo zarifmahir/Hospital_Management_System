@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PatientsMap {
-     Map<String, Patient> PatientMap = new HashMap<>();
+    public Map<String, Patient> PatientMap = new HashMap<>();
 
      public void addPatient(Patient p) {
          PatientMap.put(p.getUsername()+"@"+p.getPass(), p);

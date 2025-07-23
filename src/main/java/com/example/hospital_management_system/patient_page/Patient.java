@@ -31,6 +31,7 @@ public class Patient {
     private String image;
 
     private String id;
+    private String myChat;
 
 
     public Patient(String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, boolean diabetes, boolean asthma, boolean highBp, boolean epilepsy, boolean cancer, boolean stroke, boolean kidney, boolean liver, boolean allergies, boolean surgeries, boolean familyHistory, boolean medications, String image) {
@@ -56,6 +57,15 @@ public class Patient {
         this.highBp = highBp;
         this.asthma = asthma;
         this.image = image;
+        this.myChat = "";
+    }
+
+    public String getMyChat() {
+        return myChat;
+    }
+
+    public void setMyChat(String myChat) {
+        this.myChat = myChat;
     }
 
     public String getImage() {

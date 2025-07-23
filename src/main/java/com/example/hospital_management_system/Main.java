@@ -6,7 +6,9 @@ import com.example.hospital_management_system.appointment_system.AppointmentMap;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorPageController;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
+import com.example.hospital_management_system.doctor_page.ResidentPage;
 import com.example.hospital_management_system.patient_page.Patient;
+import com.example.hospital_management_system.patient_page.PatientChatMap;
 import com.example.hospital_management_system.patient_page.PatientPageController;
 import com.example.hospital_management_system.patient_page.PatientsMap;
 import com.example.hospital_management_system.register_page.RegistrationController;
@@ -28,6 +30,7 @@ public class Main extends Application {
     public static PatientsMap patientsMap;
     public static DoctorsMap doctorsMap;
     public static AppointmentMap appointmentMap;
+    public static PatientChatMap patientChatMap;
 
 
     @Override
@@ -45,6 +48,7 @@ public class Main extends Application {
         controller.setMain(this);
         loadPatients();
         loadDoctors();
+        loadPatientChats();
 
         stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root, 1280, 720));
@@ -120,6 +124,18 @@ public class Main extends Application {
 
         stage.getScene().setRoot(root);
     }
+    public void showResidentPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("doctor_page/resident_page.fxml"));
+        Parent root = loader.load();
+
+        ResidentPage controller = loader.getController();
+        controller.setMain(this);
+        controller.initializeManually();
+
+        stage.getScene().setRoot(root);
+
+    }
 
     public void loadPatients() throws IOException {
         patientsMap = new PatientsMap();
@@ -170,6 +186,21 @@ public class Main extends Application {
 //            Appointment a = new Appointment();  FINISH THIS LATER
 //            appointmentMap.add(a);
             System.out.println();
+        }
+        br.close();
+    }
+
+    public void loadPatientChats() throws IOException {
+        patientChatMap = new PatientChatMap();
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/ChatHistoryOfPatients.txt"));
+        while (true) {
+            String line = br.readLine();
+            if (line == null || line.length()<5) break;
+            String [] values = line.split("\\|");
+            if(values.length<2){break;}
+            System.out.println("Values: "+values.length);
+            Patient p = patientsMap.getPatient(values[0]);
+            patientChatMap.addChat(p, values[1]);
         }
         br.close();
     }

@@ -15,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -27,7 +28,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChatOfDoctorController extends Application implements Initializable {
+public class ChatOfDoctorController extends Application {
 
     @FXML
     private TextField messageArea;
@@ -50,12 +51,13 @@ public class ChatOfDoctorController extends Application implements Initializable
     private Client c;
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    //@Override
+    public void initializeManually() {
         String serverAddress = "127.0.0.1";
         int serverPort = 44444;
-        c = new Client(serverAddress, serverPort,"doctor.getName()");
+        c = new Client(serverAddress, serverPort,doctor.getName());
         c.setType("Doctor");
+        c.setObType((Object) doctor);
         c.setVboxOfMessages(vBoxOfMessages);
         vBoxOfMessages.heightProperty().addListener((observable, oldValue, newValue) -> {
             scrollWindow.setVvalue((Double) newValue);
@@ -85,20 +87,30 @@ public class ChatOfDoctorController extends Application implements Initializable
         }
     }
 
-    public static void addLabel(String messageFromOtherEnd, VBox vBox){
+    public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox){
+        VBox messageContainer = new VBox();
+        messageContainer.setSpacing(1);
+
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPadding(new Insets(5, 5, 5, 5));
+
+        Label nameLabel = new Label("Patient: "+senderName);
+        nameLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray; -fx-padding: 0 0 0 5;");
+
         Text text = new Text(messageFromOtherEnd);
+        text.setFill(Color.BLACK);
+
         TextFlow textFlow = new TextFlow(text);
-        textFlow.setStyle("-fx-background-color: rgb(15, 125, 242);" + "-fx-color: rgb(233,233,235);" +"-fx-background-radius: 20px;");
+        textFlow.setStyle("-fx-background-color: lightgray; -fx-background-radius: 20px;");
         textFlow.setPadding(new Insets(5, 10, 5, 10));
 
         hBox.getChildren().add(textFlow);
+        messageContainer.getChildren().addAll(nameLabel, hBox);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                vBox.getChildren().add(hBox);
+                vBox.getChildren().add(messageContainer);
             }
         });
 

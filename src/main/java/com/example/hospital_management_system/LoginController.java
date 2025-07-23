@@ -75,6 +75,9 @@ public class LoginController {
                     if(username.getText().equals("a") && password.getText().equals("111")){
                         main.showAdminPage();
                     }
+//                    if(username.getText().equals("b") && password.getText().equals("111")){
+//                        main.showResidentPage();
+//                    }
                 }
             }
             catch (Exception e){

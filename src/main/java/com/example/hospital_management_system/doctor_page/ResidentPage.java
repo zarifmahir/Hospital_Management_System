@@ -1,31 +1,43 @@
-package com.example.hospital_management_system.patient_page;
+package com.example.hospital_management_system.doctor_page;
 
 import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.Networking.Client;
+import com.example.hospital_management_system.patient_page.Patient;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
-import java.io.Serializable;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChatOfPatientController {
+import static javafx.application.Application.launch;
 
+public class ResidentPage extends Application implements Initializable {
+
+    public AnchorPane messagePane;
     @FXML
     private TextField messageArea;
+
+    @FXML
+    private VBox patientsBox;
 
     @FXML
     private ScrollPane scrollWindow;
@@ -36,30 +48,61 @@ public class ChatOfPatientController {
     @FXML
     private VBox vBoxOfMessages;
 
-    private Patient patient;
-
-
-
     private Client c;
-    public void setPatient(Patient patient) {
-        System.out.println("setPatient");
-        this.patient = patient;
-    }
+    private Main main;
+
+    private Patient currentSelected;
 
 
-    //@Override
     public void initializeManually() {
         String serverAddress = "127.0.0.1";
         int serverPort = 44444;
-        c = new Client(serverAddress, serverPort, patient.getName());
-        c.setType("Patient");
-        c.setObType((Object) patient);
-        createVBoxOfMessages(patient, vBoxOfMessages);
+        c = new Client(serverAddress, serverPort, "Resident");
+        c.setType("Resident");
         c.setVboxOfMessages(vBoxOfMessages);
         vBoxOfMessages.heightProperty().addListener((observable, oldValue, newValue) -> {
             scrollWindow.setVvalue((Double) newValue);
         });
+    }
 
+
+    @FXML
+    void send(ActionEvent event) {
+        String messageToSend = messageArea.getText();
+        if(!messageToSend.isEmpty()){
+           generateSendingMessage(messageToSend, vBoxOfMessages);
+
+            c.sendMessage("Res"+"~"+currentSelected.getName()+"~"+messageToSend);
+            messageArea.clear();
+        }
+    }
+
+    public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox) {
+        VBox messageContainer = new VBox();
+        messageContainer.setSpacing(1);
+
+        HBox hBox = new HBox();
+        hBox.setAlignment(Pos.CENTER_LEFT);
+        hBox.setPadding(new Insets(5, 5, 5, 5));
+
+        Label nameLabel = new Label("Patient" );
+        nameLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray; -fx-padding: 0 0 0 5;");
+
+        Text text = new Text(messageFromOtherEnd);
+        text.setFill(Color.BLACK);
+
+        TextFlow textFlow = new TextFlow(text);
+        textFlow.setStyle("-fx-background-color: lightgray; -fx-background-radius: 20px;");
+        textFlow.setPadding(new Insets(5, 10, 5, 10));
+
+        hBox.getChildren().add(textFlow);
+        messageContainer.getChildren().addAll(nameLabel, hBox);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                vBox.getChildren().add(messageContainer);
+            }
+        });
     }
 
     void createVBoxOfMessages(Patient patient, VBox vBoxOfMessages) {
@@ -68,11 +111,11 @@ public class ChatOfPatientController {
             String[] chats = patient.getMyChat().split("<");
             for(int i = 0; i < chats.length; i++) {
                 String[] parts = chats[i].split("~");
-                if(parts[1].equals("R")){
+                if(parts[1].equals("L")){
                     generateSendingMessage(parts[0], vBoxOfMessages);
                     //System.out.println("Done");
                 }
-                else if(parts[1].equals("L")){
+                else if(parts[1].equals("R")){
                     generateReceivingMessage(parts[0], vBoxOfMessages);
                     //System.out.println("Done");
                 }
@@ -110,7 +153,7 @@ public class ChatOfPatientController {
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPadding(new Insets(5, 5, 5, 5));
 
-        Label nameLabel = new Label("Doctor");
+        Label nameLabel = new Label("Patient: "+currentSelected.getName());
         nameLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray; -fx-padding: 0 0 0 5;");
 
         Text text = new Text(message);
@@ -133,56 +176,45 @@ public class ChatOfPatientController {
     }
 
 
-
-
-    @FXML
-    void send(ActionEvent event) {
-        String messageToSend = messageArea.getText();
-        if(!messageToSend.isEmpty()){
-            generateSendingMessage(messageToSend, vBoxOfMessages);
-
-
-            if(patient.getMyChat().isEmpty()){
-                patient.setMyChat(messageToSend+",R");
-            }
-            else patient.setMyChat(patient.getMyChat() + "<"+messageToSend+",R");
-            c.sendMessage(messageToSend);
-            messageArea.clear();
-        }
-
+    public static  void main(String[] args){
+        launch(args);
     }
 
-    public static void addLabel(String messageFromOtherEnd, VBox vBox, Object p){
-        VBox messageContainer = new VBox();
-        messageContainer.setSpacing(1);
+    @Override
+    public void start(Stage stage) {
+        try{
+            Main main = new Main();
+            main.start(stage);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
-        HBox hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER_LEFT);
-        hBox.setPadding(new Insets(5, 5, 5, 5));
 
-        Label nameLabel = new Label("Doctor");
-        nameLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray; -fx-padding: 0 0 0 5;");
 
-        Text text = new Text(messageFromOtherEnd);
-        text.setFill(Color.BLACK);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        messagePane.setVisible(false);
+       for(Patient p: Main.patientChatMap.chatMap.keySet()){
+           HBox hBox = new HBox();
+           hBox.setAlignment(Pos.CENTER_LEFT);
+           Button button = new Button("Name: "+p.getName());
+           button.setPrefWidth(286);
+           button.setPrefHeight(43);
+           button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px;");
+           button.setOnAction(e -> {
+              currentSelected = p;
+              messagePane.setVisible(true);
+              messageArea.clear();
+              createVBoxOfMessages(currentSelected,vBoxOfMessages);
+           });
+           hBox.getChildren().add(button);
+           patientsBox.getChildren().add(hBox);
+       }
+    }
 
-        TextFlow textFlow = new TextFlow(text);
-        textFlow.setStyle("-fx-background-color: lightgray; -fx-background-radius: 20px;");
-        textFlow.setPadding(new Insets(5, 10, 5, 10));
-
-        hBox.getChildren().add(textFlow);
-
-        messageContainer.getChildren().addAll(nameLabel, hBox);
-        Patient ptn = (Patient)p;
-        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+",L");
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                vBox.getChildren().add(messageContainer);
-                System.out.println(vBox);
-            }
-        });
-
+    public void setMain(Main main) {
+        this.main = main;
     }
 }
