@@ -20,6 +20,10 @@ public class PatientsMap {
         return PatientMap.get(userAndPass);
      }
 
+     public int size() {
+         return PatientMap.size();
+     }
+
      public List<Patient> getPatientList() {
          List<Patient> patientList = new ArrayList<>();
          for(Map.Entry<String, Patient> entry : PatientMap.entrySet()){

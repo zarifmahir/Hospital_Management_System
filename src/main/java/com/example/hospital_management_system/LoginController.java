@@ -1,5 +1,6 @@
 package com.example.hospital_management_system;
 
+import com.example.hospital_management_system.admin_page.Admin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -72,11 +73,18 @@ public class LoginController {
                     }
                 }
                 else if (personType.equals("Admin")) {
-                    if(username.getText().equals("a") && password.getText().equals("111")){
-                        main.showAdminPage();
+                        String userAndPass = username.getText() + "@" + password.getText();
+                        System.out.println(userAndPass);
+                        if (Main.adminMap.searchAdmin(userAndPass)){
+                            Admin a = Main.adminMap.getAdmin(userAndPass);
+                            System.out.println(a.getName());
+                            main.showAdminPage(a);
+                        }
+                        else {
+                            errorMessage.setText("Invalid username or password");
+                        }
                     }
                 }
-            }
             catch (Exception e){
                 e.printStackTrace();
             }

@@ -66,7 +66,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-         <Button fx:id="chatButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#chat" onMousePressed="#setOnMousePressed2" onMouseReleased="#setOnMouseReleased2" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Chat">
+         <Button fx:id="chatButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#chat" onMouseClicked="#doctor_patient_history" onMouseEntered="#chatHover" onMouseExited="#chatHoverExited" onMousePressed="#chatPressed" onMouseReleased="#chatReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Chat">
             <font>
                <Font size="14.0" />
             </font>

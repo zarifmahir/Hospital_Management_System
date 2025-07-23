@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -35,6 +36,8 @@ public class DoctorPageController {
     @FXML
     private Button scheduleButton;
 
+    @FXML
+    private Button chatButton;
 
     @FXML
     private Main main;
@@ -213,7 +216,35 @@ public class DoctorPageController {
         menuButton.setStyle("-fx-background-color: transparent;");
     }
 
+
     @FXML
+    void chatHover(MouseEvent event) {
+        chatButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void chatHoverExited(MouseEvent event) {
+        chatButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void chatPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), chatButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void chatReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), chatButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+
+        @FXML
     private VBox leftPane;
 
     @FXML
