@@ -6,9 +6,9 @@ public class Admin {
     private String password;
     private String designation;
     private String room_number;
-    private String image;
+    private String image = "null";
 
-    public Admin(String user, String name, String password, String designation, String room_number, String image) {
+    public Admin(String name, String user, String password, String designation, String room_number, String image) {
         this.user = user;
         this.name = name;
         this.password = password;
@@ -63,5 +63,14 @@ public class Admin {
 
     public void setRoom_number(String room_number) {
         this.room_number = room_number;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("User: " + user);
+        System.out.println("Password: " + password);
+        System.out.println("Designation: " + designation);
+        System.out.println("Room_Number: " + room_number);
+        System.out.println("Image: " + image);
     }
 }

@@ -3,18 +3,22 @@ package com.example.hospital_management_system.appointment_system;
 import java.util.*;
 
 public class AppointmentMap {
-    static Map<String, Appointment> AppointmentMap = new HashMap<>();
+    Map<String, Appointment> appointmentMap = new HashMap<>();
 
-    public static void addAppointment(Appointment a) {
-        AppointmentMap.put(a.getDoctorName() + "@" + a.getDate() + "@" + a.getTime(), a);
+    public void addAppointment(Appointment a) {
+        appointmentMap.put(a.getDoctorName() + "@" + a.getDate() + "@" + a.getTime(), a);
     }
 
-    public static boolean searchAppointment(String doctorName, String date, String time) {
-        return AppointmentMap.containsKey(doctorName+"@"+date+"@"+time);
+    public int size() {
+        return appointmentMap.size();
     }
 
-    public static Appointment getAppointment(String doctorName, String date, String time) {
-        return AppointmentMap.get(doctorName+"@"+date+"@"+time);
+    public boolean searchAppointment(String doctorName, String date, String time) {
+        return appointmentMap.containsKey(doctorName+"@"+date+"@"+time);
+    }
+
+    public Appointment getAppointment(String doctorName, String date, String time) {
+        return appointmentMap.get(doctorName+"@"+date+"@"+time);
     }
 
 //    public List<Doctor> getDoctorList() {

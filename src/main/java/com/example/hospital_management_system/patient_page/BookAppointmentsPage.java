@@ -79,7 +79,7 @@ public class BookAppointmentsPage implements Initializable {
             }
 
             for (String time : timeList) {
-                if (AppointmentMap.searchAppointment(doctorDropdown.getValue(), date, time)) {
+                if (Main.appointmentMap.searchAppointment(doctorDropdown.getValue(), date, time)) {
                     newTimeList.remove(time);
                 }
             }

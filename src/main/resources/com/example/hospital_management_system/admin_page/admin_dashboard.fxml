@@ -1,15 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.AdminDashboardController">
    <top>
-      <AnchorPane prefHeight="262.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="apTop" prefHeight="116.0" prefWidth="990.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="19.0" layoutY="21.0" prefHeight="223.0" prefWidth="1236.0" />
+            <AnchorPane layoutY="-6.0" prefHeight="140.0" prefWidth="990.0">
+               <children>
+                  <Circle fx:id="pfpCircle" fill="#1f93ff00" layoutX="80.0" layoutY="70.0" radius="57.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Label fx:id="nameField" layoutX="160.0" layoutY="20.0" prefHeight="17.0" prefWidth="309.0" text="Name" textFill="#511f1f">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="designationField" layoutX="160.0" layoutY="47.0" prefHeight="17.0" prefWidth="309.0" text="Designation">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="idField" alignment="CENTER" layoutX="837.0" layoutY="21.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
+                  <Label layoutX="771.0" layoutY="21.0" prefHeight="17.0" prefWidth="77.0" text="UserID: ">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="roomField" alignment="CENTER" layoutX="837.0" layoutY="48.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
+                  <Label alignment="CENTER" layoutX="840.0" layoutY="76.0" prefHeight="17.0" prefWidth="154.0" text="9 am- 6 pm" />
+                  <Label layoutX="771.0" layoutY="48.0" prefHeight="17.0" prefWidth="77.0" text="Room No.:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="771.0" layoutY="76.0" prefHeight="17.0" prefWidth="77.0" text="Shift:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </top>
+   <center>
+      <ScrollPane prefHeight="535.0" prefWidth="990.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane prefHeight="1100.0" prefWidth="975.0">
+               <children>
+                  <AnchorPane layoutX="52.0" layoutY="804.0" onMouseEntered="#reportHover" onMouseExited="#reportHoverExited" onMousePressed="#reportPressed" onMouseReleased="#showReportPage" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c3dedd; -fx-background-radius: 30 30 30 30;">
+                     <children>
+                        <Label layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Reports">
+                           <font>
+                              <Font name="Calibri Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="numReportField" layoutX="117.0" layoutY="21.0" prefHeight="43.0" prefWidth="32.0" text="20">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/stethoscope.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="52.0" layoutY="612.0" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMouseReleased="#showPatientPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c9a5c7; -fx-background-radius: 30 30 30 30;">
+                     <children>
+                        <Label layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Patients">
+                           <font>
+                              <Font name="Calibri Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="numPatientField" layoutX="117.0" layoutY="21.0" prefHeight="43.0" prefWidth="32.0" text="20">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/patient.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="645.0" layoutY="31.0" onMouseEntered="#staffHover" onMouseExited="#staffHoverExited" onMousePressed="#staffPressed" onMouseReleased="#showStaffPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #cbd3ad; -fx-background-radius: 30 30 30 30;">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Staff">
+                           <font>
+                              <Font name="Calibri Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="numStaffField" layoutX="117.0" layoutY="21.0" prefHeight="43.0" prefWidth="32.0" text="20">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/medical.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="52.0" layoutY="973.0" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#appointmentPressed" onMouseReleased="#showAppointmentPage" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: lightblue; -fx-background-radius: 30 30 30 30;">
+                     <children>
+                        <Label layoutX="24.0" layoutY="64.0" prefHeight="27.0" prefWidth="137.0" text="Appointments">
+                           <font>
+                              <Font name="Calibri Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="numAppointmentField" layoutX="117.0" layoutY="21.0" prefHeight="43.0" prefWidth="32.0" text="20">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/stethoscope.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="158.0" layoutY="31.0" onMouseEntered="#doctorLabelHover" onMouseExited="#doctorLabelHoverExited" onMouseReleased="#showDoctorPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: lightblue; -fx-background-radius: 30 30 30 30;">
+                     <children>
+                        <Label layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Doctors">
+                           <font>
+                              <Font name="Calibri Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="numDoctorField" layoutX="117.0" layoutY="21.0" prefHeight="43.0" prefWidth="32.0" text="20">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/stethoscope.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <BarChart layoutX="35.0" layoutY="184.0" prefHeight="287.0" prefWidth="383.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <BarChart layoutX="500.0" layoutY="184.0" prefHeight="287.0" prefWidth="383.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+                  <BarChart layoutX="278.0" layoutY="565.0" prefHeight="226.0" prefWidth="281.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+                  <BarChart layoutX="616.0" layoutY="565.0" prefHeight="226.0" prefWidth="281.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+                  <PieChart layoutX="340.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
+                  <PieChart layoutX="666.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
 </BorderPane>

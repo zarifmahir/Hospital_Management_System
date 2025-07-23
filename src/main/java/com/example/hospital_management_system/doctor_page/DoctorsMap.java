@@ -23,6 +23,10 @@ public class DoctorsMap {
         return DoctorMap.get(userAndPass);
     }
 
+    public int size() {
+        return DoctorMap.size();
+    }
+
     public List<Doctor> getDoctorList() {
         List<Doctor> doctorList = new ArrayList<>();
         for (Map.Entry<String, Doctor> entry : DoctorMap.entrySet()) {

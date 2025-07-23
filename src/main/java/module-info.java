@@ -14,4 +14,6 @@ module com.example.hospital_management_system {
     exports com.example.hospital_management_system.doctor_page;
     opens com.example.hospital_management_system.admin_page to javafx.fxml;
     exports com.example.hospital_management_system.admin_page;
+    opens com.example.hospital_management_system.appointment_system to javafx.fxml;
+    exports com.example.hospital_management_system.appointment_system;
 }

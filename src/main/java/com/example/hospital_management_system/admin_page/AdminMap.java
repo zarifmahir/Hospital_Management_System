@@ -11,7 +11,11 @@ public class AdminMap {
     Map<String, Admin> adminMap = new HashMap<>();
 
     public void addAdmin(Admin admin) {
-        adminMap.put(admin.getName()+"@"+admin.getPassword(), admin);
+        adminMap.put(admin.getUser()+"@"+admin.getPassword(), admin);
+    }
+
+    public int size() {
+        return adminMap.size();
     }
 
     public boolean searchAdmin(String userAndPass) {
@@ -22,7 +26,4 @@ public class AdminMap {
         return adminMap.get(userAndPass);
     }
 
-    public Admin getAdmin(String userAndPass) {
-        return adminMap.get(userAndPass);
-    }
 }
