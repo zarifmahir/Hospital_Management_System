@@ -47,7 +47,7 @@ public class Main extends Application {
         controller.setMain(this);
         loadPatients();
         loadDoctors();
-//        loadAppointments();
+        loadAppointments();
         loadAdmins();
 
         stage.setTitle("Hospital Management System");
@@ -180,7 +180,7 @@ public class Main extends Application {
 
     public void loadAppointments() throws IOException {
         appointmentMap = new AppointmentMap();
-        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/AppointmentsList.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/AppointmentList.txt"));
         while (true) {
             String line = br.readLine();
             if (line == null) break;

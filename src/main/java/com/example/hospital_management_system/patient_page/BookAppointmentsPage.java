@@ -57,7 +57,7 @@ public class BookAppointmentsPage implements Initializable {
 
     @FXML
     void confirmButtonAction(ActionEvent event) {
-
+//        if ()
     }
 
     @FXML
