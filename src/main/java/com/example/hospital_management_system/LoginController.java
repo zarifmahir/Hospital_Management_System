@@ -72,11 +72,15 @@ public class LoginController {
                     }
                 }
                 else if (personType.equals("Admin")) {
-                    if(username.getText().equals("a") && password.getText().equals("111")){
-                        main.showAdminPage();
+                        String userAndPass = username.getText() + "@" + password.getText();
+                        if (Main.adminMap.searchAdmin(userAndPass)){
+                            main.showAdminPage(Main.adminMap.getAdmin(userAndPass));
+                        }
+                        else {
+                            errorMessage.setText("Invalid username or password");
+                        }
                     }
                 }
-            }
             catch (Exception e){
                 e.printStackTrace();
             }

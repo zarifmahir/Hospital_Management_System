@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 import java.util.Objects;
 
@@ -47,7 +49,8 @@ public class DoctorDashboardController {
     @FXML
     private ImageView doctorPhoto;
 
-
+    @FXML
+    private Circle pfpCircle;
 
     @FXML
     private Label yearsActiveField;
@@ -57,7 +60,8 @@ public class DoctorDashboardController {
         String img = "/images/user.png";
         if(!doctor.getImage().equals("null")){ img = doctor.getImage();}
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(img)));
-        doctorPhoto.setImage(image);
+//        doctorPhoto.setImage(image);
+        pfpCircle.setFill(new ImagePattern(image));
         nameField.setText(doctor.getName());
         ageField.setText(String.valueOf(doctor.getAge()));
         bloodGroupField.setText(String.valueOf(doctor.getBloodGroup()));

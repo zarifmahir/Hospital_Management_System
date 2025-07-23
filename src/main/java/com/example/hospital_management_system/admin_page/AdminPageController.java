@@ -31,7 +31,7 @@ public class AdminPageController {
     private Button logoutButton;
 
     @FXML
-    private Label menuButton2;
+    private Button menuButton2;
 
     @FXML
     private Button reportsButton;
@@ -62,6 +62,10 @@ public class AdminPageController {
         else if(page.equals("doctors_panel")){
             DoctorPanelController controller = loader.getController();
             controller.setMain(main);
+        }
+        else if (page.equals("admin_dashboard")){
+            AdminDashboardController controller = loader.getController();
+            controller.setAdmin(admin);
         }
 
         bp.setCenter(root);
@@ -320,5 +324,24 @@ public class AdminPageController {
         scaleUp.setToX(1);
         scaleUp.setToY(1);
         scaleUp.play();
+    }
+
+    @FXML
+    private VBox leftPane;
+
+    @FXML
+    void toggleMenu(ActionEvent event) {
+        if (bp.getLeft() != null) {
+            bp.setLeft(null);
+            bp.setRight(null);
+        } else {
+            bp.setLeft(leftPane);
+        }
+    }
+
+    public Admin admin;
+
+    public void setAdmin(Admin a) {
+        this.admin = a;
     }
 }

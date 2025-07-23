@@ -1,8 +1,10 @@
 package com.example.hospital_management_system;
 
+import com.example.hospital_management_system.admin_page.Admin;
+import com.example.hospital_management_system.admin_page.AdminMap;
 import com.example.hospital_management_system.admin_page.AdminPageController;
-import com.example.hospital_management_system.appointment_system.Appointment;
 import com.example.hospital_management_system.appointment_system.AppointmentMap;
+import com.example.hospital_management_system.appointment_system.Appointment;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorPageController;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
@@ -27,6 +29,7 @@ public class Main extends Application {
     Stage stage;
     public static PatientsMap patientsMap;
     public static DoctorsMap doctorsMap;
+    public static AdminMap adminMap;
     public static AppointmentMap appointmentMap;
 
 
@@ -45,6 +48,8 @@ public class Main extends Application {
         controller.setMain(this);
         loadPatients();
         loadDoctors();
+//        loadAppointments();
+        loadAdmins();
 
         stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root, 1280, 720));
@@ -108,15 +113,17 @@ public class Main extends Application {
         RegistrationController controller = loader.getController();
         controller.setMain(this);
 
+
         stage.getScene().setRoot(root);
     }
-    public void showAdminPage() throws IOException {
+    public void showAdminPage(Admin a) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("admin_page/admin_page.fxml"));
         Parent root = loader.load();
 
         AdminPageController controller = loader.getController();
         controller.setMain(this);
+        controller.setAdmin(a);
 
         stage.getScene().setRoot(root);
     }
@@ -137,6 +144,19 @@ public class Main extends Application {
             String userAndPass = values[22] + "@" + values[23];
             patientsMap.addPatient(p);
             System.out.println();
+        }
+        br.close();
+    }
+
+    public void loadAdmins() throws IOException {
+        adminMap = new AdminMap();
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/AdminsList.txt"));
+        while (true) {
+            String line = br.readLine();
+            if (line == null) break;
+            String [] values = line.split("<");
+            Admin a = new Admin(values[0], values[1], values[2], values[3], values[5], values[5]);
+            adminMap.addAdmin(a);
         }
         br.close();
     }
