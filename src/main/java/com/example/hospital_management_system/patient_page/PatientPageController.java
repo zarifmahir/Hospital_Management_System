@@ -15,6 +15,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class PatientPageController {
@@ -37,12 +39,23 @@ public class PatientPageController {
 
     private Patient patient;
 
+    private String currentPage;
+
+
+
     public void setPatient(Patient patient) {
+        System.out.println("setPatient");
         this.patient = patient;
+        this.currentPage = "others";
     }
 
 
     private void loadPage(String page) throws IOException {
+
+        if(currentPage.equals("chat_of_patient")){
+            Main.patientChatMap.addChat(patient, patient.getMyChat());
+            currentPage = "others";
+        }
         bp.setCenter(null);
 
         FXMLLoader loader = new FXMLLoader();
@@ -57,6 +70,9 @@ public class PatientPageController {
             System.out.println("chat_of_patient");
             ChatOfPatientController controller = loader.getController();
             controller.setPatient(patient);
+            controller.initializeManually();
+           // System.out.println("in page controller");
+
         }
         if(page.equals("patient_appointments")) {
             PatientAppointmentsController controller = loader.getController();
@@ -97,12 +113,16 @@ public class PatientPageController {
 
     public void chat(ActionEvent actionEvent) {
         try {
+
             loadPage("chat_of_patient");
+            currentPage = "chat_of_patient";
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
+
+
 
     public void setMain(Main main) {
         this.main = main;
@@ -110,11 +130,34 @@ public class PatientPageController {
 
     public void logOut(ActionEvent actionEvent) {
         try {
-            main.showLoginPage();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt"));
+            writer.write("");
+            writer.close();
+            boolean stat = false;
+            for(Patient p: Main.patientChatMap.chatMap.keySet()){
+                writeChats(p);
+                stat = true;
+            }
+           if(!stat) writeChats(patient);
+           main.showLoginPage();
         }
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    void writeChats(Patient patient) throws IOException {
+        try {
+            String content = patient.getUsername()+"@"+patient.getPass()+"|"+patient.getMyChat();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt", true));
+            writer.write(content);
+            writer.newLine();
+            writer.close();
+            System.out.println("File written successfully.");
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+
     }
 
     public void setOnMousePressed(MouseEvent mouseEvent) {

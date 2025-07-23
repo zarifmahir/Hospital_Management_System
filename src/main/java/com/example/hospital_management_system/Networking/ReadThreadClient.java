@@ -1,6 +1,7 @@
 package com.example.hospital_management_system.Networking;
 
 import com.example.hospital_management_system.doctor_page.ChatOfDoctorController;
+import com.example.hospital_management_system.doctor_page.ResidentPage;
 import com.example.hospital_management_system.patient_page.ChatOfPatientController;
 import javafx.scene.layout.VBox;
 
@@ -26,8 +27,10 @@ public class ReadThreadClient implements Runnable {
                 }
                 else if (o instanceof String && !((String) o).isEmpty()) {
 
-                    if(socketWrapper.getType().equals("Patient")) ChatOfPatientController.addLabel((String)o, socketWrapper.getvBoxOfMessages());
-                    else ChatOfDoctorController.addLabel((String)o, socketWrapper.getvBoxOfMessages());
+                    if(socketWrapper.getType().equals("Patient")) ChatOfPatientController.addLabel((String)o, socketWrapper.getvBoxOfMessages(), socketWrapper.getO());
+                    else if(socketWrapper.getType().equals("Resident")) ResidentPage.addLabel(socketWrapper.getName(), (String)o, socketWrapper.getvBoxOfMessages());
+                    else ChatOfDoctorController.addLabel(socketWrapper.getName(), (String)o, socketWrapper.getvBoxOfMessages());
+                    System.out.println("Hello");
                 }
             }
         } catch (Exception e) {

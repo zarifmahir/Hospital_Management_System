@@ -14,6 +14,7 @@ public class SocketWrapper {
     private boolean sendStatus;
     private String type;
     private VBox vBoxOfMessages;
+    private Object o;
 
     private String name;
 
@@ -75,5 +76,13 @@ public class SocketWrapper {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Object getO() {
+        return o;
+    }
+
+    public void setO(Object o) {
+        this.o = o;
     }
 }

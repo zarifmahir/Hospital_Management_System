@@ -2,6 +2,7 @@ package com.example.hospital_management_system.Networking;
 
 
 
+import com.example.hospital_management_system.patient_page.Patient;
 import javafx.scene.layout.VBox;
 
 import java.util.Scanner;
@@ -19,6 +20,7 @@ public class Client {
             //String clientName = scanner.nextLine();
             socketWrapper = new SocketWrapper(serverAddress, serverPort);
             socketWrapper.write(clientName);
+            socketWrapper.setName(clientName);
 
            RTC = new ReadThreadClient(socketWrapper);
            WTC = new WriteThreadClient(socketWrapper, clientName);
@@ -41,10 +43,14 @@ public class Client {
         socketWrapper.setvBoxOfMessages(vboxOfMessages);
     }
 
-
-    public static void main(String args[]) {
-//        String serverAddress = "127.0.0.1";
-//        int serverPort = 44444;
-//        new Client(serverAddress, serverPort);
+    public void setObType(Object obType){
+        socketWrapper.setO(obType);
     }
+
+
+//    public static void main(String args[]) {
+////        String serverAddress = "127.0.0.1";
+////        int serverPort = 44444;
+////        new Client(serverAddress, serverPort);
+//    }
 }

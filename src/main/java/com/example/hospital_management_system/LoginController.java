@@ -84,6 +84,9 @@ public class LoginController {
                             errorMessage.setText("Invalid username or password");
                         }
                     }
+//                    if(username.getText().equals("b") && password.getText().equals("111")){
+//                        main.showResidentPage();
+//                    }
                 }
             catch (Exception e){
                 e.printStackTrace();

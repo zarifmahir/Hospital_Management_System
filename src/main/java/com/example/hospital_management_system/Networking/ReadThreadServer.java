@@ -2,6 +2,9 @@ package com.example.hospital_management_system.Networking;
 
 
 
+import com.example.hospital_management_system.Main;
+import com.example.hospital_management_system.patient_page.Patient;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -29,11 +32,29 @@ public class ReadThreadServer implements Runnable {
                         nu.write(obj);
                     }
                 }
+//                else if(socketWrapper.getType().equals("Resident")){
+//                    System.out.println("hi");
+//                    String s = (String)o;
+//
+//                }
                 else if (o instanceof String) {
-                    System.out.println("Read message:"+o);
-                    if(clientMap.isEmpty()){
+                    String s = (String)o;
+                    if(s.startsWith("Res")){
+                        String[] spt = s.split("~");
+                        System.out.println(spt[1]);
+                        for(String st: clientMap.keySet()){
+                            if(st.equals(spt[1])){
+                                clientMap.get(st).write(spt[2]);
+                            }
+                        }
+//                        String name = Main.patientsMap.getPatient(spt[1]).getName();
+//                        clientMap.get(name).write(spt[2]);
+                    }
+//                    System.out.println("Read message:"+o);
+                    else if(clientMap.isEmpty()){
                         socketWrapper.write("No one available now");
                     }
+
                     else{
                         for(HashMap.Entry<String, SocketWrapper> entry : clientMap.entrySet()){
                             if(!entry.getValue().isClosed() && entry.getValue() != socketWrapper){

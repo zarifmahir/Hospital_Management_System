@@ -56,6 +56,7 @@ public class DoctorPageController {
         else if(page.equals("chat_of_doctor")) {
             ChatOfDoctorController controller = loader.getController();
             controller.setDoctor(doctor);
+            controller.initializeManually();
         }
 
         doctorBorderPane.setCenter(root);

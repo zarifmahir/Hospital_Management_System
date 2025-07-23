@@ -7,7 +7,9 @@ import com.example.hospital_management_system.appointment_system.*;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorPageController;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
+import com.example.hospital_management_system.doctor_page.ResidentPage;
 import com.example.hospital_management_system.patient_page.Patient;
+import com.example.hospital_management_system.patient_page.PatientChatMap;
 import com.example.hospital_management_system.patient_page.PatientPageController;
 import com.example.hospital_management_system.patient_page.PatientsMap;
 import com.example.hospital_management_system.register_page.RegistrationController;
@@ -30,6 +32,7 @@ public class Main extends Application {
     public static DoctorsMap doctorsMap;
     public static AdminMap adminMap;
     public static AppointmentMap appointmentMap;
+    public static PatientChatMap patientChatMap;
 
 
     @Override
@@ -49,6 +52,7 @@ public class Main extends Application {
         loadDoctors();
         loadAppointments();
         loadAdmins();
+        loadPatientChats();
 
         stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root, 1280, 720));
@@ -127,6 +131,18 @@ public class Main extends Application {
 
         stage.getScene().setRoot(root);
     }
+    public void showResidentPage() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("doctor_page/resident_page.fxml"));
+        Parent root = loader.load();
+
+        ResidentPage controller = loader.getController();
+        controller.setMain(this);
+        controller.initializeManually();
+
+        stage.getScene().setRoot(root);
+
+    }
 
     public void loadPatients() throws IOException {
         patientsMap = new PatientsMap();
@@ -135,6 +151,7 @@ public class Main extends Application {
             String line = br.readLine();
             if (line == null || line.length()<24) break;
             String [] values = line.split("<");
+            System.out.println("Values:"+values.length);
             Patient p = new Patient(values[0], Integer.parseInt(values[1]), values[2], Float.parseFloat(values[3]), Float.parseFloat(values[4]), values[5],
                     Integer.parseInt(values[6]), Integer.parseInt(values[7]), values[8], Boolean.parseBoolean(values[9]), Boolean.parseBoolean(values[10]), Boolean.parseBoolean(values[11]),
                     Boolean.parseBoolean(values[12]), Boolean.parseBoolean(values[13]), Boolean.parseBoolean(values[14]), Boolean.parseBoolean(values[15]), Boolean.parseBoolean(values[16]),
@@ -188,6 +205,21 @@ public class Main extends Application {
 //            Appointment a = new Appointment();  FINISH THIS LATER
 //            appointmentMap.add(a);
             System.out.println();
+        }
+        br.close();
+    }
+
+    public void loadPatientChats() throws IOException {
+        patientChatMap = new PatientChatMap();
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/ChatHistoryOfPatients.txt"));
+        while (true) {
+            String line = br.readLine();
+            if (line == null || line.length()<5) break;
+            String [] values = line.split("\\|");
+            if(values.length<2){break;}
+            //System.out.println("Values: "+values.length);
+            Patient p = patientsMap.getPatient(values[0]);
+            patientChatMap.addChat(p, values[1]);
         }
         br.close();
     }
