@@ -219,6 +219,7 @@ public class Main extends Application {
             if(values.length<2){break;}
             //System.out.println("Values: "+values.length);
             Patient p = patientsMap.getPatient(values[0]);
+            p.setMyChat(values[1]);
             patientChatMap.addChat(p, values[1]);
         }
         br.close();

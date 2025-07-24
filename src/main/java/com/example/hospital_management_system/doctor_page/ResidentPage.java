@@ -97,6 +97,7 @@ public class ResidentPage extends Application implements Initializable {
 
         hBox.getChildren().add(textFlow);
         messageContainer.getChildren().addAll(nameLabel, hBox);
+       // vBox.getChildren().add(messageContainer);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -166,13 +167,14 @@ public class ResidentPage extends Application implements Initializable {
         hBox.getChildren().add(textFlow);
 
         messageContainer.getChildren().addAll(nameLabel, hBox);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                vBoxOfMessages.getChildren().add(messageContainer);
-//                System.out.println(vBox);
-            }
-        });
+        vBoxOfMessages.getChildren().add(messageContainer);
+//        Platform.runLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                vBoxOfMessages.getChildren().add(messageContainer);
+////                System.out.println(vBox);
+//            }
+//        });
     }
 
 
@@ -204,7 +206,14 @@ public class ResidentPage extends Application implements Initializable {
            button.setPrefHeight(43);
            button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px;");
            button.setOnAction(e -> {
-              currentSelected = p;
+               try {
+                   main.loadPatientChats();
+                   vBoxOfMessages.getChildren().clear();
+                   //System.out.println(p.getMyChat());
+               } catch (IOException ex) {
+                   throw new RuntimeException(ex);
+               }
+               currentSelected =p;
               messagePane.setVisible(true);
               messageArea.clear();
               createVBoxOfMessages(currentSelected,vBoxOfMessages);
