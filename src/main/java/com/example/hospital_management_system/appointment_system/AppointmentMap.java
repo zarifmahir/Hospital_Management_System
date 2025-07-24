@@ -21,21 +21,27 @@ public class AppointmentMap {
         return appointmentMap.get(doctorName+"@"+date+"@"+time);
     }
 
-//    public List<Doctor> getDoctorList() {
-//        List<Doctor> doctorList = new ArrayList<>();
-//        for (Map.Entry<String, Doctor> entry : DoctorMap.entrySet()) {
-//            doctorList.add(entry.getValue());
-//        }
-//        return doctorList;
-//    }
-//
-//    public List<Doctor> getDepartmentWiseDoctors(String department) {
-//        List<Doctor> doctorList = new ArrayList<>();
-//        for (Map.Entry<String, Doctor> entry : DoctorMap.entrySet()) {
-//            if (entry.getValue().getDepartment().equals(department)) {
-//                doctorList.add(entry.getValue());
-//            }
-//        }
-//        return doctorList;
-//    }
+    public List<Appointment> getPatientAppointments(String patientName) {
+        List<Appointment> patientAppointments = new ArrayList<>();
+        for (Appointment a : appointmentMap.values()) {
+            if (a.getPatientName().equals(patientName)) {
+                patientAppointments.add(a);
+            }
+        }
+        return patientAppointments;
+    }
+
+    public List<Appointment> getDoctorAppointments(String doctorName) {
+        List<Appointment> doctorAppointments = new ArrayList<>();
+        for (Appointment a : appointmentMap.values()) {
+            if (a.getDoctorName().equals(doctorName)) {
+                doctorAppointments.add(a);
+            }
+        }
+        return doctorAppointments;
+    }
+
+    public List<Appointment> getAppointments() {
+        return new ArrayList<>(appointmentMap.values());
+    }
 }

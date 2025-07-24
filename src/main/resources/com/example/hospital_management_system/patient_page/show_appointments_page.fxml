@@ -11,14 +11,14 @@
 
 <AnchorPane prefHeight="580.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.ShowAppointmentsPage">
    <children>
-      <TableView layoutX="30.0" layoutY="66.0" prefHeight="449.0" prefWidth="890.0">
+      <TableView fx:id="tableView" layoutX="30.0" layoutY="66.0" prefHeight="449.0" prefWidth="890.0">
         <columns>
-          <TableColumn prefWidth="123.0" text="Appointment Id" />
-          <TableColumn prefWidth="126.0" text="Date" />
-            <TableColumn prefWidth="126.0" text="Time" />
-            <TableColumn prefWidth="247.0" text="Doctor Name" />
-            <TableColumn prefWidth="145.0" text="Specialization" />
-            <TableColumn prefWidth="145.0" text="Room No." />
+          <TableColumn fx:id="idCol" prefWidth="123.0" text="Appointment Id" />
+          <TableColumn fx:id="dateCol" prefWidth="137.0" text="Date" />
+            <TableColumn fx:id="timeCol" prefWidth="127.0" text="Time" />
+            <TableColumn fx:id="doctorCol" prefWidth="202.0" text="Doctor Name" />
+            <TableColumn fx:id="departmentCol" prefWidth="161.0" text="Department" />
+            <TableColumn fx:id="roomCol" prefWidth="139.0" text="Room No." />
         </columns>
       </TableView>
       <Label layoutX="30.0" layoutY="30.0" text="My Appointments">

@@ -4,6 +4,7 @@ import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.patient_page.Patient;
 
 import java.util.Date;
+import java.util.Random;
 
 public class Appointment {
     String doctorName;
@@ -12,13 +13,17 @@ public class Appointment {
 
     int id;
     String time;
+    String department;
+    int roomNo;
 
-    public Appointment(String doctorName, String patientName, String date, int id, String time) {
+    public Appointment(String doctorName, String patientName, String date, int id, String time, String department, int roomNo) {
         this.doctorName = doctorName;
         this.patientName = patientName;
         this.date = date;
         this.id = id;
         this.time = time;
+        this.department = department;
+        this.roomNo = roomNo;
     }
 
 
@@ -60,5 +65,21 @@ public class Appointment {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public int getRoomNo() {
+        return roomNo;
+    }
+
+    public void setRoomNo(int roomNo) {
+        this.roomNo = roomNo;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

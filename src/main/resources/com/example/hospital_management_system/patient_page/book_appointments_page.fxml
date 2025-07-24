@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="timeSlotLabel" prefHeight="580.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.BookAppointmentsPage">
+<AnchorPane fx:id="ap" prefHeight="580.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.patient_page.BookAppointmentsPage">
    <children>
       <DatePicker fx:id="datePicker" layoutX="187.0" layoutY="129.0" prefHeight="26.0" prefWidth="196.0" />
       <Label layoutX="22.0" layoutY="24.0" text="Select Department: ">

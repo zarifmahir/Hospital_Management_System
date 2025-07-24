@@ -202,8 +202,8 @@ public class Main extends Application {
             String line = br.readLine();
             if (line == null) break;
             String [] values = line.split("<");
-//            Appointment a = new Appointment();  FINISH THIS LATER
-//            appointmentMap.add(a);
+            Appointment a = new Appointment(values[0], values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]));
+            appointmentMap.addAppointment(a);
             System.out.println();
         }
         br.close();

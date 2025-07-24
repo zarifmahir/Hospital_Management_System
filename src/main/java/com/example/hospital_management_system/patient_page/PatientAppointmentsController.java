@@ -12,6 +12,8 @@ public class PatientAppointmentsController {
     @FXML
     private BorderPane bp;
 
+    public Patient patient;
+
 
     private void loadPage(String page) throws IOException {
         bp.setCenter(null);
@@ -19,6 +21,15 @@ public class PatientAppointmentsController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();
+
+        if (page.equals("book_appointments_page")) {
+            BookAppointmentsPage controller = loader.getController();
+            controller.setPatient(patient);
+        }
+        else if (page.equals("show_appointments_page")) {
+            ShowAppointmentsPage controller = loader.getController();
+            controller.setPatient(patient);
+        }
 
         bp.setCenter(root);
     }
@@ -53,6 +64,7 @@ public class PatientAppointmentsController {
     }
 
     public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 }
 

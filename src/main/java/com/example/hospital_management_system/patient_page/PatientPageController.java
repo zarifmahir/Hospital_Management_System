@@ -74,7 +74,7 @@ public class PatientPageController {
            // System.out.println("in page controller");
 
         }
-        if(page.equals("patient_appointments")) {
+        else if(page.equals("patient_appointments")) {
             PatientAppointmentsController controller = loader.getController();
             controller.setPatient(patient);
         }
