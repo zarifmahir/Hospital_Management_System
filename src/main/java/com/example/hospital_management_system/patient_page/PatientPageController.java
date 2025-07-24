@@ -136,7 +136,7 @@ public class PatientPageController {
             boolean stat = false;
             for(Patient p: Main.patientChatMap.chatMap.keySet()){
                 writeChats(p);
-                stat = true;
+                if(p.getName().equals(patient.getName())) stat = true;
             }
            if(!stat) writeChats(patient);
            main.showLoginPage();

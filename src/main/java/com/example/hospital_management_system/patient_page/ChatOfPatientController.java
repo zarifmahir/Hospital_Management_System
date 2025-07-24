@@ -123,13 +123,14 @@ public class ChatOfPatientController {
         hBox.getChildren().add(textFlow);
 
         messageContainer.getChildren().addAll(nameLabel, hBox);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                vBoxOfMessages.getChildren().add(messageContainer);
-//                System.out.println(vBox);
-            }
-        });
+        vBoxOfMessages.getChildren().add(messageContainer);
+//        Platform.runLater(new Runnable() {
+//            @Override
+//            public void run() {
+//
+////                System.out.println(vBox);
+//            }
+//        });
     }
 
 
@@ -143,9 +144,9 @@ public class ChatOfPatientController {
 
 
             if(patient.getMyChat().isEmpty()){
-                patient.setMyChat(messageToSend+",R");
+                patient.setMyChat(messageToSend+"~R");
             }
-            else patient.setMyChat(patient.getMyChat() + "<"+messageToSend+",R");
+            else patient.setMyChat(patient.getMyChat() + "<"+messageToSend+"~R");
             c.sendMessage(messageToSend);
             messageArea.clear();
         }
@@ -174,8 +175,8 @@ public class ChatOfPatientController {
 
         messageContainer.getChildren().addAll(nameLabel, hBox);
         Patient ptn = (Patient)p;
-        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+",L");
-
+        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~L");
+        //vBox.getChildren().add(messageContainer);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
