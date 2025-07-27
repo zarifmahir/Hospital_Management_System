@@ -43,7 +43,7 @@ public class AdminPageController {
     private Button systemSettingsButton;
 
     @FXML
-    private Button userManagementButton;
+    private Button staffManagementButton;
     private Main main;
 
     public void setMain(Main main) {
@@ -90,6 +90,16 @@ public class AdminPageController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @FXML
+    void staffPressed(ActionEvent event) {
+        try {
+            loadPage("staff_page");
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -302,17 +312,17 @@ public class AdminPageController {
 
     @FXML
     void userHover(MouseEvent event) {
-        userManagementButton.setStyle("-fx-background-color: lightgray;");
+        staffManagementButton.setStyle("-fx-background-color: lightgray;");
     }
 
     @FXML
     void userHoverExited(MouseEvent event) {
-        userManagementButton.setStyle("-fx-background-color: transparent;");
+        staffManagementButton.setStyle("-fx-background-color: transparent;");
     }
 
     @FXML
     void userPressed(MouseEvent event) {
-        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), userManagementButton);
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), staffManagementButton);
         scaleDown.setToX(0.95);
         scaleDown.setToY(0.95);
         scaleDown.play();
@@ -320,7 +330,7 @@ public class AdminPageController {
 
     @FXML
     void userReleased(MouseEvent event) {
-        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), userManagementButton);
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), staffManagementButton);
         scaleUp.setToX(1);
         scaleUp.setToY(1);
         scaleUp.play();

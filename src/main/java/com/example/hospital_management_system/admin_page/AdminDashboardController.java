@@ -12,6 +12,8 @@ import javafx.scene.shape.Circle;
 
 import java.util.Objects;
 
+import static com.example.hospital_management_system.Main.staffMap;
+
 public class AdminDashboardController {
     @FXML
     private AnchorPane apTop;
@@ -47,11 +49,11 @@ public class AdminDashboardController {
         pfpCircle.setFill(new ImagePattern(image));
 
 
-//        numAppointmentField.setText(String.valueOf(Main.appointmentMap.size()));
+        numAppointmentField.setText(String.valueOf(Main.appointmentMap.size()));
         numDoctorField.setText(String.valueOf(Main.doctorsMap.size()));
         numPatientField.setText(String.valueOf(Main.patientsMap.size()));
 //      numReportField.setText(Re)
-        //numStaffField.setText(StaffMap.size());
+        numStaffField.setText(String.valueOf(staffMap.size()));
     }
 
 

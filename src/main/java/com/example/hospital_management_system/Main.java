@@ -1,5 +1,6 @@
 package com.example.hospital_management_system;
 
+import com.example.hospital_management_system.Staff.StaffMap;
 import com.example.hospital_management_system.admin_page.Admin;
 import com.example.hospital_management_system.admin_page.AdminMap;
 import com.example.hospital_management_system.admin_page.AdminPageController;
@@ -13,6 +14,7 @@ import com.example.hospital_management_system.patient_page.PatientChatMap;
 import com.example.hospital_management_system.patient_page.PatientPageController;
 import com.example.hospital_management_system.patient_page.PatientsMap;
 import com.example.hospital_management_system.register_page.RegistrationController;
+import com.example.hospital_management_system.Staff.*;
 import com.example.hospital_management_system.register_page.SuccessPage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +35,7 @@ public class Main extends Application {
     public static AdminMap adminMap;
     public static AppointmentMap appointmentMap;
     public static PatientChatMap patientChatMap;
+    public static StaffMap staffMap;
 
 
     @Override
@@ -48,11 +51,13 @@ public class Main extends Application {
 
         LoginController controller = loader.getController();
         controller.setMain(this);
+
         loadPatients();
         loadDoctors();
         loadAppointments();
         loadAdmins();
         loadPatientChats();
+        loadStaff();
 
         stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root, 1280, 720));
@@ -209,6 +214,39 @@ public class Main extends Application {
         br.close();
     }
 
+    public void loadStaff() throws IOException {
+        staffMap = new StaffMap();
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/StaffList.txt"));
+        while (true) {
+            String line = br.readLine();
+            if (line == null) break;
+            String [] values = line.split("\\|");
+
+            String type = values[0];
+            String name = values[1];
+            String dept = values[2];
+            String years = values[3];
+            String phone = values[4];
+            String email = values[5];
+            String address = values[6];
+
+            if (type.equals("Nurse")) {
+                staffMap.addNurse(new Nurse(name, dept, years, phone, email, address));
+                System.out.println("adding nurse" + name);
+            }
+            else if (type.equals("BedBoy")) {
+                staffMap.addBedBoy(new BedBoy(name, dept, years, phone, email, address));
+                System.out.println("adding r" + name);
+            }
+            else if (type.equals("Receptionist")) {
+                staffMap.addReceptionist(new Receptionist(name, dept, years, phone, email, address));
+                System.out.println("adding wb" + name);
+            }
+
+        }
+        br.close();
+    }
+
     public void loadPatientChats() throws IOException {
         patientChatMap = new PatientChatMap();
         BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/ChatHistoryOfPatients.txt"));
@@ -233,10 +271,7 @@ public class Main extends Application {
         ButtonType buttonType2 = new ButtonType("No");
         alert.getButtonTypes().setAll(buttonType, buttonType2);
         alert.showAndWait();
-        if (alert.getResult() == buttonType2){
-            return false;
-        }
-        return true;
+        return alert.getResult() != buttonType2;
     }
 
     public static void main(String[] args) throws IOException{

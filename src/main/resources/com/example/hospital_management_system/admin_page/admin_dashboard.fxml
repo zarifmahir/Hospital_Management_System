@@ -17,33 +17,33 @@
    <top>
       <AnchorPane fx:id="apTop" prefHeight="116.0" prefWidth="990.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutY="-6.0" prefHeight="140.0" prefWidth="990.0">
+            <AnchorPane layoutY="-1.0" prefHeight="140.0" prefWidth="990.0">
                <children>
                   <Circle fx:id="pfpCircle" fill="#1f93ff00" layoutX="80.0" layoutY="70.0" radius="57.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <Label fx:id="nameField" layoutX="160.0" layoutY="20.0" prefHeight="17.0" prefWidth="309.0" text="Name" textFill="#511f1f">
+                  <Label fx:id="nameField" layoutX="157.0" layoutY="46.0" prefHeight="17.0" prefWidth="309.0" text="Name" textFill="#511f1f">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="designationField" layoutX="160.0" layoutY="47.0" prefHeight="17.0" prefWidth="309.0" text="Designation">
+                  <Label fx:id="designationField" layoutX="157.0" layoutY="73.0" prefHeight="17.0" prefWidth="309.0" text="Designation">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="idField" alignment="CENTER" layoutX="837.0" layoutY="21.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
-                  <Label layoutX="771.0" layoutY="21.0" prefHeight="17.0" prefWidth="77.0" text="UserID: ">
+                  <Label fx:id="idField" alignment="CENTER" layoutX="837.0" layoutY="34.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
+                  <Label layoutX="771.0" layoutY="34.0" prefHeight="17.0" prefWidth="77.0" text="UserID: ">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="roomField" alignment="CENTER" layoutX="837.0" layoutY="48.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
-                  <Label alignment="CENTER" layoutX="840.0" layoutY="76.0" prefHeight="17.0" prefWidth="154.0" text="9 am- 6 pm" />
-                  <Label layoutX="771.0" layoutY="48.0" prefHeight="17.0" prefWidth="77.0" text="Room No.:">
+                  <Label fx:id="roomField" alignment="CENTER" layoutX="837.0" layoutY="61.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
+                  <Label alignment="CENTER" layoutX="840.0" layoutY="89.0" prefHeight="17.0" prefWidth="154.0" text="Day" />
+                  <Label layoutX="771.0" layoutY="61.0" prefHeight="17.0" prefWidth="77.0" text="Room No.:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="771.0" layoutY="76.0" prefHeight="17.0" prefWidth="77.0" text="Shift:">
+                  <Label layoutX="771.0" layoutY="89.0" prefHeight="17.0" prefWidth="77.0" text="Shift:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

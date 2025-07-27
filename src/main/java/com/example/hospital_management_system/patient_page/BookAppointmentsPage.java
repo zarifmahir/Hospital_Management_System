@@ -156,6 +156,8 @@ public class BookAppointmentsPage implements Initializable {
         }
     }
 
+    public Doctor selectedDoctor;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> departmentList = FXCollections.observableArrayList("Medicine", "Surgery", "Pediatrics", "Obstetrics", "Gynecology",
