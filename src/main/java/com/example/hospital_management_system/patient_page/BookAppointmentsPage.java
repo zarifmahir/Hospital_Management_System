@@ -172,8 +172,9 @@ public class BookAppointmentsPage implements Initializable {
                 List<Doctor> tempDoctorList = Main.doctorsMap.getDepartmentWiseDoctors(selectedDepartment);
                 doctorList.clear();
                 for (Doctor doctor : tempDoctorList) {
-                    doctorList.add(doctor.getName());
+                    doctorList.add(doctor.getName()+" "+"("+doctor.getId()+")");
                 }
+
 
                 doctorDropdown.setItems(doctorList);
             }
@@ -200,42 +201,14 @@ public class BookAppointmentsPage implements Initializable {
         }
 
         String department = departmentDropdown.getValue();
-        int roomNo = 0;
 
-        if (department.equals("Medicine")) {
-            roomNo = random.nextInt(50) + 105;
-        }
-        else if (department.equals("Surgery")) {
-            roomNo = random.nextInt(50) + 205;
-        }
-        else if (department.equals("Pediatrics")) {
-            roomNo = random.nextInt(50) + 305;
-        }
-        else if (department.equals("Obstetrics")) {
-            roomNo = random.nextInt(50) + 405;
-        }
-        else if (department.equals("Gynecology")) {
-            roomNo = random.nextInt(50) + 505;
-        }
-        else if (department.equals("Orthopedics")) {
-            roomNo = random.nextInt(50) + 605;
-        }
-        else if (department.equals("Cardiology")) {
-            roomNo = random.nextInt(50) + 705;
-        }
-        else if (department.equals("Neurology")) {
-            roomNo = random.nextInt(50) + 805;
-        }
-        else if (department.equals("Pathology")) {
-            roomNo = random.nextInt(50) + 905;
-        }
-        else if (department.equals("Psychiatry")) {
-            roomNo = random.nextInt(50) + 1005;
-        }
-        else if (department.equals("Dermatology")) {
-            roomNo = random.nextInt(50) + 1105;
-        }
 
+        String[] s1 = doctorDropdown.getValue().split("\\(");
+        String[] s2 = s1[1].split("\\)");
+        String ID = s2[0];
+        Doctor selectedDoc = Main.doctorsMap.getDoctorById(ID);
+
+        int roomNo = Integer.parseInt(selectedDoc.getRoom());
         return new Appointment(doctorDropdown.getValue(), patient.getName(), date, randomId, timeDropdown.getValue(), department, roomNo);
     }
 

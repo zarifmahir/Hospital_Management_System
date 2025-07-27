@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.DoctorPanelController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.DoctorPanelController">
    <center>
       <AnchorPane prefHeight="675.0" prefWidth="990.0" BorderPane.alignment="CENTER">
          <children>
@@ -20,10 +15,8 @@
                      <columns>
                         <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
                         <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                        <TableColumn fx:id="specialization" prefWidth="75.0" text="Specialization" />
                         <TableColumn fx:id="department" prefWidth="75.0" text="Department" />
                         <TableColumn fx:id="phone" prefWidth="75.0" text="Phone" />
-                        <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
                         <TableColumn fx:id="shift" prefWidth="75.0" text="Shift" />
                         <TableColumn fx:id="room" prefWidth="75.0" text="Room" />
                      </columns>

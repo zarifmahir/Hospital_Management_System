@@ -1,10 +1,9 @@
 package com.example.hospital_management_system.Networking;
 
-
-
 import com.example.hospital_management_system.patient_page.Patient;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Client {
@@ -46,6 +45,10 @@ public class Client {
     public void setObType(Object obType){
         socketWrapper.setO(obType);
     }
+
+//    public Object getMessage() throws IOException, ClassNotFoundException {
+//        return  socketWrapper.read();
+//    }
 
 
 //    public static void main(String args[]) {

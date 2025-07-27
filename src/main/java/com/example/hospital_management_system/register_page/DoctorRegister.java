@@ -11,8 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,6 +25,7 @@ public class DoctorRegister {
     public ToggleGroup doctorGender;
     public Button certificateUpload;
     public Button degreeUpload;
+    public TextField dID;
     @FXML
     private TextField bloodGroup;
 
@@ -83,16 +83,40 @@ public class DoctorRegister {
 
     private String img;
 
+    private int id;
+
+    private String updated;
 
 
-
-    public void setMain(Main main) {
+    public void setMain(Main main) throws IOException {
         initialize();
         this.main = main;
+        setdID();
     }
 
     private String department;
 
+    private void setdID() throws IOException {
+        dID.setEditable(false);
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/Numbers.txt"));
+        String idLine = br.readLine();
+        br.close();
+        String[] values = idLine.split("\\|");
+//        System.out.println(values[1]);
+//        System.out.println("Here");
+        id = Integer.parseInt(values[1])+1;
+        updated = values[0]+"|"+ String.valueOf(id);
+        if(id<10) dID.setPromptText("00"+String.valueOf(id));
+        else if(id<100) dID.setPromptText("0"+String.valueOf(id));
+        else dID.setPromptText(String.valueOf(id));
+    }
+
+    public void updateNumber() throws IOException {
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/Numbers.txt"));
+        bw.write(updated);
+        bw.close();
+    }
 
     @FXML
     private void initialize() {
@@ -204,8 +228,11 @@ public class DoctorRegister {
         LocalDate birthDate = dateOfBirth.getValue();
         LocalDate today = LocalDate.now();
         Period age = Period.between(birthDate, today);
+        String idStr = String.valueOf(id);
+        if(id<10) idStr = "00"+String.valueOf(id);
+        else if(id<100) idStr = "0"+String.valueOf(id);
 
-        Doctor doctor = new Doctor(doctorName.getText(), age.getYears(), selected.getText(), bloodGroup.getText(), email.getText(), mobile.getText(),
+        Doctor doctor = new Doctor(idStr, doctorName.getText(), age.getYears(), selected.getText(), bloodGroup.getText(), email.getText(), mobile.getText(),
                 emergencyContact.getText(), degrees.getText(), institution.getText(), pgQualification.getText(), Integer.parseInt(licenseNumber.getText()),
                 departmentDropdown.getValue(), Integer.parseInt(experience.getText()), medicalCouncil.getText(), img);
         return doctor;

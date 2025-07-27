@@ -73,10 +73,10 @@ public class RegistrationController {
     public void initialize() {
         ObservableList<String> list = FXCollections.observableArrayList("Doctor", "Patient");
         dropdownR.setItems(list);
-        dropdownR.valueProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) {
+        dropdownR.setOnAction(event -> {
+            if (dropdownR.getValue() != null) {
                 try {
-                    loadPage(newVal);
+                    loadPage(dropdownR.getValue());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -96,6 +96,7 @@ public class RegistrationController {
         username.setVisible(false);
         password.setVisible(false);
         confirmPassword.setVisible(false);
+        buttonForSignUp.setVisible(false);
     }
 
     private void setAllVisible() {
@@ -108,6 +109,7 @@ public class RegistrationController {
         username.setVisible(true);
         password.setVisible(true);
         confirmPassword.setVisible(true);
+        buttonForSignUp.setVisible(true);
     }
 
 
@@ -126,7 +128,7 @@ public class RegistrationController {
         }
     }
 
-    public void signUp(ActionEvent actionEvent) {
+    public void signUp(ActionEvent actionEvent) throws IOException {
         if(type.equals("Patient")){
             if(patientRegister.checkEmpty() || username.getText().isEmpty() || password.getText().isEmpty() || confirmPassword.getText().isEmpty()){
                 errorMessage2.setText("Please fill all the fields");
@@ -140,6 +142,7 @@ public class RegistrationController {
                 p.setPassAndId(password.getText(), username.getText());
                 writePatient(p);
                 try{
+                    patientRegister.updateNumber();
                     main.showSuccessPage("Successfully registered!!!");
                 }
                 catch (Exception e){
@@ -156,6 +159,7 @@ public class RegistrationController {
             }
             else{
                 Doctor doctor = doctorRegister.buildDoctor();
+                doctorRegister.updateNumber();
                 doctor.setUserNameAndPass(username.getText(), password.getText());
                 writeDoctor(doctor);
                 try{
@@ -172,11 +176,11 @@ public class RegistrationController {
 
     void writePatient(Patient p){
         try {
-            String content = p.getName() + "<" + p.getAge() +"<" +p.getGender() +"<"+ p.getWeight() +"<" +p.getHeight() +"<" +p.getBloodType() +"<" +
-                    p.getMobile()+"<" +p.getEmergencyContact()+"<"+p.getEmail()+"<"+p.getDiabetes() +"<"+p.getAsthma() +"<"+p.getHighBp() +"<"+
-                    p.getEpilepsy() +"<"+p.getCancer() +"<"+p.getStroke() +"<"+p.getKidney() +"<"+p.getLiver() +"<"+
-                    p.getAllergies() +"<"+p.getSurgeries() +"<"+p.getFamilyHistory() +"<"+p.getMedications() +"<"+p.getImage()+"<"+
-                    p.getUsername()+"<"+p.getPass();
+            String content = p.getId() + "|" + p.getName() + "|" + p.getAge() +"|" +p.getGender() +"|"+ p.getWeight() +"|" +p.getHeight() +"|" +p.getBloodType() +"|" +
+                    p.getMobile()+"|" +p.getEmergencyContact()+"|"+p.getEmail()+"|"+p.getDiabetes() +"|"+p.getAsthma() +"|"+p.getHighBp() +"|"+
+                    p.getEpilepsy() +"|"+p.getCancer() +"|"+p.getStroke() +"|"+p.getKidney() +"|"+p.getLiver() +"|"+
+                    p.getAllergies() +"|"+p.getSurgeries() +"|"+p.getFamilyHistory() +"|"+p.getMedications() +"|"+p.getImage()+"|"+
+                    p.getUsername()+"|"+p.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt", true));
             writer.write(content);
             writer.newLine();
@@ -190,10 +194,10 @@ public class RegistrationController {
 
     void writeDoctor(Doctor doctor){
         try{
-            String content = doctor.getName() + "<" + doctor.getAge() + "<" + doctor.getGender() + "<" + doctor.getBloodGroup() + "<" + doctor.getEmail() + "<"
-                    + doctor.getMobile() + "<" + doctor.getEmergencyContact() + "<" + doctor.getMedicalDegree() + "<" + doctor.getInstitution() + "<" + doctor.getPgQualification()
-                    + "<" + doctor.getMedicalLicense() + "<" + doctor.getDepartment() + "<" + doctor.getYearsExperience() + "<" + doctor.getMedicalCouncil()+"<"+doctor.getImage()
-                    +"<"+doctor.getUserName()+"<"+doctor.getPass();
+            String content = doctor.getId()+"|"+doctor.getName() + "|" + doctor.getAge() + "|" + doctor.getGender() + "|" + doctor.getBloodGroup() + "|" + doctor.getEmail() + "|"
+                    + doctor.getMobile() + "|" + doctor.getEmergencyContact() + "|" + doctor.getMedicalDegree() + "|" + doctor.getInstitution() + "|" + doctor.getPgQualification()
+                    + "|" + doctor.getMedicalLicense() + "|" + doctor.getDepartment() + "|" + doctor.getYearsExperience() + "|" + doctor.getMedicalCouncil()+"|"+doctor.getImage()
+                    +"|"+doctor.getUserName()+"|"+doctor.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt", true));
             writer.write(content);
             writer.newLine();

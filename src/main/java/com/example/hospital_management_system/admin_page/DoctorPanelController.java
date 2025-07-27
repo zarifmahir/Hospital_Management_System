@@ -48,9 +48,6 @@ public class DoctorPanelController implements Initializable {
     @FXML
     private TableColumn<Doctor, String> shift;
 
-    @FXML
-    private TableColumn<Doctor, String> specialization;
-
     private boolean selectedStatus;
 
     private Main main;
@@ -59,8 +56,8 @@ public class DoctorPanelController implements Initializable {
         this.main = main;
     }
 
-    @FXML
-    private TableColumn<Doctor, String> status;
+    //@FXML
+   // private TableColumn<Doctor, String> status;
 
     @FXML
     void deleteButton(ActionEvent event) {
@@ -85,8 +82,7 @@ public class DoctorPanelController implements Initializable {
         phone.setCellValueFactory(new PropertyValueFactory<Doctor, Integer>("mobile"));
         room.setCellValueFactory(new PropertyValueFactory<Doctor, String>("room"));
         shift.setCellValueFactory(new PropertyValueFactory<Doctor, String>("shift"));
-        specialization.setCellValueFactory(new PropertyValueFactory<Doctor, String>("specialization"));
-        status.setCellValueFactory(new PropertyValueFactory<Doctor, String>("status"));
+        //status.setCellValueFactory(new PropertyValueFactory<Doctor, String>("status"));
 
         List<Doctor> doctorList = Main.doctorsMap.getDoctorList();
         for(Doctor doctor:doctorList){

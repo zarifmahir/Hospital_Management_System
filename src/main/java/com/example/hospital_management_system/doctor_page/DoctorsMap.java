@@ -45,4 +45,13 @@ public class DoctorsMap {
         return doctorList;
     }
 
+    public Doctor getDoctorById(String id) {
+        for(Doctor doctor : DoctorMap.values()){
+            if(doctor.getId().equals(id)){
+                return doctor;
+            }
+        }
+        return null;
+    }
+
 }

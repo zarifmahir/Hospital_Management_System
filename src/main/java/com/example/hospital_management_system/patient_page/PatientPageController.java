@@ -128,17 +128,22 @@ public class PatientPageController {
         this.main = main;
     }
 
+    public static void reloadPatientChats(Patient patient) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt"));
+        writer.write("");
+        writer.close();
+        boolean stat = false;
+        for(Patient p: Main.patientChatMap.chatMap.keySet()){
+            writeChats(p);
+            if(p.getName().equals(patient.getName())) stat = true;
+        }
+        if(!stat) writeChats(patient);
+        System.out.println("Written successfully");
+    }
+
     public void logOut(ActionEvent actionEvent) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt"));
-            writer.write("");
-            writer.close();
-            boolean stat = false;
-            for(Patient p: Main.patientChatMap.chatMap.keySet()){
-                writeChats(p);
-                if(p.getName().equals(patient.getName())) stat = true;
-            }
-           if(!stat) writeChats(patient);
+            reloadPatientChats(patient);
            main.showLoginPage();
         }
         catch (Exception e){
@@ -146,7 +151,7 @@ public class PatientPageController {
         }
     }
 
-    void writeChats(Patient patient) throws IOException {
+   private static void writeChats(Patient patient) throws IOException {
         try {
             String content = patient.getUsername()+"@"+patient.getPass()+"|"+patient.getMyChat();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt", true));
