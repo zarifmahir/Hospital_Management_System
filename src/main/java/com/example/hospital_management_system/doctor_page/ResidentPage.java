@@ -3,6 +3,7 @@ package com.example.hospital_management_system.doctor_page;
 import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.Networking.Client;
 import com.example.hospital_management_system.patient_page.Patient;
+import com.example.hospital_management_system.patient_page.PatientPageController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -52,6 +53,8 @@ public class ResidentPage extends Application implements Initializable {
     private Main main;
 
     private Patient currentSelected;
+
+
 
 
     public void initializeManually() {
@@ -195,25 +198,31 @@ public class ResidentPage extends Application implements Initializable {
 
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         messagePane.setVisible(false);
+        patientsBox.setSpacing(5);
        for(Patient p: Main.patientChatMap.chatMap.keySet()){
            HBox hBox = new HBox();
            hBox.setAlignment(Pos.CENTER_LEFT);
            Button button = new Button("Name: "+p.getName());
            button.setPrefWidth(286);
            button.setPrefHeight(43);
-           button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px;");
+           button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 40");
+           button.setUserData(p);
            button.setOnAction(e -> {
+               Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                try {
+                   c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                    main.loadPatientChats();
                    vBoxOfMessages.getChildren().clear();
                    //System.out.println(p.getMyChat());
                } catch (IOException ex) {
                    throw new RuntimeException(ex);
                }
-               currentSelected =p;
+               currentSelected = temp;
               messagePane.setVisible(true);
               messageArea.clear();
               createVBoxOfMessages(currentSelected,vBoxOfMessages);

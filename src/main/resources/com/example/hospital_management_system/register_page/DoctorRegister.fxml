@@ -71,12 +71,12 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <ImageView fx:id="doctorImage" fitHeight="169.0" fitWidth="171.0" layoutX="673.0" layoutY="36.0" pickOnBounds="true">
+      <ImageView fx:id="doctorImage" fitHeight="169.0" fitWidth="171.0" layoutX="563.0" layoutY="36.0" pickOnBounds="true">
          <image>
             <Image url="@../../../../images/blank-profile-picture.png" />
          </image>
       </ImageView>
-      <Button layoutX="709.0" layoutY="221.0" mnemonicParsing="false" onAction="#uploadPhoto" text="Upload Photo" />
+      <Button layoutX="599.0" layoutY="221.0" mnemonicParsing="false" onAction="#uploadPhoto" text="Upload Photo" />
       <Label layoutX="517.0" layoutY="332.0" text="Medical License Number:">
          <font>
             <Font name="Times New Roman" size="21.0" />
@@ -156,5 +156,11 @@
          </font>
       </Label>
       <ChoiceBox fx:id="departmentDropdown" layoutX="740.0" layoutY="381.0" prefHeight="31.0" prefWidth="200.0" />
+      <Label layoutX="751.0" layoutY="86.0" text="Doctor ID: ">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="dID" layoutX="839.0" layoutY="83.0" prefHeight="19.0" prefWidth="80.0" />
    </children>
 </AnchorPane>

@@ -51,6 +51,9 @@ public class ReadThreadServer implements Runnable {
 //                        clientMap.get(name).write(spt[2]);
                     }
 //                    System.out.println("Read message:"+o);
+//                    else if(s.equals("#RefreshedSuccessfully")){
+//                        socketWrapper.write("#RefreshedSuccessfully");
+//                    }
                     else if(clientMap.isEmpty()){
                         socketWrapper.write("No one available now");
                     }

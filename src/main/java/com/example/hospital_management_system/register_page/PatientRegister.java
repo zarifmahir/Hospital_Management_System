@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
-import java.io.File;
+import java.io.*;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.Period;
@@ -23,6 +23,7 @@ public class PatientRegister {
 
     @FXML
     public TextField height;
+    public TextField pID;
 
     @FXML
     private CheckBox allergies;
@@ -111,18 +112,42 @@ public class PatientRegister {
 
     private String img;
 
+    private String updated;
+
+    private int id;
 
 
-
-    public void setMain(Main main) {
+    public void setMain(Main main) throws IOException {
         initialize();
         this.main = main;
+        setpID();
+    }
+
+    private void setpID() throws IOException {
+        pID.setEditable(false);
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/Numbers.txt"));
+        String idLine = br.readLine();
+        br.close();
+        String[] values = idLine.split("\\|");
+        System.out.println(values[0]);
+        System.out.println("Here");
+        id = Integer.parseInt(values[0])+1;
+        updated = String.valueOf(id)+"|"+values[1];
+        if(id<10) pID.setPromptText("00"+String.valueOf(id));
+        else if(id<100) pID.setPromptText("0"+String.valueOf(id));
+        else pID.setPromptText(String.valueOf(id));
+    }
+
+    public void updateNumber() throws IOException {
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/Numbers.txt"));
+        bw.write(updated);
+        bw.close();
     }
 
 
     @FXML
-    private void initialize() { //to select only one gender
-        // Optionally listen to selection changes
+    private void initialize() throws IOException {
             dateOfBirth.getEditor().setDisable(true);
             dateOfBirth.getEditor().setOpacity(1);
         gender.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
@@ -186,8 +211,11 @@ public class PatientRegister {
         LocalDate birthDate = dateOfBirth.getValue();
         LocalDate today = LocalDate.now();
         Period age = Period.between(birthDate, today);
+        String idStr = String.valueOf(id);
+        if(id<10) idStr = "00"+String.valueOf(id);
+        else if(id<100) idStr = "0"+String.valueOf(id);
 
-        Patient p = new Patient(patientName.getText(), age.getYears(),  selected.getText(), Float.parseFloat(weight.getText()), Float.parseFloat(height.getText()), bloodGroup.getText(),
+        Patient p = new Patient(idStr, patientName.getText(), age.getYears(),  selected.getText(), Float.parseFloat(weight.getText()), Float.parseFloat(height.getText()), bloodGroup.getText(),
                 Integer.parseInt(mobile.getText()), Integer.parseInt(emergencyContact.getText()), email.getText(), diabetes.isSelected(), asthma.isSelected(), highBP.isSelected(), epilepsy.isSelected(),
                 cancer.isSelected(), stroke.isSelected(), kidneyDisease.isSelected(), liverDisease.isSelected(), allergies.isSelected(), surgeries.isSelected(), familyHistory.isSelected(),
                 medications.isSelected(), img);

@@ -33,6 +33,8 @@ public class Main extends Application {
     public static AdminMap adminMap;
     public static AppointmentMap appointmentMap;
     public static PatientChatMap patientChatMap;
+    public static Integer[] roomNos = new Integer[12];
+
 
 
     @Override
@@ -48,11 +50,15 @@ public class Main extends Application {
 
         LoginController controller = loader.getController();
         controller.setMain(this);
+        for (int i = 1; i < 12; i++) {
+            roomNos[i] = 100 * i + 5;
+        }
         loadPatients();
         loadDoctors();
         loadAppointments();
         loadAdmins();
         loadPatientChats();
+
 
         stage.setTitle("Hospital Management System");
         stage.setScene(new Scene(root, 1280, 720));
@@ -150,14 +156,14 @@ public class Main extends Application {
         while (true) {
             String line = br.readLine();
             if (line == null || line.length()<24) break;
-            String [] values = line.split("<");
+            String [] values = line.split("\\|");
             System.out.println("Values:"+values.length);
-            Patient p = new Patient(values[0], Integer.parseInt(values[1]), values[2], Float.parseFloat(values[3]), Float.parseFloat(values[4]), values[5],
-                    Integer.parseInt(values[6]), Integer.parseInt(values[7]), values[8], Boolean.parseBoolean(values[9]), Boolean.parseBoolean(values[10]), Boolean.parseBoolean(values[11]),
-                    Boolean.parseBoolean(values[12]), Boolean.parseBoolean(values[13]), Boolean.parseBoolean(values[14]), Boolean.parseBoolean(values[15]), Boolean.parseBoolean(values[16]),
-                    Boolean.parseBoolean(values[17]), Boolean.parseBoolean(values[18]), Boolean.parseBoolean(values[19]), Boolean.parseBoolean(values[20]), values[21]);
-            p.setPassAndId(values[23], values[22]);
-            String userAndPass = values[22] + "@" + values[23];
+            Patient p = new Patient(values[0], values[1], Integer.parseInt(values[2]), values[3], Float.parseFloat(values[4]), Float.parseFloat(values[5]), values[6],
+                    Integer.parseInt(values[7]), Integer.parseInt(values[8]), values[9], Boolean.parseBoolean(values[10]), Boolean.parseBoolean(values[11]), Boolean.parseBoolean(values[12]),
+                    Boolean.parseBoolean(values[13]), Boolean.parseBoolean(values[14]), Boolean.parseBoolean(values[15]), Boolean.parseBoolean(values[16]), Boolean.parseBoolean(values[17]),
+                    Boolean.parseBoolean(values[18]), Boolean.parseBoolean(values[19]), Boolean.parseBoolean(values[20]), Boolean.parseBoolean(values[21]), values[22]);
+            p.setPassAndId(values[24], values[23]);
+            String userAndPass = values[23] + "@" + values[24];
             patientsMap.addPatient(p);
             System.out.println();
         }
@@ -184,11 +190,11 @@ public class Main extends Application {
         while (true) {
             String line = br.readLine();
             if (line == null) break;
-            String [] values = line.split("<");
-            Doctor d = new Doctor(values[0], Integer.parseInt(values[1]), values[2], values[3], values[4], values[5], values[6], values[7],values[8], values[9],Integer.parseInt(values[10]), values[11], Integer.parseInt(values[12]),
-                    values[13],values[14]);
-            d.setUserNameAndPass(values[15], values[16]);
-            String userAndPass = values[15] + "@" + values[16];
+            String [] values = line.split("\\|");
+            Doctor d = new Doctor(values[0], values[1], Integer.parseInt(values[2]), values[3], values[4], values[5], values[6], values[7], values[8],values[9], values[10],Integer.parseInt(values[11]), values[12], Integer.parseInt(values[13]),
+                    values[14],values[15]);
+            d.setUserNameAndPass(values[16], values[17]);
+            String userAndPass = values[16] + "@" + values[17];
             doctorsMap.addDoctor(d);
             System.out.println();
         }
