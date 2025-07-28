@@ -117,6 +117,8 @@ public class DoctorRegister {
         bw.write(updated);
         synchronized (Main.c){
             Main.c.sendMessage("Numbers$" + updated);
+            main.loadDoctors();
+            Main.setUpdated(!Main.getUpdated());
         }
         bw.close();
     }

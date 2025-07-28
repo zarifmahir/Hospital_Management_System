@@ -18,6 +18,8 @@ import com.example.hospital_management_system.register_page.RegistrationControll
 import com.example.hospital_management_system.Staff.*;
 import com.example.hospital_management_system.register_page.SuccessPage;
 import javafx.application.Application;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,7 +41,21 @@ public class Main extends Application {
     public static StaffMap staffMap;
     public static Integer[] roomNos = new Integer[12];
     public static Client c;
+    public static final BooleanProperty updated = new SimpleBooleanProperty(false);
 
+    public static BooleanProperty isUpdatedProperty() {
+        return updated;
+    }
+
+    // Static setter
+    public static void setUpdated(boolean value) {
+        updated.set(value);
+    }
+
+    // Static getter
+    public static boolean getUpdated() {
+        return updated.get();
+    }
 
 
     @Override
@@ -49,6 +65,7 @@ public class Main extends Application {
         int serverPort = 44444;
         c = new Client(serverAddress, serverPort, "Main1");
         c.setType("Main");
+        c.setObType((Object) this);
         showLoginPage();
     }
 

@@ -1,6 +1,8 @@
 package com.example.hospital_management_system.Networking;
 
 import com.example.hospital_management_system.Main;
+import com.example.hospital_management_system.admin_page.AdminPageController;
+import com.example.hospital_management_system.admin_page.PatientPanelController;
 import com.example.hospital_management_system.doctor_page.ChatOfDoctorController;
 import com.example.hospital_management_system.doctor_page.ResidentPage;
 import com.example.hospital_management_system.patient_page.ChatOfPatientController;
@@ -29,7 +31,7 @@ public class ReadThreadClient implements Runnable {
             while (true) {
                 Object o = socketWrapper.read();
                 if(socketWrapper.getType().equals("Main")){
-                    String[] spt = ((String) o).split("\\|");
+                    String[] spt = ((String) o).split("\\$");
                     if(spt[0].equals("Numbers")) {
                         BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+".txt"));
                         writer.write(spt[1]);
@@ -40,6 +42,17 @@ public class ReadThreadClient implements Runnable {
                         writer.write(spt[1]);
                         writer.newLine();
                         writer.close();
+
+                        if(spt[0].equals("PatientsList")) {
+                            Main main = (Main)socketWrapper.getO();
+                            main.loadPatients();
+                            Main.setUpdated(!Main.getUpdated());
+                        }
+                        else if(spt[0].equals("DoctorsList")) {
+                            Main main = (Main)socketWrapper.getO();
+                            main.loadDoctors();
+                            Main.setUpdated(!Main.getUpdated());
+                        }
                     }
 
                 }
@@ -59,7 +72,7 @@ public class ReadThreadClient implements Runnable {
                     }
                     else if(socketWrapper.getType().equals("Resident")) {
                         String incoming = (String) o;
-                        String[] s = incoming.split("\\$");
+                        String[] s = incoming.split("\\|");
                         System.out.println(s[0]);
                         System.out.println(s[1]);
                         if(incoming.startsWith("New")) {
@@ -73,7 +86,7 @@ public class ReadThreadClient implements Runnable {
                         else ResidentPage.addLabel(s[1], s[0], socketWrapper.getvBoxOfMessages(), Main.patientsMap.getPatientByname(s[1]));
                     }
                     else ChatOfDoctorController.addLabel(socketWrapper.getName(), (String)o, socketWrapper.getvBoxOfMessages());
-                    System.out.println("Hello");
+                   // System.out.println("Hello");
                 }
             }
         } catch (Exception e) {

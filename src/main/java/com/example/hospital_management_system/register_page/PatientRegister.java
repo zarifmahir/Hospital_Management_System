@@ -144,6 +144,8 @@ public class PatientRegister {
         bw.write(updated);
         synchronized (Main.c.WTC){
             Main.c.sendMessage("Numbers$" + updated);
+            main.loadPatients();
+            Main.setUpdated(!Main.getUpdated());
         }
         bw.close();
     }
