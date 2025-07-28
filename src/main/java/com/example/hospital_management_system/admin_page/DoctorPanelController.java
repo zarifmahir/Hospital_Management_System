@@ -3,6 +3,7 @@ package com.example.hospital_management_system.admin_page;
 import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
+import com.example.hospital_management_system.patient_page.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,6 +89,17 @@ public class DoctorPanelController implements Initializable {
         for(Doctor doctor:doctorList){
             doctorsPanel.getItems().add(doctor);
         }
+
+        Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue!=oldValue){
+                doctorsPanel.getItems().clear();
+                List<Doctor> doctorlist2 = Main.doctorsMap.getDoctorList();
+                for(Doctor p: doctorlist2){
+                    doctorsPanel.getItems().add(p);
+                }
+                doctorsPanel.setEditable(false);
+            }
+        });
 
         doctorsPanel.setEditable(false);
 

@@ -185,6 +185,11 @@ public class RegistrationController {
             writer.write(content);
             writer.newLine();
             writer.close();
+            synchronized (Main.c.WTC){
+                System.out.println("Patient writng");
+                Main.c.sendMessage("PatientsList$"+content);
+            }
+
             System.out.println("File written successfully.");
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -200,6 +205,10 @@ public class RegistrationController {
                     +"|"+doctor.getUserName()+"|"+doctor.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt", true));
             writer.write(content);
+
+            synchronized (Main.c){
+                Main.c.sendMessage("DoctorsList$" + content);
+            }
             writer.newLine();
             writer.close();
             System.out.println("File written successfully.");

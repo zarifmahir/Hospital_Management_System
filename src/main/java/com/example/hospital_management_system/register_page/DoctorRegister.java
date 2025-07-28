@@ -115,6 +115,11 @@ public class DoctorRegister {
 
         BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/Numbers.txt"));
         bw.write(updated);
+        synchronized (Main.c){
+            Main.c.sendMessage("Numbers$" + updated);
+            main.loadDoctors();
+            Main.setUpdated(!Main.getUpdated());
+        }
         bw.close();
     }
 

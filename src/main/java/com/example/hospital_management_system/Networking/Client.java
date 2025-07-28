@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Client {
     ReadThreadClient RTC;
-    WriteThreadClient WTC;
+   public WriteThreadClient WTC;
 
     SocketWrapper socketWrapper;
     public Client(String serverAddress, int serverPort, String clientName) {
@@ -17,6 +17,7 @@ public class Client {
 //            System.out.print("Enter name of the client: ");
 //            scanner = new Scanner(System.in);
             //String clientName = scanner.nextLine();
+           // serverAddress = "192.168.0.117";
             socketWrapper = new SocketWrapper(serverAddress, serverPort);
             socketWrapper.write(clientName);
             socketWrapper.setName(clientName);

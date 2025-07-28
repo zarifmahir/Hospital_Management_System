@@ -38,6 +38,7 @@ public class SocketWrapper {
 
     public void write(Object o) throws IOException {
         oos.writeObject(o);
+        oos.flush();
 
     }
 

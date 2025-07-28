@@ -1,6 +1,10 @@
 package com.example.hospital_management_system.Networking;
 
 
+import com.example.hospital_management_system.Main;
+import com.example.hospital_management_system.patient_page.Patient;
+import com.example.hospital_management_system.patient_page.PatientPageController;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -24,6 +28,17 @@ public class WriteThreadClient implements Runnable {
         System.out.println("Message set");
         this.msg = msg;
         status = true;
+        while(status){
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public boolean getStatus(){
+        return status;
     }
 
     public void run() {
@@ -44,9 +59,15 @@ public class WriteThreadClient implements Runnable {
 
                 if(status){
                     System.out.println("written message");
-                    socketWrapper.write(msg);
+                    if(socketWrapper.getType().equals("Patient") && !Main.patientChatMap.containsChat((Patient) socketWrapper.getO())){
+                        PatientPageController.writeChats((Patient) socketWrapper.getO());
+                        Main.patientChatMap.addChat((Patient) socketWrapper.getO(), msg);
+                        socketWrapper.write("New"+msg);
+                    }
+                   else socketWrapper.write(msg);
                     status = false;
                 }
+
                 try {
                     Thread.sleep(50); // avoid busy-loop
                 } catch (InterruptedException e) {

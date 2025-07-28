@@ -24,7 +24,18 @@ public class ReadThreadServer implements Runnable {
         try {
             while (true) {
                 Object o = socketWrapper.read();
-                if (o instanceof Message) {
+
+                if(socketWrapper.getName().startsWith("Main")){
+                    for(HashMap.Entry<String, SocketWrapper> entry : clientMap.entrySet()){
+                        if(!entry.getValue().isClosed() && entry.getValue() != socketWrapper){
+                            entry.getValue().write(o);
+                            break;
+                        }
+                    }
+                }
+
+
+                else if (o instanceof Message) {
                     Message obj = (Message) o;
                     String to = obj.getTo();
                     SocketWrapper nu = (SocketWrapper) clientMap.get(to);
@@ -55,13 +66,14 @@ public class ReadThreadServer implements Runnable {
 //                        socketWrapper.write("#RefreshedSuccessfully");
 //                    }
                     else if(clientMap.isEmpty()){
-                        socketWrapper.write("No one available now");
+                       // socketWrapper.write("No one available now");
                     }
 
                     else{
                         for(HashMap.Entry<String, SocketWrapper> entry : clientMap.entrySet()){
-                            if(!entry.getValue().isClosed() && entry.getValue() != socketWrapper){
-                                entry.getValue().write((String) o);
+                            if(!entry.getValue().isClosed() && entry.getValue() != socketWrapper && entry.getKey().equals("Resident")){
+
+                                entry.getValue().write((String) o + "|"+socketWrapper.getName());
                                 break;
                             }
                         }

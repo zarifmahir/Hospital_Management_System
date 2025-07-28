@@ -74,6 +74,17 @@ public class PatientPanelController implements Initializable {
         }
         patientsTable.setEditable(false);
 
+        Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+                if(newValue!=oldValue){
+                    patientsTable.getItems().clear();
+                    List<Patient> patientList2 = Main.patientsMap.getPatientList();
+                    for(Patient p: patientList2){
+                        patientsTable.getItems().add(p);
+                    }
+                    patientsTable.setEditable(false);
+                }
+        });
+
         disableButtons();
         patientsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue != null){

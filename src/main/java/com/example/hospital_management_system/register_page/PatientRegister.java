@@ -142,6 +142,11 @@ public class PatientRegister {
 
         BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/Numbers.txt"));
         bw.write(updated);
+        synchronized (Main.c.WTC){
+            Main.c.sendMessage("Numbers$" + updated);
+            main.loadPatients();
+            Main.setUpdated(!Main.getUpdated());
+        }
         bw.close();
     }
 
