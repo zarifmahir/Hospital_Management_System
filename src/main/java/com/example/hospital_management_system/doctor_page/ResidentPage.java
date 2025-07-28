@@ -77,12 +77,16 @@ public class ResidentPage extends Application implements Initializable {
         if(!messageToSend.isEmpty()){
            generateSendingMessage(messageToSend, vBoxOfMessages);
 
+            if(currentSelected.getMyChat().isEmpty()){
+                currentSelected.setMyChat(messageToSend+"~L");
+            }
+            else currentSelected.setMyChat(currentSelected.getMyChat() + "<"+messageToSend+"~L");
             c.sendMessage("Res"+"~"+currentSelected.getName()+"~"+messageToSend);
             messageArea.clear();
         }
     }
 
-    public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox) {
+    public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox, Object p) {
         System.out.println(currentSelected.getName()+"~"+senderName+"~"+messageFromOtherEnd);
         if(!currentSelected.getName().equals(senderName)){
             return;
@@ -106,6 +110,8 @@ public class ResidentPage extends Application implements Initializable {
 
         hBox.getChildren().add(textFlow);
         messageContainer.getChildren().addAll(nameLabel, hBox);
+        Patient ptn = (Patient)p;
+        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
        // vBox.getChildren().add(messageContainer);
         Platform.runLater(new Runnable() {
             @Override

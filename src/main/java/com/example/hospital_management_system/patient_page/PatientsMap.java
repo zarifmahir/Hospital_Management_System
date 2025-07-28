@@ -32,6 +32,13 @@ public class PatientsMap {
          return patientList;
      }
 
+     public Patient getPatientByname(String name){
+         for(Patient p: PatientMap.values()){
+             if(p.getName().equals(name)) return p;
+         }
+         return null;
+     }
+
 
 
 

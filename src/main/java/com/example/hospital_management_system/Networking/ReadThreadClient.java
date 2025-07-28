@@ -52,7 +52,7 @@ public class ReadThreadClient implements Runnable {
                                obj.initManual();
                             });
                         }
-                        else ResidentPage.addLabel(s[1], s[0], socketWrapper.getvBoxOfMessages());
+                        else ResidentPage.addLabel(s[1], s[0], socketWrapper.getvBoxOfMessages(), Main.patientsMap.getPatientByname(s[1]));
                     }
                     else ChatOfDoctorController.addLabel(socketWrapper.getName(), (String)o, socketWrapper.getvBoxOfMessages());
                     System.out.println("Hello");
