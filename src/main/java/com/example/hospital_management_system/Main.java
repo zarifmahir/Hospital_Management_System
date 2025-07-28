@@ -63,6 +63,7 @@ public class Main extends Application {
         loadAdmins();
         loadPatientChats();
         loadStaff();
+        loadPrescriptions();
 
 
         stage.setTitle("Hospital Management System");
@@ -212,7 +213,7 @@ public class Main extends Application {
             String line = br.readLine();
             if (line == null) break;
             String [] values = line.split("<");
-            Appointment a = new Appointment(values[0], values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]));
+            Appointment a = new Appointment(values[0], values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]), values[7]);
             appointmentMap.addAppointment(a);
             System.out.println();
         }
@@ -245,6 +246,56 @@ public class Main extends Application {
                 staffMap.addReceptionist(new Receptionist(name, dept, years, phone, email, address));
             }
 
+        }
+        br.close();
+    }
+
+    public void loadPrescriptions() throws IOException {
+        prescriptionMap = new PrescriptionMap();
+        BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/PrescriptionList.txt"));
+
+        while (true) {
+            String line = br.readLine();
+            if (line == null) break;
+            String [] values = line.split("\\|");
+            //READ PRESCRIPTION AND LOAD IT INTO THE MAP
+            Prescription p = new Prescription(values[0], values[1], values[2], values[3], values[4], values[5]);
+
+            if (values.length == 12) {
+                p.setRemedy1(values[6]);
+                p.setRemedy2(values[7]);
+                p.setRemedy3(values[8]);
+                p.setRemedy4(values[9]);
+                p.setRemedy5(values[10]);
+                p.setRemedy6(values[11]);
+            }
+            else if (values.length == 11) {
+                p.setRemedy1(values[6]);
+                p.setRemedy2(values[7]);
+                p.setRemedy3(values[8]);
+                p.setRemedy4(values[9]);
+                p.setRemedy5(values[10]);
+            }
+            else if (values.length == 10) {
+                p.setRemedy1(values[6]);
+                p.setRemedy2(values[7]);
+                p.setRemedy3(values[8]);
+                p.setRemedy4(values[9]);
+            }
+            else if (values.length == 9) {
+                p.setRemedy1(values[6]);
+                p.setRemedy2(values[7]);
+                p.setRemedy3(values[8]);
+            }
+            else if (values.length == 8) {
+                p.setRemedy1(values[6]);
+                p.setRemedy2(values[7]);
+            }
+            else if (values.length == 7) {
+                p.setRemedy1(values[6]);
+            }
+
+            prescriptionMap.addPrescription(p);
         }
         br.close();
     }

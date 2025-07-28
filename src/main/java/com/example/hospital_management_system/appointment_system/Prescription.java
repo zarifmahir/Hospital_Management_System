@@ -6,27 +6,27 @@ import com.example.hospital_management_system.patient_page.Patient;
 import java.io.*;
 
 public class Prescription {
-    private static int id = getLatestPrescriptionId();
-
     public static int getLatestPrescriptionId() {
-        try (BufferedReader br = new BufferedReader(new FileReader("texts/PrescriptionIds.txt"))) {
+        int x = 1;
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/PrescriptionIds.txt"))) {
             String line;
             line = br.readLine();
             while (line != null) {
-                int id = Integer.parseInt(line);
+                x = Integer.parseInt(line);
+                line = br.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("texts/PrescriptionIds.txt"))) {
-            bw.write(Integer.toString(id + 1));
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/PrescriptionIds.txt"))) {
+            bw.write(Integer.toString(x + 1));
             bw.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        return id + 1;
+        return x + 1;
     }
 
     private String myId;
@@ -41,18 +41,71 @@ public class Prescription {
     private Doctor doctor;
     private Patient patient;
 
+    private String remedy1;
+    private String remedy2;
+    private String remedy3;
+    private String remedy4;
+    private String remedy5;
+    private String remedy6;
 
-    public Prescription(String diagnosis, Patient patient, Doctor doctor, String doctorName, String doctorId, String patientName, String patientId, String date) {
+
+    public Prescription(String diagnosis, String doctorName, String doctorId, String patientName, String patientId, String date) {
         this.diagnosis = diagnosis;
-        this.patient = patient;
-        this.doctor = doctor;
         this.doctorName = doctorName;
         this.doctorId = doctorId;
         this.patientName = patientName;
         this.patientId = patientId;
         this.date = date;
 
-        myId = String.valueOf(id);
+        myId = String.valueOf(getLatestPrescriptionId());
+    }
+
+    public void setRemedy1(String remedy1) {
+        this.remedy1 = remedy1;
+    }
+
+    public void setRemedy2(String remedy2) {
+        this.remedy2 = remedy2;
+    }
+
+    public void setRemedy3(String remedy3) {
+        this.remedy3 = remedy3;
+    }
+
+    public void setRemedy4(String remedy4) {
+        this.remedy4 = remedy4;
+    }
+
+    public void setRemedy5(String remedy5) {
+        this.remedy5 = remedy5;
+    }
+
+    public void setRemedy6(String remedy6) {
+        this.remedy6 = remedy6;
+    }
+
+    public String getRemedy1() {
+        return remedy1;
+    }
+
+    public String getRemedy2() {
+        return remedy2;
+    }
+
+    public String getRemedy3() {
+        return remedy3;
+    }
+
+    public String getRemedy4() {
+        return remedy4;
+    }
+
+    public String getRemedy5() {
+        return remedy5;
+    }
+
+    public String getRemedy6() {
+        return remedy6;
     }
 
     public String getMyId() {

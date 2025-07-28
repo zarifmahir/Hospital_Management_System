@@ -1,10 +1,16 @@
 package com.example.hospital_management_system.doctor_page;
 
+import com.example.hospital_management_system.patient_page.Patient;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 public class ShowPatientInformationController {
+    private Patient patient;
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     @FXML
     private Label ageField;

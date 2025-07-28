@@ -6,20 +6,23 @@ import com.example.hospital_management_system.appointment_system.Prescription;
 import com.example.hospital_management_system.patient_page.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class DoctorHistoryController {
 
-    public Doctor doctor;
+    private Doctor doctor;
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
@@ -50,7 +53,7 @@ public class DoctorHistoryController {
     @FXML
     private TableView<Patient> tableView;
 
-    public void initialize() {
+    public void loadData() {
         idCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("id"));
         patientCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
         ageCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
@@ -59,6 +62,7 @@ public class DoctorHistoryController {
         phoneNoCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("mobile"));
 
         List<Patient> patientList = getPatientsUnderDoctor();
+        patientList = new ArrayList<>(new HashSet<>(patientList)); //removing duplicates from patientList
 
         for (Patient patient : patientList) {
             tableView.getItems().add(patient);
@@ -68,7 +72,7 @@ public class DoctorHistoryController {
     private List<Patient> getPatientsUnderDoctor() {
         List<Patient> patientList = new ArrayList<>();
 
-        List<Appointment> doctorAppointmentList = Main.appointmentMap.getDoctorAppointments(doctor.getName() + "(" + doctor.getId() + ")");
+        List<Appointment> doctorAppointmentList= Main.appointmentMap.getDoctorAppointments(doctor.getName() + " (" + doctor.getId() + ")");
 
         for (Appointment a : doctorAppointmentList) {
             Patient p = Main.patientsMap.getPatientById(a.getPatientId());
@@ -98,20 +102,51 @@ public class DoctorHistoryController {
     @FXML
     private Button addPrescriptionButton;
     @FXML
-    void addSelectedPatientPrescription(ActionEvent event) {
+    void addSelectedPatientPrescription(ActionEvent event) throws IOException {
+        if (tableView.getSelectionModel().getSelectedItem() == null) {
+            showErrorWindow();
+        }
+        else {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add_new_prescription.fxml"));
+            Parent root = fxmlLoader.load();
 
+            AddNewPrescriptionController addNewPrescriptionController = fxmlLoader.getController();
+            addNewPrescriptionController.setDoctor(doctor);
+            addNewPrescriptionController.setPatient(tableView.getSelectionModel().getSelectedItem());
+
+            Stage stage = new Stage();
+            stage.setTitle("Add New Prescription");
+
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
     }
 
     @FXML
-    void showSelectedPatientInformation(ActionEvent event) {
-        Patient patient = tableView.getSelectionModel().getSelectedItem();
-
-        if (patient == null) {
-            //SHOW ERROR SAYING YOU HAVE TO SELECT A PATIENT
+    void showSelectedPatientInformation(ActionEvent event) throws IOException {
+        if (tableView.getSelectionModel().getSelectedItem() == null) {
+            showErrorWindow();
         }
         else {
-            //CREATE A NEW LOADING FXML FILE SHOWING THE PATIENT INFORMATION
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("show_patient_information.fxml"));
+            Parent root = fxmlLoader.load();
+
+            ShowPatientInformationController showPatientInformationController = fxmlLoader.getController();
+            showPatientInformationController.setPatient(tableView.getSelectionModel().getSelectedItem());
+
+            Stage stage = new Stage();
+            stage.setTitle("Showing Patient Information");
+
+            stage.setScene(new Scene(root));
+            stage.show();
         }
+    }
+
+    public void showErrorWindow() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Please select a patient");
+        alert.showAndWait();
     }
 
 }
