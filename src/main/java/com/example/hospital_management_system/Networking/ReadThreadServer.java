@@ -24,7 +24,18 @@ public class ReadThreadServer implements Runnable {
         try {
             while (true) {
                 Object o = socketWrapper.read();
-                if (o instanceof Message) {
+
+                if(socketWrapper.getName().startsWith("Main")){
+                    for(HashMap.Entry<String, SocketWrapper> entry : clientMap.entrySet()){
+                        if(!entry.getValue().isClosed() && entry.getValue() != socketWrapper){
+                            entry.getValue().write(o);
+                            break;
+                        }
+                    }
+                }
+
+
+                else if (o instanceof Message) {
                     Message obj = (Message) o;
                     String to = obj.getTo();
                     SocketWrapper nu = (SocketWrapper) clientMap.get(to);

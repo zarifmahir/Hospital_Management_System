@@ -9,11 +9,14 @@ import com.example.hospital_management_system.patient_page.PatientPageController
 import javafx.application.Platform;
 import javafx.scene.layout.VBox;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class ReadThreadClient implements Runnable {
     private Thread thr;
     private SocketWrapper socketWrapper;
+    //private String[] fnames = {"AdminsList.txt", "AppointmentList.txt", "ChatHistoryOfPatients.txt", "DoctorsList.txt", "Numbers.txt", "PatientsList.txt", "StaffList.txt"};
 
     public ReadThreadClient(SocketWrapper socketWrapper) {
         this.socketWrapper = socketWrapper;
@@ -25,7 +28,22 @@ public class ReadThreadClient implements Runnable {
         try {
             while (true) {
                 Object o = socketWrapper.read();
-                if (o instanceof Message) {
+                if(socketWrapper.getType().equals("Main")){
+                    String[] spt = ((String) o).split("\\|");
+                    if(spt[0].equals("Numbers")) {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+".txt"));
+                        writer.write(spt[1]);
+                        writer.close();
+                    }
+                    else{
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/" + spt[0] + ".txt", true));
+                        writer.write(spt[1]);
+                        writer.newLine();
+                        writer.close();
+                    }
+
+                }
+                else if (o instanceof Message) {
                     Message obj = (Message) o;
                     System.out.println(obj.getFrom() + ", " + obj.getTo() + ", " + obj.getText());
                 }

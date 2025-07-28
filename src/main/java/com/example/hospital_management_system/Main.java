@@ -1,5 +1,6 @@
 package com.example.hospital_management_system;
 
+import com.example.hospital_management_system.Networking.Client;
 import com.example.hospital_management_system.Staff.StaffMap;
 import com.example.hospital_management_system.admin_page.Admin;
 import com.example.hospital_management_system.admin_page.AdminMap;
@@ -37,12 +38,17 @@ public class Main extends Application {
     public static PatientChatMap patientChatMap;
     public static StaffMap staffMap;
     public static Integer[] roomNos = new Integer[12];
+    public static Client c;
 
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
+        String serverAddress = "127.0.0.1";
+        int serverPort = 44444;
+        c = new Client(serverAddress, serverPort, "Main1");
+        c.setType("Main");
         showLoginPage();
     }
 

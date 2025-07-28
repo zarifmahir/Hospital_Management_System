@@ -57,6 +57,7 @@ public class ResidentPage extends Application implements Initializable {
 
 
 
+
     public void initializeManually() {
         String serverAddress = "127.0.0.1";
         int serverPort = 44444;
@@ -77,10 +78,12 @@ public class ResidentPage extends Application implements Initializable {
         if(!messageToSend.isEmpty()){
            generateSendingMessage(messageToSend, vBoxOfMessages);
 
-            if(currentSelected.getMyChat().isEmpty()){
-                currentSelected.setMyChat(messageToSend+"~L");
-            }
-            else currentSelected.setMyChat(currentSelected.getMyChat() + "<"+messageToSend+"~L");
+
+
+//            if(currentSelected.getMyChat().isEmpty()){
+//                currentSelected.setMyChat(messageToSend+"~L");
+//            }
+//            else currentSelected.setMyChat(currentSelected.getMyChat() + "<"+messageToSend+"~L");
             c.sendMessage("Res"+"~"+currentSelected.getName()+"~"+messageToSend);
             messageArea.clear();
         }
@@ -88,6 +91,8 @@ public class ResidentPage extends Application implements Initializable {
 
     public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox, Object p) {
         System.out.println(currentSelected.getName()+"~"+senderName+"~"+messageFromOtherEnd);
+//        Patient ptn = (Patient)p;
+//        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
         if(!currentSelected.getName().equals(senderName)){
             return;
         }
@@ -110,8 +115,7 @@ public class ResidentPage extends Application implements Initializable {
 
         hBox.getChildren().add(textFlow);
         messageContainer.getChildren().addAll(nameLabel, hBox);
-        Patient ptn = (Patient)p;
-        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
+
        // vBox.getChildren().add(messageContainer);
         Platform.runLater(new Runnable() {
             @Override
@@ -228,6 +232,7 @@ public class ResidentPage extends Application implements Initializable {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                try {
                    c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+//                   PatientPageController.reloadPatientChats(temp);
                    Thread.sleep(100);
                    main.loadPatientChats();
                    vBoxOfMessages.getChildren().clear();
@@ -268,10 +273,12 @@ public class ResidentPage extends Application implements Initializable {
                 Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                 try {
                     c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+//                    PatientPageController.reloadPatientChats(temp);
+                    Thread.sleep(100);
                     main.loadPatientChats();
                     vBoxOfMessages.getChildren().clear();
                     //System.out.println(p.getMyChat());
-                } catch (IOException ex) {
+                } catch (IOException | InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
                 currentSelected = temp;
