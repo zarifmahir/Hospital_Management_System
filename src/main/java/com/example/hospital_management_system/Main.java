@@ -261,6 +261,7 @@ public class Main extends Application {
             String [] values = line.split("\\|");
             if(values.length<2){break;}
             //System.out.println("Values: "+values.length);
+            System.out.println(values[1]);
             Patient p = patientsMap.getPatient(values[0]);
             p.setMyChat(values[1]);
             patientChatMap.addChat(p, values[1]);

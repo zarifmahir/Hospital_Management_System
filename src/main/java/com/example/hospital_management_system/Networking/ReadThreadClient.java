@@ -1,10 +1,12 @@
 package com.example.hospital_management_system.Networking;
 
+import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.doctor_page.ChatOfDoctorController;
 import com.example.hospital_management_system.doctor_page.ResidentPage;
 import com.example.hospital_management_system.patient_page.ChatOfPatientController;
 import com.example.hospital_management_system.patient_page.Patient;
 import com.example.hospital_management_system.patient_page.PatientPageController;
+import javafx.application.Platform;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -38,7 +40,19 @@ public class ReadThreadClient implements Runnable {
                         else ChatOfPatientController.addLabel((String) o, socketWrapper.getvBoxOfMessages(), socketWrapper.getO());
                     }
                     else if(socketWrapper.getType().equals("Resident")) {
-                        ResidentPage.addLabel(socketWrapper.getName(), (String) o, socketWrapper.getvBoxOfMessages());
+                        String incoming = (String) o;
+                        String[] s = incoming.split("\\|");
+                        System.out.println(s[0]);
+                        System.out.println(s[1]);
+                        if(incoming.startsWith("New")) {
+                            ResidentPage obj = (ResidentPage) socketWrapper.getO();
+                            obj.getMain().loadPatientChats();
+                            System.out.println("working");
+                            Platform.runLater(() -> {
+                               obj.initManual();
+                            });
+                        }
+                        else ResidentPage.addLabel(s[1], s[0], socketWrapper.getvBoxOfMessages());
                     }
                     else ChatOfDoctorController.addLabel(socketWrapper.getName(), (String)o, socketWrapper.getvBoxOfMessages());
                     System.out.println("Hello");
