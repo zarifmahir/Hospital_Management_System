@@ -2,7 +2,10 @@ package com.example.hospital_management_system.admin_page;
 
 import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.appointment_system.AppointmentMap;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -10,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import static com.example.hospital_management_system.Main.staffMap;
@@ -32,6 +36,8 @@ public class AdminDashboardController {
 
     @FXML
     private Label roomField;
+
+    public AdminPageController adminPageController;
 
 
     public Admin admin;
@@ -130,13 +136,13 @@ public class AdminDashboardController {
     }
 
     @FXML
-    void showDoctorPanel(MouseEvent event) {
-
+    void showDoctorPanel(MouseEvent event) throws IOException {
+        adminPageController.loadPage("doctors_panel");
     }
 
     @FXML
-    void showPatientPanel(MouseEvent event) {
-
+    void showPatientPanel(MouseEvent event) throws IOException {
+        adminPageController.loadPage("patients_panel");
     }
 
     @FXML
@@ -145,8 +151,8 @@ public class AdminDashboardController {
     }
 
     @FXML
-    void showStaffPanel(MouseEvent event) {
-
+    void showStaffPanel(MouseEvent event) throws IOException {
+        adminPageController.loadPage("staff_page");
     }
 
     @FXML
@@ -163,5 +169,14 @@ public class AdminDashboardController {
     void staffPressed(MouseEvent event) {
 
     }
+
+
+
+    @FXML
+    void showAppointments(ActionEvent event) {
+
+    }
+
+
 
 }

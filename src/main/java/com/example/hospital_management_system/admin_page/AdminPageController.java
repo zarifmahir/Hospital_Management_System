@@ -50,7 +50,7 @@ public class AdminPageController {
         this.main = main;
     }
 
-    private void loadPage(String page) throws IOException {
+    void loadPage(String page) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();
@@ -66,6 +66,7 @@ public class AdminPageController {
         else if (page.equals("admin_dashboard")){
             AdminDashboardController controller = loader.getController();
             controller.setAdmin(admin);
+            controller.adminPageController = this;
         }
 
         bp.setCenter(root);
@@ -139,16 +140,21 @@ public class AdminPageController {
 
     }
 
-    @FXML
-    void userManagement(ActionEvent event) {
-
-    }
-
     public void patientPanel(ActionEvent actionEvent) {
         try {
             loadPage("patients_panel");
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    void showAppointments(ActionEvent event) {
+        try {
+            loadPage("appointment_page");
+        }
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -336,6 +342,41 @@ public class AdminPageController {
         scaleUp.play();
     }
 
+    public void setAdmin(Admin a) {
+        this.admin = a;
+    }
+
+
+    @FXML
+    private Button appointmentButton;
+
+    @FXML
+    void appointmentHover(MouseEvent event) {
+        appointmentButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    @FXML
+    void appointmentHoverExited(MouseEvent event) {
+        appointmentButton.setStyle("-fx-background-color: transparent;");
+    }
+
+    @FXML
+    void appointmentPressed(MouseEvent event) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), appointmentButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    @FXML
+    void appointmentReleased(MouseEvent event) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), appointmentButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
+    }
+
+
     @FXML
     private VBox leftPane;
 
@@ -351,7 +392,4 @@ public class AdminPageController {
 
     public Admin admin;
 
-    public void setAdmin(Admin a) {
-        this.admin = a;
-    }
 }

@@ -80,7 +80,22 @@
                </ImageView>
             </graphic>
          </Button>
-         <Button fx:id="staffManagementButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#staffPressed" onMouseClicked="#patient_history" onMouseEntered="#userHover" onMouseExited="#userHoverExited" onMousePressed="#userPressed" onMouseReleased="#userReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Staff Management">
+         <Button fx:id="appointmentButton" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" onAction="#showAppointments" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#appointmentPressed" onMouseReleased="#appointmentReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Appointments">
+            <font>
+               <Font size="14.0" />
+            </font>
+            <effect>
+               <Bloom />
+            </effect>
+            <graphic>
+               <ImageView fitHeight="18.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../images/calendar.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button fx:id="staffManagementButton" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" onAction="#staffPressed" onMouseClicked="#patient_history" onMouseEntered="#userHover" onMouseExited="#userHoverExited" onMousePressed="#userPressed" onMouseReleased="#userReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="User Management">
             <font>
                <Font size="14.0" />
             </font>

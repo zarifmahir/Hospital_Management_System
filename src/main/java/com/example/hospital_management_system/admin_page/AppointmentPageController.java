@@ -1,9 +1,7 @@
-package com.example.hospital_management_system.patient_page;
+package com.example.hospital_management_system.admin_page;
 
 import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.appointment_system.Appointment;
-import com.example.hospital_management_system.appointment_system.AppointmentMap;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -12,15 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.List;
 
-public class ShowAppointmentsPage {
-    public Patient patient;
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-        List<Appointment> patientAppointments = Main.appointmentMap.getPatientAppointments(patient.getName());
-        tableView.getItems().addAll(patientAppointments);
-
-    }
+public class AppointmentPageController {
 
     @FXML
     private Button cancelButton;
@@ -46,17 +36,20 @@ public class ShowAppointmentsPage {
     @FXML
     private TableColumn<Appointment, String> timeCol;
 
+    @FXML
+    private TableColumn<Appointment, String> patientCol;
+
     public void initialize() {
+        List<Appointment> appointments = Main.appointmentMap.getAppointments();
+        tableView.getItems().addAll(appointments);
+
         dateCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("date"));
         doctorCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("doctorName"));
         idCol.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("id"));
         roomCol.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("roomNo"));
         departmentCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("department"));
         timeCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("time"));
+        patientCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("patientName"));
     }
 
-    @FXML
-    void cancelSelectedAppointment(ActionEvent event) {
-
-    }
 }

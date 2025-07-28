@@ -182,7 +182,6 @@ public class Main extends Application {
             if (line == null) break;
             String [] values = line.split("<");
             Admin a = new Admin(values[0], values[1], values[2], values[3], values[4], values[5]);
-            a.display();
             adminMap.addAdmin(a);
         }
         br.close();
@@ -237,15 +236,12 @@ public class Main extends Application {
 
             if (type.equals("Nurse")) {
                 staffMap.addNurse(new Nurse(name, dept, years, phone, email, address));
-                System.out.println("adding nurse" + name);
             }
             else if (type.equals("BedBoy")) {
                 staffMap.addBedBoy(new BedBoy(name, dept, years, phone, email, address));
-                System.out.println("adding r" + name);
             }
             else if (type.equals("Receptionist")) {
                 staffMap.addReceptionist(new Receptionist(name, dept, years, phone, email, address));
-                System.out.println("adding wb" + name);
             }
 
         }
