@@ -84,9 +84,9 @@ public class ResidentPage extends Application implements Initializable {
 
     public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox) {
         System.out.println(currentSelected.getName()+"~"+senderName+"~"+messageFromOtherEnd);
-//        if(!currentSelected.getName().equals(senderName)){
-//            return;
-//        }
+        if(!currentSelected.getName().equals(senderName)){
+            return;
+        }
         VBox messageContainer = new VBox();
         messageContainer.setSpacing(1);
 
@@ -222,10 +222,11 @@ public class ResidentPage extends Application implements Initializable {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                try {
                    c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+                   Thread.sleep(100);
                    main.loadPatientChats();
                    vBoxOfMessages.getChildren().clear();
                    //System.out.println(p.getMyChat());
-               } catch (IOException ex) {
+               } catch (IOException | InterruptedException ex) {
                    throw new RuntimeException(ex);
                }
                currentSelected = temp;

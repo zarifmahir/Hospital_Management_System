@@ -28,6 +28,7 @@ public class ChatServer {
        // String clientName = socketWrapper.getName();
         String clientName = (String) socketWrapper.read();
         clientMap.put(clientName, socketWrapper);
+        socketWrapper.setName(clientName);
         System.out.println("Connection established with: "+clientName);
         new ReadThreadServer(clientMap, socketWrapper);
     }
