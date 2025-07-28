@@ -62,6 +62,10 @@ public class DoctorPageController {
             controller.setDoctor(doctor);
             controller.initializeManually();
         }
+        else if (page.equals("doctor_patient_history")) {
+            DoctorHistoryController controller = loader.getController();
+            controller.setDoctor(doctor);
+        }
 
         doctorBorderPane.setCenter(root);
     }

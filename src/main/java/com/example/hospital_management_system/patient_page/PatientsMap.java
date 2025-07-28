@@ -32,7 +32,12 @@ public class PatientsMap {
          return patientList;
      }
 
-
-
-
+    public Patient getPatientById(String id) {
+         for (Patient p : PatientMap.values()) {
+             if (p.getId().equals(id)) {
+                 return p;
+             }
+         }
+         return null;
+    }
 }

@@ -9,6 +9,7 @@ import java.util.Random;
 public class Appointment {
     String doctorName;
     String patientName;
+    String patientId;
     String date;
 
     int id;
@@ -16,7 +17,7 @@ public class Appointment {
     String department;
     int roomNo;
 
-    public Appointment(String doctorName, String patientName, String date, int id, String time, String department, int roomNo) {
+    public Appointment(String doctorName, String patientName, String date, int id, String time, String department, int roomNo, String patientId) {
         this.doctorName = doctorName;
         this.patientName = patientName;
         this.date = date;
@@ -24,8 +25,16 @@ public class Appointment {
         this.time = time;
         this.department = department;
         this.roomNo = roomNo;
+        this.patientId = patientId;
     }
 
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
 
     public String getDoctorName() {
         return doctorName;

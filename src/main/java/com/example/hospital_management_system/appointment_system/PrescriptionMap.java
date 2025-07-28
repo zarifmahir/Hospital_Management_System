@@ -6,45 +6,45 @@ import java.util.List;
 import java.util.Map;
 
 public class PrescriptionMap {
-//    Map<String, Appointment> appointmentMap = new HashMap<>();
-//
-//    public void addAppointment(Appointment a) {
-//        appointmentMap.put(a.getDoctorName() + "@" + a.getDate() + "@" + a.getTime(), a);
-//    }
-//
-//    public int size() {
-//        return appointmentMap.size();
-//    }
+    Map<String, Prescription> prescriptionMap = new HashMap<>();
+
+    public void addPrescription(Prescription p) {
+        prescriptionMap.put(p.getMyId(), p);
+    }
+
+    public int size() {
+        return prescriptionMap.size();
+    }
+
+    public List<Prescription> getPrescriptionList() {
+        return new ArrayList<>(prescriptionMap.values());
+    }
+
+    public List<Prescription> getPatientPrescriptionList(String patientId) {
+        List<Prescription> res = new ArrayList<>();
+        for (Prescription p : prescriptionMap.values()) {
+            if (p.getMyId().equals(patientId)) {
+                res.add(p);
+            }
+        }
+        return res;
+    }
+
+    public List<Prescription> getDoctorPrescriptionList(String doctorId) {
+        List<Prescription> res = new ArrayList<>();
+        for (Prescription p : prescriptionMap.values()) {
+            if (p.getMyId().equals(doctorId)) {
+                res.add(p);
+            }
+        }
+        return res;
+    }
+
+    public Prescription getPrescription(String myId) {
+        return prescriptionMap.get(myId);
+    }
 //
 //    public boolean searchAppointment(String doctorName, String date, String time) {
 //        return appointmentMap.containsKey(doctorName+"@"+date+"@"+time);
-//    }
-//
-//    public Appointment getAppointment(String doctorName, String date, String time) {
-//        return appointmentMap.get(doctorName+"@"+date+"@"+time);
-//    }
-//
-//    public List<Appointment> getPatientAppointments(String patientName) {
-//        List<Appointment> patientAppointments = new ArrayList<>();
-//        for (Appointment a : appointmentMap.values()) {
-//            if (a.getPatientName().equals(patientName)) {
-//                patientAppointments.add(a);
-//            }
-//        }
-//        return patientAppointments;
-//    }
-//
-//    public List<Appointment> getDoctorAppointments(String doctorName) {
-//        List<Appointment> doctorAppointments = new ArrayList<>();
-//        for (Appointment a : appointmentMap.values()) {
-//            if (a.getDoctorName().equals(doctorName)) {
-//                doctorAppointments.add(a);
-//            }
-//        }
-//        return doctorAppointments;
-//    }
-//
-//    public List<Appointment> getAppointments() {
-//        return new ArrayList<>(appointmentMap.values());
 //    }
 }

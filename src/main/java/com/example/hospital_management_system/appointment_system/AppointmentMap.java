@@ -41,6 +41,16 @@ public class AppointmentMap {
         return doctorAppointments;
     }
 
+    public List<Appointment> getDepartmentAppointments(String departmentName) {
+        List<Appointment> departmentAppointments = new ArrayList<>();
+        for (Appointment a : appointmentMap.values()) {
+            if (a.getDepartment().equals(departmentName)) {
+                departmentAppointments.add(a);
+            }
+        }
+        return departmentAppointments;
+    }
+
     public List<Appointment> getAppointments() {
         return new ArrayList<>(appointmentMap.values());
     }

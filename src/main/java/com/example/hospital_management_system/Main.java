@@ -36,6 +36,7 @@ public class Main extends Application {
     public static AppointmentMap appointmentMap;
     public static PatientChatMap patientChatMap;
     public static StaffMap staffMap;
+    public static PrescriptionMap prescriptionMap;
     public static Integer[] roomNos = new Integer[12];
 
 

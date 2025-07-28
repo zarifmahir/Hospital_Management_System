@@ -54,4 +54,21 @@ public class DoctorsMap {
         return null;
     }
 
+    public List<String> getDepartments() {
+        List<String> departments = new ArrayList<>();
+        departments.add("Medicine");
+        departments.add("Surgery");
+        departments.add("Pediatrics");
+        departments.add("Obstetrics");
+        departments.add("Gynecology");
+        departments.add("Orthopedics");
+        departments.add("Cardiology");
+        departments.add("Neurology");
+        departments.add("Pathology");
+        departments.add("Dermatology");
+        departments.add("Psychiatry");
+
+        return departments;
+    }
+
 }

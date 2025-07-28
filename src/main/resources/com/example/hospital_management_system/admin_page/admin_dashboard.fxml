@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.AdminDashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.AdminDashboardController">
    <top>
       <AnchorPane fx:id="apTop" prefHeight="116.0" prefWidth="990.0" BorderPane.alignment="CENTER">
          <children>
@@ -77,7 +77,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="52.0" layoutY="612.0" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMouseReleased="#showPatientPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c9a5c7; -fx-background-radius: 30 30 30 30;">
+                  <AnchorPane fx:id="patientAgeBarGraph" layoutX="52.0" layoutY="612.0" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMouseReleased="#showPatientPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c9a5c7; -fx-background-radius: 30 30 30 30;">
                      <children>
                         <Label layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Patients">
                            <font>
@@ -153,7 +153,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <BarChart layoutX="35.0" layoutY="184.0" prefHeight="287.0" prefWidth="383.0">
+                  <BarChart fx:id="doctorBarGraph" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="35.0" layoutY="184.0" prefHeight="287.0" prefWidth="383.0" title="Department-wise Doctors" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -161,7 +161,7 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </BarChart>
-                  <BarChart layoutX="500.0" layoutY="184.0" prefHeight="287.0" prefWidth="383.0">
+                  <BarChart fx:id="staffBarGraph" alternativeRowFillVisible="false" barGap="20.0" categoryGap="30.0" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="500.0" layoutY="184.0" prefHeight="287.0" prefWidth="383.0" title="Staff List" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -177,7 +177,7 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </BarChart>
-                  <BarChart layoutX="616.0" layoutY="565.0" prefHeight="226.0" prefWidth="281.0">
+                  <BarChart fx:id="patientGenderBarGraph" layoutX="616.0" layoutY="565.0" prefHeight="226.0" prefWidth="281.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -185,8 +185,8 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </BarChart>
-                  <PieChart layoutX="340.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
-                  <PieChart layoutX="666.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
+                  <PieChart fx:id="appointmentPieChar" layoutX="340.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
+                  <PieChart fx:id="reportPieChart" layoutX="666.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
                </children>
             </AnchorPane>
          </content>

@@ -209,12 +209,12 @@ public class BookAppointmentsPage implements Initializable {
         Doctor selectedDoc = Main.doctorsMap.getDoctorById(ID);
 
         int roomNo = Integer.parseInt(selectedDoc.getRoom());
-        return new Appointment(doctorDropdown.getValue(), patient.getName(), date, randomId, timeDropdown.getValue(), department, roomNo);
+        return new Appointment(doctorDropdown.getValue(), patient.getName(), date, randomId, timeDropdown.getValue(), department, roomNo, patient.getId());
     }
 
     private void writeAppointment(Appointment a) {
         try {
-            String s = a.getDoctorName() + "<" + a.getPatientName() + "<" + a.getDate() + "<" + a.getId() + "<" + a.getTime() + "<" + a.getDepartment() + "<" + a.getRoomNo();
+            String s = a.getDoctorName() + "<" + a.getPatientName() + "<" + a.getDate() + "<" + a.getId() + "<" + a.getTime() + "<" + a.getDepartment() + "<" + a.getRoomNo() + "<" + a.getPatientId();
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/AppointmentList.txt", true));
             bw.write(s);
             bw.newLine();

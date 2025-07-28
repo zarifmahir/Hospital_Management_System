@@ -1,5 +1,7 @@
 package com.example.hospital_management_system.patient_page;
 
+import com.example.hospital_management_system.appointment_system.Prescription;
+
 public class Patient {
     private String name;
     private int age;
@@ -32,6 +34,9 @@ public class Patient {
 
     private String id;
     private String myChat;
+
+    private String primaryDiagnosis = "";
+    private int [] prescriptionIds;
 
 
     public Patient(String id, String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, boolean diabetes, boolean asthma, boolean highBp, boolean epilepsy, boolean cancer, boolean stroke, boolean kidney, boolean liver, boolean allergies, boolean surgeries, boolean familyHistory, boolean medications, String image) {
@@ -176,5 +181,13 @@ public class Patient {
 
     public String getPass() {
         return pass;
+    }
+
+    public String getPrimaryDiagnosis() {
+        return primaryDiagnosis;
+    }
+
+    public void setPrimaryDiagnosis(String primaryDiagnosis) {
+        this.primaryDiagnosis = primaryDiagnosis;
     }
 }
