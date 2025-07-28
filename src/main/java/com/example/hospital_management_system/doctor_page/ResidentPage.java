@@ -79,7 +79,7 @@ public class ResidentPage extends Application implements Initializable {
            generateSendingMessage(messageToSend, vBoxOfMessages);
 
 
-
+//Uncomment for same laptop
 //            if(currentSelected.getMyChat().isEmpty()){
 //                currentSelected.setMyChat(messageToSend+"~L");
 //            }
@@ -91,6 +91,7 @@ public class ResidentPage extends Application implements Initializable {
 
     public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox, Object p) {
         System.out.println(currentSelected.getName()+"~"+senderName+"~"+messageFromOtherEnd);
+        //Uncomment for same laptop
 //        Patient ptn = (Patient)p;
 //        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
         if(!currentSelected.getName().equals(senderName)){
@@ -232,6 +233,7 @@ public class ResidentPage extends Application implements Initializable {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                try {
                    c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+                   //Uncomment for same laptop
 //                   PatientPageController.reloadPatientChats(temp);
                    Thread.sleep(100);
                    main.loadPatientChats();
@@ -273,6 +275,7 @@ public class ResidentPage extends Application implements Initializable {
                 Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                 try {
                     c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+                    //Uncomment for same laptop
 //                    PatientPageController.reloadPatientChats(temp);
                     Thread.sleep(100);
                     main.loadPatientChats();
