@@ -156,7 +156,9 @@ public class PatientPageController {
             String content = patient.getUsername()+"@"+patient.getPass()+"|"+patient.getMyChat();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt", true));
             writer.write(content);
-            Main.c.sendMessage("ChatHistoryOfPatients|"+content);
+            synchronized (Main.c){
+                Main.c.sendMessage("ChatHistoryOfPatients$" + content);
+            }
             writer.newLine();
             writer.close();
             System.out.println("File written successfully.");

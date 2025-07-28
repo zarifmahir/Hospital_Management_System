@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Client {
     ReadThreadClient RTC;
-    WriteThreadClient WTC;
+   public WriteThreadClient WTC;
 
     SocketWrapper socketWrapper;
     public Client(String serverAddress, int serverPort, String clientName) {

@@ -217,7 +217,9 @@ public class BookAppointmentsPage implements Initializable {
             String s = a.getDoctorName() + "<" + a.getPatientName() + "<" + a.getDate() + "<" + a.getId() + "<" + a.getTime() + "<" + a.getDepartment() + "<" + a.getRoomNo();
             BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/AppointmentList.txt", true));
             bw.write(s);
-            Main.c.sendMessage("AppointmentList|"+s);
+            synchronized (Main.c){
+                Main.c.sendMessage("AppointmentList$" + s);
+            }
             bw.newLine();
             bw.close();
         } catch (IOException e) {

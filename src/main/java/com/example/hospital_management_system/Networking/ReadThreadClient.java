@@ -59,7 +59,7 @@ public class ReadThreadClient implements Runnable {
                     }
                     else if(socketWrapper.getType().equals("Resident")) {
                         String incoming = (String) o;
-                        String[] s = incoming.split("\\|");
+                        String[] s = incoming.split("\\$");
                         System.out.println(s[0]);
                         System.out.println(s[1]);
                         if(incoming.startsWith("New")) {

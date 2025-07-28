@@ -28,6 +28,17 @@ public class WriteThreadClient implements Runnable {
         System.out.println("Message set");
         this.msg = msg;
         status = true;
+        while(status){
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public boolean getStatus(){
+        return status;
     }
 
     public void run() {
@@ -56,6 +67,7 @@ public class WriteThreadClient implements Runnable {
                    else socketWrapper.write(msg);
                     status = false;
                 }
+
                 try {
                     Thread.sleep(50); // avoid busy-loop
                 } catch (InterruptedException e) {

@@ -183,9 +183,13 @@ public class RegistrationController {
                     p.getUsername()+"|"+p.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt", true));
             writer.write(content);
-            Main.c.sendMessage("PatientsList|"+content);
             writer.newLine();
             writer.close();
+            synchronized (Main.c.WTC){
+                System.out.println("Patient writng");
+                Main.c.sendMessage("PatientsList$"+content);
+            }
+
             System.out.println("File written successfully.");
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -201,7 +205,10 @@ public class RegistrationController {
                     +"|"+doctor.getUserName()+"|"+doctor.getPass();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt", true));
             writer.write(content);
-            Main.c.sendMessage("DoctorsList|"+content);
+
+            synchronized (Main.c){
+                Main.c.sendMessage("DoctorsList$" + content);
+            }
             writer.newLine();
             writer.close();
             System.out.println("File written successfully.");
