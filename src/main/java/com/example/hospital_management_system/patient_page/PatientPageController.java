@@ -52,8 +52,9 @@ public class PatientPageController {
 
     private void loadPage(String page) throws IOException {
 
-        if(currentPage.equals("chat_of_patient")){
+        if(currentPage.equals("chat_of_patient") && !page.equals(currentPage)) {
             Main.patientChatMap.addChat(patient, patient.getMyChat());
+            reloadPatientChats(patient);
             currentPage = "others";
         }
         bp.setCenter(null);

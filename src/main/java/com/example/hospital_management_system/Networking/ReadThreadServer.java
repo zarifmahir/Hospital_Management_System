@@ -72,7 +72,6 @@ public class ReadThreadServer implements Runnable {
                     else{
                         for(HashMap.Entry<String, SocketWrapper> entry : clientMap.entrySet()){
                             if(!entry.getValue().isClosed() && entry.getValue() != socketWrapper && entry.getKey().equals("Resident")){
-
                                 entry.getValue().write((String) o + "|"+socketWrapper.getName());
                                 break;
                             }
