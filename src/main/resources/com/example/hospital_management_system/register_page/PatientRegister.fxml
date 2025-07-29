@@ -19,13 +19,13 @@
          <Font name="Times New Roman" size="21.0" />
       </font>
    </Label>
-   <TextField fx:id="patientName" layoutX="240.0" layoutY="139.0" prefHeight="31.0" prefWidth="273.0" />
+   <TextField fx:id="patientName" layoutX="240.0" layoutY="139.0" prefHeight="31.0" prefWidth="273.0" promptText="Enter your full name" />
    <Label layoutX="61.0" layoutY="197.0" text="Date of Birth:">
       <font>
          <Font name="Times New Roman" size="21.0" />
       </font>
    </Label>
-   <DatePicker fx:id="dateOfBirth" layoutX="240.0" layoutY="192.0" prefHeight="31.0" prefWidth="275.0" />
+   <DatePicker fx:id="dateOfBirth" layoutX="240.0" layoutY="192.0" prefHeight="31.0" prefWidth="275.0" promptText="Select your Date of Birth" />
    <Text layoutX="61.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information" underline="true">
       <font>
          <Font name="System Bold" size="25.0" />
@@ -41,7 +41,7 @@
          <Font name="Times New Roman" size="21.0" />
       </font>
    </Label>
-   <TextField fx:id="bloodGroup" layoutX="240.0" layoutY="296.0" prefHeight="31.0" prefWidth="273.0" />
+   <TextField fx:id="bloodGroup" layoutX="240.0" layoutY="296.0" prefHeight="31.0" prefWidth="273.0" promptText="Enter your Blood Group" />
    <Text layoutX="61.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Information" underline="true">
       <font>
          <Font name="System Bold" size="25.0" />
@@ -52,7 +52,7 @@
          <Font name="Times New Roman" size="21.0" />
       </font>
    </Label>
-   <TextField fx:id="email" layoutX="240.0" layoutY="537.0" prefHeight="31.0" prefWidth="273.0" />
+   <TextField fx:id="email" layoutX="240.0" layoutY="537.0" prefHeight="31.0" prefWidth="273.0" promptText="Enter you email address" />
    <Label layoutX="61.0" layoutY="594.0" text="Mobile: ">
       <font>
          <Font name="Times New Roman" size="21.0" />
@@ -63,8 +63,8 @@
          <Font name="Times New Roman" size="21.0" />
       </font>
    </Label>
-   <TextField fx:id="mobile" layoutX="240.0" layoutY="588.0" prefHeight="31.0" prefWidth="273.0" />
-   <TextField fx:id="emergencyContact" layoutX="240.0" layoutY="640.0" prefHeight="31.0" prefWidth="273.0" />
+   <TextField fx:id="mobile" layoutX="240.0" layoutY="588.0" prefHeight="31.0" prefWidth="273.0" promptText="Enter your phone number (e.g. 01*********)" />
+   <TextField fx:id="emergencyContact" layoutX="240.0" layoutY="640.0" prefHeight="31.0" prefWidth="273.0" promptText="Enter your emergency contact (e.g. 01*********)" />
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="632.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
    <Text layoutX="550.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medical Information" underline="true">
       <font>
@@ -80,13 +80,13 @@
    <CheckBox fx:id="liverDisease" layoutX="556.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Liver disease" />
    <CheckBox fx:id="epilepsy" layoutX="556.0" layoutY="514.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Epilepsy" />
    <CheckBox fx:id="allergies" layoutX="556.0" layoutY="543.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="Allegies (Specify if any):" />
-   <TextField fx:id="nameOfAllergies" layoutX="755.0" layoutY="537.0" prefHeight="28.0" prefWidth="181.0" />
+   <TextField fx:id="nameOfAllergies" layoutX="755.0" layoutY="537.0" prefHeight="28.0" prefWidth="181.0" promptText="Specify type of allergies" />
    <CheckBox fx:id="surgeries" layoutX="556.0" layoutY="577.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="171.0" text="Surgeries (Specify if any):" />
    <CheckBox fx:id="familyHistory" layoutX="556.0" layoutY="617.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Family history (Specify if any):" />
-   <TextField fx:id="nameOfSurgeries" layoutX="755.0" layoutY="577.0" prefHeight="28.0" prefWidth="181.0" />
-   <TextField fx:id="nameOfFamilyHistory" layoutX="755.0" layoutY="617.0" prefHeight="28.0" prefWidth="181.0" />
+   <TextField fx:id="nameOfSurgeries" layoutX="755.0" layoutY="577.0" prefHeight="28.0" prefWidth="181.0" promptText="Specify which surgeries" />
+   <TextField fx:id="nameOfFamilyHistory" layoutX="755.0" layoutY="617.0" prefHeight="28.0" prefWidth="181.0" promptText=" Mention the diseases" />
    <CheckBox fx:id="medications" layoutX="556.0" layoutY="657.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="Medications (Specify if any):" />
-   <TextField fx:id="nameOfMedications" layoutX="755.0" layoutY="657.0" prefHeight="28.0" prefWidth="181.0" />
+   <TextField fx:id="nameOfMedications" layoutX="755.0" layoutY="657.0" prefHeight="28.0" prefWidth="181.0" promptText="Enter your current medications" />
    <ImageView fx:id="photo" fitHeight="169.0" fitWidth="171.0" layoutX="663.0" layoutY="26.0" pickOnBounds="true">
       <Image url="@../../../../images/blank-profile-picture.png" />
    </ImageView>
@@ -120,13 +120,13 @@
          <Font name="Times New Roman" size="21.0" />
       </font>
    </Label>
-   <TextField fx:id="weight" layoutX="240.0" layoutY="347.0" prefHeight="31.0" prefWidth="273.0" />
-   <Label layoutX="61.0" layoutY="402.0" text="Height">
+   <TextField fx:id="weight" layoutX="240.0" layoutY="347.0" prefHeight="31.0" prefWidth="273.0" promptText="Enter your weight in kg (e.g. 62.3 kg)" />
+   <Label layoutX="61.0" layoutY="402.0" text="Height:">
       <font>
          <Font name="Times New Roman" size="21.0" />
       </font>
    </Label>
-   <TextField fx:id="height" layoutX="240.0" layoutY="397.0" prefHeight="31.0" prefWidth="273.0" />
+   <TextField fx:id="height" layoutX="240.0" layoutY="397.0" prefHeight="31.0" prefWidth="273.0" promptText="Enter your height in ft (e.g. 6.2 ft)" />
    <Label layoutX="61.0" layoutY="35.0" text="Patient ID: ">
       <font>
          <Font name="Times New Roman Bold" size="21.0" />
@@ -137,4 +137,24 @@
          <Font size="14.0" />
       </font>
    </TextField>
+   <Label fx:id="invalidWeight" layoutX="241.0" layoutY="329.0" text="*Invalid Weight" textFill="#eb0909" visible="false">
+      <font>
+         <Font size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="invalidHeight" layoutX="241.0" layoutY="379.0" text="*Invalid Height" textFill="#eb0909" visible="false">
+      <font>
+         <Font size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="invalidPhoneNumber" layoutX="241.0" layoutY="569.0" text="*Invalid Mobile Number" textFill="#eb0909" visible="false">
+      <font>
+         <Font size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="invalidEmContact" layoutX="241.0" layoutY="621.0" text="*Invalid Phone Number" textFill="#eb0909" visible="false">
+      <font>
+         <Font size="12.0" />
+      </font>
+   </Label>
 </AnchorPane>

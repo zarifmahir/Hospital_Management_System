@@ -1,5 +1,6 @@
 package com.example.hospital_management_system.patient_page;
 
+import com.example.hospital_management_system.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,11 @@ public class PatientAppointmentsController {
     private BorderPane bp;
 
     public Patient patient;
+
+    private Main main;
+    public void setMain(Main main) {
+        this.main = main;
+    }
 
 
     private void loadPage(String page) throws IOException {
@@ -29,6 +35,7 @@ public class PatientAppointmentsController {
         else if (page.equals("show_appointments_page")) {
             ShowAppointmentsPage controller = loader.getController();
             controller.setPatient(patient);
+            controller.setMain(main);
         }
 
         bp.setCenter(root);

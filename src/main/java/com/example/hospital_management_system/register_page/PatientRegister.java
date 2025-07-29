@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -24,6 +26,10 @@ public class PatientRegister {
     @FXML
     public TextField height;
     public TextField pID;
+    public Label invalidWeight;
+    public Label invalidHeight;
+    public Label invalidPhoneNumber;
+    public Label invalidEmContact;
 
     @FXML
     private CheckBox allergies;
@@ -155,11 +161,75 @@ public class PatientRegister {
     private void initialize() throws IOException {
             dateOfBirth.getEditor().setDisable(true);
             dateOfBirth.getEditor().setOpacity(1);
+            setErrorLabels();
         gender.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
             if (newToggle != null) {
                 selected = (RadioButton) newToggle;
             }
+        });
 
+        weight.textProperty().addListener((obs, oldText, newText) -> {
+           if(!newText.isEmpty()){
+               try {
+                   Float.parseFloat(newText);
+                   invalidWeight.setVisible(false);
+               } catch (NumberFormatException e) {
+                   invalidWeight.setVisible(true);
+               }
+           }
+           else {
+               invalidWeight.setVisible(false);
+           }
+        });
+
+        height.textProperty().addListener((obs, oldText, newText) -> {
+            if(!newText.isEmpty()){
+                try{
+                    Float.parseFloat(newText);
+                    invalidHeight.setVisible(false);
+                }
+                catch (NumberFormatException e) {
+                    invalidHeight.setVisible(true);
+                }
+            }
+            else{
+                invalidHeight.setVisible(false);
+            }
+        });
+
+        mobile.textProperty().addListener((obs, oldText, newText) -> {
+            if(!newText.isEmpty()){
+                try{
+                    Integer.parseInt(newText);
+                    if(!newText.startsWith("01")){
+                        invalidPhoneNumber.setVisible(true);
+                    }
+                    else invalidPhoneNumber.setVisible(false);
+                }
+                catch (NumberFormatException e) {
+                    invalidPhoneNumber.setVisible(true);
+                }
+            }
+            else{
+                invalidPhoneNumber.setVisible(false);
+            }
+        });
+
+        emergencyContact.textProperty().addListener((obs, oldText, newText) -> {
+            if(!newText.isEmpty()){
+                try{
+                    Integer.parseInt(newText);
+                    if(!newText.startsWith("01")){
+                        invalidEmContact.setVisible(false);
+                    }
+                    else invalidEmContact.setVisible(false);
+                }
+                catch (NumberFormatException e) {
+                    invalidEmContact.setVisible(true);
+                }
+            }else {
+                invalidEmContact.setVisible(false);
+            }
         });
     }
 
@@ -169,7 +239,9 @@ public class PatientRegister {
                 return true;
             }
             return false;
-        }
+    }
+
+
 
     
 
@@ -226,5 +298,53 @@ public class PatientRegister {
                 medications.isSelected(), img);
         return p;
     }
+
+    public boolean checkBoundaries(){
+        String weightStr = weight.getText();
+        String heightStr = height.getText();
+        String mobileStr = mobile.getText();
+        String emergencyContactStr = emergencyContact.getText();
+
+        try {
+            Float.parseFloat(heightStr);
+        } catch (NumberFormatException e) {
+            invalidHeight.setVisible(true);
+            return true;
+        }
+
+        try{
+            Integer.parseInt(mobileStr);
+            if(!mobileStr.startsWith("01") || mobileStr.length()!=11){
+                invalidPhoneNumber.setVisible(true);
+                return true;
+            }
+        }
+        catch (NumberFormatException e){
+            invalidPhoneNumber.setVisible(true);
+            return true;
+        }
+
+        try{
+            Integer.parseInt(emergencyContactStr);
+            if(!emergencyContactStr.startsWith("01") || emergencyContactStr.length()!=11){
+                invalidEmContact.setVisible(true);
+                return true;
+            }
+        }
+        catch (NumberFormatException e){
+            invalidEmContact.setVisible(true);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void setErrorLabels(){
+        invalidWeight.setVisible(false);
+        invalidHeight.setVisible(false);
+        invalidPhoneNumber.setVisible(false);
+        invalidEmContact.setVisible(false);
+    }
+
 
 }

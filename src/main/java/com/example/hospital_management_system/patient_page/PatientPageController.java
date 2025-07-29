@@ -52,8 +52,9 @@ public class PatientPageController {
 
     private void loadPage(String page) throws IOException {
 
-        if(currentPage.equals("chat_of_patient")){
+        if(currentPage.equals("chat_of_patient") && !page.equals(currentPage)) {
             Main.patientChatMap.addChat(patient, patient.getMyChat());
+            reloadPatientChats(patient);
             currentPage = "others";
         }
         bp.setCenter(null);
@@ -77,6 +78,7 @@ public class PatientPageController {
         else if(page.equals("patient_appointments")) {
             PatientAppointmentsController controller = loader.getController();
             controller.setPatient(patient);
+            controller.setMain(main);
         }
         else if(page.equals("patient_history")) {
             PatientHistoryController controller = loader.getController();
@@ -135,6 +137,9 @@ public class PatientPageController {
     public static void reloadPatientChats(Patient patient) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt"));
         writer.write("");
+        synchronized (Main.c){
+            Main.c.sendMessage("ChatHistoryOfPatients$EmptyChat");
+        }
         writer.close();
         boolean stat = false;
         for(Patient p: Main.patientChatMap.chatMap.keySet()){
@@ -142,6 +147,9 @@ public class PatientPageController {
             if(p.getName().equals(patient.getName())) stat = true;
         }
         if(!stat) writeChats(patient);
+        synchronized (Main.c){
+            Main.c.sendMessage("ChatHistoryOfPatients$ChatRefreshed");
+        }
         System.out.println("Written successfully");
     }
 

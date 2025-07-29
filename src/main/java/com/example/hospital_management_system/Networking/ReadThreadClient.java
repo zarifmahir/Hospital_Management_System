@@ -11,9 +11,9 @@ import com.example.hospital_management_system.patient_page.PatientPageController
 import javafx.application.Platform;
 import javafx.scene.layout.VBox;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReadThreadClient implements Runnable {
     private Thread thr;
@@ -38,9 +38,45 @@ public class ReadThreadClient implements Runnable {
                         writer.close();
                     }
                     else{
-                        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/" + spt[0] + ".txt", true));
-                        writer.write(spt[1]);
-                        writer.newLine();
+                        BufferedWriter writer;
+                        System.out.println((String)o);
+                        if(spt[1].equals("Remove")){
+                            List<String> lines = new ArrayList<>();
+                            try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/"+ spt[0]+ ".txt"))) {
+                                String line;
+                                while ((line = reader.readLine()) != null) {
+                                    System.out.println(line);
+                                    lines.add(line);
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                throw new RuntimeException(e);
+                            }
+
+                            lines.remove(Integer.parseInt(spt[2]));
+                                writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
+                                for (String line : lines) {
+                                    writer.write(line);
+                                    writer.newLine();
+                                }
+
+                        }
+                        else if(spt[1].equals("EmptyChat")) {
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
+                            writer.write("");
+                        }
+
+                        else if(spt[1].equals("ChatRefreshed")) {
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt", true));
+                            Main main = (Main)socketWrapper.getO();
+                            main.loadPatientChats();
+                        }
+
+                        else {
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/" + spt[0] + ".txt", true));
+                            writer.write(spt[1]);
+                            writer.newLine();
+                        }
                         writer.close();
 
                         if(spt[0].equals("PatientsList")) {
@@ -53,6 +89,12 @@ public class ReadThreadClient implements Runnable {
                             main.loadDoctors();
                             Main.setUpdated(!Main.getUpdated());
                         }
+                        else if(spt[0].equals("AppointmentList")) {
+                            Main main = (Main)socketWrapper.getO();
+                            main.loadAppointments();
+                            Main.setUpdated(!Main.getUpdated());
+                        }
+
                     }
 
                 }

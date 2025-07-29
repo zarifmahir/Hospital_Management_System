@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -108,6 +110,12 @@ public class LoginController {
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    public void keyEntered(KeyEvent keyEvent) throws IOException {
+        if(keyEvent.getCode() == KeyCode.ENTER){
+            checkLogin();
         }
     }
 }

@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChatOfDoctorController extends Application {
+public class ChatOfDoctorController {
 
     @FXML
     private TextField messageArea;
@@ -116,18 +116,18 @@ public class ChatOfDoctorController extends Application {
 
     }
 
-    public static  void main(String[] args){
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) {
-     try{
-        Main main = new Main();
-        main.start(stage);
-     }
-     catch(Exception e){
-         e.printStackTrace();
-     }
-    }
+//    public static  void main(String[] args){
+//        launch(args);
+//    }
+//
+//    @Override
+//    public void start(Stage stage) {
+//     try{
+//        Main main = new Main();
+//        main.start(stage);
+//     }
+//     catch(Exception e){
+//         e.printStackTrace();
+//     }
+//    }
 }

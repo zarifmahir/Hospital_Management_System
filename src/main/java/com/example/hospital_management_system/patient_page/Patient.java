@@ -38,6 +38,8 @@ public class Patient {
     private String primaryDiagnosis = "";
     private int [] prescriptionIds;
 
+    private int testReportNumbers;
+
 
     public Patient(String id, String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, boolean diabetes, boolean asthma, boolean highBp, boolean epilepsy, boolean cancer, boolean stroke, boolean kidney, boolean liver, boolean allergies, boolean surgeries, boolean familyHistory, boolean medications, String image) {
         this.name = name;
@@ -64,6 +66,47 @@ public class Patient {
         this.image = image;
         this.myChat = "";
         this.id = id;
+        testReportNumbers = 0;
+    }
+
+    public int getTestReportNumbers() {
+        return testReportNumbers;
+    }
+
+    public void setTestReportNumbers(int testReportNumbers) {
+        this.testReportNumbers = testReportNumbers;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    public void setMobile(int mobile) {
+        this.mobile = mobile;
+    }
+
+    public void setEmergencyContact(int emergencyContact) {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getMyChat() {
@@ -115,8 +158,8 @@ public class Patient {
         return bloodType;
     }
 
-    public int getMobile() {
-        return mobile;
+    public String getMobile() {
+        return String.valueOf(mobile);
     }
 
     public int getEmergencyContact() {

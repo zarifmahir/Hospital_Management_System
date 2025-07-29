@@ -20,13 +20,13 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="doctorName" layoutX="270.0" layoutY="79.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="doctorName" layoutX="270.0" layoutY="79.0" prefHeight="31.0" prefWidth="213.0" promptText="Enter your full name (excluding Dr.)" />
       <Label layoutX="71.0" layoutY="137.0" text="Date of Birth:">
          <font>
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dateOfBirth" layoutX="270.0" layoutY="132.0" prefHeight="31.0" prefWidth="200.0" />
+      <DatePicker fx:id="dateOfBirth" layoutX="270.0" layoutY="132.0" prefHeight="31.0" prefWidth="213.0" promptText="Select your Date of Birth" />
       <Text layoutX="71.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information" underline="true">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -42,7 +42,7 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="bloodGroup" layoutX="270.0" layoutY="236.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="bloodGroup" layoutX="270.0" layoutY="236.0" prefHeight="31.0" prefWidth="213.0" promptText="Enter your blood group" />
       <Text layoutX="71.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Information" underline="true">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -53,7 +53,7 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="email" layoutX="270.0" layoutY="327.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="email" layoutX="270.0" layoutY="327.0" prefHeight="31.0" prefWidth="213.0" promptText="Enter your email" />
       <Label layoutX="71.0" layoutY="384.0" text="Mobile: ">
          <font>
             <Font name="Times New Roman" size="21.0" />
@@ -64,8 +64,8 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="mobile" layoutX="270.0" layoutY="378.0" prefHeight="31.0" prefWidth="200.0" />
-      <TextField fx:id="emergencyContact" layoutX="270.0" layoutY="430.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="mobile" layoutX="270.0" layoutY="378.0" prefHeight="31.0" prefWidth="213.0" promptText="Enter you mobile number" />
+      <TextField fx:id="emergencyContact" layoutX="270.0" layoutY="430.0" prefHeight="31.0" prefWidth="213.0" promptText="Enter your emergency contact" />
       <Text layoutX="517.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Professional Details" underline="true">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -82,7 +82,7 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="licenseNumber" layoutX="740.0" layoutY="327.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="licenseNumber" layoutX="740.0" layoutY="327.0" prefHeight="31.0" prefWidth="200.0" promptText="Enter your valid license number" />
       <Label layoutX="517.0" layoutY="384.0" text="Department:">
          <font>
             <Font name="Times New Roman" size="21.0" />
@@ -93,13 +93,13 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="experience" layoutX="740.0" layoutY="430.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="experience" layoutX="740.0" layoutY="430.0" prefHeight="31.0" prefWidth="200.0" promptText="Number of years of experience" />
       <Label layoutX="517.0" layoutY="482.0" text="Issuing Medical Council:">
          <font>
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="medicalCouncil" layoutX="740.0" layoutY="477.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="medicalCouncil" layoutX="740.0" layoutY="477.0" prefHeight="31.0" prefWidth="200.0" promptText="Write your issuing medical council" />
       <Text layoutX="71.0" layoutY="505.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education &amp; Credentials" underline="true">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -110,7 +110,7 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="degrees" layoutX="270.0" layoutY="527.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="degrees" layoutX="270.0" layoutY="527.0" prefHeight="31.0" prefWidth="213.0" promptText="Write degrees (e.g. MBBS, FCPS)" />
       <Label layoutX="71.0" layoutY="584.0" text="Institution name:">
          <font>
             <Font name="Times New Roman" size="21.0" />
@@ -121,8 +121,8 @@
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="institution" layoutX="270.0" layoutY="578.0" prefHeight="31.0" prefWidth="200.0" />
-      <TextField fx:id="pgQualification" layoutX="270.0" layoutY="650.0" prefHeight="31.0" prefWidth="200.0" />
+      <TextField fx:id="institution" layoutX="270.0" layoutY="578.0" prefHeight="31.0" prefWidth="213.0" promptText="Write your passing institution name" />
+      <TextField fx:id="pgQualification" layoutX="270.0" layoutY="650.0" prefHeight="31.0" prefWidth="213.0" promptText="Specify if any" />
       <Label layoutX="518.0" layoutY="526.0" prefHeight="68.0" prefWidth="242.0" text="Medical Registration Certificate:" wrapText="true">
          <font>
             <Font name="Times New Roman" size="21.0" />
@@ -133,12 +133,12 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label layoutX="518.0" layoutY="636.0" prefHeight="24.0" prefWidth="284.0" text="Degree Certificates:">
+      <Label layoutX="518.0" layoutY="604.0" prefHeight="24.0" prefWidth="284.0" text="Degree Certificates:">
          <font>
             <Font name="Times New Roman" size="21.0" />
          </font>
       </Label>
-      <Button fx:id="degreeUpload" layoutX="726.0" layoutY="633.0" mnemonicParsing="false" onAction="#uploadDegrees" prefHeight="24.0" prefWidth="215.0" text="Upload">
+      <Button fx:id="degreeUpload" layoutX="726.0" layoutY="601.0" mnemonicParsing="false" onAction="#uploadDegrees" prefHeight="24.0" prefWidth="215.0" text="Upload">
          <font>
             <Font size="15.0" />
          </font>
@@ -162,5 +162,15 @@
          </font>
       </Label>
       <TextField fx:id="dID" layoutX="839.0" layoutY="83.0" prefHeight="19.0" prefWidth="80.0" />
+      <Label fx:id="invalidMobile" layoutX="271.0" layoutY="358.0" text="*Invalid Mobille Number" textFill="#dd0b0b">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="invalidEmCon" layoutX="271.0" layoutY="412.0" text="*Invalid Phone Number" textFill="#dd0b0b">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

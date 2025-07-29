@@ -4,6 +4,7 @@ import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.Networking.Client;
 import com.example.hospital_management_system.patient_page.Patient;
 import com.example.hospital_management_system.patient_page.PatientPageController;
+import javafx.animation.ScaleTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,9 +26,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import static javafx.application.Application.launch;
@@ -34,6 +39,7 @@ import static javafx.application.Application.launch;
 public class ResidentPage extends Application implements Initializable {
 
     public AnchorPane messagePane;
+    public Button logoutButton;
     @FXML
     private TextField messageArea;
 
@@ -53,6 +59,8 @@ public class ResidentPage extends Application implements Initializable {
     private Main main;
 
     private static Patient currentSelected;
+
+    private static Map<Patient, Button> buttonMap;
 
 
 
@@ -80,10 +88,10 @@ public class ResidentPage extends Application implements Initializable {
 
 
 //Uncomment for same laptop
-//            if(currentSelected.getMyChat().isEmpty()){
-//                currentSelected.setMyChat(messageToSend+"~L");
-//            }
-//            else currentSelected.setMyChat(currentSelected.getMyChat() + "<"+messageToSend+"~L");
+            if(currentSelected.getMyChat().isEmpty()){
+                currentSelected.setMyChat(messageToSend+"~L");
+            }
+            else currentSelected.setMyChat(currentSelected.getMyChat() + "<"+messageToSend+"~L");
             c.sendMessage("Res"+"~"+currentSelected.getName()+"~"+messageToSend);
             messageArea.clear();
         }
@@ -92,11 +100,14 @@ public class ResidentPage extends Application implements Initializable {
     public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox, Object p) {
         System.out.println(currentSelected.getName()+"~"+senderName+"~"+messageFromOtherEnd);
         //Uncomment for same laptop
-//        Patient ptn = (Patient)p;
-//        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
+        Patient ptn = (Patient)p;
+        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
         if(!currentSelected.getName().equals(senderName)){
+            Button temp = buttonMap.get(p);
+            temp.setStyle("-fx-background-color: none; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 40; -fx-border-color: black;");
             return;
         }
+
         VBox messageContainer = new VBox();
         messageContainer.setSpacing(1);
 
@@ -104,7 +115,7 @@ public class ResidentPage extends Application implements Initializable {
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPadding(new Insets(5, 5, 5, 5));
 
-        Label nameLabel = new Label("Patient" );
+        Label nameLabel = new Label("Patient: " +ptn.getName());
         nameLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray; -fx-padding: 0 0 0 5;");
 
         Text text = new Text(messageFromOtherEnd);
@@ -219,8 +230,13 @@ public class ResidentPage extends Application implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        scrollWindow.setStyle(
+                "-fx-hbar-policy: never; " +
+                        "-fx-vbar-policy: never;"
+        );
+        buttonMap = new HashMap<>();
         messagePane.setVisible(false);
-        patientsBox.setSpacing(5);
+        patientsBox.setSpacing(7);
        for(Patient p: Main.patientChatMap.chatMap.keySet()){
            HBox hBox = new HBox();
            hBox.setAlignment(Pos.CENTER_LEFT);
@@ -228,18 +244,22 @@ public class ResidentPage extends Application implements Initializable {
            button.setPrefWidth(286);
            button.setPrefHeight(43);
            button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 40");
+           button.setText("ID: "+p.getId()+", Name: "+p.getName());
            button.setUserData(p);
+           buttonMap.put(p, button);
            button.setOnAction(e -> {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
+               Button b = (Button) e.getSource();
+//               b.setText("ID: "+temp.getId()+", Name: "+temp.getName());
+               b.setStyle("-fx-background-color: none; -fx-font-weight: normal; -fx-border-width: 1px; -fx-border-radius: 40; -fx-border-color: black;");
                try {
-                   c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+                   //c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                    //Uncomment for same laptop
-//                   PatientPageController.reloadPatientChats(temp);
-                   Thread.sleep(100);
+                 PatientPageController.reloadPatientChats(temp);
                    main.loadPatientChats();
                    vBoxOfMessages.getChildren().clear();
                    //System.out.println(p.getMyChat());
-               } catch (IOException | InterruptedException ex) {
+               } catch (IOException  ex) {
                    throw new RuntimeException(ex);
                }
                currentSelected = temp;
@@ -247,6 +267,7 @@ public class ResidentPage extends Application implements Initializable {
               messageArea.clear();
               createVBoxOfMessages(currentSelected,vBoxOfMessages);
            });
+
            hBox.getChildren().add(button);
            patientsBox.getChildren().add(hBox);
        }
@@ -270,18 +291,22 @@ public class ResidentPage extends Application implements Initializable {
             button.setPrefWidth(286);
             button.setPrefHeight(43);
             button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 40");
+            button.setText("ID: "+p.getId()+", Name: "+p.getName());
             button.setUserData(p);
+            buttonMap.put(p, button);
             button.setOnAction(e -> {
                 Patient temp = (Patient) ((Button)e.getSource()).getUserData();
+                Button b = (Button) e.getSource();
+                b.setStyle("-fx-background-color: none; -fx-font-weight: normal; -fx-border-width: 1px; -fx-border-radius: 40; -fx-border-color: black;");
                 try {
-                    c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+                    //c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                     //Uncomment for same laptop
-//                    PatientPageController.reloadPatientChats(temp);
-                    Thread.sleep(100);
+                  PatientPageController.reloadPatientChats(temp);
+                    //Thread.sleep(100);
                     main.loadPatientChats();
                     vBoxOfMessages.getChildren().clear();
                     //System.out.println(p.getMyChat());
-                } catch (IOException | InterruptedException ex) {
+                } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
                 currentSelected = temp;
@@ -293,6 +318,37 @@ public class ResidentPage extends Application implements Initializable {
 
             patientsBox.getChildren().add(hBox);
         }
+    }
+
+    public void logOut(ActionEvent actionEvent) {
+        try {
+            if(currentSelected!=null) PatientPageController.reloadPatientChats(currentSelected);
+            main.showLoginPage();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void logoutHover(MouseEvent mouseEvent) {
+        logoutButton.setStyle("-fx-background-color: lightgray;");
+    }
+
+    public void logoutHoverExited(MouseEvent mouseEvent) {
+    }
+
+    public void setOnMousePressed4(MouseEvent mouseEvent) {
+        ScaleTransition scaleDown = new ScaleTransition(Duration.millis(100), logoutButton);
+        scaleDown.setToX(0.95);
+        scaleDown.setToY(0.95);
+        scaleDown.play();
+    }
+
+    public void setOnMouseReleased4(MouseEvent mouseEvent) {
+        ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), logoutButton);
+        scaleUp.setToX(1);
+        scaleUp.setToY(1);
+        scaleUp.play();
     }
 }
 

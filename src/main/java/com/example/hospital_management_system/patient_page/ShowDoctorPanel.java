@@ -109,6 +109,11 @@ public class ShowDoctorPanel implements Initializable {
 
             doctorsTable.setItems(filteredDoctors);
         });
+
+        Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+            doctorsTable.getItems().clear();
+            doctorsTable.getItems().addAll(Main.doctorsMap.getDoctorList());
+        });
     }
 
 
