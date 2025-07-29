@@ -19,7 +19,7 @@ public class Prescription {
             e.printStackTrace();
         }
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/PrescriptionIds.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/PrescriptionIds.txt", true))) {
             bw.write(Integer.toString(x + 1));
             bw.newLine();
         } catch (IOException e) {

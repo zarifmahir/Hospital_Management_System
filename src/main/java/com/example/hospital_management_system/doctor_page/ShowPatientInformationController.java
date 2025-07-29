@@ -37,10 +37,14 @@ public class ShowPatientInformationController {
         //load the table view as well
         List<Prescription> prescriptionList = Main.prescriptionMap.getPatientPrescriptionList(patient.getId());
 
+        System.out.println("Num prescriptions = " + prescriptionList.size());
+
+
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         doctorNameCol.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
 
-        prescriptionTable.getItems().addAll(prescriptionList);
+        ObservableList<Prescription> observablePrescriptions = FXCollections.observableArrayList(prescriptionList);
+        prescriptionTable.setItems(observablePrescriptions);
     }
 
 

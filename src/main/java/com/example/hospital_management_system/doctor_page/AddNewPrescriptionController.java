@@ -101,40 +101,36 @@ public class AddNewPrescriptionController {
         if (!remedyField1.getText().isEmpty()) {
             s += "|" + remedyField1.getText();
             prescription.setRemedy1(remedyField1.getText());
-            System.out.println(s);
         }
         if (!remedyField2.getText().isEmpty()) {
             s += "|" + remedyField2.getText();
             prescription.setRemedy2(remedyField2.getText());
-            System.out.println(s);
         }
         if (!remedyField3.getText().isEmpty()) {
             s += "|" + remedyField3.getText();
             prescription.setRemedy3(remedyField3.getText());
-            System.out.println(s);
         }
         if (!remedyField4.getText().isEmpty()) {
             s += "|" + remedyField4.getText();
             prescription.setRemedy4(remedyField4.getText());
-            System.out.println(s);
         }
         if (!remedyField5.getText().isEmpty()) {
             s += "|" + remedyField5.getText();
             prescription.setRemedy5(remedyField5.getText());
-            System.out.println(s);
         }
         if (!remedyField6.getText().isEmpty()) {
             s += "|" + remedyField6.getText();
             prescription.setRemedy6(remedyField6.getText());
-            System.out.println(s);
         }
 
         System.out.println(s);
 
         Main.prescriptionMap.addPrescription(prescription);
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/PrescriptionList.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/PrescriptionList.txt", true))) {
+            System.out.println("File writter opened");
             bw.write(s);
+            System.out.println("Wrote new prescription");
             bw.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);

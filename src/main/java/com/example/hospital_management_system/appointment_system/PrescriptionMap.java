@@ -10,6 +10,7 @@ public class PrescriptionMap {
 
     public void addPrescription(Prescription p) {
         prescriptionMap.put(p.getMyId(), p);
+        System.out.println("added prescription = " + p.getMyId());
     }
 
     public int size() {
@@ -23,8 +24,7 @@ public class PrescriptionMap {
     public List<Prescription> getPatientPrescriptionList(String patientId) {
         List<Prescription> res = new ArrayList<>();
         for (Prescription p : prescriptionMap.values()) {
-            if (p.getMyId().equals(patientId)) {
-                System.out.println("getting prescription");
+            if (p.getPatientId().equals(patientId)) {
                 res.add(p);
             }
         }
@@ -34,7 +34,7 @@ public class PrescriptionMap {
     public List<Prescription> getDoctorPrescriptionList(String doctorId) {
         List<Prescription> res = new ArrayList<>();
         for (Prescription p : prescriptionMap.values()) {
-            if (p.getMyId().equals(doctorId)) {
+            if (p.getDoctorId().equals(doctorId)) {
                 res.add(p);
             }
         }

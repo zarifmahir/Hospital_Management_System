@@ -62,11 +62,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
-//        String serverAddress = "127.0.0.1";
-//        int serverPort = 44444;
-//        c = new Client(serverAddress, serverPort, "Main1");
-//        c.setType("Main");
-//        c.setObType((Object) this);
+        String serverAddress = "127.0.0.1";
+        int serverPort = 44444;
+        c = new Client(serverAddress, serverPort, "Main1");
+        c.setType("Main");
+        c.setObType((Object) this);
         showLoginPage();
     }
 
@@ -285,6 +285,7 @@ public class Main extends Application {
             //READ PRESCRIPTION AND LOAD IT INTO THE MAP
             Prescription p = new Prescription(values[0], values[1], values[2], values[3], values[4], values[5]);
 
+            //THIS CODE CAN BE IMPROVED -> JUST KEEP EMPTY STRING IF RMXi  == empty
             if (values.length == 12) {
                 p.setRemedy1(values[6]);
                 p.setRemedy2(values[7]);
