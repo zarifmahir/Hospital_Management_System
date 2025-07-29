@@ -18,12 +18,12 @@
          <children>
             <AnchorPane prefHeight="675.0" prefWidth="990.0">
                <children>
-                  <TableView fx:id="doctorsPanel" layoutX="27.0" layoutY="115.0" prefHeight="435.0" prefWidth="911.0">
+                  <TableView fx:id="doctorsPanel" layoutX="40.0" layoutY="85.0" prefHeight="507.0" prefWidth="911.0">
                      <columns>
                         <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
                         <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                        <TableColumn fx:id="department" prefWidth="75.0" text="Department" />
-                        <TableColumn fx:id="phone" prefWidth="75.0" text="Phone" />
+                        <TableColumn fx:id="department" prefWidth="151.0" text="Department" />
+                        <TableColumn fx:id="phone" prefWidth="152.0" text="Phone" />
                         <TableColumn fx:id="shift" prefWidth="75.0" text="Shift" />
                         <TableColumn fx:id="room" prefWidth="75.0" text="Room" />
                      </columns>
@@ -31,10 +31,10 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Line endX="7.999988555908203" endY="23.616531372070312" layoutX="20.0" layoutY="40.0" startX="7.999988555908203" startY="-4.796867370605469" stroke="#e199ce" strokeWidth="5.0" />
-                  <Label layoutX="40.0" layoutY="30.0" prefHeight="41.0" prefWidth="125.0" text="Doctors">
+                  <Line endX="8.0" endY="24.0" layoutX="35.0" layoutY="40.0" startX="7.999988555908203" startY="-4.796867370605469" stroke="#e199ce" strokeWidth="5.0" />
+                  <Label layoutX="52.0" layoutY="28.0" prefHeight="41.0" prefWidth="125.0" text="Doctors">
                      <font>
-                        <Font name="System Bold" size="28.0" />
+                        <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
                   <AnchorPane fx:id="editPane" layoutX="189.0" layoutY="98.0" prefHeight="481.0" prefWidth="582.0" style="-fx-background-color: white; -fx-background-radius: 60; -fx-border-color: black; -fx-border-radius: 60;" visible="false">
@@ -91,16 +91,17 @@
                         <TextField fx:id="editEmail" layoutX="120.0" layoutY="244.0" prefHeight="25.0" prefWidth="144.0" />
                      </children>
                   </AnchorPane>
+                  <TextField fx:id="searchBarField" layoutX="741.0" layoutY="36.0" prefHeight="32.0" prefWidth="209.0" promptText="Search by Name or ID" />
+                  <Button fx:id="editButton" layoutX="381.0" layoutY="617.0" mnemonicParsing="false" onAction="#edit" prefHeight="21.0" prefWidth="87.0" text="Edit" />
+                  <Button fx:id="viewButton" layoutX="500.0" layoutY="617.0" mnemonicParsing="false" onAction="#view" prefHeight="26.0" prefWidth="97.0" text="View" />
+                  <Button fx:id="deleteButton" layoutX="630.0" layoutY="617.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="97.0" text="Delete" />
+                  <Label fx:id="selectionLabel" layoutX="215.0" layoutY="614.0" text="Select a patient to:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="editButton" layoutX="415.0" layoutY="601.0" mnemonicParsing="false" onAction="#edit" prefHeight="21.0" prefWidth="87.0" text="Edit" />
-            <Button fx:id="viewButton" layoutX="534.0" layoutY="601.0" mnemonicParsing="false" onAction="#view" prefHeight="26.0" prefWidth="97.0" text="View" />
-            <Button fx:id="deleteButton" layoutX="664.0" layoutY="601.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="97.0" text="Delete" />
-            <Label fx:id="selectionLabel" layoutX="218.0" layoutY="600.0" text="Select a patient to:">
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </center>

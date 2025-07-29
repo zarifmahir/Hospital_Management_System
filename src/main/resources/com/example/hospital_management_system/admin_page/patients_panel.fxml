@@ -5,7 +5,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -13,7 +12,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.PatientPanelController">
    <children>
-      <TableView fx:id="patientsTable" layoutX="46.0" layoutY="85.0" prefHeight="515.0" prefWidth="906.0">
+      <TableView fx:id="patientsTable" layoutX="42.0" layoutY="80.0" prefHeight="515.0" prefWidth="906.0">
         <columns>
             <TableColumn fx:id="id" prefWidth="75.0" text="Patient ID" />
           <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
@@ -26,20 +25,20 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Line endX="7.999988555908203" endY="23.616531372070312" layoutX="42.0" layoutY="41.0" startX="7.999988555908203" startY="-4.796867370605469" stroke="#e199ce" strokeWidth="5.0" />
-      <Label layoutX="58.0" layoutY="31.0" prefHeight="41.0" prefWidth="125.0" text="Patients">
+      <Line endX="8.0" endY="23.0" layoutX="37.0" layoutY="41.0" startX="7.999988555908203" startY="-4.796867370605469" stroke="#e199ce" strokeWidth="5.0" />
+      <Label layoutX="53.0" layoutY="29.0" prefHeight="41.0" prefWidth="125.0" text="Patients">
          <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="selectionLabel" layoutX="148.0" layoutY="620.0" text="Select a patient to:">
+      <Label fx:id="selectionLabel" layoutX="117.0" layoutY="620.0" text="Select a patient to:">
          <font>
-            <Font size="18.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="editButton" layoutX="345.0" layoutY="621.0" mnemonicParsing="false" onAction="#edit" prefHeight="21.0" prefWidth="87.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="Edit" />
-      <Button fx:id="viewButton" layoutX="464.0" layoutY="621.0" mnemonicParsing="false" onAction="#view" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="View" />
-      <Button fx:id="deleteButton" layoutX="594.0" layoutY="621.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="Delete" />
+      <Button fx:id="editButton" layoutX="273.0" layoutY="622.0" mnemonicParsing="false" onAction="#edit" prefHeight="21.0" prefWidth="87.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="Edit" />
+      <Button fx:id="viewButton" layoutX="392.0" layoutY="622.0" mnemonicParsing="false" onAction="#view" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="View" />
+      <Button fx:id="deleteButton" layoutX="522.0" layoutY="622.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="Delete" />
       <AnchorPane fx:id="editPane" layoutX="271.0" layoutY="60.0" prefHeight="590.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 60; -fx-border-color: black; -fx-border-radius: 60;" visible="false">
          <children>
             <Label layoutX="40.0" layoutY="20.0" text="Edit Information" underline="true">
@@ -101,6 +100,7 @@
             <Button layoutX="402.0" layoutY="537.0" mnemonicParsing="false" onAction="#ok" style="-fx-background-color: #CCFFCC; -fx-background-radius: 60;" text="Ok" />
          </children>
       </AnchorPane>
-      <Button fx:id="addTRButton" layoutX="717.0" layoutY="621.0" mnemonicParsing="false" onAction="#addTestReport" prefHeight="26.0" prefWidth="125.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="Add Test Reports" />
+      <Button fx:id="addTRButton" layoutX="645.0" layoutY="622.0" mnemonicParsing="false" onAction="#addTestReport" prefHeight="26.0" prefWidth="125.0" style="-fx-background-color: #CCEEAA; -fx-background-radius: 20;" text="Add Test Reports" />
+      <TextField fx:id="searchBarField" layoutX="739.0" layoutY="34.0" prefHeight="32.0" prefWidth="209.0" promptText="Search by Name or ID" />
    </children>
 </AnchorPane>
