@@ -78,6 +78,10 @@ public class PatientPageController {
             PatientAppointmentsController controller = loader.getController();
             controller.setPatient(patient);
         }
+        else if(page.equals("patient_history")) {
+            PatientHistoryController controller = loader.getController();
+            controller.setPatient(patient);
+        }
 
         bp.setCenter(root);
     }

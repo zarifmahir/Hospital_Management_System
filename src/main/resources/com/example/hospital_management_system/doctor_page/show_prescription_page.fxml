@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.doctor_page.ShowPrescriptionPageController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -73,7 +72,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="212.0" layoutY="303.0" prefHeight="17.0" prefWidth="196.0" text="Doctor Name and ID">
+            <Label fx:id="doctorNameIdField" layoutX="212.0" layoutY="303.0" prefHeight="17.0" prefWidth="196.0" text="Doctor Name and ID">
                <font>
                   <Font name="System Italic" size="13.0" />
                </font>

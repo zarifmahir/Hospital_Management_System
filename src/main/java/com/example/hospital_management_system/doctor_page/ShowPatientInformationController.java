@@ -7,11 +7,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class ShowPatientInformationController {
     private Patient patient;
@@ -29,6 +36,11 @@ public class ShowPatientInformationController {
         phoneField.setText(String.valueOf(patient.getMobile()));
         emergencyContactField.setText(String.valueOf(patient.getEmergencyContact()));
 
+        String img = "/images/user.png";
+        if(!patient.getImage().equals("null")){ img = patient.getImage();}
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(img)));
+        pfpImageView.setImage(image);
+
         ObservableList<String> items = getStrings(patient);
         complicationsListView.setItems(items);
 
@@ -36,8 +48,6 @@ public class ShowPatientInformationController {
 
         //load the table view as well
         List<Prescription> prescriptionList = Main.prescriptionMap.getPatientPrescriptionList(patient.getId());
-
-        System.out.println("Num prescriptions = " + prescriptionList.size());
 
 
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -96,7 +106,25 @@ public class ShowPatientInformationController {
 
     @FXML
     void showSelectedPrescriptionDetails(ActionEvent event) {
+        if (prescriptionTable.getSelectionModel().getSelectedItem() != null) {
+            try {
+                Prescription prescription = prescriptionTable.getSelectionModel().getSelectedItem();
 
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("show_prescription_page.fxml"));
+                Parent root = fxmlLoader.load();
+
+                ShowPrescriptionPageController controller = fxmlLoader.getController();
+                controller.setPrescription(prescription);
+
+                Stage stage = new Stage();
+                stage.setTitle("Showing Prescription Details (ID: " + prescription.getMyId() + ")");
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 

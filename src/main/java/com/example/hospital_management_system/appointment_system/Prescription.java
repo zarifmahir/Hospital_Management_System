@@ -60,6 +60,17 @@ public class Prescription {
         myId = String.valueOf(getLatestPrescriptionId());
     }
 
+    public Prescription(String myId, String diagnosis, String doctorName, String doctorId, String patientName, String patientId, String date) {
+        this.diagnosis = diagnosis;
+        this.doctorName = doctorName;
+        this.doctorId = doctorId;
+        this.patientName = patientName;
+        this.patientId = patientId;
+        this.date = date;
+
+        this.myId = myId;
+    }
+
     public void setRemedy1(String remedy1) {
         this.remedy1 = remedy1;
     }

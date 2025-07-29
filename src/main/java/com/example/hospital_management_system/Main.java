@@ -283,42 +283,15 @@ public class Main extends Application {
             if (line == null) break;
             String [] values = line.split("\\|");
             //READ PRESCRIPTION AND LOAD IT INTO THE MAP
-            Prescription p = new Prescription(values[0], values[1], values[2], values[3], values[4], values[5]);
+            Prescription p = new Prescription(values[0], values[1], values[2], values[3], values[4], values[5], values[6]);
 
             //THIS CODE CAN BE IMPROVED -> JUST KEEP EMPTY STRING IF RMXi  == empty
-            if (values.length == 12) {
-                p.setRemedy1(values[6]);
-                p.setRemedy2(values[7]);
-                p.setRemedy3(values[8]);
-                p.setRemedy4(values[9]);
-                p.setRemedy5(values[10]);
-                p.setRemedy6(values[11]);
-            }
-            else if (values.length == 11) {
-                p.setRemedy1(values[6]);
-                p.setRemedy2(values[7]);
-                p.setRemedy3(values[8]);
-                p.setRemedy4(values[9]);
-                p.setRemedy5(values[10]);
-            }
-            else if (values.length == 10) {
-                p.setRemedy1(values[6]);
-                p.setRemedy2(values[7]);
-                p.setRemedy3(values[8]);
-                p.setRemedy4(values[9]);
-            }
-            else if (values.length == 9) {
-                p.setRemedy1(values[6]);
-                p.setRemedy2(values[7]);
-                p.setRemedy3(values[8]);
-            }
-            else if (values.length == 8) {
-                p.setRemedy1(values[6]);
-                p.setRemedy2(values[7]);
-            }
-            else if (values.length == 7) {
-                p.setRemedy1(values[6]);
-            }
+            p.setRemedy1(values[7]);
+            p.setRemedy2(values[8]);
+            p.setRemedy3(values[9]);
+            p.setRemedy4(values[10]);
+            p.setRemedy5(values[11]);
+            p.setRemedy6(values[12]);
 
             prescriptionMap.addPrescription(p);
         }

@@ -94,41 +94,65 @@ public class AddNewPrescriptionController {
     private void buildPrescription() {
         String s = diagnosisField.getText() + "|" + doctor.getName() + "|" + doctor.getId() + "|" + patient.getName() + "|" + patient.getId() + "|" + dateField.getPromptText();
 
+        Prescription prescription = new Prescription(diagnosisField.getText(), doctor.getName(), doctor.getId(), patient.getName(), patient.getId(), dateField.getPromptText());
         System.out.println(s);
 
-        Prescription prescription = new Prescription(diagnosisField.getText(), doctor.getName(), doctor.getId(), patient.getName(), patient.getId(), dateField.getPromptText());
 
         if (!remedyField1.getText().isEmpty()) {
             s += "|" + remedyField1.getText();
             prescription.setRemedy1(remedyField1.getText());
         }
+        else {
+            s += "| ";
+            prescription.setRemedy1("");
+        }
         if (!remedyField2.getText().isEmpty()) {
             s += "|" + remedyField2.getText();
             prescription.setRemedy2(remedyField2.getText());
+        }
+        else {
+            s += "| ";
+            prescription.setRemedy2("");
         }
         if (!remedyField3.getText().isEmpty()) {
             s += "|" + remedyField3.getText();
             prescription.setRemedy3(remedyField3.getText());
         }
+        else {
+            s += "| ";
+            prescription.setRemedy3("");
+        }
         if (!remedyField4.getText().isEmpty()) {
             s += "|" + remedyField4.getText();
             prescription.setRemedy4(remedyField4.getText());
+        }
+        else {
+            s += "| ";
+            prescription.setRemedy4("");
         }
         if (!remedyField5.getText().isEmpty()) {
             s += "|" + remedyField5.getText();
             prescription.setRemedy5(remedyField5.getText());
         }
+        else {
+            s += "| ";
+            prescription.setRemedy5("");
+        }
         if (!remedyField6.getText().isEmpty()) {
             s += "|" + remedyField6.getText();
             prescription.setRemedy6(remedyField6.getText());
         }
+        else {
+            s += "| ";
+            prescription.setRemedy6("");
+        }
 
+        s = prescription.getMyId() + "|" + s;
         System.out.println(s);
 
         Main.prescriptionMap.addPrescription(prescription);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/texts/PrescriptionList.txt", true))) {
-            System.out.println("File writter opened");
             bw.write(s);
             System.out.println("Wrote new prescription");
             bw.newLine();
