@@ -66,6 +66,38 @@ public class Patient {
         this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    public void setMobile(int mobile) {
+        this.mobile = mobile;
+    }
+
+    public void setEmergencyContact(int emergencyContact) {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getMyChat() {
         return myChat;
     }
@@ -115,8 +147,8 @@ public class Patient {
         return bloodType;
     }
 
-    public int getMobile() {
-        return mobile;
+    public String getMobile() {
+        return String.valueOf(mobile);
     }
 
     public int getEmergencyContact() {

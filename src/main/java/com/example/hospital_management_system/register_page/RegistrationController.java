@@ -176,7 +176,7 @@ public class RegistrationController {
 
     }
 
-    void writePatient(Patient p){
+    public static void writePatient(Patient p){
         try {
             String content = p.getId() + "|" + p.getName() + "|" + p.getAge() +"|" +p.getGender() +"|"+ p.getWeight() +"|" +p.getHeight() +"|" +p.getBloodType() +"|" +
                     p.getMobile()+"|" +p.getEmergencyContact()+"|"+p.getEmail()+"|"+p.getDiabetes() +"|"+p.getAsthma() +"|"+p.getHighBp() +"|"+

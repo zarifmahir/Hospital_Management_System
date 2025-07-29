@@ -41,6 +41,7 @@ public class DoctorPanelController implements Initializable {
     public TextField editPhone;
     public TextField editRoom;
     public ImageView newImage;
+    public TextField editEmail;
     @FXML
     private TableView<Doctor> doctorsPanel;
     @FXML
@@ -62,6 +63,7 @@ public class DoctorPanelController implements Initializable {
     private TableColumn<Doctor, String> shift;
 
     private boolean selectedStatus;
+    private boolean isEdited = false;
 
     private Main main;
 
@@ -139,9 +141,6 @@ public class DoctorPanelController implements Initializable {
         editButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
         deleteButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
         viewButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
-
-
-
     }
 
     private void enableButtons(){
@@ -167,6 +166,7 @@ public class DoctorPanelController implements Initializable {
             editId.setPromptText(doctor.getId());
             editPhone.setPromptText(doctor.getMobile());
             editRoom.setPromptText(doctor.getRoom());
+            editEmail.setPromptText(doctor.getEmail());
             String img = "/images/user.png";
             if(!doctor.getImage().equals("null")){ img = doctor.getImage();}
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(img)));
@@ -275,6 +275,7 @@ public class DoctorPanelController implements Initializable {
                 Image image = new Image(file.toURI().toString());
                 //System.out.println(file.toURI().toString());
                 img = "/images/"+file.getName();
+                doctor.setImage(img);
 
                 // Set it to the ImageView
                 newImage.setImage(image);
@@ -292,6 +293,7 @@ public class DoctorPanelController implements Initializable {
             if(!editName.getText().isEmpty()) doctor.setName(editName.getText());
             if(!editPhone.getText().isEmpty()) doctor.setMobile(editPhone.getText());
             if(!editRoom.getText().isEmpty()) doctor.setRoom(editRoom.getText());
+            if(!editEmail.getText().isEmpty()) doctor.setEmail(editEmail.getText());
             if(editDepartment.getValue() != null){
                 doctor.setDepartment(editDepartment.getValue());
             }
@@ -305,7 +307,12 @@ public class DoctorPanelController implements Initializable {
                     System.out.println(line);
                     lines.add(line);
                     String[] s =  line.split("\\|");
-                    if(s[0].equals(prevId)){serial=i;}
+                    if(s[0].equals(prevId)){
+                        serial=i;
+                        synchronized (Main.c){
+                            Main.c.sendMessage("PatientsList$Remove$"+serial);
+                        }
+                    }
                     i++;
                 }
             } catch (IOException e) {
@@ -329,12 +336,13 @@ public class DoctorPanelController implements Initializable {
             doctorsPanel.getItems().remove(doctorsPanel.getSelectionModel().getSelectedItem());
             main.loadDoctors();
             doctorsPanel.getItems().add(Main.doctorsMap.getDoctorById(doctor.getId()));
+            isEdited = true;
         }
     }
 
     public void ok(ActionEvent actionEvent) {
         if(selectedStatus){
-            showSuccessAlert();
+            if(isEdited) showSuccessAlert();
             editPane.setVisible(false);
             doctorsPanel.getSelectionModel().clearSelection();
         }
