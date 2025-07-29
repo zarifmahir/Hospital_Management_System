@@ -104,7 +104,7 @@ public class ResidentPage extends Application implements Initializable {
         ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
         if(!currentSelected.getName().equals(senderName)){
             Button temp = buttonMap.get(p);
-            temp.setStyle("-fx-font-weight: bold; -fx-border-radius: 40; -fx-border-color: black; -fx-border-width: 3");
+            temp.setStyle("-fx-background-color: none; -fx-font-weight: bold; -fx-border-width: 3px; -fx-border-radius: 40; -fx-border-color: black;");
             return;
         }
 
@@ -115,7 +115,7 @@ public class ResidentPage extends Application implements Initializable {
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPadding(new Insets(5, 5, 5, 5));
 
-        Label nameLabel = new Label("Patient" );
+        Label nameLabel = new Label("Patient: " +ptn.getName());
         nameLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray; -fx-padding: 0 0 0 5;");
 
         Text text = new Text(messageFromOtherEnd);
@@ -230,6 +230,10 @@ public class ResidentPage extends Application implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        scrollWindow.setStyle(
+                "-fx-hbar-policy: never; " +
+                        "-fx-vbar-policy: never;"
+        );
         buttonMap = new HashMap<>();
         messagePane.setVisible(false);
         patientsBox.setSpacing(7);
@@ -240,13 +244,14 @@ public class ResidentPage extends Application implements Initializable {
            button.setPrefWidth(286);
            button.setPrefHeight(43);
            button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 40");
+           button.setText("ID: "+p.getId()+", Name: "+p.getName());
            button.setUserData(p);
            buttonMap.put(p, button);
            button.setOnAction(e -> {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                Button b = (Button) e.getSource();
-               b.setText("ID: "+temp.getId()+", Name: "+temp.getName());
-               b.setStyle("-fx-font-weight: normal; -fx-border-radius: 40; -fx-border-color: black; -fx-border-width: 1");
+//               b.setText("ID: "+temp.getId()+", Name: "+temp.getName());
+               b.setStyle("-fx-background-color: none; -fx-font-weight: normal; -fx-border-width: 1px; -fx-border-radius: 40; -fx-border-color: black;");
                try {
                    //c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                    //Uncomment for same laptop
@@ -286,12 +291,13 @@ public class ResidentPage extends Application implements Initializable {
             button.setPrefWidth(286);
             button.setPrefHeight(43);
             button.setStyle("-fx-background-color: none; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 40");
+            button.setText("ID: "+p.getId()+", Name: "+p.getName());
             button.setUserData(p);
             buttonMap.put(p, button);
             button.setOnAction(e -> {
                 Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                 Button b = (Button) e.getSource();
-                b.setText("ID: "+temp.getId()+", Name: "+temp.getName());
+                b.setStyle("-fx-background-color: none; -fx-font-weight: normal; -fx-border-width: 1px; -fx-border-radius: 40; -fx-border-color: black;");
                 try {
                     //c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                     //Uncomment for same laptop

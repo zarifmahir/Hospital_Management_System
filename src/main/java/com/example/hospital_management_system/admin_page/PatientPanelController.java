@@ -27,6 +27,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +49,7 @@ public class PatientPanelController implements Initializable {
     public TextField editEmail;
     public TextField editBloodGroup;
     public AnchorPane editPane;
+    public Button addTRButton;
     @FXML
     private TableColumn<Patient, String> action;
 
@@ -349,6 +351,26 @@ public class PatientPanelController implements Initializable {
             if(isEdited) showSuccessAlert();
             editPane.setVisible(false);
             patientsTable.getSelectionModel().clearSelection();
+        }
+    }
+
+    public void addTestReport(ActionEvent actionEvent) throws IOException {
+        if(selectedStatus){
+            Patient patient = patientsTable.getSelectionModel().getSelectedItem();
+            FileChooser fileChooser = new FileChooser();
+
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            File file = fileChooser.showOpenDialog(null);
+
+            if (file != null) {
+                Path resourcesDir = Paths.get("src/main/resources/pdfs");
+                patient.setTestReportNumbers(patient.getTestReportNumbers() + 1);
+                String fileName = patient.getId()+"_"+patient.getTestReportNumbers()+ ".pdf";
+                Path destination = resourcesDir.resolve(fileName);
+                Files.copy(file.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
+            }
         }
     }
 }

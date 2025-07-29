@@ -12,13 +12,13 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.doctor_page.ResidentPage">
    <children>
-      <VBox fx:id="patientsBox" layoutX="17.0" layoutY="19.0" prefHeight="684.0" prefWidth="286.0" style="-fx-background-color: #FFDDD0;" />
+      <VBox fx:id="patientsBox" layoutX="17.0" layoutY="19.0" prefHeight="684.0" prefWidth="286.0" style="-fx-background-color: #FFDDD0; -fx-background-radius: 20; -fx-padding: 20 0 0 0;" />
       <AnchorPane fx:id="messagePane" layoutX="288.0" layoutY="10.0" prefHeight="675.0" prefWidth="990.0">
          <children>
             <TextField fx:id="messageArea" layoutX="34.0" layoutY="570.0" prefHeight="58.0" prefWidth="791.0" style="-fx-background-radius: 60;" />
-            <Button fx:id="sendButton" layoutX="836.0" layoutY="570.0" mnemonicParsing="false" onAction="#send" prefHeight="55.0" prefWidth="112.0" style="-fx-background-radius: 20;" text="Send">
+            <Button fx:id="sendButton" layoutX="839.0" layoutY="573.0" mnemonicParsing="false" onAction="#send" prefHeight="50.0" prefWidth="109.0" style="-fx-background-radius: 20; -fx-background-color: #AABBFF; -fx-border-width: 4; -fx-border-color: blue; -fx-border-radius: 20;" text="Send" textFill="#0d0d0d">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="Times New Roman" size="27.0" />
                </font>
             </Button>
             <ScrollPane fx:id="scrollWindow" layoutX="43.0" layoutY="90.0" prefHeight="446.0" prefWidth="899.0">

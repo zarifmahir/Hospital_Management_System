@@ -38,6 +38,8 @@ public class Patient {
     private String primaryDiagnosis = "";
     private int [] prescriptionIds;
 
+    private int testReportNumbers;
+
 
     public Patient(String id, String name, int age, String gender, float weight, float height, String bloodType, int mobile, int emergencyContact, String email, boolean diabetes, boolean asthma, boolean highBp, boolean epilepsy, boolean cancer, boolean stroke, boolean kidney, boolean liver, boolean allergies, boolean surgeries, boolean familyHistory, boolean medications, String image) {
         this.name = name;
@@ -64,6 +66,15 @@ public class Patient {
         this.image = image;
         this.myChat = "";
         this.id = id;
+        testReportNumbers = 0;
+    }
+
+    public int getTestReportNumbers() {
+        return testReportNumbers;
+    }
+
+    public void setTestReportNumbers(int testReportNumbers) {
+        this.testReportNumbers = testReportNumbers;
     }
 
     public void setName(String name) {
