@@ -51,6 +51,11 @@ public class AppointmentPageController {
         List<Appointment> appointments = Main.appointmentMap.getAppointments();
         tableView.getItems().addAll(appointments);
 
+        Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+            tableView.getItems().clear();
+            tableView.getItems().addAll(Main.appointmentMap.getAppointments());
+        });
+
         dateCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("date"));
         doctorCol.setCellValueFactory(new PropertyValueFactory<Appointment, String>("doctorName"));
         idCol.setCellValueFactory(new PropertyValueFactory<Appointment, Integer>("id"));
@@ -70,7 +75,7 @@ public class AppointmentPageController {
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
                 String[] s =  line.split("<");
-                String temp = s[0]+"@"+s[1]+"@"+s[2];
+                String temp = s[0]+"@"+s[2]+"@"+s[4];
                 if(temp.equals(tobeDeleted)) {
                     serial=i;
                     synchronized (Main.c){

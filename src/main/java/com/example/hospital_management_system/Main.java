@@ -239,18 +239,22 @@ public class Main extends Application {
             if (line == null) break;
             String [] values = line.split("<");
             String[] temp = values[0].split("\\(");
-            String[] temp2 = values[0].split("\\)");
+            String[] temp2 = temp[1].split("\\)");
             String doctorId = temp2[0];
             String patientId = values[7];
+//            System.out.println(doctorId);
+//            System.out.println(patientId);
             i++;
             if(Main.patientsMap.getPatientById(patientId) == null || Main.doctorsMap.getDoctorById(doctorId) == null){ continue;}
             Appointment a = new Appointment(values[0], values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]), values[7]);
             appointmentMap.addAppointment(a);
             lines.add(line);
+            System.out.println(line);
             //System.out.println();
         }
         br.close();
         if(lines.size()<i) {
+            System.out.println(lines.size());
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/AppointmentList.txt"))) {
                 for (String line : lines) {
                     writer.write(line);

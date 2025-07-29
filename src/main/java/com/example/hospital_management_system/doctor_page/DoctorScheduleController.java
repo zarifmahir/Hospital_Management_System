@@ -78,7 +78,7 @@ public class DoctorScheduleController {
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
                 String[] s =  line.split("<");
-                String temp = s[0]+"@"+s[1]+"@"+s[2];
+                String temp = s[0]+"@"+s[2]+"@"+s[4];
                 if(temp.equals(tobeDeleted)) {
                     serial=i;
                     synchronized (Main.c){
