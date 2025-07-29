@@ -24,6 +24,7 @@ public class PrescriptionMap {
         List<Prescription> res = new ArrayList<>();
         for (Prescription p : prescriptionMap.values()) {
             if (p.getMyId().equals(patientId)) {
+                System.out.println("getting prescription");
                 res.add(p);
             }
         }

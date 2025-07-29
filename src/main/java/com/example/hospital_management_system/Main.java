@@ -62,11 +62,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
-        String serverAddress = "127.0.0.1";
-        int serverPort = 44444;
-        c = new Client(serverAddress, serverPort, "Main1");
-        c.setType("Main");
-        c.setObType((Object) this);
+//        String serverAddress = "127.0.0.1";
+//        int serverPort = 44444;
+//        c = new Client(serverAddress, serverPort, "Main1");
+//        c.setType("Main");
+//        c.setObType((Object) this);
         showLoginPage();
     }
 
@@ -80,6 +80,7 @@ public class Main extends Application {
         for (int i = 1; i < 12; i++) {
             roomNos[i] = 100 * i + 5;
         }
+
         loadPatients();
         loadDoctors();
         loadAppointments();
