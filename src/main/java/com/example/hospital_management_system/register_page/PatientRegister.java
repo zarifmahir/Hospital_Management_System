@@ -296,6 +296,7 @@ public class PatientRegister {
                 Integer.parseInt(mobile.getText()), Integer.parseInt(emergencyContact.getText()), email.getText(), diabetes.isSelected(), asthma.isSelected(), highBP.isSelected(), epilepsy.isSelected(),
                 cancer.isSelected(), stroke.isSelected(), kidneyDisease.isSelected(), liverDisease.isSelected(), allergies.isSelected(), surgeries.isSelected(), familyHistory.isSelected(),
                 medications.isSelected(), img);
+        p.setTestReportNumbers(0);
         return p;
     }
 

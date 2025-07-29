@@ -47,14 +47,17 @@ public class StaffMap {
 
 
     public void addNurse(Nurse n) {
+        n.setRole("Nurse");
         nurseMap.put(String.valueOf(n.getId()), n);
     }
 
     public void addReceptionist(Receptionist r) {
+        r.setRole("Receptionist");
         receptionistMap.put(String.valueOf(r.getId()), r);
     }
 
     public void addBedBoy(BedBoy b) {
+        b.setRole("BedBoy");
         bedBoyMap.put(String.valueOf(b.getId()), b);
     }
 
@@ -86,5 +89,32 @@ public class StaffMap {
 
     public BedBoy getBedBoyById(String bedBoyId) {
         return bedBoyMap.get(bedBoyId);
+    }
+
+
+    public Nurse getNurseByName(String nurseName) {
+        for(Nurse nurse : nurseMap.values()){
+            if(nurse.getName().equals(nurseName)){
+                return nurse;
+            }
+        }
+        return null;
+    }
+
+    public Receptionist getReceptionistByName(String receptionistName) {
+        for(Receptionist receptionist : receptionistMap.values()){
+            if(receptionist.getName().equals(receptionistName)){
+                return receptionist;
+            }
+        }
+        return null;
+    }
+    public BedBoy getBedBoyByName(String bedBoyName) {
+        for(BedBoy bedBoy : bedBoyMap.values()){
+            if(bedBoy.getName().equals(bedBoyName)){
+                return bedBoy;
+            }
+        }
+        return null;
     }
 }

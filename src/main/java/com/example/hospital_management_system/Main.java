@@ -193,6 +193,7 @@ public class Main extends Application {
                     Boolean.parseBoolean(values[13]), Boolean.parseBoolean(values[14]), Boolean.parseBoolean(values[15]), Boolean.parseBoolean(values[16]), Boolean.parseBoolean(values[17]),
                     Boolean.parseBoolean(values[18]), Boolean.parseBoolean(values[19]), Boolean.parseBoolean(values[20]), Boolean.parseBoolean(values[21]), values[22]);
             p.setPassAndId(values[24], values[23]);
+            p.setTestReportNumbers(Integer.parseInt(values[25]));
             String userAndPass = values[23] + "@" + values[24];
             patientsMap.addPatient(p);
             System.out.println();
@@ -283,6 +284,7 @@ public class Main extends Application {
 
             if (type.equals("Nurse")) {
                 staffMap.addNurse(new Nurse(name, dept, years, phone, email, address));
+
             }
             else if (type.equals("BedBoy")) {
                 staffMap.addBedBoy(new BedBoy(name, dept, years, phone, email, address));
