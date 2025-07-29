@@ -1,4 +1,3 @@
-001|ishmam|0|Male|AB+v3|ishmam.|01700000000|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Gynecology|10|Bangladesh Medical Council|/images/admin3.png|ishmam|111
 002|ishmam|0|Male|AB+v3|ishmam.|01700000001|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Surgery|10|Bangladesh Medical Council|/images/admin3.png|daf|112
 003|ishmam|0|Male|AB+v3|ishmam.|01700000002|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Pediatrics|10|Bangladesh Medical Council|/images/admin3.png|dafs|113
 004|ishmam|0|Male|AB+v3|ishmam.|01700000003|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Obstetrics|10|Bangladesh Medical Council|/images/admin3.png|ifasdfhmam|114
@@ -6,6 +5,5 @@
 006|ishmam|0|Male|AB+v3|ishmam.|01700000005|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Orthopedics|10|Bangladesh Medical Council|/images/admin3.png|retww|116
 007|ishmam|0|Male|AB+v3|ishmam.|01700000006|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Cardiology|10|Bangladesh Medical Council|/images/admin3.png|vxc|117
 008|ishmam|0|Male|AB+v3|ishmam.|01700000007|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Neurology|10|Bangladesh Medical Council|/images/admin3.png|yrut|118
-009|ishmam|0|Male|AB+v3|ishmam.|01700000008|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Pathology|10|Bangladesh Medical Council|/images/admin3.png|fhgj|119
 010|ishmam|0|Male|AB+v3|ishmam.|01700000009|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Dermatology|10|Bangladesh Medical Council|/images/admin3.png|hdfgh|120
 011|ishmam|0|Male|AB+v3|ishmam.|01700000010|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Psychiatry|10|Bangladesh Medical Council|/images/admin3.png|ertet|121

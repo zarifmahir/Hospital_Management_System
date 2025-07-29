@@ -26,6 +26,8 @@ public class DoctorRegister {
     public Button certificateUpload;
     public Button degreeUpload;
     public TextField dID;
+    public Label invalidMobile;
+    public Label invalidEmCon;
     @FXML
     private TextField bloodGroup;
 
@@ -131,6 +133,7 @@ public class DoctorRegister {
         ObservableList<String> list = FXCollections.observableArrayList("Medicine", "Surgery", "Pediatrics", "Obstetrics", "Gynecology",
                 "Orthopedics", "Cardiology", "Neurology", "Pathology", "Psychiatry", "Dermatology");
         departmentDropdown.setItems(list);
+        setErrorLabels();
 
 //        departmentDropdown.valueProperty().addListener((obs, oldVal, newVal) -> {
 //            if (newVal != null) {
@@ -146,6 +149,32 @@ public class DoctorRegister {
                 selected = (RadioButton) newToggle;
             }
 
+        });
+
+        mobile.textProperty().addListener((obs, oldText, newText) -> {
+            if(!newText.isEmpty()){
+                try{
+                    Integer.parseInt(newText);
+                    if(!newText.startsWith("01")) invalidMobile.setVisible(true);
+                    else invalidMobile.setVisible(false);
+                }
+                catch (NumberFormatException e){
+                    invalidMobile.setVisible(true);
+                }
+            }
+        });
+
+        emergencyContact.textProperty().addListener((obs, oldText, newText) -> {
+            if(!newText.isEmpty()){
+                try{
+                    Integer.parseInt(newText);
+                    if(!newText.startsWith("01")) invalidEmCon.setVisible(true);
+                    else invalidEmCon.setVisible(false);
+                }
+                catch (NumberFormatException e){
+                    invalidEmCon.setVisible(true);
+                }
+            }
         });
     }
 
@@ -188,6 +217,42 @@ public class DoctorRegister {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void setErrorLabels(){
+        invalidMobile.setVisible(false);
+        invalidEmCon.setVisible(false);
+    }
+
+    public boolean checkBoundaries(){
+        String mN = mobile.getText();
+        String eN = emergencyContact.getText();
+
+        try{
+            Integer.parseInt(mN);
+            if(!mN.startsWith("01") || mN.length()!=11) {
+                invalidMobile.setVisible(true);
+                return true;
+            }
+
+        }
+        catch (NumberFormatException e){
+            invalidMobile.setVisible(true);
+            return true;
+        }
+
+        try{
+            Integer.parseInt(eN);
+            if(!eN.startsWith("01") ||  eN.length()!=11) {
+                invalidEmCon.setVisible(true);
+                return true;
+            }
+        }
+        catch (NumberFormatException e){
+            invalidEmCon.setVisible(true);
+            return true;
+        }
+        return false;
     }
 
 

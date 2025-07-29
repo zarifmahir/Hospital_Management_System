@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
@@ -130,7 +132,7 @@ public class RegistrationController {
 
     public void signUp(ActionEvent actionEvent) throws IOException {
         if(type.equals("Patient")){
-            if(patientRegister.checkEmpty() || username.getText().isEmpty() || password.getText().isEmpty() || confirmPassword.getText().isEmpty()){
+            if(patientRegister.checkEmpty() || patientRegister.checkBoundaries() || username.getText().isEmpty() || password.getText().isEmpty() || confirmPassword.getText().isEmpty()){
                 errorMessage2.setText("Please fill all the fields");
             }
             else if(!password.getText().equals(confirmPassword.getText())){
@@ -151,7 +153,7 @@ public class RegistrationController {
             }
         }
         else if(type.equals("Doctor")){
-            if(doctorRegister.checkEmpty() || username.getText().isEmpty()|| password.getText().isEmpty() || confirmPassword.getText().isEmpty()){
+            if(doctorRegister.checkEmpty() || doctorRegister.checkBoundaries() || username.getText().isEmpty()|| password.getText().isEmpty() || confirmPassword.getText().isEmpty()){
                 errorMessage2.setText("Please fill all the fields");
             }
             else if(!password.getText().equals(confirmPassword.getText())){
@@ -197,7 +199,7 @@ public class RegistrationController {
 
     }
 
-    void writeDoctor(Doctor doctor){
+    public static void writeDoctor(Doctor doctor){
         try{
             String content = doctor.getId()+"|"+doctor.getName() + "|" + doctor.getAge() + "|" + doctor.getGender() + "|" + doctor.getBloodGroup() + "|" + doctor.getEmail() + "|"
                     + doctor.getMobile() + "|" + doctor.getEmergencyContact() + "|" + doctor.getMedicalDegree() + "|" + doctor.getInstitution() + "|" + doctor.getPgQualification()
@@ -215,6 +217,13 @@ public class RegistrationController {
         }
         catch(IOException e){
             e.printStackTrace();
+        }
+    }
+
+    public void keyPressed(KeyEvent keyEvent) throws IOException {
+        if(keyEvent.getCode() == KeyCode.ENTER){
+            ActionEvent actionEvent = new ActionEvent();
+            signUp(actionEvent);
         }
     }
 }

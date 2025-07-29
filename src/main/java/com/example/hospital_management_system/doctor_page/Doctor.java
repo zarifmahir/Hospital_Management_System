@@ -94,6 +94,30 @@ public class Doctor {
         this.room = String.valueOf(roomNo);
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public void setEmergencyContact(String emergencyContact) {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public void setUserNameAndPass(String userName, String pass) {
         this.userName = userName;
         this.pass = pass;

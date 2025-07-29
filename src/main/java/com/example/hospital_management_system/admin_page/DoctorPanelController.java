@@ -4,23 +4,28 @@ import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
 import com.example.hospital_management_system.patient_page.Patient;
+import com.example.hospital_management_system.register_page.RegistrationController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DoctorPanelController implements Initializable {
@@ -29,6 +34,13 @@ public class DoctorPanelController implements Initializable {
     public Label selectionLabel;
     public Button deleteButton;
     public Button viewButton;
+    public AnchorPane editPane;
+    public TextField editId;
+    public TextField editName;
+    public ChoiceBox<String> editDepartment;
+    public TextField editPhone;
+    public TextField editRoom;
+    public ImageView newImage;
     @FXML
     private TableView<Doctor> doctorsPanel;
     @FXML
@@ -85,6 +97,7 @@ public class DoctorPanelController implements Initializable {
         shift.setCellValueFactory(new PropertyValueFactory<Doctor, String>("shift"));
         //status.setCellValueFactory(new PropertyValueFactory<Doctor, String>("status"));
 
+        editPane.setVisible(false);
         List<Doctor> doctorList = Main.doctorsMap.getDoctorList();
         for(Doctor doctor:doctorList){
             doctorsPanel.getItems().add(doctor);
@@ -118,7 +131,7 @@ public class DoctorPanelController implements Initializable {
     }
 
     private void disableButtons(){
-         selectedStatus = false;
+        selectedStatus = false;
         selectionLabel.setVisible(true);
         editButton.setDisable(true);
         viewButton.setDisable(true);
@@ -144,6 +157,21 @@ public class DoctorPanelController implements Initializable {
     }
 
     public void edit(ActionEvent actionEvent) {
+        if(selectedStatus){
+            editPane.setVisible(true);
+            Doctor doctor = doctorsPanel.getSelectionModel().getSelectedItem();
+            editName.setPromptText(doctor.getName());
+            ObservableList<String> list = FXCollections.observableArrayList("Medicine", "Surgery", "Pediatrics", "Obstetrics", "Gynecology",
+                    "Orthopedics", "Cardiology", "Neurology", "Pathology", "Psychiatry", "Dermatology");
+            editDepartment.setItems(list);
+            editId.setPromptText(doctor.getId());
+            editPhone.setPromptText(doctor.getMobile());
+            editRoom.setPromptText(doctor.getRoom());
+            String img = "/images/user.png";
+            if(!doctor.getImage().equals("null")){ img = doctor.getImage();}
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(img)));
+            newImage.setImage(image);
+        }
     }
 
     public void view(ActionEvent actionEvent) throws IOException {
@@ -159,21 +187,21 @@ public class DoctorPanelController implements Initializable {
             stage.setTitle("Doctor Information");
             stage.setScene(new Scene(root));
             stage.show();
+            doctorsPanel.getSelectionModel().select(doctor);
         }
     }
 
     public void delete(ActionEvent actionEvent) throws IOException {
-        if(selectedStatus) {
-            System.out.println("Hello");
+        if(selectedStatus && showDeleteAlert()) {
             int serial = 0, i=0;
-            String deleteName = doctorsPanel.getSelectionModel().getSelectedItem().getName();
+            String deleteName = doctorsPanel.getSelectionModel().getSelectedItem().getId();
             List<String> lines = new ArrayList<>();
             try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/DoctorsList.txt"))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     System.out.println(line);
                     lines.add(line);
-                    String[] s =  line.split("<");
+                    String[] s =  line.split("\\|");
                     if(s[0].equals(deleteName)){serial=i;}
                     i++;
                 }
@@ -196,8 +224,127 @@ public class DoctorPanelController implements Initializable {
             doctorsPanel.getItems().remove(doctorsPanel.getSelectionModel().getSelectedItem());
             doctorsPanel.getSelectionModel().clearSelection();
             main.loadDoctors();
+            selectedStatus = false;
+
+        }
+    }
+
+    public boolean showDeleteAlert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Deletion Confirmation");
+        alert.setHeaderText("Are you sure you want to delete this person?");
+        ButtonType buttonType = new ButtonType("Yes");
+        ButtonType buttonType2 = new ButtonType("No");
+        alert.getButtonTypes().setAll(buttonType, buttonType2);
+        alert.showAndWait();
+        return alert.getResult() != buttonType2;
+
+    }
+    public boolean showEditAlert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Edit Confirmation");
+        alert.setHeaderText("Are you sure you want to edit the data?");
+        ButtonType buttonType = new ButtonType("Yes");
+        ButtonType buttonType2 = new ButtonType("No");
+        alert.getButtonTypes().setAll(buttonType, buttonType2);
+        alert.showAndWait();
+        return alert.getResult() != buttonType2;
+
+    }
+
+    public void showSuccessAlert(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Success Edit");
+        alert.show();
+    }
+
+    public void editImage(ActionEvent actionEvent) {
+        Doctor doctor = doctorsPanel.getSelectionModel().getSelectedItem();
+        String img = "/images/user.png";
+
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image files (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            try {
+                Image image = new Image(file.toURI().toString());
+                //System.out.println(file.toURI().toString());
+                img = "/images/"+file.getName();
+
+                // Set it to the ImageView
+                newImage.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void apply(ActionEvent actionEvent) throws IOException {
+        if(selectedStatus && showEditAlert()){
+            Doctor doctor = doctorsPanel.getSelectionModel().getSelectedItem();
+            String prevId = doctor.getId();
+            if(!editId.getText().isEmpty()) doctor.setId(editId.getText());
+            if(!editName.getText().isEmpty()) doctor.setName(editName.getText());
+            if(!editPhone.getText().isEmpty()) doctor.setMobile(editPhone.getText());
+            if(!editRoom.getText().isEmpty()) doctor.setRoom(editRoom.getText());
+            if(editDepartment.getValue() != null){
+                doctor.setDepartment(editDepartment.getValue());
+            }
+
+            int serial = 0;
+            int i=0;
+            List<String> lines = new ArrayList<>();
+            try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/DoctorsList.txt"))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                    lines.add(line);
+                    String[] s =  line.split("\\|");
+                    if(s[0].equals(prevId)){serial=i;}
+                    i++;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+
+            System.out.println(lines.size());
+            System.out.println(serial);
+
+            lines.remove(serial);
 
 
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/DoctorsList.txt"))) {
+                for (String line : lines) {
+                    writer.write(line);
+                    writer.newLine();
+                }
+            }
+            RegistrationController.writeDoctor(doctor);
+            doctorsPanel.getItems().remove(doctorsPanel.getSelectionModel().getSelectedItem());
+            main.loadDoctors();
+            doctorsPanel.getItems().add(Main.doctorsMap.getDoctorById(doctor.getId()));
+        }
+    }
+
+    public void ok(ActionEvent actionEvent) {
+        if(selectedStatus){
+            showSuccessAlert();
+            editPane.setVisible(false);
+            doctorsPanel.getSelectionModel().clearSelection();
+        }
+
+    }
+
+    public void cancel(ActionEvent actionEvent) {
+        if(selectedStatus){
+            editPane.setVisible(false);
+            doctorsPanel.getSelectionModel().clearSelection();
         }
     }
 }
