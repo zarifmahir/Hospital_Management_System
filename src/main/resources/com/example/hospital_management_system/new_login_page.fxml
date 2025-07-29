@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.LoginController">
+   <children>
+      <AnchorPane prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="logoImage" fitHeight="112.0" fitWidth="137.0" layoutX="144.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/doctor-visit.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="username" layoutX="83.0" layoutY="328.0" prefHeight="25.0" prefWidth="238.0" promptText="Username" style="-fx-background-color: #f0f0f0;" styleClass="text-field" stylesheets="@../../../texts/textfieldstyle.css" />
+            <Label layoutX="173.0" layoutY="252.0" text="Login As: ">
+               <font>
+                  <Font name="Arial Italic" size="13.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="dropdown" layoutX="125.0" layoutY="279.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #f0f0f0;" stylesheets="@../../../texts/choiceboxstyle.css" />
+            <Button fx:id="LogInButton" layoutX="154.0" layoutY="414.0" mnemonicParsing="false" onAction="#userLogIn" prefHeight="25.0" prefWidth="90.0" styleClass="animated-button" stylesheets="@../../../texts/buttonstyle.css" text="LOGIN" textFill="#303c27" />
+            <Label layoutX="149.0" layoutY="620.0" text="Not Registered Yet?" />
+            <Button fx:id="signUpButton" layoutX="154.0" layoutY="643.0" mnemonicParsing="false" onAction="#signUp" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: transparent;" stylesheets="@../../../texts/buttonstyle.css" text="Sign up" textFill="#4a41ff" underline="true" />
+            <PasswordField fx:id="password" layoutX="82.0" layoutY="370.0" prefHeight="27.0" prefWidth="238.0" promptText="Password" style="-fx-background-color: #f0f0f0;" styleClass="text-field" stylesheets="@../../../texts/textfieldstyle.css" />
+            <Label fx:id="errorMessage" layoutX="110.0" layoutY="466.0" prefHeight="17.0" prefWidth="185.0" text="Incorrect Username or Password!" textFill="RED" />
+            <Label fx:id="hospitalName" layoutX="84.0" layoutY="36.0" text="hospitalName">
+               <font>
+                  <Font name="Consolas" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

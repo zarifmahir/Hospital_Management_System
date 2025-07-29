@@ -1,0 +1,18 @@
+/* Default ChoiceBox Styling */
+.choice-box {
+    -fx-background-color: #f0f0f0; /* Default background color */
+    -fx-border-width: 1px;
+    -fx-padding: 1px;
+    -fx-font-size: 12px;
+    -fx-transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Pressed/Selected State for ChoiceBox */
+.choice-box:pressed {
+    -fx-background-color: #d3d3d3; /* Light gray background when pressed */
+}
+
+/* Hover Effect (Optional) */
+.choice-box:hover {
+    -fx-background-color: #e0e0e0; /* Slightly darker background on hover */
+}

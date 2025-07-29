@@ -33,6 +33,7 @@ import java.util.List;
 
 public class Main extends Application {
     Stage stage;
+    Stage currentStage;
     public static PatientsMap patientsMap;
     public static DoctorsMap doctorsMap;
     public static AdminMap adminMap;
@@ -72,7 +73,7 @@ public class Main extends Application {
 
     public void showLoginPage() throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("login_page.fxml"));
+        loader.setLocation(getClass().getResource("new_login_page.fxml"));
         Parent root = loader.load();
 
         LoginController controller = loader.getController();
@@ -91,7 +92,7 @@ public class Main extends Application {
 
 
         stage.setTitle("Hospital Management System");
-        stage.setScene(new Scene(root, 1280, 720));
+        stage.setScene(new Scene(root, 400, 700));
         stage.show();
     }
 
@@ -117,7 +118,11 @@ public class Main extends Application {
         controller.setMain(this);
         controller.setSuccessMessage(msg);
 
-        stage.getScene().setRoot(root);
+
+        Stage newStage =  new Stage();
+        newStage.setScene(new Scene(root, 1280, 720));
+        newStage.show();
+        stage.close();
     }
 
     public void showPatientPage(Patient p) throws IOException {
@@ -129,7 +134,10 @@ public class Main extends Application {
         controller.setMain(this);
         controller.setPatient(p);
 
-        stage.getScene().setRoot(root);
+        Stage newStage =  new Stage();
+        newStage.setScene(new Scene(root, 1280, 720));
+        newStage.show();
+        stage.close();
     }
 
     public void showDoctorPage(Doctor d) throws IOException {
@@ -141,7 +149,10 @@ public class Main extends Application {
         controller.setMain(this);
         controller.setDoctor(d);
 
-        stage.getScene().setRoot(root);
+        Stage newStage =  new Stage();
+        newStage.setScene(new Scene(root, 1280, 720));
+        newStage.show();
+        stage.close();
     }
 
     public void showRegisterPage() throws IOException {
@@ -149,11 +160,16 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("register_page/register_page.fxml"));
         Parent root = loader.load();
 
+        stage.setWidth(1280);
+        stage.setHeight(720);
         RegistrationController controller = loader.getController();
         controller.setMain(this);
 
 
-        stage.getScene().setRoot(root);
+        Stage newStage =  new Stage();
+        newStage.setScene(new Scene(root, 1280, 720));
+        newStage.show();
+        stage.close();
     }
     public void showAdminPage(Admin a) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -165,7 +181,10 @@ public class Main extends Application {
         System.out.println(a.getImage());
         controller.setAdmin(a);
 
-        stage.getScene().setRoot(root);
+        Stage newStage =  new Stage();
+        newStage.setScene(new Scene(root, 1280, 720));
+        newStage.show();
+        stage.close();
     }
     public void showResidentPage() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -176,8 +195,10 @@ public class Main extends Application {
         controller.setMain(this);
         controller.initializeManually();
 
-        stage.getScene().setRoot(root);
-
+        Stage newStage =  new Stage();
+        newStage.setScene(new Scene(root, 1280, 720));
+        newStage.show();
+        stage.close();
     }
 
     public void loadPatients() throws IOException {

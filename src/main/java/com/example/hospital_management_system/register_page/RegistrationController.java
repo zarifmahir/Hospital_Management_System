@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -15,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -121,8 +123,10 @@ public class RegistrationController {
         this.main = main;
     }
 
-    public void backToLoginPage(ActionEvent actionEvent) {
+    public void backToLoginPage(ActionEvent event) {
         try{
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
             main.showLoginPage();
         }
         catch(Exception e){
@@ -130,7 +134,7 @@ public class RegistrationController {
         }
     }
 
-    public void signUp(ActionEvent actionEvent) throws IOException {
+    public void signUp(ActionEvent event) throws IOException {
         if(type.equals("Patient")){
             if(patientRegister.checkEmpty() || patientRegister.checkBoundaries() || username.getText().isEmpty() || password.getText().isEmpty() || confirmPassword.getText().isEmpty()){
                 errorMessage2.setText("Please fill all the fields");
@@ -145,6 +149,8 @@ public class RegistrationController {
                 writePatient(p);
                 try{
                     patientRegister.updateNumber();
+                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    currentStage.close();
                     main.showSuccessPage("Successfully registered!!!");
                 }
                 catch (Exception e){
@@ -165,7 +171,8 @@ public class RegistrationController {
                 doctor.setUserNameAndPass(username.getText(), password.getText());
                 writeDoctor(doctor);
                 try{
-
+                    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    currentStage.close();
                     main.showSuccessPage("Applied Successfully!!!!");
                 }
                 catch (Exception e){

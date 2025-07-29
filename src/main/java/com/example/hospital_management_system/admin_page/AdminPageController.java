@@ -5,12 +5,14 @@ import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -111,7 +113,11 @@ public class AdminPageController {
     void logOut(ActionEvent event) {
         try {
             boolean status = Main.showLogOutAlert();
-            if (status) {main.showLoginPage();}
+            if (status) {
+                Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                currentStage.close();
+                main.showLoginPage();
+            }
         }
         catch (Exception e){
             e.printStackTrace();

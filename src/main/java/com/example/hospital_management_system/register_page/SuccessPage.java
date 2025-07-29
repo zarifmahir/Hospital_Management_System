@@ -2,7 +2,9 @@ package com.example.hospital_management_system.register_page;
 
 import com.example.hospital_management_system.Main;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class SuccessPage {
 
@@ -17,8 +19,10 @@ public class SuccessPage {
         successMessage.setText(message);
     }
 
-    public void backToLogIn(ActionEvent actionEvent) {
+    public void backToLogIn(ActionEvent event) {
         try{
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
             main.showLoginPage();
         }
         catch (Exception e){

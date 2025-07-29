@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,11 +14,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.EventObject;
 
 public class PatientPageController {
     @FXML
@@ -50,7 +53,7 @@ public class PatientPageController {
     }
 
 
-    private void loadPage(String page) throws IOException {
+    void loadPage(String page) throws IOException {
 
         if(currentPage.equals("chat_of_patient") && !page.equals(currentPage)) {
             Main.patientChatMap.addChat(patient, patient.getMyChat());
@@ -66,6 +69,7 @@ public class PatientPageController {
         if(page.equals("patient_dashboard")) {
             PatientDashboardController controller = loader.getController();
             controller.setPatient(patient);
+            controller.setPatientPageController(this);
         }
         else if(page.equals("chat_of_patient")) {
             System.out.println("chat_of_patient");
@@ -153,7 +157,9 @@ public class PatientPageController {
         System.out.println("Written successfully");
     }
 
-    public void logOut(ActionEvent actionEvent) {
+    public void logOut(ActionEvent event) {
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
         try {
             reloadPatientChats(patient);
            main.showLoginPage();

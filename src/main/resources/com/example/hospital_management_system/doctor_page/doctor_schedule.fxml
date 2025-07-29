@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.doctor_page.DoctorScheduleController">
 <center>
 <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
     <children>
-        <TableView fx:id="tableView" layoutX="53.0" layoutY="71.0" prefHeight="507.0" prefWidth="885.0">
+        <TableView fx:id="tableView" layoutX="53.0" layoutY="73.0" prefHeight="507.0" prefWidth="885.0">
             <columns>
                 <TableColumn fx:id="idCol" prefWidth="139.0" text="Appointment ID" />
                 <TableColumn fx:id="departmentCol" prefWidth="153.0" text="Department" />
@@ -20,7 +24,22 @@
                 <TableColumn fx:id="roomCol" prefWidth="120.0" text="Room No." />
             </columns>
         </TableView>
-        <Button layoutX="406.0" layoutY="605.0" mnemonicParsing="false" onAction="#cancelSelectedAppointment" prefHeight="31.0" prefWidth="178.0" style="-fx-background-color: rgba(241,31,31,0.5);" text="Cancel Appointment" />
+        <Button layoutX="406.0" layoutY="607.0" mnemonicParsing="false" onAction="#cancelSelectedAppointment" prefHeight="31.0" prefWidth="178.0" style="-fx-background-color: rgba(241,31,31,0.5);" text="Cancel Appointment">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Label layoutX="53.0" layoutY="27.0" text="Appointments">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/patient.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
     </children>
 </AnchorPane>
 </center>

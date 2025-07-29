@@ -81,7 +81,7 @@
             </Text>
             <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="68.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/hospital%20(1).png" />
+                  <Image url="@../../../images/hospital (1).png" />
                </image>
             </ImageView>
          </children>

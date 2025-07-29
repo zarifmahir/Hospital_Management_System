@@ -9,3 +9,4 @@
 010|goru|0|Male|AB+v3|ishmam.|01700000009|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Dermatology|10|Bangladesh Medical Council|/images/admin3.png|hdfgh|120
 011|chagol|0|Male|AB+v3|ishmam.|01700000010|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Psychiatry|10|Bangladesh Medical Council|/images/admin3.png|ertet|121
 11|MAHIR|0|Male|AB+v3|ishmam.|12347012398471471089234|01799999999|MBBS, FCPS|Dhaka Medical College||1113|Surgery|10|Bangladesh Medical Council|/images/admin3.png|daf|112
+002|Zarif Ishmam|0|Male|A+|zarif.ishmam@gmail.com|01940834987|01408347982|MMBS|puet|luet|4234|Pediatrics|2|safd|null|asdf|111

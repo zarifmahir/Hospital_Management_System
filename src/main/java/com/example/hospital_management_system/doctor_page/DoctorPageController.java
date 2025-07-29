@@ -7,6 +7,7 @@ import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -44,7 +46,7 @@ public class DoctorPageController {
     private Doctor doctor;
 
     @FXML
-    private void loadPage(String page) throws IOException {
+    void loadPage(String page) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(page + ".fxml"));
         Parent root = loader.load();
@@ -52,6 +54,7 @@ public class DoctorPageController {
         if(page.equals("doctor_dashboard")) {
             DoctorDashboardController controller = loader.getController();
             controller.setDoctor(doctor);
+            controller.setDoctorPageController(this);
         }
         else if (page.equals("doctor_schedule")) {
             DoctorScheduleController controller = loader.getController();
@@ -104,6 +107,8 @@ public class DoctorPageController {
 
     @FXML
     void logOut(ActionEvent event) throws Exception {
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
         main.showLoginPage();
     }
 
