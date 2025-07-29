@@ -67,10 +67,9 @@ public class ReadThreadClient implements Runnable {
                         }
 
                         else if(spt[1].equals("ChatRefreshed")) {
-                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt", true));
                             Main main = (Main)socketWrapper.getO();
                             main.loadPatientChats();
-                            Main.setUpdated(!Main.getUpdated());
                         }
 
                         else {
