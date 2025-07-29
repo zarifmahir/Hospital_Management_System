@@ -27,9 +27,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends Application {
     Stage stage;
@@ -232,15 +232,32 @@ public class Main extends Application {
     public void loadAppointments() throws IOException {
         appointmentMap = new AppointmentMap();
         BufferedReader br = new BufferedReader(new FileReader("src/main/resources/texts/AppointmentList.txt"));
+        List<String> lines = new ArrayList<>();
+        int i=0;
         while (true) {
             String line = br.readLine();
             if (line == null) break;
             String [] values = line.split("<");
+            String[] temp = values[0].split("\\(");
+            String[] temp2 = values[0].split("\\)");
+            String doctorId = temp2[0];
+            String patientId = values[7];
+            i++;
+            if(Main.patientsMap.getPatientById(patientId) == null || Main.doctorsMap.getDoctorById(doctorId) == null){ continue;}
             Appointment a = new Appointment(values[0], values[1], values[2], Integer.parseInt(values[3]), values[4], values[5], Integer.parseInt(values[6]), values[7]);
             appointmentMap.addAppointment(a);
-            System.out.println();
+            lines.add(line);
+            //System.out.println();
         }
         br.close();
+        if(lines.size()<i) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/AppointmentList.txt"))) {
+                for (String line : lines) {
+                    writer.write(line);
+                    writer.newLine();
+                }
+            }
+        }
     }
 
     public void loadStaff() throws IOException {

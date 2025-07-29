@@ -68,6 +68,10 @@ public class AdminPageController {
             controller.setAdmin(admin);
             controller.adminPageController = this;
         }
+        else if(page.equals("appointment_page")){
+            AppointmentPageController controller = loader.getController();
+            controller.setMain(main);
+        }
 
         bp.setCenter(root);
     }

@@ -77,6 +77,7 @@ public class PatientPageController {
         else if(page.equals("patient_appointments")) {
             PatientAppointmentsController controller = loader.getController();
             controller.setPatient(patient);
+            controller.setMain(main);
         }
 
         bp.setCenter(root);

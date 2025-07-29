@@ -84,6 +84,11 @@ public class ShowDoctorPanel implements Initializable {
         for(Doctor doctor:doctorList){
             doctorsTable.getItems().add(doctor);
         }
+
+        Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+            doctorsTable.getItems().clear();
+            doctorsTable.getItems().addAll(Main.doctorsMap.getDoctorList());
+        });
     }
 
 

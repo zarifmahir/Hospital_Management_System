@@ -89,6 +89,11 @@ public class ReadThreadClient implements Runnable {
                             main.loadDoctors();
                             Main.setUpdated(!Main.getUpdated());
                         }
+                        else if(spt[0].equals("AppointmentList")) {
+                            Main main = (Main)socketWrapper.getO();
+                            main.loadAppointments();
+                            Main.setUpdated(!Main.getUpdated());
+                        }
 
                     }
 
