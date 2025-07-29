@@ -202,7 +202,12 @@ public class DoctorPanelController implements Initializable {
                     System.out.println(line);
                     lines.add(line);
                     String[] s =  line.split("\\|");
-                    if(s[0].equals(deleteName)){serial=i;}
+                    if(s[0].equals(deleteName)){
+                        serial=i;
+                        synchronized (Main.c){
+                            Main.c.sendMessage("DoctorsList$Remove$"+serial);
+                        }
+                    }
                     i++;
                 }
             } catch (IOException e) {
@@ -310,7 +315,7 @@ public class DoctorPanelController implements Initializable {
                     if(s[0].equals(prevId)){
                         serial=i;
                         synchronized (Main.c){
-                            Main.c.sendMessage("PatientsList$Remove$"+serial);
+                            Main.c.sendMessage("DoctorsList$Remove$"+serial);
                         }
                     }
                     i++;

@@ -1,2 +1,1 @@
 001|zarif|20|Male|72.0|6.2|AB+ve|1700000000|1700000000|zarifmahir|false|false|true|false|false|false|false|false|true|false|false|false|/images/admin2.png|zarif|111
-100|Mahir|0|Male|111.0|22.0|fa|12323|4243|afd|false|false|false|false|true|false|false|false|false|false|false|false|/images/bubble-chat.png|mahir|111

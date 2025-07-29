@@ -131,6 +131,9 @@ public class PatientPageController {
     public static void reloadPatientChats(Patient patient) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt"));
         writer.write("");
+        synchronized (Main.c){
+            Main.c.sendMessage("ChatHistoryOfPatients$EmptyChat");
+        }
         writer.close();
         boolean stat = false;
         for(Patient p: Main.patientChatMap.chatMap.keySet()){

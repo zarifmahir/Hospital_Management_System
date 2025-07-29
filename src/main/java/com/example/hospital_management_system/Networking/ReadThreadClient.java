@@ -60,6 +60,10 @@ public class ReadThreadClient implements Runnable {
                                 }
 
                         }
+                        else if(spt[1].equals("EmptyChat")) {
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
+                            writer.write("");
+                        }
 
                         else {
                             writer = new BufferedWriter(new FileWriter("src/main/resources/texts/" + spt[0] + ".txt", true));

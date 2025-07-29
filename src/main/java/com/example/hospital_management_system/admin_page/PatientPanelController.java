@@ -195,7 +195,12 @@ public class PatientPanelController implements Initializable {
                 while ((line = reader.readLine()) != null) {
                     lines.add(line);
                     String[] s =  line.split("\\|");
-                    if(s[0].equals(deleteName)){serial=i;}
+                    if(s[0].equals(deleteName)){
+                        serial=i;
+                        synchronized (Main.c){
+                            Main.c.sendMessage("PatientsList$Remove$"+serial);
+                        }
+                    }
                     i++;
                 }
             } catch (IOException e) {
@@ -306,7 +311,12 @@ public class PatientPanelController implements Initializable {
                     System.out.println(line);
                     lines.add(line);
                     String[] s =  line.split("\\|");
-                    if(s[0].equals(prevId)){serial=i;}
+                    if(s[0].equals(prevId)){
+                        serial=i;
+                        synchronized (Main.c){
+                            Main.c.sendMessage("PatientsList$Remove$"+serial);
+                        }
+                    }
                     i++;
                 }
             } catch (IOException e) {
