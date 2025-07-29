@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -30,5 +31,6 @@
          </font>
       </Label>
       <ChoiceBox fx:id="departmentDropdown" layoutX="770.0" layoutY="17.0" prefWidth="150.0" />
+      <TextField fx:id="searchDoctorField" layoutX="30.0" layoutY="16.0" prefHeight="25.0" prefWidth="201.0" promptText="Search by Name or ID" />
    </children>
 </AnchorPane>

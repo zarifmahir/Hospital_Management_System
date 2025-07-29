@@ -132,7 +132,7 @@ public class AdminPageController {
     @FXML
     void reports(ActionEvent event) {
         try {
-            loadPage("reports");
+            loadPage("show_all_prescriptions");
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

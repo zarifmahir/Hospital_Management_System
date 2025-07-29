@@ -4,6 +4,8 @@ import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.appointment_system.Appointment;
 import com.example.hospital_management_system.appointment_system.Prescription;
 import com.example.hospital_management_system.patient_page.Patient;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +55,8 @@ public class DoctorHistoryController {
     @FXML
     private TableView<Patient> tableView;
 
+    ObservableList<Patient> items = FXCollections.observableArrayList();
+
     public void loadData() {
         idCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("id"));
         patientCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
@@ -66,7 +70,28 @@ public class DoctorHistoryController {
 
         for (Patient patient : patientList) {
             tableView.getItems().add(patient);
+            items.add(patient);
         }
+    }
+
+    public void initialize() {
+        searchPatientField.textProperty().addListener((observable, oldValue, newValue) -> {
+           ObservableList<Patient> filteredPatients = FXCollections.observableArrayList();
+
+           if (searchPatientField.getText().isEmpty() || (searchPatientField == null)) {
+               tableView.setItems(items);
+               return;
+           }
+
+           for (Patient patient : items) {
+               if (patient.getName().toLowerCase().contains(newValue.toLowerCase())
+               || patient.getId().toLowerCase().contains(newValue.toLowerCase())) {
+                   filteredPatients.add(patient);
+               }
+           }
+
+           tableView.setItems(filteredPatients);
+        });
     }
 
     private List<Patient> getPatientsUnderDoctor() {

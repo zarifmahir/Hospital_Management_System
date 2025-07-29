@@ -2,6 +2,7 @@
 
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
@@ -13,39 +14,48 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.AdminDashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hospital_management_system.admin_page.AdminDashboardController">
    <top>
       <AnchorPane fx:id="apTop" prefHeight="116.0" prefWidth="990.0" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane layoutY="-6.0" prefHeight="140.0" prefWidth="990.0">
                <children>
                   <Circle fx:id="pfpCircle" fill="#1f93ff00" layoutX="80.0" layoutY="70.0" radius="57.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                  <Label fx:id="nameField" layoutX="160.0" layoutY="20.0" prefHeight="17.0" prefWidth="309.0" text="Name" textFill="#511f1f">
+                  <Label fx:id="nameField" layoutX="157.0" layoutY="43.0" prefHeight="17.0" prefWidth="309.0" text="Name" textFill="#511f1f">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="designationField" layoutX="160.0" layoutY="47.0" prefHeight="17.0" prefWidth="309.0" text="Designation">
+                  <Label fx:id="designationField" layoutX="157.0" layoutY="70.0" prefHeight="17.0" prefWidth="309.0" text="Designation">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="idField" alignment="CENTER" layoutX="837.0" layoutY="21.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
-                  <Label layoutX="771.0" layoutY="21.0" prefHeight="17.0" prefWidth="77.0" text="UserID: ">
+                  <Label fx:id="idField" alignment="CENTER" layoutX="837.0" layoutY="31.0" prefHeight="17.0" prefWidth="153.0" text="userId">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font size="13.0" />
+                     </font></Label>
+                  <Label layoutX="771.0" layoutY="31.0" prefHeight="17.0" prefWidth="77.0" text="UserID: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="roomField" alignment="CENTER" layoutX="837.0" layoutY="48.0" prefHeight="17.0" prefWidth="153.0" text="userId" />
-                  <Label alignment="CENTER" layoutX="840.0" layoutY="76.0" prefHeight="17.0" prefWidth="154.0" text="9 am- 6 pm" />
-                  <Label layoutX="771.0" layoutY="48.0" prefHeight="17.0" prefWidth="77.0" text="Room No.:">
+                  <Label fx:id="roomField" alignment="CENTER" layoutX="837.0" layoutY="58.0" prefHeight="17.0" prefWidth="153.0" text="userId">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font size="13.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" layoutX="840.0" layoutY="86.0" prefHeight="17.0" prefWidth="154.0" text="9 am- 6 pm">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+                  <Label layoutX="771.0" layoutY="58.0" prefHeight="17.0" prefWidth="77.0" text="Room No.:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="771.0" layoutY="76.0" prefHeight="17.0" prefWidth="77.0" text="Shift:">
+                  <Label layoutX="771.0" layoutY="86.0" prefHeight="17.0" prefWidth="77.0" text="Shift:">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -58,9 +68,9 @@
          <content>
             <AnchorPane prefHeight="1100.0" prefWidth="975.0">
                <children>
-                  <AnchorPane layoutX="52.0" layoutY="804.0" onMouseEntered="#reportHover" onMouseExited="#reportHoverExited" onMousePressed="#reportPressed" onMouseReleased="#showReportPage" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c3dedd; -fx-background-radius: 30 30 30 30;">
+                  <AnchorPane fx:id="PrescriptionAp" layoutX="52.0" layoutY="800.0" onMouseEntered="#reportHover" onMouseExited="#reportHoverExited" onMousePressed="#reportPressed" onMouseReleased="#showReportPage" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c3dedd; -fx-background-radius: 30 30 30 30;">
                      <children>
-                        <Label layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Reports">
+                        <Label layoutX="33.0" layoutY="64.0" prefHeight="27.0" prefWidth="121.0" text="Prescriptions">
                            <font>
                               <Font name="Calibri Bold" size="21.0" />
                            </font>
@@ -70,14 +80,14 @@
                               <Font size="29.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="20.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../images/stethoscope.png" />
+                              <Image url="@../../../../images/medical-report%20(1).png" />
                            </image>
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="patientAgeBarGraph" layoutX="52.0" layoutY="612.0" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMouseReleased="#showPatientPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c9a5c7; -fx-background-radius: 30 30 30 30;">
+                  <AnchorPane fx:id="patientAp" layoutX="52.0" layoutY="612.0" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMousePressed="#patientLabelPressed" onMouseReleased="#showPatientPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #c9a5c7; -fx-background-radius: 30 30 30 30;">
                      <children>
                         <Label layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Patients">
                            <font>
@@ -96,7 +106,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="645.0" layoutY="31.0" onMouseEntered="#staffHover" onMouseExited="#staffHoverExited" onMousePressed="#staffPressed" onMouseReleased="#showStaffPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #cbd3ad; -fx-background-radius: 30 30 30 30;">
+                  <AnchorPane fx:id="staffAp" layoutX="645.0" layoutY="31.0" onMouseEntered="#staffHover" onMouseExited="#staffHoverExited" onMousePressed="#staffPressed" onMouseReleased="#showStaffPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: #cbd3ad; -fx-background-radius: 30 30 30 30;">
                      <children>
                         <Label alignment="CENTER_RIGHT" layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Staff">
                            <font>
@@ -115,7 +125,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="52.0" layoutY="973.0" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#appointmentPressed" onMouseReleased="#showAppointmentPage" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: lightblue; -fx-background-radius: 30 30 30 30;">
+                  <AnchorPane fx:id="appointmentAp" layoutX="52.0" layoutY="973.0" onMouseEntered="#appointmentHover" onMouseExited="#appointmentHoverExited" onMousePressed="#appointmentPressed" onMouseReleased="#showAppointmentPage" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: lightblue; -fx-background-radius: 30 30 30 30;">
                      <children>
                         <Label layoutX="24.0" layoutY="64.0" prefHeight="27.0" prefWidth="137.0" text="Appointments">
                            <font>
@@ -134,7 +144,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="158.0" layoutY="31.0" onMouseEntered="#doctorLabelHover" onMouseExited="#doctorLabelHoverExited" onMouseReleased="#showDoctorPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: lightblue; -fx-background-radius: 30 30 30 30;">
+                  <AnchorPane fx:id="doctorAp" layoutX="158.0" layoutY="31.0" onMouseEntered="#doctorLabelHover" onMouseExited="#doctorLabelHoverExited" onMousePressed="#doctorLabelPressed" onMouseReleased="#showDoctorPanel" prefHeight="105.0" prefWidth="175.0" style="-fx-background-color: lightblue; -fx-background-radius: 30 30 30 30;">
                      <children>
                         <Label layoutX="80.0" layoutY="64.0" prefHeight="27.0" prefWidth="74.0" text="Doctors">
                            <font>
@@ -169,7 +179,7 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </BarChart>
-                  <BarChart layoutX="278.0" layoutY="565.0" prefHeight="226.0" prefWidth="281.0">
+                  <BarChart fx:id="patientAgeBarGraph" layoutX="602.0" layoutY="568.0" prefHeight="226.0" prefWidth="323.0" title="Patients based on Age">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -177,16 +187,20 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </BarChart>
-                  <BarChart fx:id="patientGenderBarGraph" layoutX="616.0" layoutY="565.0" prefHeight="226.0" prefWidth="281.0">
-                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
-                     </xAxis>
-                     <yAxis>
-                        <NumberAxis side="LEFT" />
-                     </yAxis>
-                  </BarChart>
-                  <PieChart fx:id="appointmentPieChar" layoutX="340.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
-                  <PieChart fx:id="reportPieChart" layoutX="666.0" layoutY="857.0" prefHeight="142.0" prefWidth="177.0" />
+                  <PieChart fx:id="patientGenderPieChart" layoutX="287.0" layoutY="563.0" legendVisible="false" prefHeight="270.0" prefWidth="308.0" />
+                  <Label layoutX="367.0" layoutY="559.0" prefHeight="47.0" prefWidth="241.0" text="Patient Genders">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <LineChart fx:id="apLineChart" layoutX="287.0" layoutY="843.0" prefHeight="261.0" prefWidth="614.0" title="Appointments &amp; Prescriptions by Month">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
                </children>
             </AnchorPane>
          </content>

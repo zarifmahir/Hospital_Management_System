@@ -143,7 +143,7 @@ public class AddNewPrescriptionController {
             prescription.setRemedy6(remedyField6.getText());
         }
         else {
-            s += "| ";
+            s += "| |";
             prescription.setRemedy6("");
         }
 

@@ -4,16 +4,15 @@ import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.patient_page.Patient;
 import com.example.hospital_management_system.patient_page.PatientDashboardController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -61,6 +60,11 @@ public class PatientPanelController implements Initializable {
         this.main = main;
     }
 
+    @FXML
+    private TextField searchBarField;
+
+    ObservableList<Patient> items = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         id.setCellValueFactory(new PropertyValueFactory<Patient, String>("id"));
@@ -71,6 +75,7 @@ public class PatientPanelController implements Initializable {
         List<Patient> patientList = Main.patientsMap.getPatientList();
         for(Patient p: patientList){
             patientsTable.getItems().add(p);
+            items.add(p);
         }
         patientsTable.setEditable(false);
 
@@ -80,6 +85,7 @@ public class PatientPanelController implements Initializable {
                     List<Patient> patientList2 = Main.patientsMap.getPatientList();
                     for(Patient p: patientList2){
                         patientsTable.getItems().add(p);
+                        items.add(p);
                     }
                     patientsTable.setEditable(false);
                 }
@@ -97,6 +103,23 @@ public class PatientPanelController implements Initializable {
             }
         });
 
+        searchBarField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ObservableList<Patient> filteredItems = FXCollections.observableArrayList();
+
+            if (newValue.trim().isEmpty() || (newValue == null)) {
+                patientsTable.setItems(items);
+                return;
+            }
+
+            for (Patient p : items) {
+                if (p.getName().toLowerCase().contains(newValue.toLowerCase())
+                || p.getId().toLowerCase().contains(newValue.toLowerCase())) {
+                    filteredItems.add(p);
+                }
+            }
+
+            patientsTable.setItems(filteredItems);
+        });
     }
 
     private void disableButtons(){

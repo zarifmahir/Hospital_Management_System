@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.print.Doc;
@@ -53,6 +54,11 @@ public class ShowDoctorPanel implements Initializable {
     @FXML
     private TableColumn<Doctor, String> status;
 
+    @FXML
+    private TextField searchDoctorField;
+
+    ObservableList<Doctor> items = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,7 +89,26 @@ public class ShowDoctorPanel implements Initializable {
 
         for(Doctor doctor:doctorList){
             doctorsTable.getItems().add(doctor);
+            items.add(doctor);
         }
+
+        searchDoctorField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ObservableList<Doctor> filteredDoctors = FXCollections.observableArrayList();
+
+            if ((newValue != null) && (newValue.trim().isEmpty())) {
+                doctorsTable.setItems(items);
+                return;
+            }
+
+            for (Doctor doctor : items) {
+                if (doctor.getName().toLowerCase().contains(newValue.toLowerCase())
+                || doctor.getId().toLowerCase().contains(newValue.toLowerCase())) {
+                    filteredDoctors.add(doctor);
+                }
+            }
+
+            doctorsTable.setItems(filteredDoctors);
+        });
     }
 
 

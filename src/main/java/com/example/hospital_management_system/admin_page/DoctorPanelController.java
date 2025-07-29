@@ -4,16 +4,15 @@ import com.example.hospital_management_system.Main;
 import com.example.hospital_management_system.doctor_page.Doctor;
 import com.example.hospital_management_system.doctor_page.DoctorsMap;
 import com.example.hospital_management_system.patient_page.Patient;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -57,6 +56,10 @@ public class DoctorPanelController implements Initializable {
         this.main = main;
     }
 
+    @FXML
+    private TextField searchBarField;
+
+
     //@FXML
    // private TableColumn<Doctor, String> status;
 
@@ -75,6 +78,8 @@ public class DoctorPanelController implements Initializable {
 
     }
 
+    ObservableList<Doctor> items = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ID.setCellValueFactory(new PropertyValueFactory<Doctor, String>("id"));
@@ -86,8 +91,10 @@ public class DoctorPanelController implements Initializable {
         //status.setCellValueFactory(new PropertyValueFactory<Doctor, String>("status"));
 
         List<Doctor> doctorList = Main.doctorsMap.getDoctorList();
+
         for(Doctor doctor:doctorList){
             doctorsPanel.getItems().add(doctor);
+            items.add(doctor);
         }
 
         Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
@@ -96,6 +103,7 @@ public class DoctorPanelController implements Initializable {
                 List<Doctor> doctorlist2 = Main.doctorsMap.getDoctorList();
                 for(Doctor p: doctorlist2){
                     doctorsPanel.getItems().add(p);
+                    items.add(p);
                 }
                 doctorsPanel.setEditable(false);
             }
@@ -115,7 +123,25 @@ public class DoctorPanelController implements Initializable {
             }
         });
 
+        searchBarField.textProperty().addListener((observable, oldValue, newValue) -> {
+            ObservableList<Doctor> filteredItems = FXCollections.observableArrayList();
+
+            if (newValue.trim().isEmpty() || (newValue == null)) {
+                doctorsPanel.setItems(items);
+                return;
+            }
+
+            for (Doctor doctor : items) {
+                if (doctor.getName().toLowerCase().contains(newValue.toLowerCase())
+                || doctor.getId().toLowerCase().contains(newValue.toLowerCase())) {
+                    filteredItems.add(doctor);
+                }
+            }
+            doctorsPanel.setItems(filteredItems);
+        });
+
     }
+
 
     private void disableButtons(){
          selectedStatus = false;
@@ -126,9 +152,6 @@ public class DoctorPanelController implements Initializable {
         editButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
         deleteButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
         viewButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
-
-
-
     }
 
     private void enableButtons(){

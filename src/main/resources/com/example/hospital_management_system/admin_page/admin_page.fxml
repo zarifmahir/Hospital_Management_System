@@ -52,7 +52,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="patientPanelButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#patientPanel" onMouseClicked="#patient_history" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMousePressed="#patientPressed" onMouseReleased="#patientReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Patients">
+            <Button fx:id="patientPanelButton" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#patientPanel" onMouseClicked="#patient_history" onMouseEntered="#patientHover" onMouseExited="#patientHoverExited" onMousePressed="#patientPressed" onMouseReleased="#patientReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Patient Details">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -65,7 +65,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-         <Button fx:id="reportsButton" mnemonicParsing="false" onAction="#reports" onMouseClicked="#patient_appointments" onMouseEntered="#reportsHover" onMouseExited="#reportsHoverExited" onMousePressed="#reportsPressed" onMouseReleased="#reportsReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Reports &amp; Analytics">
+         <Button fx:id="reportsButton" mnemonicParsing="false" onAction="#reports" onMouseClicked="#patient_appointments" onMouseEntered="#reportsHover" onMouseExited="#reportsHoverExited" onMousePressed="#reportsPressed" onMouseReleased="#reportsReleased" prefHeight="45.0" prefWidth="301.0" style="-fx-background-color: transparent;" styleClass="animated-button" stylesheets="@style.css" text="Prescriptions">
             <font>
                <Font size="14.0" />
             </font>
