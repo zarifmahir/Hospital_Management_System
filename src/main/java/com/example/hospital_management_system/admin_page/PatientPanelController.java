@@ -155,6 +155,8 @@ public class PatientPanelController implements Initializable {
         editButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
         deleteButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
         viewButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
+        addTRButton.setDisable(true);
+        addTRButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
 
 
 
@@ -170,6 +172,8 @@ public class PatientPanelController implements Initializable {
         editButton.setStyle("-fx-background-color: #2196F3;" + "-fx-text-fill: white;" + "-fx-opacity: 1.5;");
         deleteButton.setStyle("-fx-background-color: #2196F3;" + "-fx-text-fill: white;" + "-fx-opacity: 1.5;");
         viewButton.setStyle("-fx-background-color: #2196F3;" + "-fx-text-fill: white;" + "-fx-opacity: 1.5;");
+        addTRButton.setDisable(false);
+        addTRButton.setStyle("-fx-background-color: #2196F3;" + "-fx-text-fill: white;" + "-fx-opacity: 1.5;");
     }
 
 
@@ -396,7 +400,44 @@ public class PatientPanelController implements Initializable {
                 String fileName = patient.getId()+"_"+patient.getTestReportNumbers()+ ".pdf";
                 Path destination = resourcesDir.resolve(fileName);
                 Files.copy(file.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
+
+                String newLine = "";
+                String oldLine = "";
+                List<String> lines = new ArrayList<>();
+                try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/PatientsList.txt"))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        System.out.println(line);
+                        lines.add(line);
+                        String[] s =  line.split("\\|");
+                        if(s[0].equals(patient.getId())){
+                            s[25]=String.valueOf(patient.getTestReportNumbers());
+                            for(int i=0; i<25; i++) newLine += s[i]+"|";
+                            newLine+=s[25];
+                            oldLine = line;
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    throw new RuntimeException(e);
+                }
+
+//                System.out.println(lines.size());
+//                System.out.println(serial);
+//
+//                lines.remove(serial);
+
+
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt"))) {
+                    for (String line : lines) {
+                        if(line.equals(oldLine)) writer.write(newLine);
+                        else writer.write(line);
+                        writer.newLine();
+                    }
+                }
             }
+
+
         }
     }
 }

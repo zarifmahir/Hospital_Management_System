@@ -1,4 +1,3 @@
-001|zarif|20|Male|72.0|6.2|AB+ve|1700000000|1700000000|zarifmahir|false|false|true|false|false|false|false|false|true|false|false|false|/images/admin2.png|zarif|111
-003|mh|0|Male|1.0|1.0|a|1711388210|1755536115|f|false|false|false|false|false|false|false|false|false|false|false|false|null|ish|111
-004|zar|0|Male|1.0|1.0|a|1844052809|1766637114|za|false|false|false|false|false|false|false|false|false|false|false|false|null|mahir|111
-005|11|0|Male|11.0|11.0|11|1994940723|1274381724|zarif.ishmam9@gmail.com|false|true|true|false|false|false|true|false|false|true|false|false|/images/8459_8280_241.jpg|asdf|11
+001|zarif|20|Male|72.0|6.2|AB+ve|1700000000|1700000000|zarifmahir|false|false|true|false|false|false|false|false|true|false|false|false|/images/admin2.png|zarif|111|2
+003|mh|0|Male|1.0|1.0|a|1711388210|1755536115|f|false|false|false|false|false|false|false|false|false|false|false|false|null|ish|111|0
+004|zar|0|Male|1.0|1.0|a|1844052809|1766637114|za|false|false|false|false|false|false|false|false|false|false|false|false|null|mahir|111|0

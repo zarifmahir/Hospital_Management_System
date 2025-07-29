@@ -1,4 +1,3 @@
-Nurse|Ayesha Rahman|Medicine|5|01712345601|ayesha.rahman@hospital.com|12 Green Road, Dhaka
 Receptionist|Tanvir Ahmed|Cardiology|3|01712345602|tanvir.ahmed@hospital.com|34 Gulshan Ave, Dhaka
 BedBoy|Rakib Hossain|Surgery|2|01712345603|rakib.hossain@hospital.com|98 Mirpur-2, Dhaka
 Nurse|Farzana Sultana|Pediatrics|6|01712345604|farzana.sultana@hospital.com|21 Uttara, Dhaka
@@ -18,3 +17,5 @@ Receptionist|Fahim Reza|Gynecology|3|01712345617|fahim.reza@hospital.com|30 Wari
 BedBoy|Hasan Mahmud|Psychiatry|2|01712345618|hasan.mahmud@hospital.com|6 Khilgaon, Dhaka
 Nurse|Nusrat Jahan|Surgery|10|01712345619|nusrat.jahan@hospital.com|91 Kallyanpur, Dhaka
 Receptionist|Rifat Anwar|Neurology|4|01712345620|rifat.anwar@hospital.com|44 Motijheel, Dhaka
+Nurse|me|Medicine|3|0177777|adfas|fad
+Nurse|zarif|Medicine|4|122|adf|fda

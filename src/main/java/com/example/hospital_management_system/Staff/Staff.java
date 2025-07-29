@@ -7,6 +7,7 @@ abstract public class Staff {
     String phoneNumber;
     String email;
     String address;
+    String role;
 
 
     public Staff(String name, String department, String yearsOfExperience, String phoneNumber, String email, String address) {
@@ -16,6 +17,22 @@ abstract public class Staff {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(String yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
     }
 
     public String getName() {

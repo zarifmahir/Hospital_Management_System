@@ -189,7 +189,7 @@ public class RegistrationController {
                     p.getMobile()+"|" +p.getEmergencyContact()+"|"+p.getEmail()+"|"+p.getDiabetes() +"|"+p.getAsthma() +"|"+p.getHighBp() +"|"+
                     p.getEpilepsy() +"|"+p.getCancer() +"|"+p.getStroke() +"|"+p.getKidney() +"|"+p.getLiver() +"|"+
                     p.getAllergies() +"|"+p.getSurgeries() +"|"+p.getFamilyHistory() +"|"+p.getMedications() +"|"+p.getImage()+"|"+
-                    p.getUsername()+"|"+p.getPass();
+                    p.getUsername()+"|"+p.getPass() +"|"+p.getTestReportNumbers();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt", true));
             writer.write(content);
             writer.newLine();
