@@ -232,14 +232,13 @@ public class ResidentPage extends Application implements Initializable {
            button.setOnAction(e -> {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                try {
-                   c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+                   //c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                    //Uncomment for same laptop
                  PatientPageController.reloadPatientChats(temp);
-                   Thread.sleep(100);
                    main.loadPatientChats();
                    vBoxOfMessages.getChildren().clear();
                    //System.out.println(p.getMyChat());
-               } catch (IOException | InterruptedException ex) {
+               } catch (IOException  ex) {
                    throw new RuntimeException(ex);
                }
                currentSelected = temp;
@@ -247,6 +246,7 @@ public class ResidentPage extends Application implements Initializable {
               messageArea.clear();
               createVBoxOfMessages(currentSelected,vBoxOfMessages);
            });
+
            hBox.getChildren().add(button);
            patientsBox.getChildren().add(hBox);
        }
@@ -274,9 +274,9 @@ public class ResidentPage extends Application implements Initializable {
             button.setOnAction(e -> {
                 Patient temp = (Patient) ((Button)e.getSource()).getUserData();
                 try {
-                    c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
+                    //c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                     //Uncomment for same laptop
-//                    PatientPageController.reloadPatientChats(temp);
+                  PatientPageController.reloadPatientChats(temp);
                     Thread.sleep(100);
                     main.loadPatientChats();
                     vBoxOfMessages.getChildren().clear();

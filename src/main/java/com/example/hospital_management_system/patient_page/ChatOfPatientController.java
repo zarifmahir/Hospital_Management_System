@@ -55,6 +55,9 @@ public class ChatOfPatientController {
         c.setType("Patient");
         c.setObType((Object) patient);
         createVBoxOfMessages(patient, vBoxOfMessages);
+//        Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+//            createVBoxOfMessages(patient, vBoxOfMessages);
+//        });
         c.setVboxOfMessages(vBoxOfMessages);
         vBoxOfMessages.heightProperty().addListener((observable, oldValue, newValue) -> {
             scrollWindow.setVvalue((Double) newValue);

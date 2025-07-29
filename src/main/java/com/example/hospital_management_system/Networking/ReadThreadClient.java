@@ -61,17 +61,17 @@ public class ReadThreadClient implements Runnable {
                                 }
 
                         }
-//                        else if(spt[1].equals("EmptyChat")) {
-//                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
-//                            writer.write("");
-//                        }
-//
-//                        else if(spt[1].equals("ChatRefreshed")) {
-//                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
-//                            Main main = (Main)socketWrapper.getO();
-//                            main.loadPatientChats();
-//                            Main.setUpdated(!Main.getUpdated());
-//                        }
+                        else if(spt[1].equals("EmptyChat")) {
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
+                            writer.write("");
+                        }
+
+                        else if(spt[1].equals("ChatRefreshed")) {
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
+                            Main main = (Main)socketWrapper.getO();
+                            main.loadPatientChats();
+                            Main.setUpdated(!Main.getUpdated());
+                        }
 
                         else {
                             writer = new BufferedWriter(new FileWriter("src/main/resources/texts/" + spt[0] + ".txt", true));
