@@ -39,6 +39,7 @@ public class ReadThreadClient implements Runnable {
                     }
                     else{
                         BufferedWriter writer;
+                        System.out.println((String)o);
                         if(spt[1].equals("Remove")){
                             List<String> lines = new ArrayList<>();
                             try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/"+ spt[0]+ ".txt"))) {
@@ -65,6 +66,13 @@ public class ReadThreadClient implements Runnable {
                             writer.write("");
                         }
 
+                        else if(spt[1].equals("ChatRefreshed")) {
+                            writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+ ".txt"));
+                            Main main = (Main)socketWrapper.getO();
+                            main.loadPatientChats();
+                            Main.setUpdated(!Main.getUpdated());
+                        }
+
                         else {
                             writer = new BufferedWriter(new FileWriter("src/main/resources/texts/" + spt[0] + ".txt", true));
                             writer.write(spt[1]);
@@ -82,6 +90,7 @@ public class ReadThreadClient implements Runnable {
                             main.loadDoctors();
                             Main.setUpdated(!Main.getUpdated());
                         }
+
                     }
 
                 }

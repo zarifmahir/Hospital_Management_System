@@ -141,6 +141,9 @@ public class PatientPageController {
             if(p.getName().equals(patient.getName())) stat = true;
         }
         if(!stat) writeChats(patient);
+        synchronized (Main.c){
+            Main.c.sendMessage("ChatHistoryOfPatients$ChatRefreshed");
+        }
         System.out.println("Written successfully");
     }
 

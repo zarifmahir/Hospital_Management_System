@@ -231,21 +231,29 @@ public class ResidentPage extends Application implements Initializable {
            button.setUserData(p);
            button.setOnAction(e -> {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
-               try {
+//               try {
                    c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                    //Uncomment for same laptop
 //                   PatientPageController.reloadPatientChats(temp);
-                   Thread.sleep(100);
-                   main.loadPatientChats();
-                   vBoxOfMessages.getChildren().clear();
+
                    //System.out.println(p.getMyChat());
-               } catch (IOException | InterruptedException ex) {
-                   throw new RuntimeException(ex);
-               }
-               currentSelected = temp;
-              messagePane.setVisible(true);
-              messageArea.clear();
-              createVBoxOfMessages(currentSelected,vBoxOfMessages);
+//               } catch (IOException | InterruptedException ex) {
+//                   throw new RuntimeException(ex);
+//               }
+
+               Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+                   try {
+                       main.loadPatientChats();
+                   } catch (IOException ex) {
+                       throw new RuntimeException(ex);
+                   }
+                   vBoxOfMessages.getChildren().clear();
+                   currentSelected = temp;
+                   messagePane.setVisible(true);
+                   messageArea.clear();
+                   createVBoxOfMessages(currentSelected, vBoxOfMessages);
+
+               });
            });
            hBox.getChildren().add(button);
            patientsBox.getChildren().add(hBox);
