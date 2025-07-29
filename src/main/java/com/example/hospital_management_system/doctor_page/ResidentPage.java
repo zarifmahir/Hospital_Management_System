@@ -80,10 +80,10 @@ public class ResidentPage extends Application implements Initializable {
 
 
 //Uncomment for same laptop
-//            if(currentSelected.getMyChat().isEmpty()){
-//                currentSelected.setMyChat(messageToSend+"~L");
-//            }
-//            else currentSelected.setMyChat(currentSelected.getMyChat() + "<"+messageToSend+"~L");
+            if(currentSelected.getMyChat().isEmpty()){
+                currentSelected.setMyChat(messageToSend+"~L");
+            }
+            else currentSelected.setMyChat(currentSelected.getMyChat() + "<"+messageToSend+"~L");
             c.sendMessage("Res"+"~"+currentSelected.getName()+"~"+messageToSend);
             messageArea.clear();
         }
@@ -92,8 +92,8 @@ public class ResidentPage extends Application implements Initializable {
     public static void addLabel(String senderName, String messageFromOtherEnd, VBox vBox, Object p) {
         System.out.println(currentSelected.getName()+"~"+senderName+"~"+messageFromOtherEnd);
         //Uncomment for same laptop
-//        Patient ptn = (Patient)p;
-//        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
+        Patient ptn = (Patient)p;
+        ptn.setMyChat(ptn.getMyChat()+"<"+messageFromOtherEnd+"~R");
         if(!currentSelected.getName().equals(senderName)){
             return;
         }
@@ -231,29 +231,21 @@ public class ResidentPage extends Application implements Initializable {
            button.setUserData(p);
            button.setOnAction(e -> {
                Patient temp = (Patient) ((Button)e.getSource()).getUserData();
-//               try {
+               try {
                    c.sendMessage("Res"+"~"+temp.getName()+"~"+"#Refresh");
                    //Uncomment for same laptop
-//                   PatientPageController.reloadPatientChats(temp);
-
-                   //System.out.println(p.getMyChat());
-//               } catch (IOException | InterruptedException ex) {
-//                   throw new RuntimeException(ex);
-//               }
-
-               Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
-                   try {
-                       main.loadPatientChats();
-                   } catch (IOException ex) {
-                       throw new RuntimeException(ex);
-                   }
+                 PatientPageController.reloadPatientChats(temp);
+                   Thread.sleep(100);
+                   main.loadPatientChats();
                    vBoxOfMessages.getChildren().clear();
-                   currentSelected = temp;
-                   messagePane.setVisible(true);
-                   messageArea.clear();
-                   createVBoxOfMessages(currentSelected, vBoxOfMessages);
-
-               });
+                   //System.out.println(p.getMyChat());
+               } catch (IOException | InterruptedException ex) {
+                   throw new RuntimeException(ex);
+               }
+               currentSelected = temp;
+              messagePane.setVisible(true);
+              messageArea.clear();
+              createVBoxOfMessages(currentSelected,vBoxOfMessages);
            });
            hBox.getChildren().add(button);
            patientsBox.getChildren().add(hBox);

@@ -131,9 +131,9 @@ public class PatientPageController {
     public static void reloadPatientChats(Patient patient) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt"));
         writer.write("");
-        synchronized (Main.c){
-            Main.c.sendMessage("ChatHistoryOfPatients$EmptyChat");
-        }
+//        synchronized (Main.c){
+//            Main.c.sendMessage("ChatHistoryOfPatients$EmptyChat");
+//        }
         writer.close();
         boolean stat = false;
         for(Patient p: Main.patientChatMap.chatMap.keySet()){
@@ -141,9 +141,9 @@ public class PatientPageController {
             if(p.getName().equals(patient.getName())) stat = true;
         }
         if(!stat) writeChats(patient);
-        synchronized (Main.c){
-            Main.c.sendMessage("ChatHistoryOfPatients$ChatRefreshed");
-        }
+//        synchronized (Main.c){
+//            Main.c.sendMessage("ChatHistoryOfPatients$ChatRefreshed");
+//        }
         System.out.println("Written successfully");
     }
 
@@ -162,9 +162,9 @@ public class PatientPageController {
             String content = patient.getUsername()+"@"+patient.getPass()+"|"+patient.getMyChat();
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/ChatHistoryOfPatients.txt", true));
             writer.write(content);
-            synchronized (Main.c){
-                Main.c.sendMessage("ChatHistoryOfPatients$" + content);
-            }
+//            synchronized (Main.c){
+//                Main.c.sendMessage("ChatHistoryOfPatients$" + content);
+//            }
             writer.newLine();
             writer.close();
             System.out.println("File written successfully.");
