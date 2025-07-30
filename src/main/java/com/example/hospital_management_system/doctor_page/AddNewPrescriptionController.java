@@ -94,6 +94,10 @@ public class AddNewPrescriptionController {
     private void buildPrescription() {
         String s = diagnosisField.getText() + "|" + doctor.getName() + "|" + doctor.getId() + "|" + patient.getName() + "|" + patient.getId() + "|" + dateField.getPromptText();
 
+        if (patient.getPrimaryDiagnosis().equals("")) {
+            patient.setPrimaryDiagnosis(diagnosisField.getText());
+        }
+
         Prescription prescription = new Prescription(diagnosisField.getText(), doctor.getName(), doctor.getId(), patient.getName(), patient.getId(), dateField.getPromptText());
         System.out.println(s);
 
