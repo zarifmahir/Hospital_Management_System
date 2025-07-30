@@ -1,21 +1,21 @@
-Receptionist|Tanvir Ahmed|Cardiology|3|01712345602|tanvir.ahmed@hospital.com|34 Gulshan Ave, Dhaka
-BedBoy|Rakib Hossain|Surgery|2|01712345603|rakib.hossain@hospital.com|98 Mirpur-2, Dhaka
-Nurse|Farzana Sultana|Pediatrics|6|01712345604|farzana.sultana@hospital.com|21 Uttara, Dhaka
-Receptionist|Mizanur Rahman|Dermatology|4|01712345605|mizan.rahman@hospital.com|77 Dhanmondi, Dhaka
-BedBoy|Habibul Hasan|Obstetrics|1|01712345606|habib.hasan@hospital.com|5 Jatrabari, Dhaka
-Nurse|Rokeya Akter|Gynecology|7|01712345607|rokeya.akter@hospital.com|15 Shantinagar, Dhaka
-Receptionist|Sharmin Jahan|Psychiatry|3|01712345608|sharmin.jahan@hospital.com|61 Banani, Dhaka
-BedBoy|Kamrul Islam|Orthopedics|2|01712345609|kamrul.islam@hospital.com|43 Tejgaon, Dhaka
-Nurse|Nazia Khan|Neurology|8|01712345610|nazia.khan@hospital.com|59 Bashundhara, Dhaka
-Receptionist|Imran Kabir|Pathology|4|01712345611|imran.kabir@hospital.com|23 Badda, Dhaka
-BedBoy|Sohel Rana|Cardiology|3|01712345612|sohel.rana@hospital.com|17 Agargaon, Dhaka
-Nurse|Tania Sultana|Medicine|9|01712345613|tania.sultana@hospital.com|88 Shyamoli, Dhaka
-Receptionist|Sadia Hossain|Orthopedics|5|01712345614|sadia.hossain@hospital.com|3 Mohammadpur, Dhaka
-BedBoy|Naim Sheikh|Pediatrics|2|01712345615|naim.sheikh@hospital.com|42 Airport Road, Dhaka
-Nurse|Mahmuda Akter|Obstetrics|6|01712345616|mahmuda.akter@hospital.com|26 Kalabagan, Dhaka
-Receptionist|Fahim Reza|Gynecology|3|01712345617|fahim.reza@hospital.com|30 Wari, Dhaka
-BedBoy|Hasan Mahmud|Psychiatry|2|01712345618|hasan.mahmud@hospital.com|6 Khilgaon, Dhaka
-Nurse|Nusrat Jahan|Surgery|10|01712345619|nusrat.jahan@hospital.com|91 Kallyanpur, Dhaka
-Receptionist|Rifat Anwar|Neurology|4|01712345620|rifat.anwar@hospital.com|44 Motijheel, Dhaka
-Nurse|me|Medicine|3|0177777|adfas|fad
-Nurse|zarif|Medicine|4|122|adf|fda
+Receptionist|Tanvir Ahmed|Cardiology|3|01712345602|tanvir.ahmed@hospital.com|34 Gulshan Ave, Dhaka|/images/admin2.png
+BedBoy|Rakib Hossain|Surgery|2|01712345603|rakib.hossain@hospital.com|98 Mirpur-2, Dhaka|/images/admin2.png
+Nurse|Farzana Sultana|Pediatrics|6|01712345604|farzana.sultana@hospital.com|21 Uttara, Dhaka|/images/admin2.png
+Receptionist|Mizanur Rahman|Dermatology|4|01712345605|mizan.rahman@hospital.com|77 Dhanmondi, Dhaka|/images/admin2.png
+BedBoy|Habibul Hasan|Obstetrics|1|01712345606|habib.hasan@hospital.com|5 Jatrabari, Dhaka|/images/admin2.png
+Receptionist|Sharmin Jahan|Psychiatry|3|01712345608|sharmin.jahan@hospital.com|61 Banani, Dhaka|/images/admin2.png
+BedBoy|Kamrul Islam|Orthopedics|2|01712345609|kamrul.islam@hospital.com|43 Tejgaon, Dhaka|/images/admin2.png
+Receptionist|Imran Kabir|Pathology|4|01712345611|imran.kabir@hospital.com|23 Badda, Dhaka|/images/admin2.png
+BedBoy|Sohel Rana|Cardiology|3|01712345612|sohel.rana@hospital.com|17 Agargaon, Dhaka|/images/admin2.png
+Receptionist|Sadia Hossain|Orthopedics|5|01712345614|sadia.hossain@hospital.com|3 Mohammadpur, Dhaka|/images/admin2.png
+BedBoy|Naim Sheikh|Pediatrics|2|01712345615|naim.sheikh@hospital.com|42 Airport Road, Dhaka|/images/admin2.png
+Nurse|Mahmuda Akter|Obstetrics|6|01712345616|mahmuda.akter@hospital.com|26 Kalabagan, Dhaka|/images/admin2.png
+Receptionist|Fahim Reza|Gynecology|3|01712345617|fahim.reza@hospital.com|30 Wari, Dhaka|/images/admin2.png
+BedBoy|Hasan Mahmud|Psychiatry|2|01712345618|hasan.mahmud@hospital.com|6 Khilgaon, Dhaka|/images/admin2.png
+Nurse|Nusrat Jahan|Surgery|10|01712345619|nusrat.jahan@hospital.com|91 Kallyanpur, Dhaka|/images/admin2.png
+Receptionist|Rifat Anwar|Neurology|4|01712345620|rifat.anwar@hospital.com|44 Motijheel, Dhaka|/images/admin2.png
+Nurse|zarif|Medicine|4|122|adf|fda|/images/admin2.png
+Nurse|Nafis|Medicine|3|0177777|adfas|fad|/images/admin2.png
+Nurse|Tan|Medicine|9|01712345613|tania.sultana@hospital.com|88 Shyamoli, Dhaka|/images/admin2.png
+Nurse|r|Gynecology|7|01712345607|rokeya.akter@hospital.com|15 Shantinagar, Dhaka|/images/admin2.png
+Nurse|Nazia Khan|Neurology|8|01712345610|nazia.khan@hospital.com|59 Bashundhara, Dhaka|/images/patient.png

@@ -115,7 +115,7 @@
                   </Label>
                   <TextField fx:id="addDepartment" layoutX="129.0" layoutY="149.0" />
                   <ImageView fx:id="addImage" fitHeight="133.0" fitWidth="152.0" layoutX="313.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="351.0" layoutY="177.0" mnemonicParsing="false" onAction="#editImage" style="-fx-background-color: #CCCCFF; -fx-background-radius: 60;" text="Edit Image" />
+                  <Button layoutX="351.0" layoutY="177.0" mnemonicParsing="false" onAction="#addImageFunc" style="-fx-background-color: #CCCCFF; -fx-background-radius: 60;" text="Add Image" />
                   <Label layoutX="49.0" layoutY="186.0" text="Phone:">
                      <font>
                         <Font name="Times New Roman" size="14.0" />
@@ -158,6 +158,97 @@
                         <Font name="Times New Roman Bold" size="16.0" />
                      </font>
                   </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="viewPane" layoutX="252.0" layoutY="34.0" prefHeight="519.0" prefWidth="398.0" style="-fx-background-color: white; -fx-background-radius: 40; -fx-border-width: 1; -fx-border-color: black; -fx-border-radius: 40;" visible="false">
+               <children>
+                  <Label layoutX="125.0" layoutY="22.0" text="Staff Information">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="241.0" text="Name:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoName" layoutX="210.0" layoutY="241.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="271.0" text="Phone:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoPhone" layoutX="210.0" layoutY="271.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="301.0" text="Department:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoDepartment" layoutX="210.0" layoutY="301.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="331.0" text="Years of Experience:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoYears" layoutX="210.0" layoutY="331.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="359.0" text="Email:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoEmail" layoutX="210.0" layoutY="359.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="389.0" text="Address:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoAddress" layoutX="210.0" layoutY="389.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="419.0" text="Role:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoRole" layoutX="210.0" layoutY="418.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="72.0" layoutY="210.0" text="ID:">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoID" layoutX="210.0" layoutY="209.0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="infoOkButton" layoutX="183.0" layoutY="468.0" mnemonicParsing="false" onAction="#infoOKClick" style="-fx-background-color: #EEEEFF; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Ok" />
+                  <ImageView fx:id="infoImage" fitHeight="119.0" fitWidth="128.0" layoutX="133.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
          </children></AnchorPane>

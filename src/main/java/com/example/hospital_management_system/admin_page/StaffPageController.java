@@ -21,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -54,6 +55,17 @@ public class StaffPageController implements Initializable {
     public TextField addEmail;
     public TextField addAddress;
     public Label errorMessage;
+    public AnchorPane viewPane;
+    public Label infoName;
+    public Label infoPhone;
+    public Label infoDepartment;
+    public Label infoYears;
+    public Label infoEmail;
+    public Label infoAddress;
+    public Label infoRole;
+    public Label infoID;
+    public Button infoOkButton;
+    public ImageView infoImage;
     @FXML
     private Button addButton;
 
@@ -114,6 +126,7 @@ public class StaffPageController implements Initializable {
         receptionistSelected = true;
         errorMessage.setVisible(false);
         addPane.setVisible(false);
+        viewPane.setVisible(false);
 
         typeOfStaffLabel.setText("All Staff Information");
 
@@ -155,7 +168,7 @@ public class StaffPageController implements Initializable {
                     Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
                         listView.getItems().clear();
                         System.out.println("Here in the property");
-                        List<Nurse> nnewList = Main.staffMap.getNurseList();
+                        List<Nurse> nnewList = staffMap.getNurseList();
                         for (Nurse n : nnewList) {
                             listView.getItems().add(n.getName() + "\n" + n.getDepartment());
                             items.add(n.getName() + "\n" + n.getDepartment());
@@ -296,7 +309,7 @@ public class StaffPageController implements Initializable {
         //addButton.setDisable(true);
         editButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
         removeButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
-        //viewButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
+        viewButton.setStyle("-fx-background-color: lightgray;" + "-fx-text-fill: darkgray;" + "-fx-opacity: 1.0;");
     }
 
 
@@ -305,28 +318,35 @@ public class StaffPageController implements Initializable {
 
     public void viewStaff(ActionEvent actionEvent) throws IOException {
         if (selectedStatus) {
+            viewPane.setVisible(true);
             String person = listView.getSelectionModel().getSelectedItem();
-            String[] temp = person.split(" ");
+            String[] temp = person.split(" \\(");
             Staff staff = null;
+            int id = 0;
             if(staffMap.getNurseByName(temp[0])!=null){
                 staff = staffMap.getNurseByName(temp[0]);
+                id = ((Nurse)staff).getId();
             }
             else if(staffMap.getBedBoyByName(temp[0])!=null){
                 staff = staffMap.getBedBoyByName(temp[0]);
+                id = ((BedBoy)staff).getId();
             }
             else if(staffMap.getReceptionistByName(temp[0])!=null){
                 staff = staffMap.getReceptionistByName(temp[0]);
+                id = ((Receptionist)staff).getId();
             }
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("patient_popup.fxml"));
-//            Parent root = (Parent) fxmlLoader.load();
-//
-//            PatientPopupController controller = fxmlLoader.getController();
-//            controller.setPatient(patient);
-//
-//            Stage stage = new Stage();
-//            stage.setTitle("Patient Information");
-//            stage.setScene(new Scene(root));
-//            stage.show();
+            infoID.setText(String.valueOf(id));
+            infoName.setText(staff.getName());
+            infoDepartment.setText(staff.getDepartment());
+            infoPhone.setText(staff.getPhoneNumber());
+            infoEmail.setText(staff.getEmail());
+            infoAddress.setText(staff.getAddress());
+            infoYears.setText(String.valueOf(staff.getYearsOfExperience()));
+            infoRole.setText(staff.getRole());
+
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(staff.getImg())));
+            infoImage.setImage(image);
+            selectedStatus = true;
         }
     }
     public  boolean checkEr(){
@@ -378,7 +398,7 @@ public class StaffPageController implements Initializable {
             editRole.setPromptText(staff.getRole());
 
             String img = "/images/user.png";
-//            if(!patient.getImage().equals("null")){ img = patient.getImage();}
+           if(!staff.getImg().equals("null")){ img = staff.getImg();}
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(img)));
             newImage.setImage(image);
         }
@@ -456,7 +476,72 @@ public class StaffPageController implements Initializable {
         alert.show();
     }
 
+    private String myimg;
+
+    public void addImageFunc(ActionEvent actionEvent) throws IOException {
+         myimg = "/images/user.png";
+
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image files (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            try {
+                Image image = new Image(file.toURI().toString());
+                //System.out.println(file.toURI().toString());
+                myimg = "/images/"+file.getName();
+
+
+                // Set it to the ImageView
+                addImage.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void editImage(ActionEvent actionEvent) {
+        String person = listView.getSelectionModel().getSelectedItem();
+        String[] temp = person.split(" \\(");
+        Staff staff = null;
+        int id = 0;
+        if(staffMap.getNurseByName(temp[0])!=null){
+            staff = staffMap.getNurseByName(temp[0]);
+            id = ((Nurse)staff).getId();
+        }
+        else if(staffMap.getBedBoyByName(temp[0])!=null){
+            staff = staffMap.getBedBoyByName(temp[0]);
+            id = ((BedBoy)staff).getId();
+        }
+        else if(staffMap.getReceptionistByName(temp[0])!=null){
+            staff = staffMap.getReceptionistByName(temp[0]);
+            id = ((Receptionist)staff).getId();
+        }
+        String img = "/images/user.png";
+
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image files (*.jpg, *.png, *.gif)", "*.jpg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            try {
+                Image image = new Image(file.toURI().toString());
+                //System.out.println(file.toURI().toString());
+                img = "/images/"+file.getName();
+                staff.setImg(img);
+
+                // Set it to the ImageView
+                newImage.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void cancel(ActionEvent actionEvent) {
@@ -515,7 +600,7 @@ public class StaffPageController implements Initializable {
             System.out.println(serial);
             lines.remove(serial);
 
-            String content = staff.getRole()+"|"+staff.getName()+"|"+staff.getDepartment()+"|"+staff.getYearsOfExperience()+"|"+staff.getPhoneNumber()+"|"+staff.getEmail()+"|"+staff.getAddress();
+            String content = staff.getRole()+"|"+staff.getName()+"|"+staff.getDepartment()+"|"+staff.getYearsOfExperience()+"|"+staff.getPhoneNumber()+"|"+staff.getEmail()+"|"+staff.getAddress()+"|"+staff.getImg();
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/StaffList.txt"))) {
                 for (String line : lines) {
@@ -556,7 +641,7 @@ public class StaffPageController implements Initializable {
             errorMessage.setVisible(true);
         }
         else{
-            String content = addRole.getText() + "|" + addName.getText() + "|" + addDepartment.getText() + "|" + addYearsOfExp.getText() + "|" + addPhone.getText() + "|" + addEmail.getText() + "|" + addAddress.getText();
+            String content = addRole.getText() + "|" + addName.getText() + "|" + addDepartment.getText() + "|" + addYearsOfExp.getText() + "|" + addPhone.getText() + "|" + addEmail.getText() + "|" + addAddress.getText()+"|"+myimg;
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/StaffList.txt", true));
                 writer.write(content);
@@ -580,5 +665,12 @@ public class StaffPageController implements Initializable {
             addPane.setVisible(false);
         }
 
+    }
+
+    public void infoOKClick(ActionEvent actionEvent) {
+        if(selectedStatus){
+            viewPane.setVisible(false);
+            listView.getSelectionModel().clearSelection();
+        }
     }
 }

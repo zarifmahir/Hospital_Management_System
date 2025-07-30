@@ -8,6 +8,7 @@ abstract public class Staff {
     String email;
     String address;
     String role;
+    String img;
 
 
     public Staff(String name, String department, String yearsOfExperience, String phoneNumber, String email, String address) {
@@ -17,6 +18,14 @@ abstract public class Staff {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getRole() {

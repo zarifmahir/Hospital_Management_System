@@ -302,16 +302,23 @@ public class Main extends Application {
             String phone = values[4];
             String email = values[5];
             String address = values[6];
+            String img = values[7];
 
             if (type.equals("Nurse")) {
-                staffMap.addNurse(new Nurse(name, dept, years, phone, email, address));
+                Staff staff = new Nurse(name, dept, years, phone, email, address);
+                staff.setImg(img);
+                staffMap.addNurse((Nurse) staff);
 
             }
             else if (type.equals("BedBoy")) {
-                staffMap.addBedBoy(new BedBoy(name, dept, years, phone, email, address));
+                Staff staff = new BedBoy(name, dept, years, phone, email, address);
+                staff.setImg(img);
+                staffMap.addBedBoy((BedBoy) staff);
             }
             else if (type.equals("Receptionist")) {
-                staffMap.addReceptionist(new Receptionist(name, dept, years, phone, email, address));
+                Staff staff = new Receptionist(name, dept, years, phone, email, address);
+                staff.setImg(img);
+                staffMap.addReceptionist((Receptionist) staff);
             }
 
         }
