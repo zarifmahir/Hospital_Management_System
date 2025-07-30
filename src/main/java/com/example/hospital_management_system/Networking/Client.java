@@ -31,7 +31,7 @@ public class Client {
         }
     }
 
-    public void sendMessage(String message){
+    public void sendMessage(Object message){
         WTC.setMessage(message);
     }
 
