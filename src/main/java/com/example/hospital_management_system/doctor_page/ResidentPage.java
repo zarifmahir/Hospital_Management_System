@@ -323,6 +323,8 @@ public class ResidentPage extends Application implements Initializable {
     public void logOut(ActionEvent actionEvent) {
         try {
             if(currentSelected!=null) PatientPageController.reloadPatientChats(currentSelected);
+            Stage stage = (Stage) patientsBox.getScene().getWindow();
+            stage.close();
             main.showLoginPage();
         }
         catch (Exception e){

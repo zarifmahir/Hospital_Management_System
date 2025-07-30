@@ -65,7 +65,7 @@ public class Main extends Application {
         stage = primaryStage;
         String serverAddress = "127.0.0.1";
         int serverPort = 44444;
-        c = new Client(serverAddress, serverPort, "Main1");
+        c = new Client(serverAddress, serverPort, "Main2");
         c.setType("Main");
         c.setObType((Object) this);
         showLoginPage();
