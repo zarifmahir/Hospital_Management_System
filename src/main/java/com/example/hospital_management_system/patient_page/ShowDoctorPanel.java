@@ -74,7 +74,7 @@ public class ShowDoctorPanel implements Initializable {
         room.setCellValueFactory(new PropertyValueFactory<Doctor, String>("room"));
         shift.setCellValueFactory(new PropertyValueFactory<Doctor, String>("shift"));
 //        specialization.setCellValueFactory(new PropertyValueFactory<Doctor, String>("specialization"));
-        status.setCellValueFactory(new PropertyValueFactory<Doctor, String>("status"));
+//        status.setCellValueFactory(new PropertyValueFactory<Doctor, String>("status"));
 
         List<Doctor> doctorList = Main.doctorsMap.getDoctorList();
 

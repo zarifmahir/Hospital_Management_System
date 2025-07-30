@@ -22,10 +22,8 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class DoctorDashboardController {
     DoctorPageController doctorPageController;
@@ -156,12 +154,14 @@ public class DoctorDashboardController {
 
 
         //tableview setting
-        List<Appointment> appointmentList = Main.appointmentMap.getDoctorAppointments(doctor.getId());
+        List<Appointment> appointmentList = Main.appointmentMap.getDoctorAppointments(doctor.getName() + " (" + doctor.getId() + ")");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         int upCount = 0;
         ObservableList<Appointment> appointmentObservableList = FXCollections.observableArrayList();
+        System.out.println(appointmentList.size());
         LocalDate today = LocalDate.now();
         for (Appointment a : appointmentList) {
-            LocalDate date = LocalDate.parse(a.getDate());
+            LocalDate date = LocalDate.parse(a.getDate(), formatter);
             if(date.equals(today)){
                 appointmentObservableList.add(a);
             }
@@ -184,18 +184,29 @@ public class DoctorDashboardController {
 
 
         //patientcount
-        Map<Doctor, Patient> mp = new HashMap<>();
-        List<Prescription> prescriptionList = Main.prescriptionMap.getDoctorPrescriptionList(doctor.getId());
+        List<Patient> patientList = new ArrayList<>();
 
-        for (Prescription p : prescriptionList) {
-            mp.put(doctor , Main.patientsMap.getPatientById(String.valueOf(p.getPatientId())));
+        List<Appointment> doctorAppointmentList= Main.appointmentMap.getDoctorAppointments(doctor.getName() + " (" + doctor.getId() + ")");
+
+        for (Appointment a : doctorAppointmentList) {
+            Patient p = Main.patientsMap.getPatientById(a.getPatientId());
+
+            if (p != null) {
+                patientList.add(p);
+            }
         }
 
-        for (Appointment a : appointmentList) {
-            mp.put(doctor, Main.patientsMap.getPatientById(String.valueOf(a.getPatientId())));
+        List<Prescription> doctorPrescriptionList = Main.prescriptionMap.getDoctorPrescriptionList(doctor.getId());
+
+        for (Prescription p : doctorPrescriptionList) {
+            Patient patient = Main.patientsMap.getPatientById(p.getPatientId());
+
+            if (patient != null) {
+                patientList.add(patient);
+            }
         }
 
-        totalPatientCount.setText(String.valueOf(mp.size()));
+        totalPatientCount.setText(String.valueOf(patientList.size()));
     }
 
 

@@ -80,7 +80,7 @@ public class PatientDashboardController {
     @FXML
     private Label upcomingAppointments;
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 
     public void setPatient(Patient patient) {
@@ -99,7 +99,8 @@ public class PatientDashboardController {
         mobileField.setText(String.valueOf(patient.getMobile()));
         weightField.setText(String.valueOf(patient.getWeight()));
 
-        List<Appointment> appointmentList = Main.appointmentMap.getPatientAppointments(patient.getId());
+        List<Appointment> appointmentList = Main.appointmentMap.getPatientAppointments(patient.getName());
+        System.out.println("apptlist size = " + appointmentList.size());
         int upcomingAppointmentsCount = 0;
         int previousAppointmentsCount = 0;
         for (Appointment ap : appointmentList) {

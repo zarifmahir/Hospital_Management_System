@@ -17,7 +17,6 @@
             <TableColumn fx:id="specialization" prefWidth="75.0" text="Specialization" />
             <TableColumn fx:id="department" prefWidth="75.0" text="Department" />
             <TableColumn fx:id="phone" prefWidth="75.0" text="Phone" />
-            <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
             <TableColumn fx:id="shift" prefWidth="75.0" text="Shift" />
             <TableColumn fx:id="room" prefWidth="75.0" text="Room" />
          </columns>

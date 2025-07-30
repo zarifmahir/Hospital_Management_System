@@ -28,6 +28,7 @@ public class PrescriptionMap {
                 res.add(p);
             }
         }
+        System.out.println("for patient " + patientId + "res = " + res.size());
         return res;
     }
 

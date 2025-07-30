@@ -1,0 +1,12 @@
+Rafiq Islam (006)<zarif<01-08-2025<4033<7 pm<Medicine<105<001
+Kamal Uddin (004)<zarif<01-08-2025<3130<5 pm<Surgery<205<001
+Laila Khan (017)<zarif<17-07-2025<6671<6 pm<Pediatrics<306<001
+Nazma Sultana (015)<zarif<07-08-2025<2902<6 pm<Obstetrics<406<001
+ishmam (001)<zarif<08-08-2025<6024<8 pm<Gynecology<505<001
+ishmam (001)<zarif<31-07-2025<8731<4 pm<Gynecology<505<001
+Anwar Hossain (002)<zarif<08-08-2025<7947<5 pm<Orthopedics<605<001
+Rahman Ali (048)<zarif<07-08-2025<1366<6 pm<Cardiology<709<001
+Rokeya Khatun (029)<zarif<23-07-2025<2129<6 pm<Neurology<807<001
+Habib Rahman (036)<zarif<05-08-2025<5262<8 pm<Psychiatry<1007<001
+Rashid Ahmed (022)<zarif<09-08-2025<8067<7 pm<Pathology<906<001
+Khaled Mahmud (044)<zarif<31-07-2025<5146<7 pm<Dermatology<1108<001

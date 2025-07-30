@@ -160,6 +160,7 @@ public class LoginController {
                         main.showDoctorPage(Main.doctorsMap.getDoctor(userAndPass));
                     }
                     else{
+                        errorMessage.setVisible(true);
                         errorMessage.setText("Invalid username or password");
                     }
                 }
@@ -170,6 +171,7 @@ public class LoginController {
                         main.showPatientPage(Main.patientsMap.getPatient(userAndPass));
                     }
                     else{
+                        errorMessage.setVisible(true);
                         errorMessage.setText("Invalid username or password");
                     }
                 }
@@ -185,6 +187,7 @@ public class LoginController {
                             main.showAdminPage(a);
                         }
                         else {
+                            errorMessage.setVisible(true);
                             errorMessage.setText("Invalid username or password");
                         }
                     }
