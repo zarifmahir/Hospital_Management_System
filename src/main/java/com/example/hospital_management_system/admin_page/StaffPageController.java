@@ -530,6 +530,7 @@ public class StaffPageController implements Initializable {
             listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
             listView.getSelectionModel().clearSelection();;
             main.loadStaff();
+            listView.getItems().add(staff.getName()+" ("+staff.getRole()+") \n"+ staff.getDepartment());
             Main.setUpdated(true);
             System.out.println("Here1");
             selectedStatus = true;
@@ -571,9 +572,10 @@ public class StaffPageController implements Initializable {
                 System.out.println("An error occurred: " + e.getMessage());
             }
             main.loadStaff();
-            Platform.runLater(() -> {
-                Main.setUpdated(!Main.getUpdated()); // Will trigger listener
-            });
+            listView.getItems().add(addName.getText()+" ("+addRole.getText()+") \n"+addDepartment.getText());
+//            Platform.runLater(() -> {
+//                Main.setUpdated(!Main.getUpdated()); // Will trigger listener
+//            });
             showSuccessAlert();
             addPane.setVisible(false);
         }
