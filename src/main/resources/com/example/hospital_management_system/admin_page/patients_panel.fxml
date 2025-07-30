@@ -18,8 +18,8 @@
           <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="gender" prefWidth="75.0" text="Gender" />
             <TableColumn fx:id="mobile" prefWidth="75.0" text="Mobile Number" />
-            <TableColumn fx:id="dateOfDiagnosis" prefWidth="75.0" text="Date of Diagnosis" />
-            <TableColumn fx:id="action" prefWidth="75.0" text="Action" />
+            <TableColumn fx:id="dateOfDiagnosis" prefWidth="75.0" text="Primary Diagnosis" />
+            <TableColumn fx:id="action" prefWidth="75.0" text="Age" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

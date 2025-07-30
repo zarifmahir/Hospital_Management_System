@@ -53,7 +53,7 @@ public class PatientPanelController implements Initializable {
     public AnchorPane editPane;
     public Button addTRButton;
     @FXML
-    private TableColumn<Patient, String> action;
+    private TableColumn<Patient, Integer> action;
 
     @FXML
     private TableColumn<Patient, String> dateOfDiagnosis;
@@ -94,6 +94,8 @@ public class PatientPanelController implements Initializable {
         name.setCellValueFactory(new PropertyValueFactory<Patient, String>("name"));
         gender.setCellValueFactory(new PropertyValueFactory<Patient, String >("gender"));
         mobile.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("mobile"));
+        action.setCellValueFactory(new PropertyValueFactory<>("age"));
+        dateOfDiagnosis.setCellValueFactory(new PropertyValueFactory<>("primaryDiagnosis"));
 
         List<Patient> patientList = Main.patientsMap.getPatientList();
         for(Patient p: patientList){

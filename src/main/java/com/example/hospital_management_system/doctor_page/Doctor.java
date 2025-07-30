@@ -50,9 +50,6 @@ public class Doctor {
         this.medicalCouncil = medicalCouncil;
         this.image = image;
         this.id = id;
-        this.shift = "";
-        this.room = "";
-        this.status = "";
 
         int roomNo = 0;
         Random random = new Random();
@@ -90,7 +87,7 @@ public class Doctor {
         else if (department.equals("Dermatology")) {
             roomNo = Main.roomNos[11]++;
         }
-
+        shift = random.nextInt() % 2 == 0 ? "Day" : "Night";
         this.room = String.valueOf(roomNo);
     }
 
