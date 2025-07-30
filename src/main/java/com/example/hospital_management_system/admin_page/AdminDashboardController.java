@@ -405,7 +405,7 @@ public class AdminDashboardController {
 
 
     @FXML
-    void showAppointmentPage(ActionEvent event) throws IOException {
+    void showAppointmentPage(MouseEvent event) throws IOException {
         adminPageController.loadPage("appointment_page");
     }
 
