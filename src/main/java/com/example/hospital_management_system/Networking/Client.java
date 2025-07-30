@@ -17,7 +17,7 @@ public class Client {
 //            System.out.print("Enter name of the client: ");
 //            scanner = new Scanner(System.in);
             //String clientName = scanner.nextLine();
-//         serverAddress = "192.168.0.117";
+        serverAddress = "172.20.10.9";
             socketWrapper = new SocketWrapper(serverAddress, serverPort);
             socketWrapper.write(clientName);
             socketWrapper.setName(clientName);

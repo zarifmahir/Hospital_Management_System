@@ -25,7 +25,7 @@ public class ShowAppointmentsPage {
         Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
             tableView.getItems().clear();
             List<Appointment> patientAppointments2 = Main.appointmentMap.getPatientAppointments(patient.getName());
-            tableView.getItems().addAll(patientAppointments);
+            tableView.getItems().addAll(patientAppointments2);
         });
 
     }
