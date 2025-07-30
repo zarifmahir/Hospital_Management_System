@@ -20,12 +20,12 @@
                <children>
                   <TableView fx:id="doctorsPanel" layoutX="40.0" layoutY="85.0" prefHeight="507.0" prefWidth="911.0">
                      <columns>
-                        <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                        <TableColumn fx:id="department" prefWidth="151.0" text="Department" />
-                        <TableColumn fx:id="phone" prefWidth="152.0" text="Phone" />
-                        <TableColumn fx:id="shift" prefWidth="75.0" text="Shift" />
-                        <TableColumn fx:id="room" prefWidth="75.0" text="Room" />
+                        <TableColumn fx:id="ID" prefWidth="86.0" text="ID" />
+                        <TableColumn fx:id="name" prefWidth="194.0" text="Name" />
+                        <TableColumn fx:id="department" prefWidth="175.0" text="Department" />
+                        <TableColumn fx:id="phone" prefWidth="182.0" text="Phone" />
+                        <TableColumn fx:id="shift" prefWidth="133.0" text="Shift" />
+                        <TableColumn fx:id="room" prefWidth="120.0" text="Room" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
