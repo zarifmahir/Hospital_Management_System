@@ -34,7 +34,6 @@
 034|Firoz Alam|52|Male|AB+|firozalam@gmail.com|01755443323|01658741232|MBBS, FCPS, PhD|Shaheed Suhrawardy Medical College|PhD|8456121|Dermatology|27|United Hospital|/images/tonmoy_face.jpg|firozalam|123456
 035|Nahid Sultana|33|Female|B+|nahidsultana@gmail.com|01312345681|01899887758|MBBS, MS|Sylhet MAG Osmani Medical College|MS|9123660|Obstetrics|7|Popular Hospital|/images/nafis_face.jpg|nahidsultana|123456
 036|Habib Rahman|48|Male|A-|habibrahman@gmail.com|01900112236|01788554433|MBBS, MD|Ibrahim Medical College|MD|6314897|Psychiatry|23|Ibn Sina Hospital|/images/tonmoy_face.jpg|habibrahman|123456
-037|Mahmuda Khan|37|Female|O+|mahmudakhan@gmail.com|01651237896|01348765923|MBBS, FCPS|Army Medical College|FCPS|7982156|Pediatrics|12|BSMMU Hospital|/images/nafis_face.jpg|mahmudakhan|123456
 038|Salam Khan|46|Male|B-|salamkhan@gmail.com|01876543212|01987654324|MBBS, MS|Sir Salimullah Medical College|MS|7548233|Cardiology|21|Square Hospital|/images/tonmoy_face.jpg|salamkhan|123456
 039|Shamima Akter|42|Female|AB-|shamimaakter@gmail.com|01755446635|01551237896|MBBS, MD|Dhaka Medical College|MD|6891478|Neurology|17|Apollo Hospital|/images/nafis_face.jpg|shamimaakter|123456
 040|Tariqul Islam|55|Male|O+|tariqulislam@gmail.com|01988997768|01658741233|MBBS, FCPS, PhD|Chittagong Medical College|PhD|8456122|Orthopedics|30|Labaid Hospital|/images/tonmoy_face.jpg|tariqulislam|123456

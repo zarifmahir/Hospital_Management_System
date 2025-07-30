@@ -13,7 +13,7 @@ public class WriteThreadClient implements Runnable {
     private Thread thr;
     private SocketWrapper socketWrapper;
     String name;
-    private String msg;
+    private Object msg;
     private boolean status;
 
     public WriteThreadClient(SocketWrapper socketWrapper, String name) {
@@ -24,7 +24,7 @@ public class WriteThreadClient implements Runnable {
         thr.start();
     }
 
-    public void setMessage(String msg) {
+    public void setMessage(Object msg) {
         System.out.println("Message set");
         this.msg = msg;
         status = true;
@@ -61,7 +61,7 @@ public class WriteThreadClient implements Runnable {
                     System.out.println("written message");
                     if(socketWrapper.getType().equals("Patient") && !Main.patientChatMap.containsChat((Patient) socketWrapper.getO())){
                         PatientPageController.writeChats((Patient) socketWrapper.getO());
-                        Main.patientChatMap.addChat((Patient) socketWrapper.getO(), msg);
+                        Main.patientChatMap.addChat((Patient) socketWrapper.getO(),(String) msg);
                         socketWrapper.write("New"+msg);
                     }
                    else socketWrapper.write(msg);

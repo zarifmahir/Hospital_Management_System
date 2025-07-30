@@ -402,6 +402,17 @@ public class PatientPanelController implements Initializable {
                 String fileName = patient.getId()+"_"+patient.getTestReportNumbers()+ ".pdf";
                 Path destination = resourcesDir.resolve(fileName);
                 Files.copy(file.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
+                FileInputStream fis = new FileInputStream("src/main/resources/pdfs/"+fileName);
+
+                byte[] fileBytes  = fis.readAllBytes();
+
+                synchronized (Main.c){
+                    Main.c.sendMessage("FileWriting$"+fileName);
+                }
+
+                synchronized (Main.c){
+                    Main.c.sendMessage(fileBytes);
+                }
 
                 String newLine = "";
                 String oldLine = "";

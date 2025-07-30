@@ -32,7 +32,59 @@ public class ReadThreadClient implements Runnable {
                 Object o = socketWrapper.read();
                 if(socketWrapper.getType().equals("Main")){
                     String[] spt = ((String) o).split("\\$");
-                    if(spt[0].equals("Numbers")) {
+                    if(spt[0].equals("FileWriting")){
+                        Object o2 = socketWrapper.read();
+                        byte[] b = (byte[]) o2;
+                        try (FileOutputStream fos = new FileOutputStream("src/main/resources/pdfs/"+spt[1])) {
+                            fos.write(b);
+                        }
+
+                        String[] te = spt[1].split("_");
+                        String id = te[0];
+                        String newLine = "";
+                        String oldLine = "";
+                        List<String> lines = new ArrayList<>();
+                        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/texts/PatientsList.txt"))) {
+                            String line;
+                            while ((line = reader.readLine()) != null) {
+                                System.out.println(line);
+                                lines.add(line);
+                                String[] s =  line.split("\\|");
+                                if(s[0].equals(id)){
+                                    int tr = Main.patientsMap.getPatientById(id).getTestReportNumbers();
+                                    Main.patientsMap.getPatientById(id).setTestReportNumbers(tr+1);
+                                    s[25]=String.valueOf(tr+1);
+                                    for(int i=0; i<25; i++) newLine += s[i]+"|";
+                                    newLine+=s[25];
+                                    oldLine = line;
+                                }
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            throw new RuntimeException(e);
+                        }
+
+//                System.out.println(lines.size());
+//                System.out.println(serial);
+//
+//                lines.remove(serial);
+
+
+                        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/PatientsList.txt"))) {
+                            for (String line : lines) {
+                                if(line.equals(oldLine)) writer.write(newLine);
+                                else writer.write(line);
+                                writer.newLine();
+                            }
+                        }
+
+                        Main main = (Main)socketWrapper.getO();
+                        main.loadPatients();
+                        Main.setUpdated(!Main.getUpdated());
+
+                        System.out.println("File received and saved as received_" + spt[1]);
+                    }
+                    else if(spt[0].equals("Numbers")) {
                         BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/texts/"+spt[0]+".txt"));
                         writer.write(spt[1]);
                         writer.close();

@@ -140,6 +140,9 @@ public class PatientHistoryController {
 
             testReportTable.getColumns().addAll(tIdCol, testReportCol);
 
+//            Main.isUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+//            });
+
     }
 
     public void toggle(ActionEvent actionEvent) {
