@@ -179,7 +179,7 @@ public class AdminDashboardController {
         patientAgeBarGraph.getData().add(seriesPatientAge);
         patientAgeBarGraph.setLegendVisible(false);
 
-        float malePercent = (float) maleCount / (float) (maleCount + femaleCount);
+        float malePercent = ((float) maleCount / (float) (maleCount + femaleCount)) * 100;
         float femalePercent = 100 - malePercent;
 
         ObservableList<PieChart.Data> patientGenderPieChartData = FXCollections.observableArrayList(
@@ -213,7 +213,9 @@ public class AdminDashboardController {
 
         //SETTING THE LINECHART FOR APPOINTMENT AND PRESCRIPTIONS
         XYChart.Series<String, Integer> seriesAppointment = new XYChart.Series<>();
+        seriesAppointment.setName("Appointments");
         XYChart.Series<String, Integer> seriesPrescription = new XYChart.Series<>();
+        seriesPrescription.setName("Prescriptions");
 
         List<Appointment> appointments = Main.appointmentMap.getAppointments();
         List<Prescription> prescriptions = Main.prescriptionMap.getPrescriptionList();
@@ -261,7 +263,7 @@ public class AdminDashboardController {
         seriesPrescription.getData().add(new XYChart.Data<>("December", prescriptionCounts[11]));
 
         apLineChart.getData().addAll(seriesAppointment, seriesPrescription);
-        apLineChart.setLegendVisible(false);
+//        apLineChart.setLegendVisible(false);
     }
 
     @FXML
