@@ -30,6 +30,7 @@ public class ChatServer {
        // String clientName = socketWrapper.getName();
         String clientName = (String) socketWrapper.read();
         if(clientName.startsWith("Main")){
+            clientName = "Main"+String.valueOf(clientMap2.size()+1);
             clientMap2.put(clientName, socketWrapper);
         }
         else clientMap.put(clientName, socketWrapper);
